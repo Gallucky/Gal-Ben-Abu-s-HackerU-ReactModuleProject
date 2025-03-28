@@ -22,5 +22,6 @@ module.exports = {
       "warn",
       { allowConstantExport: true },
     ],
+    "tailwindcss/no-custom-classname": "off",
   },
 };

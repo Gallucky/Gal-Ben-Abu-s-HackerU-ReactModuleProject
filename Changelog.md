@@ -1,12 +1,18 @@
 # Todo list of React Module Project.
 
-### Updated to commit #2 | Date: 27/03/2025
+### Updated to commit #3 | Date 28/03/2025:
 
 ## Changes:
 
--   Planned the general components needed.
--   Installed missing resources in order to fix some bugs/problems.
--   Renamed this file to `Changelog` from `Todo`.
+-   Modified todo list.
+-   Created a `Wrapper Component` for the `DarkThemeToggle` and called it `DarkModeButton`.
+-   Created the `Navbar`.
+-   Created the logo.
+-   Created the `Searchbar` (searchbox).
+-   Created and added the navbar links using the component `NavLink`.
+-   Adjusted for dark mode and light mode styling.
+-   Added transitions for the `DarkModeButton`.
+-   Created and added `Divider` component.
 
 ## Todo:
 
@@ -14,11 +20,10 @@
 
 #### The NavBar has the following components:
 
--   [ ] Create a NavBar component.
-    -   [ ] Logo component.
-    -   [ ] Link component.
-    -   [ ] DarkThemeToggle component.
-    -   [ ] SearchBox component.
+-   [x] Create a NavBar component.
+    -   [x] Logo /component./ -> element that was the logo inside the `NavbarBrand` component.
+    -   [x] SearchBox component.
+    -   DarkModeToggle component which is already implemented in react. -> Created a wrapper component for customizing the component.
 
 ## Done:
 
