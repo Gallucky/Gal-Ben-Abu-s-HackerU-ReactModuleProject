@@ -4,7 +4,11 @@
 
 ## Changes:
 
--   Renamed `Searchbar` to `SearchBox`.
+-   Rework on the structure using the navbar html template in the flowbite docs website.
+-   Used the `SearchInput` template and the `Navbar` templates.
+-   Changed the `SearchBox` structure.
+-   Created a custom `Navbar` component with a `NavbarLink` component.
+-   Some styling.
 
 ## Todo:
 
