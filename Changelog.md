@@ -1,10 +1,11 @@
 # Todo list of React Module Project.
 
-### Updated to commit #9 | Date 1/04/2025:
+### Updated to commit #10 | Date 1/04/2025:
 
 ## Changes:
 
--   Created the `CustomFooter` component to add to my website.
+-   Added dark mode support for the footer.
+-   Fixed responsive styling issues of the footer.
 
 ## Todo:
 

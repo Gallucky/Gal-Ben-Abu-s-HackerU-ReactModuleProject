@@ -1,0 +1,28 @@
+@media (max-width: 639px) {
+  .xs-styling {
+    display: grid;
+    grid-template-areas: "credit" "about" "links";
+    align-items: center;
+    justify-content: center;
+  }
+
+  .footer-credit {
+    @apply text-center;
+    grid-area: "credit";
+  }
+
+  .footer-about {
+    @apply text-center text-gray-400;
+    grid-area: "about";
+    flex-direction: row;
+    gap: 5px;
+
+    margin: 1.5px;
+    padding: 0px;
+  }
+
+  .footer-links {
+    @apply mt-1;
+    grid-area: "links";
+  }
+}

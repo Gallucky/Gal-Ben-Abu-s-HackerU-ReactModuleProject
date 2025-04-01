@@ -6,17 +6,25 @@ const CustomFooter = () => {
   return (
     <>
       <Footer>
-        <div className="fixed bottom-0 w-full bg-blue-300 p-4 sm:flex sm:items-center sm:justify-between">
-          <FooterCopyright href="#" by="Gal Ben Abu" year={2025} />
+        <div className="xs-styling fixed bottom-0 w-full bg-blue-300 p-4 dark:bg-slate-700 sm:flex sm:items-center sm:justify-between">
+          <FooterCopyright
+            className="footer-credit"
+            href="#"
+            by="Gal Ben Abu"
+            year={2025}
+          />
 
-          <div className="flex flex-col items-center justify-center">
+          <div className="footer-about flex flex-col items-center justify-center">
             <FooterIcon className="" href="#" icon={BiInfoCircle} />
-            <span style={{ userSelect: "none" }} className="text-sm">
+            <span
+              style={{ userSelect: "none" }}
+              className="text-sm text-gray-500"
+            >
               About
             </span>
           </div>
 
-          <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
+          <div className="footer-links mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
             <FooterIcon
               target="_blank"
               href="https://github.com/Gallucky/Gal-Ben-Abu-s-HackerU-ReactModuleProject"
