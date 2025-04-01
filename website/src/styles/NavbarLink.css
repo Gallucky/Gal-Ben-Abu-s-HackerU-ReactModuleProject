@@ -8,3 +8,7 @@
   padding: 0 !important;
   padding-top: 3px !important;
 }
+
+.bg-transparent {
+  background-color: transparent;
+}

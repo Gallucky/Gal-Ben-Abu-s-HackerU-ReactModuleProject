@@ -5,6 +5,7 @@ import "./index.css";
 import "./styles/NavbarLink.css";
 import "./styles/SearchBox.css";
 import "./styles/DarkModeButton.css";
+import "./styles/fonts.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

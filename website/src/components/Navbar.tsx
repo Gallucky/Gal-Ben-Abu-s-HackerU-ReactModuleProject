@@ -1,4 +1,5 @@
 import DarkModeButton from "./DarkModeButton";
+import Divider from "./Divider";
 import NavbarLink, { NavbarLinkProps } from "./NavbarLink";
 import SearchBox from "./SearchBox";
 
@@ -19,7 +20,7 @@ const Navbar = (props: NavbarProps) => {
 
   return (
     <>
-      <nav className="fixed start-0 top-0 z-20 w-full border-b border-gray-200 bg-white dark:border-gray-600 dark:bg-gray-900">
+      <nav className="fixed start-0 top-0 z-20 w-full border-b border-gray-200 bg-cyan-100 dark:border-gray-600 dark:bg-gray-900">
         <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
           {/* Navbar Icon/Logo */}
           <div className="flex items-center space-x-3 rtl:space-x-reverse">
@@ -44,7 +45,7 @@ const Navbar = (props: NavbarProps) => {
             id="navbar-sticky"
           >
             <DarkModeButton className="mr-4" />
-            <ul className="mt-4 flex flex-col rounded-lg border border-gray-100 bg-gray-50 p-4 font-medium dark:border-gray-700 dark:bg-gray-800 md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-white md:p-0 md:dark:bg-gray-900 rtl:space-x-reverse">
+            <ul className="mt-4 flex flex-col rounded-lg border border-gray-100 bg-gray-50 p-4 font-medium dark:border-gray-700 dark:bg-gray-800 md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-transparent md:p-0 md:dark:bg-gray-900 rtl:space-x-reverse">
               {linksArray.map((navbarLink, index) => (
                 <NavbarLink
                   key={index}
@@ -55,6 +56,7 @@ const Navbar = (props: NavbarProps) => {
             </ul>
           </div>
         </div>
+        <Divider />
       </nav>
     </>
   );
