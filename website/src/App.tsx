@@ -3,6 +3,7 @@ import Divider from "./components/Divider";
 import Navbar from "./components/Navbar";
 import Header from "./components/Header";
 import CustomFooter from "./components/CustomFooter";
+import Card from "./components/Card";
 
 function App() {
   const links: NavbarLinkProps[] = [
@@ -16,6 +17,14 @@ function App() {
         <Navbar links={links} />
         <Header />
         <Divider />
+
+        <Card
+          title="title"
+          description="description"
+          phone="0540000000"
+          address="address"
+          cardNumber="1"
+        />
 
         <CustomFooter />
       </main>

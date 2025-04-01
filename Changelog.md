@@ -1,11 +1,11 @@
 # Todo list of React Module Project.
 
-### Updated to commit #10 | Date 1/04/2025:
+### Updated to commit #11 | Date 1/04/2025:
 
 ## Changes:
 
--   Added dark mode support for the footer.
--   Fixed responsive styling issues of the footer.
+-   Changed `React.StrictMode` to `StrictMode` by modifying the import.
+-   Started working on the `Card` component, continued work on styling is needed.
 
 ## Todo:
 
