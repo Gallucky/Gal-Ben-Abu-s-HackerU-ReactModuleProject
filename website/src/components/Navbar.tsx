@@ -22,16 +22,19 @@ const Navbar = (props: NavbarProps) => {
       <nav className="fixed start-0 top-0 z-20 w-full border-b border-gray-200 bg-white dark:border-gray-600 dark:bg-gray-900">
         <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
           {/* Navbar Icon/Logo */}
-          <a
-            href="https://flowbite.com/"
-            className="flex items-center space-x-3 rtl:space-x-reverse"
-          >
-            <img src={brandImgSrc} className="h-8" alt={brandImgAlt} />
-            <span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white">
-              BCards
-            </span>
+          <div className="flex items-center space-x-3 rtl:space-x-reverse">
+            <a
+              href="https://flowbite.com/"
+              className="flex items-center space-x-3 rtl:space-x-reverse"
+            >
+              <img src={brandImgSrc} className="h-8" alt={brandImgAlt} />
+              <span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white">
+                BCards
+              </span>
+            </a>
             <NavbarLink href="#" text="About" />
-          </a>
+          </div>
+
           <div className="flex space-x-3 md:order-1 md:space-x-0 rtl:space-x-reverse">
             <SearchBox />
           </div>
