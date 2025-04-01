@@ -24,6 +24,10 @@
     focus:outline-none focus:ring-2 focus:ring-white;
 }
 
+input {
+  width: 30rem !important;
+}
+
 /* Small Mobile */
 @media (max-width: 320px) {
   .search-box {
@@ -45,5 +49,9 @@
   .search-box {
     width: 75%;
     height: 50px;
+  }
+
+  input {
+    width: 100% !important;
   }
 }

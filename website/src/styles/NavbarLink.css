@@ -1,5 +1,10 @@
 .navbar-link-xs {
+  @apply font-semibold text-[#1a56db]
+    hover:bg-gray-100 hover:text-black hover:underline focus:outline-none
+    focus:ring-2 focus:ring-gray-200
+    dark:text-gray-400 dark:hover:bg-gray-700
+    dark:hover:text-white dark:focus:ring-gray-600;
   background: transparent !important;
   padding: 0 !important;
-  color: #1a56db !important;
+  padding-top: 3px !important;
 }
