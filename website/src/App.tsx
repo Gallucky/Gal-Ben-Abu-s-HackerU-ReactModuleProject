@@ -1,9 +1,8 @@
-// import { Navbar, NavbarBrand, NavbarLink, NavbarToggle } from "flowbite-react";
 import { NavbarLinkProps } from "./components/NavbarLink";
 import Divider from "./components/Divider";
 import Navbar from "./components/Navbar";
 import Header from "./components/Header";
-import { Footer } from "flowbite-react";
+import CustomFooter from "./components/CustomFooter";
 
 function App() {
   const links: NavbarLinkProps[] = [
@@ -17,7 +16,8 @@ function App() {
         <Navbar links={links} />
         <Header />
         <Divider />
-        <Footer />
+
+        <CustomFooter />
       </main>
     </>
   );

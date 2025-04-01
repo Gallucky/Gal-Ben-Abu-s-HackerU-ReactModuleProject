@@ -1,11 +1,10 @@
 # Todo list of React Module Project.
 
-### Updated to commit #8 | Date 1/04/2025:
+### Updated to commit #9 | Date 1/04/2025:
 
 ## Changes:
 
--   Added an `Header element` with a title and a description.
--   Made some tweaks for the styling of the navbar links (Signin and Login)
+-   Created the `CustomFooter` component to add to my website.
 
 ## Todo:
 
