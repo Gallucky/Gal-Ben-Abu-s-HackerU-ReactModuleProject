@@ -25,6 +25,9 @@ const CardsContainer = (props: CardsContainerProps) => {
               description={card.description}
               phone={card.phone}
               title={card.title}
+              subTitle={card.subTitle}
+              imgSrc={card.imgSrc}
+              imgAlt={card.imgAlt}
             />
           ))}
         </div>

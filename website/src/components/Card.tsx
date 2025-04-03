@@ -2,20 +2,33 @@ import { FaPhoneAlt } from "react-icons/fa";
 
 export type CardProps = {
   title: string;
+  subTitle: string;
   description: string;
   phone: string;
   address: string;
   cardNumber: string;
+  imgSrc: string;
+  imgAlt: string;
 };
 
 const Card = (props: CardProps) => {
-  const { title, description, phone, address, cardNumber } = props;
+  const {
+    title,
+    subTitle,
+    description,
+    phone,
+    address,
+    cardNumber,
+    imgSrc,
+    imgAlt,
+  } = props;
   return (
     <>
       <div className="card relative m-5 flex w-[250px] max-w-sm flex-col text-wrap rounded-lg border-2 border-black">
         <img
-          src="https://picsum.photos/250/200"
-          alt="The card's image."
+          src={imgSrc}
+          alt={imgAlt}
+          style={{ width: "250px", height: "200px" }}
           className="rounded-t-md"
         />
         {/* The card's text content. */}
@@ -23,6 +36,9 @@ const Card = (props: CardProps) => {
           <h2 className="font-[Raleway] text-3xl font-semibold capitalize">
             {title}
           </h2>
+          <h3 className="font-[Raleway] text-xl font-semibold capitalize">
+            {subTitle}
+          </h3>
           <p className="text-fit text-wrap font-[Raleway]">{description}</p>
           <hr style={{ width: "90%" }} />
           <span>
