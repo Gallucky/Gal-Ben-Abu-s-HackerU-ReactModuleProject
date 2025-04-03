@@ -9,7 +9,7 @@
 
 ## Todo:
 
--   [ ] To add cards container.
+-   [x] To add cards container.
 -   [ ] To get cards from the api.
 
 ## Done:
