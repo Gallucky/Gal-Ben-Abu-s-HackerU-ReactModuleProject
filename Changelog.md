@@ -1,17 +1,14 @@
 # Todo list of React Module Project.
 
-### Updated to commit #14 | Date 3/04/2025:
+### Updated to commit #15 | Date 3/04/2025:
 
 ## Changes:
 
--   Tweaked and updated the `CardsContainer` component.
--   Tweaked and updated the `Card` component.
--   Got the cards from the api and loaded them into the `CardsContainer` and for each one of the a **card** element using the `Card` element.
+-   Updated the todo.
 
 ## Todo:
 
--   [x] To add cards container.
--   [x] To get cards from the api.
+-   [ ] Implement the login functionality.
 
 ## Done:
 
