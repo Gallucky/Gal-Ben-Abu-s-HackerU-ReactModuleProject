@@ -23,3 +23,6 @@
     -   DarkModeToggle component which is already implemented in react. -> Created a wrapper component for customizing the component.
 
 -   [x] Create a card component.
+
+-   [x] To add cards container.
+-   [x] To get cards from the api.
