@@ -1,6 +1,6 @@
 import { FaPhoneAlt } from "react-icons/fa";
 
-type CardProps = {
+export type CardProps = {
   title: string;
   description: string;
   phone: string;
@@ -12,14 +12,18 @@ const Card = (props: CardProps) => {
   const { title, description, phone, address, cardNumber } = props;
   return (
     <>
-      <div className="card relative m-5 flex w-fit flex-col rounded-lg border-2 border-black">
-        <img src="https://picsum.photos/200/200" alt="The card's image." />
+      <div className="card relative m-5 flex w-[250px] max-w-sm flex-col text-wrap rounded-lg border-2 border-black">
+        <img
+          src="https://picsum.photos/250/200"
+          alt="The card's image."
+          className="rounded-t-md"
+        />
         {/* The card's text content. */}
         <div className="justify-content-center flex flex-col items-start p-3">
           <h2 className="font-[Raleway] text-3xl font-semibold capitalize">
             {title}
           </h2>
-          <p className="font-[Raleway] text-xl capitalize">{description}</p>
+          <p className="text-fit text-wrap font-[Raleway]">{description}</p>
           <hr style={{ width: "90%" }} />
           <span>
             <span className="font-semibold">Phone:</span> {phone}

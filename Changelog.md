@@ -1,10 +1,11 @@
 # Todo list of React Module Project.
 
-### Updated to commit #12 | Date 3/04/2025:
+### Updated to commit #13 | Date 3/04/2025:
 
 ## Changes:
 
--   Finished the `Card` component.
+-   Created the `CardsContainer` component.
+-   Tweaked the `Card` component's styling.
 
 ## Todo:
 
