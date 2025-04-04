@@ -12,7 +12,7 @@ const CardsContainer = (props: CardsContainerProps) => {
       <div className="m-[5vh] flex justify-center ">
         {/* Cards Wrapper */}
         <div
-          className="grid w-[90vw] justify-items-center gap-5 rounded-lg border-8 border-gray-200 bg-gray-300 p-3"
+          className="grid w-[90vw] justify-items-center gap-5 rounded-lg border-8 border-gray-200 bg-gray-300 p-3 dark:border-slate-700 dark:bg-gray-900"
           style={{
             gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
           }}

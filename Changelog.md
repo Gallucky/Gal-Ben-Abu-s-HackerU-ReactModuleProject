@@ -1,10 +1,11 @@
 # Todo list of React Module Project.
 
-### Updated to commit #16 | Date 4/04/2025:
+### Updated to commit #17 | Date 4/04/2025:
 
 ## Changes:
 
--   Fixed the responsive issue of the `CardsContainer` component.
+-   Changed the `main` element to occupy 100% of the body.
+-   Added dark mode styling for the `CardsContainer` and the `Card` components.
 
 ## Todo:
 

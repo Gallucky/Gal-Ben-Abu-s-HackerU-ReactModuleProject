@@ -129,12 +129,12 @@ const App = () => {
 
   return (
     <>
-      <main className="xs h-screen w-screen bg-teal-100 dark:bg-slate-900">
+      <main className="xs size-full bg-teal-100 dark:bg-slate-900">
         <Navbar links={links} />
         <Header />
         <Divider />
 
-        <CardsContainer cards={sampleCards} />
+        <CardsContainer cards={memeCardsWithRelevantData} />
         <br />
         <br />
         <br />
