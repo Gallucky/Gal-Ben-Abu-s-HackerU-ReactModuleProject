@@ -1,10 +1,10 @@
 # Todo list of React Module Project.
 
-### Updated to commit #15 | Date 3/04/2025:
+### Updated to commit #16 | Date 4/04/2025:
 
 ## Changes:
 
--   Updated the todo.
+-   Fixed the responsive issue of the `CardsContainer` component.
 
 ## Todo:
 

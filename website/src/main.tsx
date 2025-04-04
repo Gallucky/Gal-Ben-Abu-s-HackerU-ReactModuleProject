@@ -7,6 +7,7 @@ import "./styles/SearchBox.css";
 import "./styles/DarkModeButton.css";
 import "./styles/fonts.css";
 import "./styles/CustomFooter.css";
+import "./styles/test.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <StrictMode>

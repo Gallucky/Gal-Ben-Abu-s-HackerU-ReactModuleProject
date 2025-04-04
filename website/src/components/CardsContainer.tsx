@@ -9,10 +9,10 @@ const CardsContainer = (props: CardsContainerProps) => {
   return (
     <>
       {/* Cards Container */}
-      <div className="m-[5vh] flex justify-center">
+      <div className="m-[5vh] flex justify-center ">
         {/* Cards Wrapper */}
         <div
-          className="justify-content-center w-50 grid max-w-6xl gap-4 rounded-lg border-8 border-gray-200 bg-gray-300 px-16"
+          className="grid w-[90vw] justify-items-center gap-5 rounded-lg border-8 border-gray-200 bg-gray-300 p-3"
           style={{
             gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
           }}
