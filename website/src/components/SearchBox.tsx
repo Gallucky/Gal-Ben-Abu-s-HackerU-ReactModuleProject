@@ -1,5 +1,4 @@
 import { HiOutlineSearch } from "react-icons/hi";
-import "../styles/Searchbox.css";
 
 export type SearchBoxProps = {
   className?: string;
