@@ -7,7 +7,7 @@
 ### Bugs Fixes:
 
 -   Overflow set to hidden to all elements in [Error.page.css](./website/src/styles/Error.page.css) instead to all child elements of elements with the class `error-page-wrapper`.
--   Fixed the warning error of not using a key in rendering the paragraph lines in [Header.tsx - p element](./website/src/components/Header.tsx). Changed it to place a `span` element with a `br` element inside it..
+-   Fixed the warning error of not using a key in rendering the paragraph lines in [Header.tsx - p element](./website/src/components/Header.tsx). Changed it to place a `span` element with a `br` element inside it.
 
 ## Todo:
 
