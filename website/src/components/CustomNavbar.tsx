@@ -2,6 +2,7 @@ import { Navbar, NavbarToggle, NavbarCollapse } from "flowbite-react";
 import { Link, useLocation } from "react-router-dom";
 import DarkModeButton from "./DarkModeButton";
 import { useEffect, useState } from "react";
+import SearchBox from "./SearchBox";
 
 const CustomNavbar = () => {
   const [pathname, setPathName] = useState<string>("/");
@@ -33,21 +34,34 @@ const CustomNavbar = () => {
           <Link
             to={"/about"}
             className={`
-              ${pathname === "/about" ? "text-teal-600" : "text-black dark:text-white"}
+              ${pathname === "/about" ? "text-teal-600 dark:text-teal-400" : "text-black dark:text-white"}
               custom-navbar-link ml-3 mt-1
             `}
           >
             About
           </Link>
         </div>
+        <SearchBox className="flex size-fit items-center justify-center border-2" />
         <NavbarToggle />
         <NavbarCollapse>
           <div className="mx-2.5 hidden gap-2.5 md:flex">
             <DarkModeButton />
-            <Link to={"/registration"} className="custom-navbar-link">
+            <Link
+              to={"/registration"}
+              className={`
+                custom-navbar-link
+                ${pathname === "/registration" ? "text-teal-600 dark:text-teal-400" : "text-black dark:text-white"}
+              `}
+            >
               Signup
             </Link>
-            <Link to={"/login"} className="custom-navbar-link">
+            <Link
+              to={"/login"}
+              className={`
+                custom-navbar-link
+                ${pathname === "/login" ? "text-teal-600 dark:text-teal-400" : "text-black dark:text-white"}
+              `}
+            >
               Login
             </Link>
           </div>

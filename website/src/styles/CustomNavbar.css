@@ -2,9 +2,14 @@
   @apply flex items-center text-base
         font-semibold
         hover:text-teal-600 hover:underline
-        dark:text-white dark:hover:text-teal-600;
+        dark:hover:text-teal-600;
 }
 
 #navbar-collapse-content .custom-navbar-link {
-  @apply mx-[5%] flex w-[20%] justify-center self-center rounded-sm border-b-2 border-black bg-blue-300 bg-opacity-50 dark:border-white dark:bg-gray-50 dark:bg-opacity-25;
+  @apply mx-[5%] flex w-[20%]
+        justify-center self-center
+        rounded-sm border-b-2
+        border-black bg-blue-300
+        bg-opacity-50 dark:border-white
+        dark:bg-gray-50 dark:bg-opacity-25;
 }

@@ -1,57 +1,33 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
 
 .search-box {
-  position: relative;
-  font-family: Rubik, sans-serif;
+  @apply relative border-none;
 }
 
-.search-icon {
-  position: absolute;
-  top: 50%;
-  right: 5%;
-  transform: translateY(-50%);
+.search-box > input {
+  @apply rounded border-2
+        border-teal-700 bg-gray-50
+        indent-7
+        outline-none dark:border-slate-400
+        dark:bg-slate-700 dark:text-white sm:block sm:w-[20rem]
+        md:w-[23rem] lg:w-[30rem];
+  font-family: "Rubik";
 }
 
-.search-box-dark-mode-styling {
-  @apply dark:border-gray-600 
-    dark:bg-gray-800
-    dark:text-white 
-    dark:focus:ring-blue-400;
+.search-box > .search-icon {
+  @apply absolute left-2;
 }
 
-.search-box-focus-styling {
-  @apply focus:border-gray-500 
-    focus:outline-none focus:ring-2 focus:ring-white;
-}
-
-input {
-  width: 30rem !important;
-}
-
-/* Small Mobile */
-@media (max-width: 320px) {
+@media (max-width: 639px) {
   .search-box {
-    width: 100%;
-    height: 50px;
-  }
-}
-
-/* Medium Mobile + Large Mobile + Tablet */
-@media (min-width: 321px) and (max-width: 768px) {
-  .search-box {
-    width: 50%;
-    height: 50px;
-  }
-}
-
-/* Laptop */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .search-box {
-    width: 75%;
-    height: 50px;
+    @apply static;
   }
 
-  input {
-    width: 100% !important;
+  .search-box > input {
+    display: none;
+  }
+
+  .search-box > .search-icon {
+    @apply absolute left-[87.5%] size-6 text-slate-700;
   }
 }
