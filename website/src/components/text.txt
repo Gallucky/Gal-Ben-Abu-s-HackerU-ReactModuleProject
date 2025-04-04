@@ -1,0 +1,8 @@
+<DarkModeButton className="mr-4" />
+            {linksArray.map((navbarLink, index) => (
+              <NavbarLink
+                key={index}
+                href={navbarLink.href}
+                text={navbarLink.text}
+              />
+            ))}

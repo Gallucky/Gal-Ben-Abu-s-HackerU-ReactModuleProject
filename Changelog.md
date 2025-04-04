@@ -1,11 +1,10 @@
 # Todo list of React Module Project.
 
-### Updated to commit #17 | Date 4/04/2025:
+### Updated to commit #18 | Date 4/04/2025:
 
 ## Changes:
 
--   Changed the `main` element to occupy 100% of the body.
--   Added dark mode styling for the `CardsContainer` and the `Card` components.
+-   Reworked on the navbar of the project - `CustomNavbar` component.
 
 ## Todo:
 

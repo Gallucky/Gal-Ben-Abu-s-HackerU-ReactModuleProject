@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
-import "./styles/NavbarLink.css";
+import "./styles/CustomNavbar.css";
 import "./styles/SearchBox.css";
 import "./styles/DarkModeButton.css";
 import "./styles/fonts.css";
