@@ -1,0 +1,35 @@
+.error-page-wrapper {
+  @apply flex size-1/2
+        h-3/5 flex-col
+        items-center justify-center
+        self-center rounded-lg border-4
+        border-gray-400 p-0 shadow-md
+        shadow-gray-200
+        ring-2 ring-inset ring-white
+        dark:border-gray-400 dark:shadow-lg
+        dark:shadow-slate-400 dark:ring-slate-700;
+}
+
+* {
+  overflow: hidden;
+}
+
+@media (max-width: 639px) {
+  .xs-error {
+    width: 80%;
+    padding-inline: 10%;
+  }
+
+  .header-title {
+    @apply text-3xl;
+  }
+
+  .header-paragraph {
+    @apply text-base;
+  }
+
+  .error-icon {
+    width: 25vh;
+    height: 25vh;
+  }
+}

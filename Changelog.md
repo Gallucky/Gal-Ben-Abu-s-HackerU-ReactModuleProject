@@ -1,10 +1,15 @@
 # Todo list of React Module Project.
 
-### Updated to commit #18 | Date 4/04/2025:
+### Updated to commit #19 | Date 4/04/2025:
 
 ## Changes:
 
--   Reworked on the navbar of the project - `CustomNavbar` component.
+-   Added the `Pages` directory and inside there are the following pages:
+    -   [x] `Home` page which all current data before this commit will house, `CardsContainer` component, `Header` component etc...
+    -   [x] `About` page which will contain some information.
+    -   [x] `Error` page which will be shown when trying to route to non-existent page, it will show an error **404** and will have buttons to go to `Home` and `About` pages.
+-   Expanded the customizability of the `Header` component to allow tailwind classes styling for the `h1` element and the `p` element independently.
+-   Added the functionality to the `CustomNavbar` component so when the current location is `About` then the about text link will be colored with the color `teal-600`.
 
 ## Todo:
 
