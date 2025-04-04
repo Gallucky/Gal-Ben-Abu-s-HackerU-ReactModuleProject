@@ -40,11 +40,11 @@ const Header = (props: HeaderProps) => {
           ` + paragraphClassName
         }
       >
-        {paragraphLines.map((line) => (
-          <>
-            <span>{line}</span>
+        {paragraphLines.map((line, index) => (
+          <span key={index}>
+            {line}
             <br />
-          </>
+          </span>
         ))}
       </p>
     </>
