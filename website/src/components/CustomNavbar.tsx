@@ -28,14 +28,14 @@ const CustomNavbar = () => {
             alt="Flowbite React Logo"
           />
           <span className="self-center whitespace-nowrap text-xl font-semibold hover:cursor-default hover:text-teal-600 dark:text-white dark:hover:cursor-default dark:hover:text-teal-600">
-            <Link to={projectRoot} className="hover:cursor-default">
+            <Link to="/" className="hover:cursor-default">
               BCards
             </Link>
           </span>
           <Link
-            to={projectRoot + "about"}
+            to="/about"
             className={`
-              ${pathname === `${projectRoot}about` ? "text-teal-600 dark:text-teal-400" : "text-black dark:text-white"}
+              ${pathname === `/about` ? "text-teal-600 dark:text-teal-400" : "text-black dark:text-white"}
               custom-navbar-link ml-3 mt-1
             `}
           >
@@ -48,19 +48,19 @@ const CustomNavbar = () => {
           <div className="mx-2.5 hidden gap-2.5 md:flex">
             <DarkModeButton />
             <Link
-              to={projectRoot + "registration"}
+              to="/registration"
               className={`
                 custom-navbar-link
-                ${pathname === `${projectRoot}registration` ? "text-teal-600 dark:text-teal-400" : "text-black dark:text-white"}
+                ${pathname === `/registration` ? "text-teal-600 dark:text-teal-400" : "text-black dark:text-white"}
               `}
             >
               Signup
             </Link>
             <Link
-              to={projectRoot + "login"}
+              to="/login"
               className={`
                 custom-navbar-link
-                ${pathname === `${projectRoot}login` ? "text-teal-600 dark:text-teal-400" : "text-black dark:text-white"}
+                ${pathname === `/login` ? "text-teal-600 dark:text-teal-400" : "text-black dark:text-white"}
               `}
             >
               Login
@@ -72,13 +72,10 @@ const CustomNavbar = () => {
             className="flex h-fit w-full flex-col gap-2.5 self-center border-t border-black p-2.5 dark:border-t dark:border-white md:hidden"
           >
             <DarkModeButton />
-            <Link
-              to={projectRoot + "registration"}
-              className="custom-navbar-link"
-            >
+            <Link to="/registration" className="custom-navbar-link">
               Signup
             </Link>
-            <Link to={projectRoot + "login"} className="custom-navbar-link">
+            <Link to="/login" className="custom-navbar-link">
               Login
             </Link>
           </div>
