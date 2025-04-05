@@ -1,13 +1,10 @@
 # Todo list of React Module Project.
 
-### Updated to commit #21 | Date 4/04/2025:
+### Updated to commit #22 | Date 4/04/2025:
 
 ## Changes:
 
-### Bugs Fixes:
-
--   Added [`SearchBox`](./website/src/components/SearchBox.tsx) component to the navbar.
--   Finished all tasks up this point except the login functionality.
+-   Added the base path to the routes.
 
 ## Todo:
 

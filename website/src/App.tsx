@@ -5,6 +5,8 @@ import Home from "./Pages/Home.page";
 import About from "./Pages/About.page";
 import Error from "./Pages/Error.page";
 
+export const projectRoot = "/Gal-Ben-Abu-s-HackerU-ReactModuleProject/";
+
 const App = () => {
   document.body.classList.add("bg-teal-100", "dark:bg-slate-900");
 
@@ -16,9 +18,9 @@ const App = () => {
           <CustomFooter />
 
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/about" element={<About />} />
+            <Route path={projectRoot} element={<Home />} />
+            <Route path={projectRoot + "home"} element={<Home />} />
+            <Route path={projectRoot + "about"} element={<About />} />
             <Route path="/*" element={<Error />} />
           </Routes>
         </main>
