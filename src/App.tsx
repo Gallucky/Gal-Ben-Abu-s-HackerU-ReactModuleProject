@@ -1,5 +1,5 @@
 import CustomNavbar from "./components/CustomNavbar";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import CustomFooter from "./components/CustomFooter";
 import Home from "./Pages/Home.page";
 import About from "./Pages/About.page";
@@ -10,7 +10,7 @@ const App = () => {
 
   return (
     <>
-      <BrowserRouter>
+      <HashRouter>
         <main className="xs size-full bg-teal-100 dark:bg-slate-900">
           <CustomNavbar />
           <CustomFooter />
@@ -22,7 +22,7 @@ const App = () => {
             <Route path="/*" element={<Error />} />
           </Routes>
         </main>
-      </BrowserRouter>
+      </HashRouter>
     </>
   );
 };
