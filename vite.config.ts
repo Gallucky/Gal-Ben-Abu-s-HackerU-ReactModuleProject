@@ -15,4 +15,7 @@ export default defineConfig({
     outDir: "dist",
     // Optional: You can also set `publicDir` if you have static assets
   },
+  preview: {
+    allowedHosts: ["gal-ben-abu-s-hackeru-reactmoduleproject.onrender.com"], // Allow your Render URL
+  },
 });
