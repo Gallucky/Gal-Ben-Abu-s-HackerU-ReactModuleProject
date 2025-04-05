@@ -12,7 +12,7 @@ const App = () => {
 
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename={projectRoot}>
         <main className="xs size-full bg-teal-100 dark:bg-slate-900">
           <CustomNavbar />
           <CustomFooter />
