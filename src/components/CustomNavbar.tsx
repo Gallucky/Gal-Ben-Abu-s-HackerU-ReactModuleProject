@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 import DarkModeButton from "./DarkModeButton";
 import { useEffect, useState } from "react";
 import SearchBox from "./SearchBox";
-import { projectRoot } from "../App";
 
 const CustomNavbar = () => {
   const [pathname, setPathName] = useState<string>("/");
