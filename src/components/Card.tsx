@@ -24,7 +24,7 @@ const Card = (props: CardProps) => {
   } = props;
   return (
     <>
-      <div className="card relative m-5 flex w-[250px] max-w-sm flex-col text-wrap rounded-lg border-2 border-black dark:border-slate-700 dark:text-white">
+      <div className="card min-h[300px] relative m-5 flex w-[250px] max-w-sm flex-col text-wrap rounded-lg border-2 border-black dark:border-slate-700 dark:text-white">
         <img
           src={imgSrc}
           alt={imgAlt}
