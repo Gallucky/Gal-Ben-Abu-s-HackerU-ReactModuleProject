@@ -1,14 +1,14 @@
 # Todo list of React Module Project.
 
-### Updated to commit #23 | Date 8/04/2025:
+### Updated to commit #24 | Date 9/04/2025:
 
 ## Changes:
 
-- Added the `Pagination` component.
+- Fixed the cards inconsistent height...
 
 ## Todo:
 
-- [ ] Need to fix the problem when changing into a page in the pagination where the cards have a longer text and it seems like a jump because of the height resizing...
+- [x] Need to fix the problem when changing into a page in the pagination where the cards have a longer text and it seems like a jump because of the height resizing...
 - [ ] Implement the login functionality.
 
 ## Done:

@@ -37,25 +37,24 @@ const CardsContainer = (props: CardsContainerProps) => {
 
   const onPageChange = (page: number) => {
     console.log("Page number:", page);
-
     setCurrentPage(page);
   };
 
   return (
     <>
       {/* Cards Container */}
-      <div className="m-[5vh] flex w-fit flex-col justify-center self-center justify-self-center rounded-lg border-8 border-gray-200 bg-gray-300 p-3 dark:border-slate-700 dark:bg-gray-900">
+      <div className="m-[5vh] flex w-fit flex-col justify-center self-center justify-self-center rounded-lg border-8 border-gray-200 bg-gray-300 dark:border-slate-700 dark:bg-gray-900">
         {/* Cards Wrapper */}
         <div
-          className="grid w-fit justify-items-center gap-5 "
+          className="grid w-fit justify-items-center gap-3"
           style={{
             gridTemplateColumns: "repeat(3, 1fr)",
           }}
         >
-          {/*
-            The ?. is if the value before it is undefined or null then
-            it returns it undefined and in this case nothing happens. 
-          */}
+          {/* 
+              The ?. is if the value before it is undefined or null then
+              it returns it undefined and in this case nothing happens.
+            */}
           {cardsAfterSplit.length > 0 &&
             cardsAfterSplit[currentPage - 1]?.map((card, index) => (
               <Card
@@ -71,7 +70,8 @@ const CardsContainer = (props: CardsContainerProps) => {
               />
             ))}
         </div>
-        <div className="flex overflow-x-auto sm:justify-center">
+
+        <div className="flex items-center justify-center">
           <Pagination
             currentPage={currentPage}
             totalPages={Math.ceil(cards.length / cardsAmountToShowEachTime)}

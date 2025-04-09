@@ -8,3 +8,17 @@
   box-sizing: border-box;
   overflow-x: hidden;
 }
+
+.multiline-ellipsis {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* or 3, 4, etc. */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.singleline-ellipsis {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

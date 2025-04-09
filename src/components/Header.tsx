@@ -1,3 +1,6 @@
+import { Button } from "flowbite-react";
+import { useNavigate } from "react-router-dom";
+
 export type HeaderProps = {
   title?: string;
   paragraph?: string;
@@ -18,6 +21,12 @@ const Header = (props: HeaderProps) => {
     props.titleClassName ?? "text-black dark:text-white pt-20";
   const paragraphClassName =
     props.paragraphClassName ?? "text-black dark:text-white";
+
+  const navigate = useNavigate();
+
+  const onTestWorkSpaceButtonClick = () => {
+    navigate("/test");
+  };
 
   return (
     <>
@@ -47,6 +56,7 @@ const Header = (props: HeaderProps) => {
           </span>
         ))}
       </p>
+      <Button onClick={onTestWorkSpaceButtonClick}>To Test Workspace</Button>
     </>
   );
 };
