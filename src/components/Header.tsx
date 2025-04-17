@@ -22,12 +22,6 @@ const Header = (props: HeaderProps) => {
   const paragraphClassName =
     props.paragraphClassName ?? "text-black dark:text-white";
 
-  const navigate = useNavigate();
-
-  const onTestWorkSpaceButtonClick = () => {
-    navigate("/test");
-  };
-
   return (
     <>
       <h1
@@ -56,7 +50,6 @@ const Header = (props: HeaderProps) => {
           </span>
         ))}
       </p>
-      <Button onClick={onTestWorkSpaceButtonClick}>To Test Workspace</Button>
     </>
   );
 };

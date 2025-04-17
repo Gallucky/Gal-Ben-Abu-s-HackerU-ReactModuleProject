@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Divider from "../components/Divider";
 import CardsContainer from "../components/CardsContainer";
+import { Button } from "flowbite-react";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [memeCards, setCountries] = useState<TCountryData[]>();
@@ -80,12 +82,19 @@ const Home = () => {
 
   const memeCardsWithRelevantData = getCountriesRelevantCardData(memeCards);
 
+  const navigate = useNavigate();
+
+  const onTestWorkSpaceButtonClick = () => {
+    navigate("/test");
+  };
+
   return (
     <>
       <Header
         title="Cards Page"
         paragraph="Here you can find business cards from all categories."
       />
+      <Button onClick={onTestWorkSpaceButtonClick}>To Test Workspace</Button>
       <Divider />
 
       <CardsContainer cards={memeCardsWithRelevantData} />

@@ -1,13 +1,10 @@
 # Todo list of React Module Project.
 
-### Updated to commit #25 | Date 14/04/2025:
+### Updated to commit #26 | Date 17/04/2025:
 
 ## Changes:
 
-- The `CardsContainer` component supports the following view modes:
-  1. PC and Higher - 1024px and above.
-  2. Tablet - 640px up until 1023px [both included].
-  3. Mobile - 639px and bellow.
+- Started to work on the login page.
 
 ## Todo:
 
