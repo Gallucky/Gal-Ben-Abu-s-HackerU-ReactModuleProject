@@ -10,7 +10,7 @@ const Divider = (props: DividerProps) => {
       {bgColor ? (
         <div style={{ backgroundColor: bgColor }} className="h-px w-screen" />
       ) : (
-        <div className="h-px w-screen bg-black dark:bg-slate-500" />
+        <div className="h-px w-full bg-black dark:bg-slate-500" />
       )}
     </>
   );

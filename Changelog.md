@@ -1,10 +1,10 @@
 # Todo list of React Module Project.
 
-### Updated to commit #26 | Date 17/04/2025:
+### Updated to commit #27 | Date 18/04/2025:
 
 ## Changes:
 
-- Started to work on the login page.
+- Continued to work on the login page.
 
 ## Todo:
 
