@@ -9,6 +9,8 @@ import "./styles/fonts.css";
 import "./styles/CustomFooter.css";
 import "./styles/test.css";
 import "./styles/Error.page.css";
+import "./styles/Login.page.css";
+import "./styles/FormInput.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <StrictMode>

@@ -1,14 +1,17 @@
 # Todo list of React Module Project.
 
-### Updated to commit #27 | Date 18/04/2025:
+### Updated to commit #28 | Date 23/04/2025:
 
 ## Changes:
 
-- Continued to work on the login page.
+- After fresh install of a new project.
+- Linked this new project through ssh.
+- Started to create the `FormInput` component.
 
 ## Todo:
 
 - [ ] Implement the login functionality.
+- [ ] Implement the register functionality.
 
 ## Done:
 

@@ -5,6 +5,7 @@ import Home from "./pages/Home.page";
 import About from "./pages/About.page";
 import Error from "./pages/Error.page";
 import Test from "./pages/Test.page";
+import Login from "./pages/Login.page";
 
 const App = () => {
   document.body.classList.add("bg-teal-100", "dark:bg-slate-900");
@@ -21,6 +22,7 @@ const App = () => {
             <Route path="/home" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/test" element={<Test />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/*" element={<Error />} />
           </Routes>
         </main>

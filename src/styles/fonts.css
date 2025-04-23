@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
 
 .font-Raleway {
   font-family: "Raleway";
@@ -14,4 +15,8 @@
 }
 .font-JetBrains-Mono {
   font-family: "JetBrains Mono";
+}
+
+.font-Rubik {
+  font-family: "Rubik";
 }

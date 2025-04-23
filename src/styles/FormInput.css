@@ -1,0 +1,7 @@
+.base-form-input {
+  @apply h-8 w-full rounded-lg
+    border-2 border-black
+    bg-transparent focus:border-blue-700
+    focus:outline-none dark:border-blue-400
+    dark:focus:border-blue-700;
+}
