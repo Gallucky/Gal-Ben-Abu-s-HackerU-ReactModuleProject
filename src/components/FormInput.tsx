@@ -11,6 +11,7 @@ type FormInputProps = {
   id: string;
   label: string;
   type?: InputType;
+  color?: "default" | "error" | "success";
   className?: string;
 };
 
@@ -18,6 +19,10 @@ const FormInput = (props: FormInputProps) => {
   const { id, label } = props;
   const classList = props.className ?? "";
   const type = props.type ?? "text";
+  const color = props.color ?? "default";
+
+  const formInputColor = color === "default" ? "" : `form-input-${color}`;
+  const formInputLabelColor = color === "default" ? "" : `form-label-${color}`;
 
   return (
     <>
@@ -26,13 +31,13 @@ const FormInput = (props: FormInputProps) => {
       >
         <input
           id={"form-input-" + id}
-          className={`base-form-input font-Rubik font-base peer ${classList}`}
+          className={`base-form-input font-Rubik font-base peer ${classList} ${formInputColor}`}
           placeholder=" "
           type={type}
         ></input>
         <label
           htmlFor={"form-input-" + id}
-          className="
+          className={`
             font-Rubik absolute left-4 top-3
             z-10 px-1 text-base
             text-gray-500 transition-all duration-300
@@ -42,7 +47,8 @@ const FormInput = (props: FormInputProps) => {
             peer-focus:-top-0.5
             peer-focus:text-sm
             peer-focus:text-blue-700
-          "
+            ${formInputLabelColor}
+          `}
         >
           {label}
         </label>

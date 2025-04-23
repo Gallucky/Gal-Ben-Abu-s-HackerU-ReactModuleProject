@@ -1,4 +1,4 @@
-import FormInput from "../components/FormLabel";
+import FormInput from "../components/FormInput";
 
 const Login = () => {
   return (
@@ -7,7 +7,7 @@ const Login = () => {
       <div className="content-wrapper">
         {/* Content - Form */}
         <form className="content-form">
-          <FormInput id={"test"} label={"test"} />
+          <FormInput id={"test"} label={"test"} color="error" />
         </form>
       </div>
     </>
