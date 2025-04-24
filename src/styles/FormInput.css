@@ -6,6 +6,20 @@
     dark:focus:border-blue-700;
 }
 
+/* Custom CSS */
+.floating-label::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1.2em;
+  transform: translateY(-50%);
+  background-color: inherit; /* assumes container's bg */
+  z-index: -1;
+  pointer-events: none;
+}
+
 .form-input-error {
   @apply border-red-500 text-red-500;
 }

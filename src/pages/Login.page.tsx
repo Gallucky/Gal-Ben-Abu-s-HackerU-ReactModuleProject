@@ -6,7 +6,7 @@ const Login = () => {
       {/* Content Wrapper */}
       <div className="content-wrapper">
         {/* Content - Form */}
-        <form className="content-form">
+        <form className="content-form relative">
           <FormInput id={"test"} label={"test"} color="error" />
         </form>
       </div>
