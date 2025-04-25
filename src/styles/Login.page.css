@@ -7,3 +7,7 @@
     shadow-lg ring-4 ring-teal-300 ring-opacity-50
     dark:ring-teal-400 dark:ring-opacity-60;
 }
+
+.fluid-text {
+  font-size: min(10vw, 5rem);
+}

@@ -1,10 +1,11 @@
 # Todo list of React Module Project.
 
-### Updated to commit #31 | Date 25/04/2025:
+### Updated to commit #32 | Date 25/04/2025:
 
 ## Changes:
 
-- Completed the work on the `FormInput` component.
+- Created a `FormButton` component.
+- Added tailwind css classes suggestions to any variable, prop or constant ending with the suffix `ClassName` or `ClassList`.
 
 ## Todo:
 
