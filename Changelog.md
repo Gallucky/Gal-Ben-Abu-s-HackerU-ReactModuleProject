@@ -30,3 +30,5 @@
 - [x] To get cards from the api.
 
 - [x] Need to fix the problem when changing into a page in the pagination where the cards have a longer text and it seems like a jump because of the height resizing...
+
+- [x] Completed the work on the `FormInput` component.
