@@ -1,10 +1,10 @@
 # Todo list of React Module Project.
 
-### Updated to commit #30 | Date 24/04/2025:
+### Updated to commit #31 | Date 25/04/2025:
 
 ## Changes:
 
-- Continued to work on the `FormInput` component.
+- Completed the work on the `FormInput` component.
 
 ## Todo:
 
