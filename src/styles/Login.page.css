@@ -2,12 +2,20 @@
   @apply flex h-screen w-screen items-center justify-center bg-transparent;
 }
 .content-form {
-  @apply flex h-fit
-    w-1/4 flex-col gap-4 rounded bg-teal-500 p-6
+  @apply flex h-fit w-1/2
+    flex-col items-center gap-4 rounded bg-teal-500 p-6
     shadow-lg ring-4 ring-teal-300 ring-opacity-50
     dark:ring-teal-400 dark:ring-opacity-60;
 }
 
 .fluid-text {
-  font-size: min(10vw, 5rem);
+  font-size: clamp(1.5rem, 7.5vw, 3rem);
+}
+
+.login-page-title {
+  @apply w-fit overflow-hidden whitespace-nowrap text-center font-semibold text-white;
+}
+
+.fluid-form-input {
+  width: clamp(1rem, 5vw, 2rem);
 }

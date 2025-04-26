@@ -14,6 +14,7 @@ type FormInputProps = {
   color?: "default" | "error" | "success";
   dir?: "ltr" | "rtl";
   className?: string;
+  inputClassName?: string;
   labelClassName?: string;
 };
 
@@ -26,19 +27,20 @@ const FormInput = (props: FormInputProps) => {
   const formInputColor = color === "default" ? "" : `form-input-${color}`;
   const formInputLabelColor =
     color === "default" ? "" : `form-input-label-${color}`;
+  const inputClassList = props.inputClassName ?? "";
   const labelClassName = props.labelClassName ?? "";
   const direction = props.dir ?? "ltr";
 
   return (
     <>
       <div
-        className={`relative flex h-12 items-center justify-center place-self-center px-2`}
+        className={`w-[clamp(1rem, 5vw, 2rem)] relative flex h-12 items-center justify-center place-self-center ${classList}`}
         dir={direction}
       >
         <input
           id={"form-input-" + id}
           className={`base-form-input font-Rubik font-base peer
-            border-black dark:border-white ${classList} ${formInputColor}`}
+            border-black dark:border-white ${inputClassList} ${formInputColor}`}
           placeholder=" "
           type={type}
         ></input>

@@ -1,5 +1,5 @@
 .base-form-input {
-  @apply h-8 w-full rounded-lg border-2
+  @apply size-full rounded-lg border-2
     bg-transparent px-2 outline-none ring-0;
 }
 
