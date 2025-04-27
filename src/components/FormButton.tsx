@@ -1,22 +1,26 @@
-type FormButtonProps = {
+/**
+  Inheriting the type of React's
+  ButtonHTMLAttributes<HTMLButtonElement>
+  and modifying and/or extending it.
+*/
+type FormButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   text: string;
   disabled?: boolean;
+  type?: "button" | "reset" | "submit";
   className?: string;
 };
 
 const FormButton = (props: FormButtonProps) => {
-  const classList =
-    "w-1/2 place-self-center rounded-xl " +
-    "bg-violet-700 p-2 font-semibold text-gray-400 " +
-    "hover:bg-violet-800 hover:text-gray-300 " +
-    "disabled:bg-gray-600 disabled:hover:cursor-not-allowed";
+  const { disabled, text, type = "button", className = "", ...rest } = props;
 
   return (
     <button
-      className={`${classList} ${props.className}`}
-      disabled={props.disabled}
+      className={`form-btn ${className}`}
+      disabled={disabled}
+      type={type}
+      {...rest}
     >
-      {props.text}
+      {text}
     </button>
   );
 };

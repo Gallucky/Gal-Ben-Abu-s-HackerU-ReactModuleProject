@@ -9,6 +9,9 @@ export default defineConfig({
     port: Number(process.env.PORT) || 3000,
     // Make sure the server listens on all interfaces (required by Render)
     host: "0.0.0.0",
+    watch: {
+      usePolling: true,
+    },
   },
   build: {
     // Ensure the build output directory is `dist` (required for deployment)

@@ -1,0 +1,7 @@
+.form-btn {
+  @apply w-1/2 place-self-center rounded-xl
+    bg-violet-700 p-2 font-semibold text-gray-400
+    brightness-110 hover:bg-violet-800
+    hover:text-gray-300 disabled:bg-gray-600
+    disabled:hover:cursor-not-allowed disabled:dark:bg-slate-700;
+}

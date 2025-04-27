@@ -13,7 +13,7 @@
 }
 
 .login-page-title {
-  @apply w-fit overflow-hidden whitespace-nowrap text-center font-semibold text-white;
+  @apply w-fit overflow-hidden whitespace-nowrap text-center font-semibold text-black dark:text-white;
 }
 
 .fluid-form-input {

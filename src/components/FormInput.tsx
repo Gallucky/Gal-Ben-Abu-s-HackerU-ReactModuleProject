@@ -1,16 +1,9 @@
-/* prettier-ignore */
-type InputType = "button" | "checkbox" | "color" |
-  "date" | "datetime-local" | "email" |
-  "file" | "hidden" | "image" |
-  "month" | "number" | "password" |
-  "radio" | "range" | "reset" |
-  "search" | "submit" | "tel" |
-  "text" | "time" | "url" | "week";
+import { forwardRef, HTMLInputTypeAttribute } from "react";
 
-type FormInputProps = {
+type FormInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   id: string;
   label: string;
-  type?: InputType;
+  type?: HTMLInputTypeAttribute | undefined;
   color?: "default" | "error" | "success";
   dir?: "ltr" | "rtl";
   className?: string;
@@ -18,46 +11,57 @@ type FormInputProps = {
   labelClassName?: string;
 };
 
-const FormInput = (props: FormInputProps) => {
-  const { id, label } = props;
-  const classList = props.className ?? "";
-  const type = props.type ?? "text";
-  const color = props.color ?? "default";
+// Needed the forwardRef to support the ref that is required so
+// this whole component can support the register method from useForm hook.
 
-  const formInputColor = color === "default" ? "" : `form-input-${color}`;
-  const formInputLabelColor =
-    color === "default" ? "" : `form-input-label-${color}`;
-  const inputClassList = props.inputClassName ?? "";
-  const labelClassName = props.labelClassName ?? "";
-  const direction = props.dir ?? "ltr";
+const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
+  (props: FormInputProps, ref) => {
+    const {
+      id,
+      label,
+      type = "text",
+      color = "default",
+      className = "",
+      inputClassName = "",
+      labelClassName = "",
+      dir = "ltr",
+      ...rest
+    } = props;
 
-  return (
-    <>
-      <div
-        className={`w-[clamp(1rem, 5vw, 2rem)] relative flex h-12 items-center justify-center place-self-center ${classList}`}
-        dir={direction}
-      >
-        <input
-          id={"form-input-" + id}
-          className={`base-form-input font-Rubik font-base peer
-            border-black dark:border-white ${inputClassList} ${formInputColor}`}
-          placeholder=" "
-          type={type}
-        ></input>
-        <label
-          htmlFor={"form-input-" + id}
-          className={`
+    const formInputColor = color === "default" ? "" : `form-input-${color}`;
+    const formInputLabelColor =
+      color === "default" ? "" : `form-input-label-${color}`;
+
+    return (
+      <>
+        <div
+          className={`w-[clamp(1rem, 5vw, 2rem)] relative flex h-12 items-center justify-center place-self-center ${className}`}
+          dir={dir}
+        >
+          <input
+            id={"form-input-" + id}
+            className={`base-form-input font-Rubik font-base peer
+            ${inputClassName} ${formInputColor}`}
+            placeholder=" "
+            type={type}
+            ref={ref}
+            {...rest}
+          ></input>
+          <label
+            htmlFor={"form-input-" + id}
+            className={`
             base-form-input-label font-Rubik
             rtl-form-input-label
-            ${formInputLabelColor}
             ${labelClassName}
+            ${formInputLabelColor}
           `}
-        >
-          {label}
-        </label>
-      </div>
-    </>
-  );
-};
+          >
+            <span className="bg-inherit">{label}</span>
+          </label>
+        </div>
+      </>
+    );
+  },
+);
 
 export default FormInput;

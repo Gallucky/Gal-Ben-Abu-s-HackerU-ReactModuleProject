@@ -1,17 +1,20 @@
 # Todo list of React Module Project.
 
-### Updated to commit #33 | Date 26/04/2025:
+### Updated to commit #34 | Date 27/04/2025:
 
 ## Changes:
 
-- Finished the login page except the validation.
-- Modified the `FormInput` a bit so the wrapping `div` of the `input` and the `label` will not be bigger then the `input` element itself.
-- Made the `h2` element title be as large as possible but still in one line and not obstructed / overflowing of it's parent `div` element.
+- Almost finished the login implementation.
+- Started fix / improvement of the `FormInput` component.
 
 ## Todo:
 
 - [ ] Implement the login functionality.
-  - [ ] Create and apply the validations of the login.
+  - [x] Create and apply the validations of the login.
+  - [ ] To figure out a way to color the label, border, text, etc... all at the same time and in the right order / priority of:
+  1. Base Colors - black and white in dark mode and some default focus color.
+  2. Custom Colors - custom colors given using the className prop - defaults to the `Base Colors` ^ at option 1.
+  3. Color Prop - the color from the color prop - defaults to the `Custom Colors` ^ at option 2.
 - [ ] Implement the register functionality.
 
 ## Done:

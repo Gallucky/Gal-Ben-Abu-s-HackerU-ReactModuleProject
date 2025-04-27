@@ -1,31 +1,87 @@
+import { useForm } from "react-hook-form";
+import { joiResolver } from "@hookform/resolvers/joi";
 import FormButton from "../components/FormButton";
 import FormInput from "../components/FormInput";
+import { loginSchema } from "../validations/login.joi";
+import axios from "axios";
+
+type FormData = {
+  email: string;
+  password: string;
+};
 
 const Login = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+  } = useForm<FormData>({
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+    mode: "onChange",
+    resolver: joiResolver(loginSchema),
+  });
+
+  const submitForm = async (data: FormData) => {
+    try {
+      const res = await axios.post(
+        "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/login",
+        data,
+      );
+      console.log("Success", res);
+    } catch (error) {
+      console.error("Error submitting form", error);
+    }
+  };
+
   return (
     <>
       {/* Content Wrapper */}
       <div className="content-wrapper flex flex-col">
         {/* Content - Form */}
-        <form className="content-form relative">
+        <form
+          onSubmit={handleSubmit(submitForm)}
+          className="content-form relative"
+        >
           <h2 className="font-Raleway fluid-text login-page-title">
             Login Page
           </h2>
           <FormInput
+            {...register("email")}
             id={"email"}
             label={"Email"}
-            color="default"
-            className="-mb-1"
-            labelClassName="text-xl select-none w-1/2"
+            color={errors.email ? "error" : "default"}
+            inputClassName="border-blue-800 dark:focus:border-blue-400"
+            labelClassName="text-xl select-none w-1/2 text-blue-800 dark:focus:text-blue-400"
           />
+          {errors.email && (
+            <p className="-mt-3 place-self-center text-sm text-red-500">
+              {errors.email.message}
+            </p>
+          )}
+
           <FormInput
+            {...register("password")}
             id={"password"}
             label={"Password"}
-            color="default"
-            className="-mt-1"
-            labelClassName="text-xl select-none w-1/2"
+            color={errors.password ? "error" : "default"}
+            className="-mt-3"
+            inputClassName="border-blue-800 dark:focus:border-blue-400
+            text-blue-800 dark:focus:text-blue-400 caret-blue-800"
+            labelClassName="text-xl select-none w-1/2 text-blue-800 
+            dark:focus:text-blue-400
+              dark:peer-focus:text-blue-400
+            "
           />
-          <FormButton text="Login" disabled />
+          {errors.password && (
+            <p className="-mt-3 ml-12 w-2/5 text-sm text-red-500">
+              {errors.password.message}
+            </p>
+          )}
+
+          <FormButton text="Login" disabled={!isValid} type="submit" />
         </form>
       </div>
     </>
