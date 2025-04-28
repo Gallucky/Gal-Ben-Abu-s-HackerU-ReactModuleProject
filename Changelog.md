@@ -4,7 +4,7 @@
 
 ## Changes:
 
-- Continue to improve, enhance, extend etc... the `Form Input` component.
+- Continued to improve, enhance, extend etc... the `Form Input` component.
 
 ## Todo:
 
