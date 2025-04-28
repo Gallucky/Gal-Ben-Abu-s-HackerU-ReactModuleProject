@@ -52,5 +52,6 @@
 .form-input-label-success {
   @apply text-green-700
   focus:text-green-700
+  peer-focus:!text-green-700
   peer-[&:not(:placeholder-shown)]:!text-green-700;
 }

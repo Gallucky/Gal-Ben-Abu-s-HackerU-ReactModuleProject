@@ -1,11 +1,10 @@
 # Todo list of React Module Project.
 
-### Updated to commit #34 | Date 27/04/2025:
+### Updated to commit #35 | Date 28/04/2025:
 
 ## Changes:
 
-- Almost finished the login implementation.
-- Started fix / improvement of the `FormInput` component.
+- Continue to improve, enhance, extend etc... the `Form Input` component.
 
 ## Todo:
 
