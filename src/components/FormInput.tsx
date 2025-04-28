@@ -7,25 +7,32 @@ type TailwindColor = "slate" | "gray" | "red" |
   "blue" | "indigo" | "violet" |
   "purple" | "fuchsia" | "pink" | "rose";
 
+type Shade = "50" | "100" | "200"
+  |"300" | "400" | "500"
+  | "600" | "700" | "800"
+  | "900" | "950";
+
 type Color = 
-  | `${TailwindColor}-Shade` 
+  | `${TailwindColor}-${Shade}` 
   | `#${string}` 
   | `rgb(${number}, ${number}, ${number})`
   | `rgb(${number} ${number} ${number} / ${number})`
-  | `rgba(${number}, ${number}, ${number}, ${number})`;
+  | `rgba(${number}, ${number}, ${number}, ${number})`
+  | `hsl(${number}, ${number}%, ${number}%)`
+  | `hsla(${number}, ${number}%, ${number}%, ${number})`;
 
 type FormInput_InputColors = {
-  textColor?: string;
-  borderColor?: string;
-  caretColor?: string;
-  focusBorderColor?: string;
+  textColor?: Color;
+  borderColor?: Color;
+  caretColor?: Color;
+  focusBorderColor?: Color;
 };
 
 type FormInput_LabelColors = {
-  textColor?: string;
-  focusTextColor?: string;
-  peerFocusTextColor?: string;
-  peerPlaceholderHiddenTextColor?: string;
+  textColor?: Color;
+  focusTextColor?: Color;
+  peerFocusTextColor?: Color;
+  peerPlaceholderHiddenTextColor?: Color;
 };
 
 type FormInputColors = {
@@ -55,11 +62,8 @@ type FormInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   labelClassName?: string;
 };
 
-
-
 // Needed the forwardRef to support the ref that is required so
 // this whole component can support the register method from useForm hook.
-
 const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
   (props: FormInputProps, ref) => {
     const {
@@ -68,11 +72,22 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
       type = "text",
       state = "default",
       className = "",
+      colors = {
+        lightMode: {},
+        darkMode: {},
+      },
       inputClassName = "",
       labelClassName = "",
       dir = "ltr",
       ...rest
     } = props;
+
+    const valueOfColor = (color: Color) => {
+      if (color ?? true) return undefined;
+      if (color === "") return undefined;
+
+      if ()
+    };
 
     const formInputState = state === "default" ? "" : `form-input-${state}`;
     const formInputLabelColor =
