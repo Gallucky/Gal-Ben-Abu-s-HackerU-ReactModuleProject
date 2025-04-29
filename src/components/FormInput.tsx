@@ -1,25 +1,6 @@
 import { forwardRef, HTMLInputTypeAttribute } from "react";
-
-type TailwindColor = "slate" | "gray" | "red" |
-  "orange" | "amber" | "yellow" |
-  "lime" | "green" | "emerald" |
-  "teal" | "cyan" | "sky" |
-  "blue" | "indigo" | "violet" |
-  "purple" | "fuchsia" | "pink" | "rose";
-
-type Shade = "50" | "100" | "200"
-  |"300" | "400" | "500"
-  | "600" | "700" | "800"
-  | "900" | "950";
-
-type Color = 
-  | `${TailwindColor}-${Shade}` 
-  | `#${string}` 
-  | `rgb(${number}, ${number}, ${number})`
-  | `rgb(${number} ${number} ${number} / ${number})`
-  | `rgba(${number}, ${number}, ${number}, ${number})`
-  | `hsl(${number}, ${number}%, ${number}%)`
-  | `hsla(${number}, ${number}%, ${number}%, ${number})`;
+import { Color } from "../types/color.t";
+import { colorToTailwindClassSuffix, valueOfColor } from "../utils/color";
 
 type FormInput_InputColors = {
   textColor?: Color;
@@ -73,7 +54,20 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
       state = "default",
       className = "",
       colors = {
-        lightMode: {},
+        lightMode: {
+          input: {
+            borderColor: "cyan-500",
+            textColor:,
+            caretColor:,
+            focusBorderColor:,
+          },
+          label: {
+            textColor:,
+            focusTextColor:,
+            peerFocusTextColor:,
+            peerPlaceholderHiddenTextColor:,
+          },
+        },
         darkMode: {},
       },
       inputClassName = "",
@@ -82,19 +76,12 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
       ...rest
     } = props;
 
-    const valueOfColor = (color: Color) => {
-      if (color ?? true) return undefined;
-      if (color === "") return undefined;
-
-      if ()
-    };
-
     const formInputState = state === "default" ? "" : `form-input-${state}`;
     const formInputLabelColor =
       state === "default" ? "" : `form-input-label-${state}`;
 
     const formInputColors = `
-      border-[${}]
+      border-${colorToTailwindClassSuffix(colors.lightMode?.input?.borderColor)}
       text-[${}]
       caret-[${}]
       focus:border-[${}]
