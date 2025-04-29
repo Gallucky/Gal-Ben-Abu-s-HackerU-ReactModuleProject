@@ -21,6 +21,8 @@ type TailwindColor =
   | "pink"
   | "rose";
 
+type TailwindConstantColor = "black" | "white";
+
 export type Color =
   | `${TailwindColor}-${Shade}`
   | `#${string}`
@@ -28,4 +30,5 @@ export type Color =
   | `rgb(${number} ${number} ${number} / ${number})`
   | `rgba(${number}, ${number}, ${number}, ${number})`
   | `hsl(${number}, ${number}%, ${number}%)`
-  | `hsla(${number}, ${number}%, ${number}%, ${number})`;
+  | `hsla(${number}, ${number}%, ${number}%, ${number})`
+  | TailwindConstantColor;

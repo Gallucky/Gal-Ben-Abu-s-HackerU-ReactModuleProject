@@ -3,8 +3,8 @@ import { Color } from "../types/color.t";
 export const colorToString = (color: Color) => color as string;
 
 export const valueOfColor = (color: Color) => {
-  console.log("color", color);
-  console.log("color ?? true", color ?? true);
+  // console.log("color", color);
+  // console.log("color ?? true", color ?? true);
 
   if (!color) return undefined;
   if (colorToString(color) === "") return undefined;
@@ -27,12 +27,15 @@ export const valueOfColor = (color: Color) => {
   if (rgbaRegex.test(color)) return "rgba";
   if (hslRegex.test(color)) return "hsl";
   if (hslaRegex.test(color)) return "hsla";
+  if (color === "black" || color === "white") return "tailwind-constant-color";
 
   return undefined;
 };
 
 export const colorToTailwindClassSuffix = (color: Color) => {
   const colorVal = valueOfColor(color);
-  if (colorVal === "tailwind-color") return colorVal;
+  if (!colorVal) return undefined;
+  if (colorVal === "tailwind-color" || colorVal === "tailwind-constant-color")
+    return color;
   return `[${color}]`;
 };

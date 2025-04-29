@@ -53,8 +53,7 @@ const Login = () => {
             id={"email"}
             label={"Email"}
             state={errors.email ? "error" : "default"}
-            inputClassName="border-blue-800 dark:focus:border-blue-400"
-            labelClassName="text-xl select-none w-1/2 text-blue-800 dark:focus:text-blue-400"
+            labelClassName="text-xl select-none w-1/2"
           />
           {errors.email && (
             <p className="-mt-3 place-self-center text-sm text-red-500">
@@ -67,14 +66,8 @@ const Login = () => {
             id={"password"}
             label={"Password"}
             state={errors.password ? "error" : "default"}
-            color="blue-400"
             className="-mt-3"
-            inputClassName="border-blue-800 dark:focus:border-blue-400
-            text-blue-800 dark:focus:text-blue-400 caret-blue-800"
-            labelClassName="text-xl select-none w-1/2 text-blue-800 
-            dark:focus:text-blue-400
-              dark:peer-focus:text-blue-400
-            "
+            labelClassName="text-xl select-none w-1/2"
           />
           {errors.password && (
             <p className="-mt-3 ml-12 w-2/5 text-sm text-red-500">
