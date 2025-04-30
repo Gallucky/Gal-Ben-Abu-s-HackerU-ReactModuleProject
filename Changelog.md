@@ -1,6 +1,6 @@
 # 📘 Gal Ben Abu's - HackerU - React Module Project - Changelog
 
-## 📅 Updated to Commit #40 | Date: 30/04/2025
+## 📅 Updated to Commit #40.1 | Date: 30/04/2025
 
 ## 🛠️ In Progress
 
@@ -36,7 +36,7 @@
 ### → <u>Removed</u>
 
 - Fix the bug that the fallback color values doesn't show up entirely, not fully supported.<br>
-  This fix is deprecated because the whole idea / feature is no deprecated and removed.
+  `This fix is deprecated because the whole idea / feature is now deprecated and removed.`
 - The `colors` prop is removed and thus the following types are no longer in use hence why removed:
   1. `FormInput_InputColors`
   2. `FormInput_LabelColors`
