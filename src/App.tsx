@@ -6,6 +6,7 @@ import About from "./pages/About.page";
 import Error from "./pages/Error.page";
 import Test from "./pages/Test.page";
 import Login from "./pages/Login.page";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   document.body.classList.add("bg-teal-100", "dark:bg-slate-900");
@@ -15,6 +16,7 @@ const App = () => {
       <HashRouter>
         <main className="xs size-full bg-teal-100 dark:bg-slate-900">
           <CustomNavbar />
+          <ToastContainer />
           <CustomFooter />
 
           <Routes>

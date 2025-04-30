@@ -3,6 +3,11 @@
     border-2 bg-transparent px-2 indent-1
     outline-none ring-0 ring-transparent
     focus:ring-0 focus:ring-transparent;
+
+  /* Default Colors */
+  @apply border-black focus:border-teal-800
+    peer-focus:text-teal-400 dark:border-white
+    dark:focus:border-teal-400 dark:peer-focus:text-teal-950;
 }
 
 .base-form-input-label {
@@ -10,7 +15,9 @@
   @apply absolute left-2.5 top-3 z-10;
 
   /* Styling */
-  @apply rounded-lg bg-teal-500 px-1 text-base text-gray-700;
+  @apply cursor-text rounded-lg
+  bg-teal-500 px-1
+  text-base text-gray-700;
 
   /* Transitioning */
   @apply transition-all duration-300 ease-linear;
@@ -19,12 +26,15 @@
   @apply peer-placeholder-shown:top-[35%] peer-placeholder-shown:text-base;
 
   @apply peer-[&:not(:placeholder-shown)]:-top-0.5
-    peer-[&:not(:placeholder-shown)]:text-sm
-  peer-[&:not(:placeholder-shown)]:text-black
-  dark:peer-[&:not(:placeholder-shown)]:text-white;
+    peer-[&:not(:placeholder-shown)]:text-sm;
 
-  @apply peer-focus:-top-0.5 peer-focus:text-sm
-  peer-focus:text-blue-700 dark:peer-focus:text-blue-700;
+  @apply peer-focus:-top-0.5 peer-focus:text-sm;
+
+  /* Default Colors */
+  @apply text-black peer-focus:!text-teal-800
+    peer-[&:not(:placeholder-shown)]:text-black
+    dark:text-white
+    dark:peer-focus:text-teal-400 dark:peer-[&:not(:placeholder-shown)]:text-white;
 }
 
 .rtl-form-input-label {
@@ -42,7 +52,7 @@
 }
 
 .form-input-label-error {
-  @apply text-red-700
+  @apply !text-red-700
   focus:text-red-700
   peer-focus:font-bold
   peer-focus:!text-red-700
@@ -50,7 +60,7 @@
 }
 
 .form-input-label-success {
-  @apply text-green-700
+  @apply !text-green-700
   focus:text-green-700
   peer-focus:!text-green-700
   peer-[&:not(:placeholder-shown)]:!text-green-700;
