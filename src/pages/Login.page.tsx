@@ -6,6 +6,7 @@ import { loginSchema } from "../validations/login.joi";
 import axios, { AxiosError } from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import PageWrapper from "../components/PageWrapper";
 
 type FormData = {
   email: string;
@@ -50,14 +51,14 @@ const Login = () => {
 
   return (
     <>
-      {/* Content Wrapper */}
-      <div className="content-wrapper flex flex-col">
+      {/* Page Wrapper */}
+      <PageWrapper>
         {/* Content - Form */}
         <form
           onSubmit={handleSubmit(submitForm)}
           className="content-form relative"
         >
-          <h2 className="font-Raleway fluid-text login-page-title">
+          <h2 className="font-Raleway form-fluid-text form-page-title">
             Login Page
           </h2>
           <div className="flex flex-col gap-4">
@@ -88,9 +89,14 @@ const Login = () => {
             )}
           </div>
 
-          <FormButton text="Login" disabled={!isValid} type="submit" />
+          <FormButton
+            text="Login"
+            disabled={!isValid}
+            type="submit"
+            className="!w-1/2"
+          />
         </form>
-      </div>
+      </PageWrapper>
     </>
   );
 };

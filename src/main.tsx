@@ -16,9 +16,10 @@ import "./styles/fonts.css";
 import "./styles/CustomFooter.css";
 import "./styles/test.css";
 import "./styles/pages/Error.page.css";
-import "./styles/pages/Login.page.css";
 import "./styles/FormInput.css";
 import "./styles/FormButton.css";
+import "./styles/PageWrapper.css";
+import "./styles/CheckBox.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <StrictMode>

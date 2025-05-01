@@ -1,5 +1,6 @@
-.content-wrapper {
-  @apply flex h-screen w-screen items-center justify-center bg-transparent;
+.page-wrapper {
+  @apply flex h-screen w-screen flex-col
+    items-center justify-center bg-transparent;
 }
 
 .content-form {
@@ -9,14 +10,14 @@
     dark:ring-opacity-60 lg:w-1/2;
 }
 
-.fluid-text {
+.form-fluid-text {
   font-size: clamp(1.5rem, 7.5vw, 3rem);
-}
-
-.login-page-title {
-  @apply w-fit overflow-hidden whitespace-nowrap text-center font-semibold text-black dark:text-white;
 }
 
 .fluid-form-input {
   width: clamp(1rem, 5vw, 2rem);
+}
+
+.form-page-title {
+  @apply w-fit overflow-hidden whitespace-nowrap text-center font-semibold text-black dark:text-white;
 }

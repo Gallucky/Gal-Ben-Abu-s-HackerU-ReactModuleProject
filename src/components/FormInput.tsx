@@ -39,7 +39,7 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
         >
           <input
             id={"form-input-" + id}
-            className={`base-form-input font-Rubik font-base peer
+            className={`base-form-input font-Rubik font-base peer w-full
             ${inputClassName} ${formInputState}`}
             placeholder=" "
             type={type}

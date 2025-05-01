@@ -15,7 +15,7 @@ const FormButton = (props: FormButtonProps) => {
 
   return (
     <button
-      className={`form-btn ${className}`}
+      className={`form-btn select-none ${className}`}
       disabled={disabled}
       type={type}
       {...rest}
