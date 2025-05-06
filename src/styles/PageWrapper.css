@@ -1,11 +1,11 @@
 .page-wrapper {
-  @apply flex h-screen w-screen flex-col
-    items-center justify-center bg-transparent;
+  @apply flex min-h-screen w-screen flex-col
+    items-center justify-center overflow-auto bg-transparent;
 }
 
 .content-form {
   @apply flex h-fit w-3/4 flex-col
-    items-center gap-4 rounded bg-teal-500 p-6 shadow-lg
+    items-center gap-4 rounded p-6 shadow-lg
     ring-4 ring-teal-300 ring-opacity-50 dark:ring-teal-400
     dark:ring-opacity-60 lg:w-1/2;
 }

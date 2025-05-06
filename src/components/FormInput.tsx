@@ -4,6 +4,8 @@ type FormInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   id: string;
   label: string;
   type?: HTMLInputTypeAttribute | undefined;
+  // If the type is specified as file then the fileText will be used.
+  fileText?: string | undefined;
   state?: "default" | "error" | "success";
   dir?: "ltr" | "rtl";
   className?: string;
@@ -19,6 +21,7 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
       id,
       label,
       type = "text",
+      fileText = "Upload File",
       state = "default",
       className = "",
       inputClassName = "",
@@ -40,23 +43,45 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
           <input
             id={"form-input-" + id}
             className={`base-form-input font-Rubik font-base peer w-full
-            ${inputClassName} ${formInputState}`}
+              ${type === "file" ? "hidden" : ""}
+              ${inputClassName} ${formInputState}
+            `}
             placeholder=" "
             type={type}
             ref={ref}
             {...rest}
           ></input>
-          <label
-            htmlFor={"form-input-" + id}
-            className={`
+          {/* Render the floating label incase the input is not of type 'file' because,
+              it doesn't really needs a floating label. */}
+          {type !== "file" && (
+            <label
+              htmlFor={"form-input-" + id}
+              className={`
             base-form-input-label font-Rubik
             rtl-form-input-label
             ${labelClassName}
             ${formInputLabelState}
           `}
-          >
-            <span className="bg-inherit">{label}</span>
-          </label>
+            >
+              <span className="bg-inherit">{label}</span>
+            </label>
+          )}
+          {/* Render the custom label styling incase the input is of type 'file'. */}
+          {type === "file" && (
+            <label
+              htmlFor={"form-input-" + id}
+              className={`
+                block cursor-pointer rounded-xl
+                bg-cyan-500 px-4 py-2 font-semibold
+                text-black transition duration-200
+                ease-in-out hover:bg-cyan-400
+                focus:outline-none focus:ring-2
+                focus:ring-cyan-300 dark:text-white
+                dark:hover:bg-cyan-700`}
+            >
+              {fileText}
+            </label>
+          )}
         </div>
       </>
     );
