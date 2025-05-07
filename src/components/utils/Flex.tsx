@@ -18,6 +18,8 @@ type AlignItems =
 
 type FlexProp = {
   direction?: "row" | "col" | "row-reverse" | "col-reverse";
+  // Applies only for row and row-reverse directions.
+  directionDynamic?: boolean;
   gap?: string;
   textSize?: string;
 
@@ -37,6 +39,7 @@ type FlexProp = {
 const Flex = (props: FlexProp) => {
   const {
     direction = "row",
+    directionDynamic,
     gap,
     textSize,
     justify,
@@ -62,7 +65,11 @@ const Flex = (props: FlexProp) => {
         justify-${justify} items-${items}
         self-${alignSelf} justify-self-${justifySelf}
         place-self-${placeSelf}
-        flex-${wrap ? wrap : "nowrap"} ${className}
+        flex-${wrap ? wrap : "nowrap"}
+
+        ${directionDynamic && direction === "row" ? "flex-col md:flex-row" : ""}
+        ${directionDynamic && direction === "row-reverse" ? "flex-col-reverse md:flex-row-reverse" : ""}
+        ${className}
       `}
     >
       {children}

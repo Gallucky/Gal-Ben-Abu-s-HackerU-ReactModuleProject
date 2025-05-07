@@ -1,0 +1,16 @@
+export type SizeUnit =
+  | "px"
+  | "pt"
+  | "pc"
+  | "in"
+  | "cm"
+  | "mm"
+  | "em"
+  | "rem"
+  | "%"
+  | "ex"
+  | "ch"
+  | "vw"
+  | "vh"
+  | "vmin"
+  | "vmax";

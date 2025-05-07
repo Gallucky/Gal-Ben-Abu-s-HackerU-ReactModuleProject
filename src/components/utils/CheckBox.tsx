@@ -11,6 +11,7 @@ type CheckBoxProps = {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   disabled?: boolean;
   size?: string;
+  textSize?: string;
 };
 
 const CheckBox = (props: CheckBoxProps) => {
@@ -25,7 +26,8 @@ const CheckBox = (props: CheckBoxProps) => {
       checked = !checked;
     },
     disabled = false,
-    size,
+    size = "size-4",
+    textSize = "text-sm",
   } = props;
 
   return (
@@ -38,14 +40,9 @@ const CheckBox = (props: CheckBoxProps) => {
       <input
         id={id}
         type="checkbox"
-        className={`checkbox`}
+        className={`checkbox ${size}`}
         disabled={disabled}
         onChange={onChange}
-        style={{
-          width: size ? size : "1em",
-          height: size ? size : "1em",
-          fontSize: size ? size : "1em",
-        }}
       />
       <label
         htmlFor={id}
@@ -56,11 +53,9 @@ const CheckBox = (props: CheckBoxProps) => {
               ? "cursor-not-allowed text-gray-400 dark:text-gray-500"
               : ""
           }
+          ${textSize}
           ${labelClassName}
         `}
-        style={{
-          fontSize: size ? size : "0.875rem",
-        }}
       >
         {text}
       </label>

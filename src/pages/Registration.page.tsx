@@ -6,6 +6,7 @@ import Flex from "../components/utils/Flex";
 import FormAreaBorder from "../components/utils/FormAreaBorder";
 import FormAreaTitle from "../components/utils/FormAreaTitle";
 import Grid from "../components/utils/Grid";
+import { tailwindTextSizeValidator } from "../utils/textSize";
 
 const Registration = () => {
   return (
@@ -16,26 +17,34 @@ const Registration = () => {
             Signup Page
           </h2>
 
-          <Flex direction="col" gap="1rem" className="w-[90%]" items="center">
+          <Flex
+            direction="col"
+            gap="1rem"
+            className="w-full md:w-[90%]"
+            items="center"
+          >
             {/* Name Section */}
             <Flex direction="col" className="relative w-full">
               <FormAreaTitle text="Name" className="bg-teal-500" />
               <FormAreaBorder />
-              <Flex className="gap-5 p-3 px-10">
+              <Flex
+                className="w-full gap-3 py-2 md:gap-5 md:p-3 md:px-10"
+                directionDynamic
+              >
                 <FormInput
                   id="registration-form-first-name"
                   label="First Name"
-                  className="w-1/3"
+                  className="w-[90%] md:w-1/3"
                 />
                 <FormInput
                   id="registration-form-middle-name"
                   label="Middle Name"
-                  className="w-1/3"
+                  className="w-[90%] md:w-1/3"
                 />
                 <FormInput
                   id="registration-form-last-name"
                   label="Last Name"
-                  className="w-1/3"
+                  className="w-[90%] md:w-1/3"
                 />
               </Flex>
             </Flex>
@@ -44,24 +53,27 @@ const Registration = () => {
               <FormAreaTitle text="Account Info" className="bg-teal-500" />
               <FormAreaBorder />
 
-              <Flex className="gap-5 p-3 px-10">
+              <Flex
+                className="w-full gap-3 py-2 md:gap-5 md:p-3 md:px-10"
+                directionDynamic
+              >
                 <FormInput
                   id="registration-form-email"
                   label="Email"
                   type="email"
-                  className="w-1/3"
+                  className="w-[90%] md:w-1/3"
                 />
                 <FormInput
                   id="registration-form-password"
                   label="Password"
                   type="password"
-                  className="w-1/3"
+                  className="w-[90%] md:w-1/3"
                 />
                 <FormInput
                   id="registration-form-confirm-password"
                   label="Confirm Password"
                   type="password"
-                  className="w-1/3"
+                  className="w-[90%] md:w-1/3"
                   labelClassName="
                     max-lg:!text-xs max-lg:peer-[&:not(:placeholder-shown)]:!top-0
                     max-lg:peer-placeholder-shown:!top-[42%] max-lg:peer-focus:!top-0"
@@ -73,12 +85,15 @@ const Registration = () => {
               <FormAreaTitle text="Personal Info" className="bg-teal-500" />
               <FormAreaBorder />
 
-              <Flex className="gap-10 px-10 py-6">
+              <Flex
+                className="w-full gap-3 py-2 md:gap-5 md:p-3 md:px-10"
+                directionDynamic
+              >
                 <FormInput
                   id="registration-form-phone"
                   label="Phone"
                   type="tel"
-                  className="w-1/2"
+                  className="w-[90%] md:w-1/2"
                 />
                 <FormInput
                   id="registration-form-image"
@@ -86,7 +101,7 @@ const Registration = () => {
                   type="file"
                   fileText="Upload Image"
                   accept="image/*"
-                  className="w-1/2"
+                  className="w-[90%] md:w-1/2"
                 />
               </Flex>
             </Flex>
@@ -96,44 +111,43 @@ const Registration = () => {
               <FormAreaBorder />
 
               <Grid
-                className="bg-teal-500 px-10 py-6"
+                className="mx-2 w-[90%] gap-3 self-center bg-teal-500 py-3 md:gap-6 md:py-6"
                 gridColumns={{ sm: 1, md: 2, lg: 3 }}
                 gridRows={{ sm: 3, md: 3, lg: 3 }}
-                gap="1.5rem"
               >
                 <FormInput
                   id="registration-form-country"
                   label="Country"
-                  className="w-full"
+                  className="w-[90%] md:w-full"
                 />
                 <FormInput
                   id="registration-form-state"
                   label="State"
-                  className="w-full"
+                  className="w-[90%] md:w-full"
                 />
                 <FormInput
                   id="registration-form-city"
                   label="City"
-                  className="w-full"
+                  className="w-[90%] md:w-full"
                 />
                 <FormInput
                   id="registration-form-street"
                   label="Street"
-                  className="w-full"
+                  className="w-[90%] md:w-full"
                 />
                 <FormInput
                   id="registration-form-house-number"
                   label="House Number"
                   type="number"
                   min={0}
-                  className="w-full"
+                  className="w-[90%] md:w-full"
                 />
                 <FormInput
                   id="registration-form-zip"
                   label="Zip"
                   type="number"
                   min={0}
-                  className="w-full"
+                  className="w-[90%] md:w-full"
                 />
               </Grid>
             </Flex>
@@ -143,6 +157,7 @@ const Registration = () => {
               direction="row"
               className="px-4"
               size="2rem"
+              textSize={tailwindTextSizeValidator("xl")}
             />
             <FormButton text="Register" type="submit" className="w-fit" />
           </Flex>

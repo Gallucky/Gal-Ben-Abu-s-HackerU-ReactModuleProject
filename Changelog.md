@@ -1,10 +1,11 @@
 # 📘 Gal Ben Abu's - HackerU - React Module Project - Changelog
 
-## 📅 Updated to Commit #43 | Date: 06/05/2025
+## 📅 Updated to Commit #44 | Date: 07/05/2025
 
 ## 🛠️ In Progress
 
 - Continue work of the registration / sign-up page.
+- Working on fixing the styling bugs.
 
 ## 🎯 Todo
 
@@ -24,18 +25,19 @@
 
 ## ✅ Completed
 
-- Needs to migrate the `Grid` layout of the `address` part.
+> `Nothing has been completed.`
 
 ## 🔄 Changes
 
 ### → <u>Added</u>
 
-- Added [`FormAreaBorder`](./src/components/utils/FormAreaBorder.tsx) utility component.
-- Added [`FormAreaTitle`](./src/components/utils/FormAreaTitle.tsx) utility component.
+- Added [`textSize`](./src/utils/textSize.tsx) utility file with an helper method.
+- Added [`tailwindTextSizeString.t`](./src/types/tailwind/tailwindTextSizeString.t.ts) type.
+- Added [`types/tailwind`](./src/types/tailwind) directory.
 
 ### → <u>Changed</u>
 
-- [`FormInput`](./src/components/FormInput.tsx) now has support for type file by using different styling and logic.
+- [`CheckBox`](./src/components/utils/CheckBox.tsx) now has support for text size and size differently and needs to be worked on more.
 
 ### → <u>Removed</u>
 
@@ -44,6 +46,47 @@
 ---
 
 ## Previous Commits
+
+### 📅 Updated to Commit #43 | Date: 06/05/2025
+
+#### 🛠️ In Progress
+
+- Continue work of the registration / sign-up page.
+
+#### 🎯 Todo
+
+- [ ] Registration page
+  - [x] Layout creation.
+  - [x] Styling the layout.
+  - [ ] Fix styling bugs.
+  - [ ] Testing and checking logic.
+  - [ ] Adding toast of success and error.
+  - [ ] Validation.
+- Global State
+  - Creating a global state for the user data.
+  - Saving the user data while logged in.
+  - Conditional rendering the appropriate links while logged in or not.
+- Fixing any style issues or bugs.
+- Profile Page - Create a page with some of the user's data.
+
+#### ✅ Completed
+
+- Needs to migrate the `Grid` layout of the `address` part.
+
+#### 🔄 Changes
+
+##### → <u>Added</u>
+
+- Added [`FormAreaBorder`](./src/components/utils/FormAreaBorder.tsx) utility component.
+- Added [`FormAreaTitle`](./src/components/utils/FormAreaTitle.tsx) utility component.
+
+##### → <u>Changed</u>
+
+- [`FormInput`](./src/components/FormInput.tsx) now has support for type file by using different styling and logic.
+
+##### → <u>Removed</u>
+
+> `Nothing has been removed.`
 
 ### 📅 Updated to Commit #42 | Date: 01/05/2025
 
