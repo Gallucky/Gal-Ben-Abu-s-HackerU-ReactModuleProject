@@ -1,3 +1,7 @@
+import { SizeUnit } from "../../types/sizeUnit.t";
+import { TailwindSizeString } from "../../types/tailwind/tailwindSizeString.t";
+import { TailwindTextSizeString } from "../../types/tailwind/tailwindTextSizeString.t";
+import { tailwindTextSizeValidator } from "../../utils/textSize";
 import Flex from "./Flex";
 
 type CheckBoxProps = {
@@ -10,8 +14,8 @@ type CheckBoxProps = {
   checked?: boolean;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   disabled?: boolean;
-  size?: string;
-  textSize?: string;
+  size?: TailwindSizeString;
+  textSize?: TailwindTextSizeString | `${number}${SizeUnit}`;
 };
 
 const CheckBox = (props: CheckBoxProps) => {
@@ -26,16 +30,19 @@ const CheckBox = (props: CheckBoxProps) => {
       checked = !checked;
     },
     disabled = false,
-    size = "size-4",
-    textSize = "text-sm",
+    size = "size-[1rem]",
+    textSize = "sm",
   } = props;
+
+  const textSizeFormatted = tailwindTextSizeValidator(textSize);
 
   return (
     <Flex
       direction={direction}
       items="center"
+      justify="center"
       gap="0.25rem"
-      className={`w-full bg-red-500 ${className}`}
+      className={`w-full ${className}`}
     >
       <input
         id={id}
@@ -53,7 +60,7 @@ const CheckBox = (props: CheckBoxProps) => {
               ? "cursor-not-allowed text-gray-400 dark:text-gray-500"
               : ""
           }
-          ${textSize}
+          ${textSizeFormatted}
           ${labelClassName}
         `}
       >

@@ -6,7 +6,6 @@ import Flex from "../components/utils/Flex";
 import FormAreaBorder from "../components/utils/FormAreaBorder";
 import FormAreaTitle from "../components/utils/FormAreaTitle";
 import Grid from "../components/utils/Grid";
-import { tailwindTextSizeValidator } from "../utils/textSize";
 
 const Registration = () => {
   return (
@@ -155,9 +154,9 @@ const Registration = () => {
               id="registration-form-is-business"
               text="Is Business?"
               direction="row"
-              className="px-4"
-              size="2rem"
-              textSize={tailwindTextSizeValidator("xl")}
+              className="!gap-2 px-4"
+              size="size-[1.5rem]"
+              textSize="2xl"
             />
             <FormButton text="Register" type="submit" className="w-fit" />
           </Flex>
