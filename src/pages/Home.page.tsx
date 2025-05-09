@@ -1,9 +1,9 @@
 import axios from "axios";
-import { CardProps } from "../components/Card";
+import { CardProps } from "../components/card/Card";
 import { useEffect, useState } from "react";
-import Header from "../components/Header";
-import Divider from "../components/Divider";
-import CardsContainer from "../components/CardsContainer";
+import Header from "../components/other/Header";
+import Divider from "../components/other/Divider";
+import CardsContainer from "../components/card/CardsContainer";
 import { Button } from "flowbite-react";
 import { useNavigate } from "react-router-dom";
 

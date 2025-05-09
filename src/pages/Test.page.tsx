@@ -1,10 +1,6 @@
-import { Button } from "flowbite-react";
-import { valueOfColor } from "../utils/color";
 import Grid from "../components/utils/Grid";
-import GridItem from "../components/utils/GridItem";
-import Flex from "../components/utils/Flex";
-import FormInput from "../components/FormInput";
-import PageWrapper from "../components/PageWrapper";
+import FormInput from "../components/form/FormInput";
+import PageWrapper from "../components/layout/PageWrapper";
 
 const Test = () => {
   return (

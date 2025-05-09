@@ -8,18 +8,29 @@ import App from "./App.tsx";
 // Worked even after commenting this line.
 // import.meta.hot;
 
+// Base Styles
 import "./index.css";
-import "./styles/CustomNavbar.css";
+import "./styles/fonts.css";
+
+// Form Styles
+import "./styles/form/FormInput.css";
+import "./styles/form/FormButton.css";
+
+// Layout Styles
+import "./styles/layout/CustomNavbar.css";
+import "./styles/layout/CustomFooter.css";
+import "./styles/layout/PageWrapper.css";
+
+// Page Styles
+import "./styles/pages/Error.page.css";
+
+// Utilities Styles
+import "./styles/utils/CheckBox.css";
+
+// Other Styles
 import "./styles/SearchBox.css";
 import "./styles/DarkModeButton.css";
-import "./styles/fonts.css";
-import "./styles/CustomFooter.css";
 import "./styles/test.css";
-import "./styles/pages/Error.page.css";
-import "./styles/FormInput.css";
-import "./styles/FormButton.css";
-import "./styles/PageWrapper.css";
-import "./styles/CheckBox.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <StrictMode>

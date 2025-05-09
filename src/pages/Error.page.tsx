@@ -1,5 +1,5 @@
 import { BiSolidError } from "react-icons/bi";
-import Header from "../components/Header";
+import Header from "../components/other/Header";
 import { Button } from "flowbite-react";
 import { Link } from "react-router-dom";
 

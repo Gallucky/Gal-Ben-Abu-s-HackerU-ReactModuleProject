@@ -1,12 +1,12 @@
 import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
-import FormButton from "../components/FormButton";
-import FormInput from "../components/FormInput";
+import FormButton from "../components/form/FormButton";
+import FormInput from "../components/form/FormInput";
 import { loginSchema } from "../validations/login.joi";
 import axios, { AxiosError } from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import PageWrapper from "../components/PageWrapper";
+import PageWrapper from "../components/layout/PageWrapper";
 
 type FormData = {
   email: string;

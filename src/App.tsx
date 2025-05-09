@@ -1,6 +1,6 @@
-import CustomNavbar from "./components/CustomNavbar";
+import CustomNavbar from "./components/layout/CustomNavbar";
 import { HashRouter, Route, Routes } from "react-router-dom";
-import CustomFooter from "./components/CustomFooter";
+import CustomFooter from "./components/layout/CustomFooter";
 import Home from "./pages/Home.page";
 import About from "./pages/About.page";
 import Error from "./pages/Error.page";

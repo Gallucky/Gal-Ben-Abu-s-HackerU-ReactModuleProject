@@ -1,5 +1,5 @@
-import Divider from "../components/Divider";
-import Header from "../components/Header";
+import Divider from "../components/other/Divider";
+import Header from "../components/other/Header";
 
 const About = () => {
   return (

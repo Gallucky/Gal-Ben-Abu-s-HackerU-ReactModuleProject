@@ -1,7 +1,7 @@
 import { Pagination } from "flowbite-react";
 import Card, { CardProps } from "./Card";
 import { useEffect, useState } from "react";
-import { ViewMode } from "../enums/ViewModes.Enum";
+import { ViewMode } from "../../enums/ViewModes.Enum";
 
 type CardsContainerProps = {
   cards?: CardProps[];

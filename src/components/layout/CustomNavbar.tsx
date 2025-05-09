@@ -1,8 +1,8 @@
 import { Navbar, NavbarToggle, NavbarCollapse } from "flowbite-react";
 import { Link, useLocation } from "react-router-dom";
-import DarkModeButton from "./DarkModeButton";
+import DarkModeButton from "../other/DarkModeButton";
 import { useEffect, useState } from "react";
-import SearchBox from "./SearchBox";
+import SearchBox from "../other/SearchBox";
 
 const CustomNavbar = () => {
   const [pathname, setPathName] = useState<string>("/");
