@@ -35,3 +35,7 @@
 ### → <u>Removed</u>
 
 - `Login.page.css` at the [`styles/pages`](./src/styles/pages) directory.
+
+<br>
+
+[`← Go Back to Changelog.md`](../Changelog.md)

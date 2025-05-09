@@ -7,8 +7,9 @@ import axios, { AxiosError } from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import PageWrapper from "../components/layout/PageWrapper";
+import Flex from "../components/utils/Flex";
 
-type FormData = {
+type LoginFormData = {
   email: string;
   password: string;
 };
@@ -20,7 +21,7 @@ const Login = () => {
     register,
     handleSubmit,
     formState: { errors, isValid },
-  } = useForm<FormData>({
+  } = useForm<LoginFormData>({
     defaultValues: {
       email: "",
       password: "",
@@ -29,7 +30,7 @@ const Login = () => {
     resolver: joiResolver(loginSchema),
   });
 
-  const submitForm = async (data: FormData) => {
+  const submitForm = async (data: LoginFormData) => {
     try {
       const res = await axios.post(
         "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/login",
@@ -49,6 +50,8 @@ const Login = () => {
     }
   };
 
+  const backgroundColors = "bg-teal-400 dark:bg-teal-600";
+
   return (
     <>
       {/* Page Wrapper */}
@@ -56,38 +59,30 @@ const Login = () => {
         {/* Content - Form */}
         <form
           onSubmit={handleSubmit(submitForm)}
-          className="content-form relative"
+          className={`content-form ${backgroundColors} relative`}
         >
           <h2 className="font-Raleway form-fluid-text form-page-title">
             Login Page
           </h2>
-          <div className="flex flex-col gap-4">
+          <Flex direction="col" className="gap-4">
             <FormInput
               {...register("email")}
               id={"email"}
               label={"Email"}
-              state={errors.email ? "error" : "default"}
-              labelClassName="text-xl select-none w-1/2"
+              errorMessage={errors.email ? errors.email.message : ""}
+              labelClassName={`text-xl select-none w-1/2 ${backgroundColors}`}
             />
-            {errors.email && (
-              <p className="-mt-3 w-full place-self-center text-sm text-red-500">
-                {errors.email.message}
-              </p>
-            )}
+
             <FormInput
               {...register("password")}
               id={"password"}
               label={"Password"}
               state={errors.password ? "error" : "default"}
               className="-mt-3"
-              labelClassName="text-xl select-none w-1/2"
+              labelClassName={`text-xl select-none w-1/2 ${backgroundColors}`}
+              errorMessage={errors.password ? errors.password.message : ""}
             />
-            {errors.password && (
-              <p className="-mt-3 w-full place-self-center text-wrap text-sm text-red-500">
-                {errors.password.message}
-              </p>
-            )}
-          </div>
+          </Flex>
 
           <FormButton
             text="Login"

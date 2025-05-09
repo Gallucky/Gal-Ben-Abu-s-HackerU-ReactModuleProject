@@ -40,3 +40,7 @@
 ### → <u>Removed</u>
 
 > `Nothing has been removed.`
+
+<br>
+
+[`← Go Back to Changelog.md`](../Changelog.md)

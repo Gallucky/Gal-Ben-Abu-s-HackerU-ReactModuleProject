@@ -1,6 +1,6 @@
 # 📘 Gal Ben Abu's - HackerU - React Module Project - Changelog
 
-## 📅 Updated to Commit #46 | Date: 09/05/2025
+## 📅 Updated to Commit #47 | Date: 09/05/2025
 
 ## 🛠️ In Progress
 
@@ -12,10 +12,10 @@
 - [ ] Registration page
   - [x] Layout creation.
   - [x] Styling the layout.
-  - [ ] Fix styling bugs.
+  - [x] Fix styling bugs.
   - [ ] Testing and checking logic.
   - [ ] Adding toast of success and error.
-  - [ ] Validation.
+  - [x] Validation.
 - Global State
   - Creating a global state for the user data.
   - Saving the user data while logged in.
@@ -25,24 +25,20 @@
 
 ## ✅ Completed
 
-- Organizing the `src` folder structure.
+- Fixed styling bugs.
+- All styling and layout of the page.
+- All of the validation.
+- Testing of validations and styling to see that now there is no bugs.
 
 ## 🔄 Changes
 
 ### → <u>Added</u>
 
-- [`commits_changes`](./commits_changes) directory for all the commit changes to be organized more instead of all of them in one file.
-- [`components/card`](./src/components/card/) directory.
-- [`components/form`](./src/components/form/) directory.
-- [`components/layout`](./src/components/layout/) directory.
-- [`components/other`](./src/components/layout/) directory.
-- [`styles/form`](./src/styles/form/) directory.
-- [`styles/layout`](./src/styles/layout/) directory.
-- [`styles/utils`](./src/styles/utils/) directory.
+- [`events`](./src/events/) directory.
 
 ### → <u>Changed</u>
 
-- Organized the folder structure of the project a little.
+- Moved the [`utils/input`](./src/events/input/) directory from [`utils`](./src/utils/) to the [`events`](./src/events/).
 
 ### → <u>Removed</u>
 
@@ -52,8 +48,10 @@
 
 ## Previous Commits
 
-| `*Date*`     | `Commit #`                                                   |
+| `Date`       | `Commit #`                                                   |
 | ------------ | ------------------------------------------------------------ |
+| `09/05/2025` | [`47`](./commits_changes/commit_47.md)                       |
+| `09/05/2025` | [`46`](./commits_changes/commit_46.md)                       |
 | `08/05/2025` | [`45`](./commits_changes/commit_45.md)                       |
 | `07/05/2025` | [`44`](./commits_changes/commit_44.md)                       |
 | `06/05/2025` | [`43`](./commits_changes/commit_43.md)                       |

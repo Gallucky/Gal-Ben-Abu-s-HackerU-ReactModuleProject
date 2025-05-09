@@ -1,8 +1,9 @@
-## 📅 Updated to Commit #43 | Date: 06/05/2025
+## 📅 Updated to Commit #46 | Date: 09/05/2025
 
 ## 🛠️ In Progress
 
 - Continue work of the registration / sign-up page.
+- Working on fixing the styling bugs.
 
 ## 🎯 Todo
 
@@ -22,18 +23,24 @@
 
 ## ✅ Completed
 
-- Needs to migrate the `Grid` layout of the `address` part.
+- Organizing the `src` folder structure.
 
 ## 🔄 Changes
 
 ### → <u>Added</u>
 
-- Added [`FormAreaBorder`](./src/components/utils/FormAreaBorder.tsx) utility component.
-- Added [`FormAreaTitle`](./src/components/utils/FormAreaTitle.tsx) utility component.
+- [`commits_changes`](./commits_changes) directory for all the commit changes to be organized more instead of all of them in one file.
+- [`components/card`](./src/components/card/) directory.
+- [`components/form`](./src/components/form/) directory.
+- [`components/layout`](./src/components/layout/) directory.
+- [`components/other`](./src/components/layout/) directory.
+- [`styles/form`](./src/styles/form/) directory.
+- [`styles/layout`](./src/styles/layout/) directory.
+- [`styles/utils`](./src/styles/utils/) directory.
 
 ### → <u>Changed</u>
 
-- [`FormInput`](./src/components/FormInput.tsx) now has support for type file by using different styling and logic.
+- Organized the folder structure of the project a little.
 
 ### → <u>Removed</u>
 

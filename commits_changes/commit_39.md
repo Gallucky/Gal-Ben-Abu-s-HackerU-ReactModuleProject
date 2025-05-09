@@ -24,3 +24,7 @@
 
 - `plugins` directory - no longer has a use.
 - `styles/custom-tailwind-classes` directory - no longer has a use.
+
+<br>
+
+[`← Go Back to Changelog.md`](../Changelog.md)

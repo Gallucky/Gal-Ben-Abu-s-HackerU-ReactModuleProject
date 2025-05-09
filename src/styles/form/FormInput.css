@@ -15,9 +15,8 @@
   @apply absolute left-2.5 top-3 z-10;
 
   /* Styling */
-  @apply cursor-text rounded-lg
-  bg-teal-500 px-1
-  text-base text-gray-700;
+  @apply cursor-text rounded-lg px-1
+    text-base text-gray-700;
 
   /* Transitioning */
   @apply transition-all duration-300 ease-linear;

@@ -9,4 +9,6 @@
 
 - Reworked on the [`Changelog.md`](./Changelog.md) file, now with a new format.
 
-[`Go Back to Changelog.md`](../Changelog.md)
+<br>
+
+[`← Go Back to Changelog.md`](../Changelog.md)
