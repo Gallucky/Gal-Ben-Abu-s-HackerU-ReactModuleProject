@@ -6,14 +6,14 @@ export const loginSchema = Joi.object({
     .required()
     .messages({
       "string.email": "Email must be a valid email address.",
-      "string.empty": "* Email is required",
+      "string.empty": "Email is required",
     }),
   password: Joi.string()
     .ruleset.regex(
       /((?=.*\d{1})(?=.*[A-Z]{1})(?=.*[a-z]{1})(?=.*[!@#$%^&*-]{1}).{7,20})/,
     )
     .messages({
-      "string.empty": "* Password is required",
+      "string.empty": "Password is required",
     })
     .rule({
       message:

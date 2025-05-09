@@ -1,11 +1,10 @@
 # 📘 Gal Ben Abu's - HackerU - React Module Project - Changelog
 
-## 📅 Updated to Commit #47 | Date: 09/05/2025
+## 📅 Updated to Commit #48 | Date: 09/05/2025
 
 ## 🛠️ In Progress
 
-- Continue work of the registration / sign-up page.
-- Working on fixing the styling bugs.
+- Working on the actual login and registration logic.
 
 ## 🎯 Todo
 
@@ -25,24 +24,30 @@
 
 ## ✅ Completed
 
-- Fixed styling bugs.
-- All styling and layout of the page.
-- All of the validation.
-- Testing of validations and styling to see that now there is no bugs.
+> `Nothing has been completed.`
 
 ## 🔄 Changes
 
 ### → <u>Added</u>
 
-- [`events`](./src/events/) directory.
+- Added image preview feature in the registration page.
+- Added [`TUser`](./src/types/user.t.ts) type for defining a users data.
+- Added [`store`](./src/store/) directory.
+- Added [`store.ts`](./src/store/store.ts) the bigPie.
+- Added [`userSlice.ts`](./src/store/userSlice.ts) manages the global logged in user's data.
+- Added [`searchSlice.ts`](./src/store/searchSlice.ts) manages the searches in the project.
 
 ### → <u>Changed</u>
 
-- Moved the [`utils/input`](./src/events/input/) directory from [`utils`](./src/utils/) to the [`events`](./src/events/).
+- [`CustomNavbar`](./src/components/layout/CustomNavbar.tsx) merged the mobile and desktop versions of the `signup`, `login` and the `DarkModeToggle` links into one instance.
+  <br>
+  also made classes to the `CustomNavbar` and the `Navbar` collapse.
+- [`Login.page.tsx`](./src/pages/Login.page.tsx) to get the user's data and expand the logic further.
 
 ### → <u>Removed</u>
 
-> `Nothing has been removed.`
+- `Test.tsx` file that was located at: [`components`](./src/components/) directory.
+- `text.txt` file that was located at: [`components`](./src/components/) directory.
 
 ---
 

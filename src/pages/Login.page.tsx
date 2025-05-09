@@ -8,6 +8,9 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import PageWrapper from "../components/layout/PageWrapper";
 import Flex from "../components/utils/Flex";
+import { jwtDecode } from "jwt-decode";
+import { userActions } from "../store/userSlice";
+import { useDispatch } from "react-redux";
 
 type LoginFormData = {
   email: string;
@@ -15,6 +18,7 @@ type LoginFormData = {
 };
 
 const Login = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const {
@@ -32,11 +36,35 @@ const Login = () => {
 
   const submitForm = async (data: LoginFormData) => {
     try {
-      const res = await axios.post(
+      const token = await axios.post(
         "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/login",
         data,
       );
-      console.log("Success", res);
+      console.log("Success", token.data);
+
+      // Saving the token in local storage.
+      localStorage.setItem("token", token.data);
+
+      // Parsing the token.
+      const parsedToken = jwtDecode(token.data) as {
+        _id: string;
+        isBusiness: boolean;
+        isAdmin: boolean;
+        iat: number;
+      };
+
+      console.log("Parsed Token:\n", parsedToken);
+
+      // Setting the authentication token as an header of the request.
+      axios.defaults.headers.common["x-auth-token"] = token.data;
+
+      // Getting the user data.
+      const user = await axios.get(
+        `https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/${parsedToken._id}`,
+      );
+
+      dispatch(userActions.login(user.data));
+
       toast.success("Login Successful");
       navigate("../home");
     } catch (error) {
@@ -50,7 +78,7 @@ const Login = () => {
     }
   };
 
-  const backgroundColors = "bg-teal-400 dark:bg-teal-600";
+  const backgroundColors = "!bg-teal-300 dark:!bg-teal-600";
 
   return (
     <>

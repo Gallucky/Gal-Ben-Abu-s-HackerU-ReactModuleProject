@@ -31,9 +31,13 @@ import "./styles/utils/CheckBox.css";
 import "./styles/SearchBox.css";
 import "./styles/DarkModeButton.css";
 import "./styles/test.css";
+import { Provider } from "react-redux";
+import store from "./store/store.ts";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </StrictMode>,
 );
