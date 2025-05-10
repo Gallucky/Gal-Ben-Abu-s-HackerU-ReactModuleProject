@@ -6,42 +6,66 @@ import Divider from "../components/other/Divider";
 import CardsContainer from "../components/card/CardsContainer";
 import { Button } from "flowbite-react";
 import { useNavigate } from "react-router-dom";
+import { TCardData } from "../types/card.t";
+import { useDispatch } from "react-redux";
+import { jwtDecode } from "jwt-decode";
+import { userActions } from "../store/userSlice";
+import { Token } from "../types/token.t";
 
 const Home = () => {
-  const [memeCards, setCountries] = useState<TCountryData[]>();
+  const dispatch = useDispatch();
+  const [memeCards, setCards] = useState<TCardData[]>();
 
-  const getCountries = async () => {
+  /**
+   * This method will try to request the cards from the api.
+   * If the request succeeds the server response will be saved in the state.
+   */
+  const getCards = async () => {
     try {
       const response = await axios.get(
         "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards",
       );
-      console.log("Response:\n", response.data);
-      setCountries(response.data);
+      setCards(response.data);
     } catch (error) {
       console.error(error);
     }
   };
 
-  type TCountryData = {
-    address: {
-      street?: string;
-      city?: string;
-      country?: string;
-    };
-    image: {
-      alt?: string;
-      url?: string;
-    };
-    __v?: string;
-    description?: string;
-    title?: string;
-    subtitle?: string;
-    phone?: string;
-  };
+  // Checking if the user is already connected.
+  useEffect(() => {
+    const checkUserIsLoggedIn = async () => {
+      const token = localStorage.getItem("token");
+      // If there is no token exit the method.
+      if (!token) return;
 
-  const getCountriesRelevantCardData = (
-    responseData?: TCountryData[],
-  ): CardProps[] => {
+      // Parsing the token.
+      const parsedToken = jwtDecode(token) as Token;
+
+      // Setting the authentication token as an header of the request.
+      axios.defaults.headers.common["x-auth-token"] = token;
+
+      // Getting the user data.
+      const user = await axios.get(
+        `https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/${parsedToken._id}`,
+      );
+
+      if (user) {
+        dispatch(userActions.login(user.data));
+        dispatch(userActions.showWelcomeBackMessage());
+      }
+    };
+
+    checkUserIsLoggedIn();
+  }, [dispatch]);
+
+  /**
+   * This method is used to convert the cards received from the server / api to an array
+   * of objects (@see CardProps) used to create and render all of the cards.
+   * @see Card component.
+   * @param responseData The cards in the response from the server / api.
+   * @returns Array of objects containing all the necessary card component attributes - CardProps.
+   */
+  const getRelevantCardData = (responseData?: TCardData[]): CardProps[] => {
     if (!responseData) return [];
 
     const res: CardProps[] = [];
@@ -74,16 +98,17 @@ const Home = () => {
     return res;
   };
 
+  // Requesting to get the cards from api on mount.
   useEffect(() => {
-    getCountries();
+    getCards();
   }, []);
 
   document.body.style.overflowX = "hidden";
 
-  const memeCardsWithRelevantData = getCountriesRelevantCardData(memeCards);
+  // Getting the converted cards array ready for components creation.
+  const memeCardsWithRelevantData = getRelevantCardData(memeCards);
 
   const navigate = useNavigate();
-
   const onTestWorkSpaceButtonClick = () => {
     navigate("/test");
   };

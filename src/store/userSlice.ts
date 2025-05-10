@@ -1,11 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { TUser } from "../types/user.t";
+import { toast } from "react-toastify";
 
 /**
  * This is the initial state / initial state's value of the user slice.
  */
 const initialState = {
+  // The user's data.
   user: null as TUser | null,
+
+  // If the welcome back message has been displayed already.
+  shownWelcomeBackMessage: false,
 };
 
 /**
@@ -23,6 +28,13 @@ const userSlice = createSlice({
     },
     logout: (state) => {
       state.user = null;
+    },
+    showWelcomeBackMessage: (state) => {
+      if (!state.shownWelcomeBackMessage) {
+        toast.info("Welcome Back!");
+
+        state.shownWelcomeBackMessage = true;
+      }
     },
   },
 });

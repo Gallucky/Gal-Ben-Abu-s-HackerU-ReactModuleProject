@@ -7,16 +7,13 @@ import {
 export const tailwindTextSizeValidator = (
   str: TailwindTextSizeString | `${number}${SizeUnit}`,
 ) => {
-  console.log("str:", str);
-  console.log("tailwind arbitrary value:", cssUnitRegex.test(str));
-  console.log(
-    "tailwind size?",
-    tailwindSizes.includes(str as TailwindTextSizeString),
-  );
-
+  // Checking if the text size matches an arbitrary value rules.
   if (cssUnitRegex.test(str)) return `text-[${str}]`;
+
+  // Checking if the text size matches one of the tailwind text size classes.
   if (tailwindSizes.includes(str as TailwindTextSizeString))
     return `text-${str}`;
 
+  // If the checks failed.
   return undefined;
 };

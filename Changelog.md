@@ -1,6 +1,6 @@
 # 📘 Gal Ben Abu's - HackerU - React Module Project - Changelog
 
-## 📅 Updated to Commit #48 | Date: 09/05/2025
+## 📅 Updated to Commit #49 | Date: 10/05/2025
 
 ## 🛠️ In Progress
 
@@ -8,6 +8,7 @@
 
 ## 🎯 Todo
 
+- [ ] Add the signout link in the navbar.
 - [ ] Registration page
   - [x] Layout creation.
   - [x] Styling the layout.
@@ -24,30 +25,32 @@
 
 ## ✅ Completed
 
-> `Nothing has been completed.`
+- Login logic is now completed.
 
 ## 🔄 Changes
 
 ### → <u>Added</u>
 
-- Added image preview feature in the registration page.
-- Added [`TUser`](./src/types/user.t.ts) type for defining a users data.
-- Added [`store`](./src/store/) directory.
-- Added [`store.ts`](./src/store/store.ts) the bigPie.
-- Added [`userSlice.ts`](./src/store/userSlice.ts) manages the global logged in user's data.
-- Added [`searchSlice.ts`](./src/store/searchSlice.ts) manages the searches in the project.
+- Added comments explaining the `tailwindTextSizeValidator` method in [`textSize`](./src/utils/textSize.ts).
+- Added documentation comments in [`Home Page`](./src/pages/Home.page.tsx).
+- Added the [`Token`](./src/types/token.t.ts) type.
+- Added the `Remember Me` feature and the logic is at [`Home Page`](./src/pages/Home.page.tsx).
+- Added the `shownWelcomeBackMessage` with it's method `showWelcomeBackMessage` in the [`userSlice.ts`](./src/store/userSlice.ts) file.
 
 ### → <u>Changed</u>
 
-- [`CustomNavbar`](./src/components/layout/CustomNavbar.tsx) merged the mobile and desktop versions of the `signup`, `login` and the `DarkModeToggle` links into one instance.
-  <br>
-  also made classes to the `CustomNavbar` and the `Navbar` collapse.
-- [`Login.page.tsx`](./src/pages/Login.page.tsx) to get the user's data and expand the logic further.
+- Renamed `setCountries` to `setCards` at [`Home Page`](./src/pages/Home.page.tsx).
+- Renamed `getCountries` to `getCards` at [`Home Page`](./src/pages/Home.page.tsx).
+- Renamed `TCountryData` to `TCardData` at [`Home Page`](./src/pages/Home.page.tsx).
+- Renamed `getCountriesRelevantCardData` to `getRelevantCardData` at [`Home Page`](./src/pages/Home.page.tsx).
+- Moved `TCardData` from [`Home Page`](./src/pages/Home.page.tsx) to [`card.t.ts`](./src/types/card.t.ts).
 
 ### → <u>Removed</u>
 
-- `Test.tsx` file that was located at: [`components`](./src/components/) directory.
-- `text.txt` file that was located at: [`components`](./src/components/) directory.
+- Removed the `console.log` lines that were used for checks in [`textSize`](./src/utils/textSize.ts).
+- Removed `TCardData` type from [`Home Page`](./src/pages/Home.page.tsx).
+- Remove `console.log` lines that were used for checks in [`Home Page`](./src/pages/Home.page.tsx).
+- Remove `console.log` lines that were used for checks in [`Login Page`](./src/pages/Login.page.tsx).
 
 ---
 
@@ -55,6 +58,7 @@
 
 | `Date`       | `Commit #`                                                   |
 | ------------ | ------------------------------------------------------------ |
+| `09/05/2025` | [`48`](./commits_changes/commit_48.md)                       |
 | `09/05/2025` | [`47`](./commits_changes/commit_47.md)                       |
 | `09/05/2025` | [`46`](./commits_changes/commit_46.md)                       |
 | `08/05/2025` | [`45`](./commits_changes/commit_45.md)                       |
