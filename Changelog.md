@@ -1,6 +1,6 @@
 # 📘 Gal Ben Abu's - HackerU - React Module Project - Changelog
 
-## 📅 Updated to Commit #49 | Date: 10/05/2025
+## 📅 Updated to Commit #50 | Date: 11/05/2025
 
 ## 🛠️ In Progress
 
@@ -25,32 +25,24 @@
 
 ## ✅ Completed
 
-- Login logic is now completed.
+> `Nothing has been completed.`
 
 ## 🔄 Changes
 
 ### → <u>Added</u>
 
-- Added comments explaining the `tailwindTextSizeValidator` method in [`textSize`](./src/utils/textSize.ts).
-- Added documentation comments in [`Home Page`](./src/pages/Home.page.tsx).
-- Added the [`Token`](./src/types/token.t.ts) type.
-- Added the `Remember Me` feature and the logic is at [`Home Page`](./src/pages/Home.page.tsx).
-- Added the `shownWelcomeBackMessage` with it's method `showWelcomeBackMessage` in the [`userSlice.ts`](./src/store/userSlice.ts) file.
+- Added [`App`](./src/components/App/) directory at [`src/components`](./src/components/).
+- Added [`Routes`](./src/components/App/Routes/) directory at [`src/components/App`](./src/components/App/).
+- Added [`RouteGuard`](./src/components/App/Routes/RouteGuard.tsx) component.
+- Added [`RoutesHandler`](./src/components/App/Routes/RoutesHandler.tsx) component.
 
 ### → <u>Changed</u>
 
-- Renamed `setCountries` to `setCards` at [`Home Page`](./src/pages/Home.page.tsx).
-- Renamed `getCountries` to `getCards` at [`Home Page`](./src/pages/Home.page.tsx).
-- Renamed `TCountryData` to `TCardData` at [`Home Page`](./src/pages/Home.page.tsx).
-- Renamed `getCountriesRelevantCardData` to `getRelevantCardData` at [`Home Page`](./src/pages/Home.page.tsx).
-- Moved `TCardData` from [`Home Page`](./src/pages/Home.page.tsx) to [`card.t.ts`](./src/types/card.t.ts).
+- The routes now have `RouteGuard` protection as needed [See More](./src/components/App/Routes/RoutesHandler.tsx).
 
 ### → <u>Removed</u>
 
-- Removed the `console.log` lines that were used for checks in [`textSize`](./src/utils/textSize.ts).
-- Removed `TCardData` type from [`Home Page`](./src/pages/Home.page.tsx).
-- Remove `console.log` lines that were used for checks in [`Home Page`](./src/pages/Home.page.tsx).
-- Remove `console.log` lines that were used for checks in [`Login Page`](./src/pages/Login.page.tsx).
+- The `Routes` component was removed from [`App`](./src/App.tsx) component.
 
 ---
 
@@ -58,6 +50,7 @@
 
 | `Date`       | `Commit #`                                                   |
 | ------------ | ------------------------------------------------------------ |
+| `10/05/2025` | [`49`](./commits_changes/commit_49.md)                       |
 | `09/05/2025` | [`48`](./commits_changes/commit_48.md)                       |
 | `09/05/2025` | [`47`](./commits_changes/commit_47.md)                       |
 | `09/05/2025` | [`46`](./commits_changes/commit_46.md)                       |
