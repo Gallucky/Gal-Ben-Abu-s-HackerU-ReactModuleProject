@@ -1,6 +1,6 @@
 # 📘 Gal Ben Abu's - HackerU - React Module Project - Changelog
 
-## 📅 Updated to Commit #50 | Date: 11/05/2025
+## 📅 Updated to Commit #50-50.1 | Date: 11/05/2025
 
 ## 🛠️ In Progress
 
@@ -29,6 +29,8 @@
 
 ## 🔄 Changes
 
+- Fixed error of [`RouteGuard`](./src/components/App/Routes/RouteGuard.tsx) wrapping the entire `Route` component element instead of it's children element. [<u>`See More`</u>](./src/components/App/Routes/RoutesHandler.tsx)
+
 ### → <u>Added</u>
 
 - Added [`App`](./src/components/App/) directory at [`src/components`](./src/components/).
@@ -38,7 +40,7 @@
 
 ### → <u>Changed</u>
 
-- The routes now have `RouteGuard` protection as needed [See More](./src/components/App/Routes/RoutesHandler.tsx).
+- The routes now have `RouteGuard` protection as needed [<u>`See More`</u>](./src/components/App/Routes/RoutesHandler.tsx).
 
 ### → <u>Removed</u>
 

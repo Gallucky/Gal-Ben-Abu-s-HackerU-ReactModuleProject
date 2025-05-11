@@ -14,15 +14,30 @@ const RoutesHandler = () => {
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <RouteGuard allowAdmin>
-          <Route path="/test" element={<Test />} />
-        </RouteGuard>
-        <RouteGuard guestOnly>
-          <Route path="/login" element={<Login />} />
-        </RouteGuard>
-        <RouteGuard guestOnly>
-          <Route path="/registration" element={<Registration />} />
-        </RouteGuard>
+        <Route
+          path="/test"
+          element={
+            <RouteGuard allowAdmin>
+              <Test />
+            </RouteGuard>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RouteGuard guestOnly>
+              <Login />
+            </RouteGuard>
+          }
+        />
+        <Route
+          path="/registration"
+          element={
+            <RouteGuard guestOnly>
+              <Registration />
+            </RouteGuard>
+          }
+        />
         <Route path="/*" element={<Error />} />
       </Routes>
     </>
