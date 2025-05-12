@@ -14,8 +14,7 @@ const Header = (props: HeaderProps) => {
 
   const paragraphLines = paragraph.split("\n");
 
-  const titleClassName =
-    props.titleClassName ?? "text-black dark:text-white pt-20";
+  const titleClassName = props.titleClassName ?? "text-black dark:text-white";
   const paragraphClassName =
     props.paragraphClassName ?? "text-black dark:text-white";
 

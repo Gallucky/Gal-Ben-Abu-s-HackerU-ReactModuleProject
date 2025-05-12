@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 import Header from "../components/other/Header";
 import Divider from "../components/other/Divider";
 import CardsContainer from "../components/card/CardsContainer";
-import { Button } from "flowbite-react";
-import { useNavigate } from "react-router-dom";
 import { TCardData } from "../types/card.t";
 import { useDispatch } from "react-redux";
 import { jwtDecode } from "jwt-decode";
@@ -108,24 +106,19 @@ const Home = () => {
   // Getting the converted cards array ready for components creation.
   const memeCardsWithRelevantData = getRelevantCardData(memeCards);
 
-  const navigate = useNavigate();
-  const onTestWorkSpaceButtonClick = () => {
-    navigate("/test");
-  };
-
   return (
     <>
-      <Header
-        title="Cards Page"
-        paragraph="Here you can find business cards from all categories."
-      />
-      <Button onClick={onTestWorkSpaceButtonClick}>To Test Workspace</Button>
-      <Divider />
-
-      <CardsContainer cards={memeCardsWithRelevantData} />
-      <br />
-      <br />
-      <br />
+      <div className="h-screen w-screen py-20">
+        <Header
+          title="Cards Page"
+          paragraph="Here you can find business cards from all categories."
+        />
+        <Divider />
+        <CardsContainer cards={memeCardsWithRelevantData} />
+        <br />
+        <br />
+        <br />
+      </div>
     </>
   );
 };

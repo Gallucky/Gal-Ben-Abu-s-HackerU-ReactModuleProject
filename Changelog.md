@@ -1,12 +1,17 @@
 # 📘 Gal Ben Abu's - HackerU - React Module Project - Changelog
 
-## 📅 Updated to Commit #50-50.1 | Date: 11/05/2025
+## 📅 Updated to Commit #51 | Date: 12/05/2025
 
 ## 🛠️ In Progress
 
 - Working on the actual login and registration logic.
 
 ## 🎯 Todo
+
+- [ ] Fix the navbar links not working on [`render.com`](https://dashboard.render.com/).
+- [ ] To complete the work on the `screenSlice`.
+- [ ] Create custom hooks for auth, screen view port etc...
+- [ ] Fix the responsive mobile styling issues.
 
 - [ ] Add the signout link in the navbar.
 - [ ] Registration page
@@ -29,18 +34,16 @@
 
 ## 🔄 Changes
 
-- Fixed error of [`RouteGuard`](./src/components/App/Routes/RouteGuard.tsx) wrapping the entire `Route` component element instead of it's children element. [<u>`See More`</u>](./src/components/App/Routes/RoutesHandler.tsx)
+- Created a [`render.com`](https://dashboard.render.com/) static project.
+- No longer using the `Web Service` project that I used previously.
 
 ### → <u>Added</u>
 
-- Added [`App`](./src/components/App/) directory at [`src/components`](./src/components/).
-- Added [`Routes`](./src/components/App/Routes/) directory at [`src/components/App`](./src/components/App/).
-- Added [`RouteGuard`](./src/components/App/Routes/RouteGuard.tsx) component.
-- Added [`RoutesHandler`](./src/components/App/Routes/RoutesHandler.tsx) component.
+- Added layout prop for the `Pagination` at [`CardsContainer`](./src/components/card/CardsContainer.tsx).
 
 ### → <u>Changed</u>
 
-- The routes now have `RouteGuard` protection as needed [<u>`See More`</u>](./src/components/App/Routes/RoutesHandler.tsx).
+- Changed the styling a bit at [`CardsContainer`](./src/components/card/CardsContainer.tsx)
 
 ### → <u>Removed</u>
 
@@ -52,6 +55,7 @@
 
 | `Date`       | `Commit #`                                                   |
 | ------------ | ------------------------------------------------------------ |
+| `11/05/2025` | [`50-50.1`](./commits_changes/commit_50-50.1.md)             |
 | `10/05/2025` | [`49`](./commits_changes/commit_49.md)                       |
 | `09/05/2025` | [`48`](./commits_changes/commit_48.md)                       |
 | `09/05/2025` | [`47`](./commits_changes/commit_47.md)                       |

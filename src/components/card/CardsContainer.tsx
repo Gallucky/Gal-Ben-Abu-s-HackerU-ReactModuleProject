@@ -66,7 +66,7 @@ const CardsContainer = (props: CardsContainerProps) => {
                   bg-gray-300 p-5 dark:border-slate-700 dark:bg-gray-900"
       >
         {/* Cards Wrapper */}
-        <div className="my-5 grid w-full grid-cols-1 place-items-center justify-items-center gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="my-5 grid w-full !grid-cols-1 place-items-center justify-items-center gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {/* 
               The ?. is if the value before it is undefined or null then
               it returns it undefined and in this case nothing happens.
@@ -92,6 +92,7 @@ const CardsContainer = (props: CardsContainerProps) => {
             currentPage={currentPage}
             totalPages={Math.ceil(cards.length / cardsAmountToShowEachTime)}
             onPageChange={onPageChange}
+            layout={viewMode === ViewMode.Mobile ? "table" : "navigation"}
             showIcons
           />
         </div>
