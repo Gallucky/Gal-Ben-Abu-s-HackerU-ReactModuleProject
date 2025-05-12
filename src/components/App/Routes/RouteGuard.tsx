@@ -56,7 +56,7 @@ const RouteGuard = (props: RouteGuardProps) => {
 
   // Prevent access to login or signup pages for users who are already authenticated,
   // as these actions are unnecessary and could lead to inconsistent behavior.
-  if (guestOnly) return <Navigate to="/home" replace />;
+  if (user && guestOnly) return <Navigate to="/home" replace />;
 
   // If permission access was provided and
   // there is no user connected, redirect to login page.
