@@ -58,6 +58,9 @@ const RouteGuard = (props: RouteGuardProps) => {
   // as these actions are unnecessary and could lead to inconsistent behavior.
   if (user && guestOnly) return <Navigate to="/home" replace />;
 
+  // If no user is connected and the requirement was guestOnly then grant access.
+  if (guestOnly) return <>{children}</>;
+
   // If permission access was provided and
   // there is no user connected, redirect to login page.
   if (!user) return <Navigate to="/login" replace />;

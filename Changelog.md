@@ -1,6 +1,6 @@
 # 📘 Gal Ben Abu's - HackerU - React Module Project - Changelog
 
-## 📅 Updated to Commit #51.1 | Date: 12/05/2025
+## 📅 Updated to Commit #51.2 | Date: 12/05/2025
 
 ## 🛠️ In Progress
 
@@ -36,7 +36,10 @@
 
 - Created a [`render.com`](https://dashboard.render.com/) static project.
 - No longer using the `Web Service` project that I used previously.
-- Fixed the links in the [`Navbar`](/src/components/layout/CustomNavbar.tsx) not working by adding a check if there is a user logged in and the requirements in [`RouteGuard`](./src/components/App/Routes/RouteGuard.tsx) component are for guests only.
+- Fixed the links in the [`Navbar`](/src/components/layout/CustomNavbar.tsx) not working by adding a check if there is a user logged in and the requirements in [`RouteGuard`](./src/components/App/Routes/RouteGuard.tsx) component are for guests only.<br>
+  If that check was false we check if the requirements for guest only is provided because:
+  - If guest only was provided then there is no user.
+  - If guest only was not provided then there is user and skipping both checks.
 
 ### → <u>Added</u>
 
