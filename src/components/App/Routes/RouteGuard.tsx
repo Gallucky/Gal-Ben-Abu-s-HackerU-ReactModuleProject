@@ -51,31 +51,41 @@ const RouteGuard = (props: RouteGuardProps) => {
   const noRestrictions =
     !guestOnly && !allowLoggedUser && !allowBusiness && !allowAdmin;
 
+  console.log(props);
+
+  const isUserLoaded = useSelector(
+    (state: TRootState) => state.userSlice.isUserLoaded,
+  );
+
+  // Or show spinner.
+  if (!isUserLoaded) return null;
+
   // If permission access not provided assumes everyone can access.
   if (noRestrictions) return <>{children}</>;
 
-  // Prevent access to login or signup pages for users who are already authenticated,
-  // as these actions are unnecessary and could lead to inconsistent behavior.
-  if (user && guestOnly) return <Navigate to="/home" replace />;
+  // Checking if there is a user.
+  if (user) {
+    // Prevent access to login or signup pages for users who are already authenticated,
+    // as these actions are unnecessary and could lead to inconsistent behavior.
+    if (guestOnly) return <Navigate to="/home" replace />;
 
-  // If no user is connected and the requirement was guestOnly then grant access.
+    // For admins only.
+    if (allowAdmin && user.isAdmin) return <>{children}</>;
+
+    // For business or admins only.
+    if (allowBusiness && (user.isBusiness || user.isAdmin))
+      return <>{children}</>;
+
+    // For any logged in user.
+    if (allowLoggedUser) return <>{children}</>;
+  }
+
+  // If there is no user logged in and it's guest only access requirement.
   if (guestOnly) return <>{children}</>;
 
-  // If permission access was provided and
-  // there is no user connected, redirect to login page.
-  if (!user) return <Navigate to="/login" replace />;
-
-  // For admins only.
-  if (allowAdmin && user.isAdmin) return <>{children}</>;
-
-  // For business only.
-  if (allowBusiness && user.isBusiness) return <>{children}</>;
-
-  // For any logged in user.
-  if (allowLoggedUser && user) return <>{children}</>;
-
+  // Otherwise:
   // Incase of user privilege doesn't meet the requirements.
-  return <Navigate to="/home" replace />;
+  return <Navigate to="/login" replace />;
 };
 
 export default RouteGuard;

@@ -1,14 +1,15 @@
 # 📘 Gal Ben Abu's - HackerU - React Module Project - Changelog
 
-## 📅 Updated to Commit #51.2 | Date: 12/05/2025
+## 📅 Updated to Commit #52 | Date: 13/05/2025
 
 ## 🛠️ In Progress
 
 - Working on the actual login and registration logic.
+- On the top 4 todos...
 
 ## 🎯 Todo
 
-- [ ] Fix the navbar links not working on [`render.com`](https://dashboard.render.com/).
+- [x] Fix the navbar links not working on [`render.com`](https://dashboard.render.com/).
 - [ ] To complete the work on the `screenSlice`.
 - [ ] Create custom hooks for auth, screen view port etc...
 - [ ] Fix the responsive mobile styling issues.
@@ -30,28 +31,23 @@
 
 ## ✅ Completed
 
-> `Nothing has been completed.`
+- Fixed the navbar links not working on [`render.com`](https://dashboard.render.com/).
 
 ## 🔄 Changes
 
-- Created a [`render.com`](https://dashboard.render.com/) static project.
-- No longer using the `Web Service` project that I used previously.
-- Fixed the links in the [`Navbar`](/src/components/layout/CustomNavbar.tsx) not working by adding a check if there is a user logged in and the requirements in [`RouteGuard`](./src/components/App/Routes/RouteGuard.tsx) component are for guests only.<br>
-  If that check was false we check if the requirements for guest only is provided because:
-  - If guest only was provided then there is no user.
-  - If guest only was not provided then there is user and skipping both checks.
-
 ### → <u>Added</u>
 
-- Added layout prop for the `Pagination` at [`CardsContainer`](./src/components/card/CardsContainer.tsx).
+- Added the isUserLoaded property in the global state at the [`userSlice`](./src/store/userSlice.ts).
+- Added the removal of the token from the `localStorage` when calling theproperty in the global state at the [`userSlice`](./src/store/userSlice.ts).
+- Added the `SignOut` link at the [`CustomNavbar`](./src/components/layout/CustomNavbar.tsx) component.
 
 ### → <u>Changed</u>
 
-- Changed the styling a bit at [`CardsContainer`](./src/components/card/CardsContainer.tsx)
+- Transferred the auto sign-in / remember mer feature from [`Home Page`](./src/pages/Home.page.tsx) to [`App.tsx`](./src/App.tsx) component.
 
 ### → <u>Removed</u>
 
-- The `Routes` component was removed from [`App`](./src/App.tsx) component.
+> `Nothing has been removed.`
 
 ---
 
@@ -59,6 +55,7 @@
 
 | `Date`       | `Commit #`                                                   |
 | ------------ | ------------------------------------------------------------ |
+| `12/05/2025` | [`51-51.2`](./commits_changes/commit_51-51.2.md)             |
 | `11/05/2025` | [`50-50.1`](./commits_changes/commit_50-50.1.md)             |
 | `10/05/2025` | [`49`](./commits_changes/commit_49.md)                       |
 | `09/05/2025` | [`48`](./commits_changes/commit_48.md)                       |

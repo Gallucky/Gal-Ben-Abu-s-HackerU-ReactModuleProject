@@ -5,13 +5,8 @@ import Header from "../components/other/Header";
 import Divider from "../components/other/Divider";
 import CardsContainer from "../components/card/CardsContainer";
 import { TCardData } from "../types/card.t";
-import { useDispatch } from "react-redux";
-import { jwtDecode } from "jwt-decode";
-import { userActions } from "../store/userSlice";
-import { Token } from "../types/token.t";
 
 const Home = () => {
-  const dispatch = useDispatch();
   const [memeCards, setCards] = useState<TCardData[]>();
 
   /**
@@ -28,33 +23,6 @@ const Home = () => {
       console.error(error);
     }
   };
-
-  // Checking if the user is already connected.
-  useEffect(() => {
-    const checkUserIsLoggedIn = async () => {
-      const token = localStorage.getItem("token");
-      // If there is no token exit the method.
-      if (!token) return;
-
-      // Parsing the token.
-      const parsedToken = jwtDecode(token) as Token;
-
-      // Setting the authentication token as an header of the request.
-      axios.defaults.headers.common["x-auth-token"] = token;
-
-      // Getting the user data.
-      const user = await axios.get(
-        `https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/${parsedToken._id}`,
-      );
-
-      if (user) {
-        dispatch(userActions.login(user.data));
-        dispatch(userActions.showWelcomeBackMessage());
-      }
-    };
-
-    checkUserIsLoggedIn();
-  }, [dispatch]);
 
   /**
    * This method is used to convert the cards received from the server / api to an array

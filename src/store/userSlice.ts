@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 const initialState = {
   // The user's data.
   user: null as TUser | null,
+  isUserLoaded: false,
 
   // If the welcome back message has been displayed already.
   shownWelcomeBackMessage: false,
@@ -25,9 +26,13 @@ const userSlice = createSlice({
     // Actions / methods / functions to update the state.
     login: (state, data) => {
       state.user = data.payload;
+      state.isUserLoaded = true;
     },
     logout: (state) => {
       state.user = null;
+      state.isUserLoaded = true;
+      localStorage.removeItem("token");
+      toast.success("Signed out successfully!");
     },
     showWelcomeBackMessage: (state) => {
       if (!state.shownWelcomeBackMessage) {

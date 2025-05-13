@@ -3,10 +3,14 @@ import { Link, useLocation } from "react-router-dom";
 import DarkModeButton from "../other/DarkModeButton";
 import { useEffect, useState } from "react";
 import SearchBox from "../other/SearchBox";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { TRootState } from "../../store/store";
+import { userActions } from "../../store/userSlice";
 
 const CustomNavbar = () => {
+  const dispatch = useDispatch();
+  const user = useSelector((state: TRootState) => state.userSlice.user);
+
   const [pathname, setPathName] = useState<string>("/");
 
   const location = useLocation();
@@ -15,8 +19,6 @@ const CustomNavbar = () => {
   useEffect(() => {
     setPathName(location.pathname);
   }, [location.pathname]);
-
-  const user = useSelector((state: TRootState) => state.userSlice.user);
 
   return (
     <>
@@ -45,11 +47,7 @@ const CustomNavbar = () => {
         <SearchBox className="flex size-fit items-center justify-center border-2" />
         <NavbarToggle />
         <NavbarCollapse>
-          <div
-            className={`
-              navbar-collapse
-          `}
-          >
+          <div className={`navbar-collapse`}>
             <DarkModeButton />
             {!user && (
               <>
@@ -74,6 +72,18 @@ const CustomNavbar = () => {
                   Login
                 </Link>
               </>
+            )}
+
+            {user && (
+              <Link
+                to="/home"
+                className={`custom-navbar-link dark:text-white`}
+                onClick={() => {
+                  dispatch(userActions.logout());
+                }}
+              >
+                Signout
+              </Link>
             )}
           </div>
         </NavbarCollapse>
