@@ -4,14 +4,14 @@
  *
  * There are 3 modes:
  *
- * @param Mobile - Max Value = 639
+ * @param Mobile - Min Value = 320
  *
- * @param Tablet - Max Value = 1023
+ * @param Tablet - Min Value = 768
  *
  * @param PC_and_Above - Min Value = 1024
  */
 export const enum ViewMode {
-  Mobile = 639,
-  Tablet = 1023,
+  Mobile = 320,
+  Tablet = 768,
   PCAndLarger = 1024,
 }

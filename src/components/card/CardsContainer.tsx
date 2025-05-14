@@ -11,8 +11,8 @@ const CardsContainer = (props: CardsContainerProps) => {
   const cards = props.cards ?? [];
 
   const getViewMode = (width: number) => {
-    if (width <= ViewMode.Mobile) return ViewMode.Mobile;
-    if (width <= ViewMode.Tablet) return ViewMode.Tablet;
+    if (width < ViewMode.Tablet) return ViewMode.Mobile;
+    if (width < ViewMode.PCAndLarger) return ViewMode.Tablet;
     return ViewMode.PCAndLarger;
   };
 
@@ -22,7 +22,7 @@ const CardsContainer = (props: CardsContainerProps) => {
     const handleResize = () => setViewMode(getViewMode(window.innerWidth));
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, [viewMode]);
+  }, []);
 
   const cardsAmountToShowEachTime =
     viewMode === ViewMode.Mobile ? 3 : viewMode === ViewMode.Tablet ? 6 : 9;
@@ -47,10 +47,11 @@ const CardsContainer = (props: CardsContainerProps) => {
     setCurrentPage(1);
   }, [cards, viewMode, cardsAmountToShowEachTime]);
 
-  console.log(
-    "splitArray(cards, cardsAmountToShowEachTime):",
-    splitArray(cards, cardsAmountToShowEachTime),
-  );
+  // console.log(
+  //   "splitArray(cards, cardsAmountToShowEachTime):",
+  //   splitArray(cards, cardsAmountToShowEachTime),
+  // );
+  console.log("cardsAmountToShowEachTime:", cardsAmountToShowEachTime);
 
   const onPageChange = (page: number) => {
     console.log("Page number:", page);
@@ -61,16 +62,16 @@ const CardsContainer = (props: CardsContainerProps) => {
     <>
       {/* Cards Container */}
       <div
-        className="m-[5vh] flex w-fit flex-col justify-center self-center
-                  justify-self-center rounded-lg border-8 border-gray-200
-                  bg-gray-300 p-5 dark:border-slate-700 dark:bg-gray-900"
+        className="m-[5vh] flex w-full flex-col justify-center self-center justify-self-center
+                    rounded-lg border-8 border-gray-200 bg-gray-300
+                    p-5 dark:border-slate-700 dark:bg-gray-900 md:w-auto"
       >
         {/* Cards Wrapper */}
-        <div className="my-5 grid w-full !grid-cols-1 place-items-center justify-items-center gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {/* 
-              The ?. is if the value before it is undefined or null then
-              it returns it undefined and in this case nothing happens.
-            */}
+        <div className="grid w-full gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          {/*
+                The ?. is if the value before it is undefined or null then
+                it returns it undefined and in this case nothing happens.
+                */}
           {cardsAfterSplit.length > 0 &&
             cardsAfterSplit[currentPage - 1]?.map((card, index) => (
               <Card
@@ -86,13 +87,12 @@ const CardsContainer = (props: CardsContainerProps) => {
               />
             ))}
         </div>
-
         <div className="flex items-center justify-center">
           <Pagination
             currentPage={currentPage}
             totalPages={Math.ceil(cards.length / cardsAmountToShowEachTime)}
             onPageChange={onPageChange}
-            layout={viewMode === ViewMode.Mobile ? "table" : "navigation"}
+            layout={viewMode === ViewMode.Mobile ? "table" : "pagination"}
             showIcons
           />
         </div>

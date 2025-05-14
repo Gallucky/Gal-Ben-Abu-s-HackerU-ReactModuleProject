@@ -1,6 +1,6 @@
 # 📘 Gal Ben Abu's - HackerU - React Module Project - Changelog
 
-## 📅 Updated to Commit #52 | Date: 13/05/2025
+## 📅 Updated to Commit #53 | Date: 14/05/2025
 
 ## 🛠️ In Progress
 
@@ -31,19 +31,17 @@
 
 ## ✅ Completed
 
-- Fixed the navbar links not working on [`render.com`](https://dashboard.render.com/).
+> `Nothing has been completed.`
 
 ## 🔄 Changes
 
 ### → <u>Added</u>
 
-- Added the isUserLoaded property in the global state at the [`userSlice`](./src/store/userSlice.ts).
-- Added the removal of the token from the `localStorage` when calling the property in the global state at the [`userSlice`](./src/store/userSlice.ts).
-- Added the `SignOut` link at the [`CustomNavbar`](./src/components/layout/CustomNavbar.tsx) component.
+> `Nothing has been added.`
 
 ### → <u>Changed</u>
 
-- Transferred the auto sign-in / remember mer feature from [`Home Page`](./src/pages/Home.page.tsx) to [`App.tsx`](./src/App.tsx) component.
+> `Nothing has been changed.`
 
 ### → <u>Removed</u>
 
@@ -55,6 +53,7 @@
 
 | `Date`       | `Commit #`                                                   |
 | ------------ | ------------------------------------------------------------ |
+| `13/05/2025` | [`52`](./commits_changes/commit_52.md)                       |
 | `12/05/2025` | [`51-51.2`](./commits_changes/commit_51-51.2.md)             |
 | `11/05/2025` | [`50-50.1`](./commits_changes/commit_50-50.1.md)             |
 | `10/05/2025` | [`49`](./commits_changes/commit_49.md)                       |
