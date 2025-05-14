@@ -38,7 +38,7 @@
 ### → <u>Added</u>
 
 - Added the isUserLoaded property in the global state at the [`userSlice`](./src/store/userSlice.ts).
-- Added the removal of the token from the `localStorage` when calling theproperty in the global state at the [`userSlice`](./src/store/userSlice.ts).
+- Added the removal of the token from the `localStorage` when calling the property in the global state at the [`userSlice`](./src/store/userSlice.ts).
 - Added the `SignOut` link at the [`CustomNavbar`](./src/components/layout/CustomNavbar.tsx) component.
 
 ### → <u>Changed</u>
