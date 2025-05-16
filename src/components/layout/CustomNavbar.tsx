@@ -44,11 +44,15 @@ const CustomNavbar = () => {
             About
           </Link>
         </div>
-        <SearchBox className="flex size-fit items-center justify-center border-2" />
+        <SearchBox className="hidden size-fit items-center justify-center border-2 md:flex" />
         <NavbarToggle />
         <NavbarCollapse>
           <div className={`navbar-collapse`}>
             <DarkModeButton />
+            <SearchBox
+              className="flex size-fit items-center justify-center border-2 md:hidden"
+              inputClassName="h-8"
+            />
             {!user && (
               <>
                 <Link

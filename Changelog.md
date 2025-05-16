@@ -1,6 +1,6 @@
 # 📘 Gal Ben Abu's - HackerU - React Module Project - Changelog
 
-## 📅 Updated to Commit #53 | Date: 14/05/2025
+## 📅 Updated to Commit #54 | Date: 16/05/2025
 
 ## 🛠️ In Progress
 
@@ -35,6 +35,10 @@
 
 ## 🔄 Changes
 
+- Fixed the styling issues with the specific screen sizes at the [`CardsContainer`](./src/components/card/CardsContainer.tsx) component.
+- Fixed the styling issues regarding the [`SearchBox`](./src/components/other/SearchBox.tsx) and the [`CustomNavbar`](./src/components/layout/CustomNavbar.tsx) components.
+- Fixed [`Registration Page`](./src/pages/Registration.page.tsx) [`FormInput`](./src/components/form/FormInput.tsx)s label's background color.
+
 ### → <u>Added</u>
 
 > `Nothing has been added.`
@@ -53,6 +57,7 @@
 
 | `Date`       | `Commit #`                                                   |
 | ------------ | ------------------------------------------------------------ |
+| `14/05/2025` | [`53`](./commits_changes/commit_53.md)                       |
 | `13/05/2025` | [`52`](./commits_changes/commit_52.md)                       |
 | `12/05/2025` | [`51-51.2`](./commits_changes/commit_51-51.2.md)             |
 | `11/05/2025` | [`50-50.1`](./commits_changes/commit_50-50.1.md)             |

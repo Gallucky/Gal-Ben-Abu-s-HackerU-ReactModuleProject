@@ -62,12 +62,12 @@ const CardsContainer = (props: CardsContainerProps) => {
     <>
       {/* Cards Container */}
       <div
-        className="m-[5vh] flex w-full flex-col justify-center self-center justify-self-center
+        className="m-[5vh] flex w-[95%] flex-col items-center justify-center self-center justify-self-center
                     rounded-lg border-8 border-gray-200 bg-gray-300
                     p-5 dark:border-slate-700 dark:bg-gray-900 md:w-auto"
       >
         {/* Cards Wrapper */}
-        <div className="grid w-full gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mb-2 grid w-fit gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {/*
                 The ?. is if the value before it is undefined or null then
                 it returns it undefined and in this case nothing happens.

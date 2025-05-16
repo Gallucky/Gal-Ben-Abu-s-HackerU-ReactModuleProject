@@ -18,16 +18,16 @@
   @apply absolute left-2;
 }
 
-@media (max-width: 639px) {
+@media (max-width: 767px) {
   .search-box {
-    @apply static;
+    @apply !w-fit;
   }
 
   .search-box > input {
-    display: none;
+    @apply max-w-[285px] text-sm;
   }
 
   .search-box > .search-icon {
-    @apply absolute left-[87.5%] size-6 text-slate-700;
+    @apply left-2 size-4 text-slate-700;
   }
 }

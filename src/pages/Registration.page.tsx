@@ -117,7 +117,7 @@ const Registration = () => {
     }
   };
 
-  const backgroundColors = "bg-teal-400 dark:bg-teal-600";
+  const backgroundColors = "!bg-teal-400 dark:bg-teal-600";
 
   return (
     <>
