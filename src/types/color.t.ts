@@ -23,12 +23,20 @@ type TailwindColor =
 
 type TailwindConstantColor = "black" | "white";
 
-export type Color =
-  | `${TailwindColor}-${Shade}`
-  | `#${string}`
+export type TailwindShadeColor = `${TailwindColor}-${Shade}`;
+export type HexColor = `#${string}`;
+export type RGBColor =
   | `rgb(${number}, ${number}, ${number})`
-  | `rgb(${number} ${number} ${number} / ${number})`
-  | `rgba(${number}, ${number}, ${number}, ${number})`
-  | `hsl(${number}, ${number}%, ${number}%)`
-  | `hsla(${number}, ${number}%, ${number}%, ${number})`
+  | `rgb(${number} ${number} ${number} / ${number})`;
+export type RGBAColor = `rgba(${number}, ${number}, ${number}, ${number})`;
+export type HSLColor = `hsl(${number}, ${number}%, ${number}%)`;
+export type HSLAColor = `hsla(${number}, ${number}%, ${number}%, ${number})`;
+
+export type Color =
+  | TailwindShadeColor
+  | HexColor
+  | RGBColor
+  | RGBAColor
+  | HSLColor
+  | HSLAColor
   | TailwindConstantColor;

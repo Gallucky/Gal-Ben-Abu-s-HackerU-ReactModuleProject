@@ -3,25 +3,11 @@ import { joiResolver } from "@hookform/resolvers/joi";
 import FormButton from "../components/form/FormButton";
 import FormInput from "../components/form/FormInput";
 import { loginSchema } from "../validations/login.joi";
-import axios, { AxiosError } from "axios";
-import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 import PageWrapper from "../components/layout/PageWrapper";
 import Flex from "../components/utils/Flex";
-import { jwtDecode } from "jwt-decode";
-import { userActions } from "../store/userSlice";
-import { useDispatch } from "react-redux";
-import { Token } from "../types/token.t";
-
-type LoginFormData = {
-  email: string;
-  password: string;
-};
+import useAuth, { LoginFormData } from "../hooks/useAuth";
 
 const Login = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
   const {
     register,
     handleSubmit,
@@ -35,43 +21,7 @@ const Login = () => {
     resolver: joiResolver(loginSchema),
   });
 
-  const submitForm = async (data: LoginFormData) => {
-    try {
-      const token = await axios.post(
-        "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/login",
-        data,
-      );
-
-      console.log("Login Successful");
-
-      // Saving the token in local storage.
-      localStorage.setItem("token", token.data);
-
-      // Parsing the token.
-      const parsedToken = jwtDecode(token.data) as Token;
-
-      // Setting the authentication token as an header of the request.
-      axios.defaults.headers.common["x-auth-token"] = token.data;
-
-      // Getting the user data.
-      const user = await axios.get(
-        `https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/${parsedToken._id}`,
-      );
-
-      dispatch(userActions.login(user.data));
-
-      toast.success("Login Successful");
-      navigate("../home");
-    } catch (error) {
-      const axiosError: AxiosError = error as AxiosError;
-      console.error("Error submitting form", axiosError);
-
-      const errorMessage = axiosError.message.includes("status code 400")
-        ? "Invalid email or password"
-        : axiosError.message ?? "Error Occurred";
-      toast.error(errorMessage);
-    }
-  };
+  const { loginRequest } = useAuth();
 
   const backgroundColors = "!bg-teal-300 dark:!bg-teal-600";
 
@@ -81,7 +31,7 @@ const Login = () => {
       <PageWrapper>
         {/* Content - Form */}
         <form
-          onSubmit={handleSubmit(submitForm)}
+          onSubmit={handleSubmit((data) => loginRequest(data))}
           className={`content-form ${backgroundColors} relative`}
         >
           <h2 className="font-Raleway form-fluid-text form-page-title">

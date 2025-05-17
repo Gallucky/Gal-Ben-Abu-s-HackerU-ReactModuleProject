@@ -41,6 +41,9 @@ const userSlice = createSlice({
         state.shownWelcomeBackMessage = true;
       }
     },
+    unload: (state) => {
+      state.isUserLoaded = false;
+    },
   },
 });
 

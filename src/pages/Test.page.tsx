@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import CardsContainer from "../components/card/CardsContainer";
 import PageWrapper from "../components/layout/PageWrapper";
 import { TCardData } from "../types/card.t";
 import { CardProps } from "../components/card/Card";
+import CustomSpinner from "../components/utils/CustomSpinner";
+import Flex from "../components/utils/Flex";
 
 const Test = () => {
   const [memeCards, setCards] = useState<TCardData[]>();
@@ -75,7 +76,9 @@ const Test = () => {
 
   return (
     <PageWrapper>
-      <CardsContainer cards={memeCardsWithRelevantData} />
+      <Flex className="flex">
+        <CustomSpinner size="xl" ariaLabel="Loading..." text="Loading..." />
+      </Flex>
     </PageWrapper>
   );
 };

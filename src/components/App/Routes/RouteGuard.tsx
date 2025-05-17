@@ -1,6 +1,7 @@
-import { useSelector } from "react-redux";
-import { TRootState } from "../../../store/store";
 import { Navigate } from "react-router-dom";
+import CustomSpinner from "../../utils/CustomSpinner";
+import useTimer from "../../../hooks/useTimer";
+import useAuth from "../../../hooks/useAuth";
 
 /**
  * Props for RouteGuard component.
@@ -47,18 +48,22 @@ const RouteGuard = (props: RouteGuardProps) => {
   const { children, guestOnly, allowLoggedUser, allowBusiness, allowAdmin } =
     props;
 
-  const user = useSelector((state: TRootState) => state.userSlice.user);
   const noRestrictions =
     !guestOnly && !allowLoggedUser && !allowBusiness && !allowAdmin;
 
+  const user = useAuth().user;
+
   console.log(props);
 
-  const isUserLoaded = useSelector(
-    (state: TRootState) => state.userSlice.isUserLoaded,
-  );
+  // console.log("RouteGuard - isUserLoaded:", isUserLoaded);
+  console.log("RouteGuard - user:", user);
+  console.log("RouteGuard - props:", props);
 
-  // Or show spinner.
-  if (!isUserLoaded) return null;
+  // Wait for the user data to be loaded.
+  const { timerCompleted } = useTimer(500);
+
+  if (!timerCompleted)
+    return <CustomSpinner ariaLabel="Loading..." text="Loading..." />;
 
   // If permission access not provided assumes everyone can access.
   if (noRestrictions) return <>{children}</>;
@@ -67,7 +72,13 @@ const RouteGuard = (props: RouteGuardProps) => {
   if (user) {
     // Prevent access to login or signup pages for users who are already authenticated,
     // as these actions are unnecessary and could lead to inconsistent behavior.
-    if (guestOnly) return <Navigate to="/home" replace />;
+    if (guestOnly)
+      return (
+        <div className="p-4 text-center text-gray-600">
+          You are already logged in. Redirecting...
+          <Navigate to="/home" replace />
+        </div>
+      );
 
     // For admins only.
     if (allowAdmin && user.isAdmin) return <>{children}</>;

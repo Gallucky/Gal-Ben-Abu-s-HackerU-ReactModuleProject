@@ -52,15 +52,6 @@ export const registerSchema = Joi.object({
         "Password must be at least 9 characters long and contain an uppercase letter, a lowercase letter, a number and one of the following characters !@#$%^&*-",
     }),
 
-  confirmPassword: Joi.any()
-    .required()
-    .messages({
-      "string.empty": "Confirm password cannot be empty",
-      "any.only": "Confirm password must match the password",
-      "string.base": "Confirm password must be a string",
-    })
-    .valid(Joi.ref("password")), // Confirm password must match the password
-
   image: Joi.object()
     .keys({
       url: Joi.string()

@@ -1,4 +1,3 @@
-import axios, { AxiosError } from "axios";
 import FormButton from "../components/form/FormButton";
 import FormInput from "../components/form/FormInput";
 import PageWrapper from "../components/layout/PageWrapper";
@@ -9,45 +8,37 @@ import FormAreaTitle from "../components/utils/FormAreaTitle";
 import Grid from "../components/utils/Grid";
 import { joiResolver } from "@hookform/resolvers/joi";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import { registerSchema } from "../validations/register.joi";
 import { restrictNonPhoneRelatedKeys } from "../events/input/phone";
 import { useEffect, useState } from "react";
 import { CiImageOn } from "react-icons/ci";
+import useAuth, { RegisterFormData } from "../hooks/useAuth";
 
-type RegisterFormData = {
+const defaultValues = {
   name: {
-    first: string;
-    middle: string;
-    last: string;
-  };
-  phone: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
+    first: "",
+    middle: "",
+    last: "",
+  },
+  phone: "",
+  email: "",
+  password: "",
   image: {
-    url: string;
-    alt: string;
-  };
+    url: "",
+    alt: "",
+  },
   address: {
-    state: string;
-    country: string;
-    city: string;
-    street: string;
-    houseNumber: string;
-    zip: string;
-  };
-  isBusiness: boolean;
+    state: "",
+    country: "",
+    city: "",
+    street: "",
+    houseNumber: "",
+    zip: "",
+  },
+  isBusiness: false,
 };
 
 const Registration = () => {
-  const navigate = useNavigate();
-
-  const [confirmPasswordError, setConfirmPasswordError] = useState(
-    "Confirm password is required",
-  );
-
   const [imageUrl, setImageUrl] = useState("");
 
   const {
@@ -55,75 +46,55 @@ const Registration = () => {
     handleSubmit,
     formState: { errors, isValid },
     trigger,
-    setError,
+    watch,
+    // setError,
   } = useForm<RegisterFormData>({
-    defaultValues: {
-      name: {
-        first: "",
-        middle: "",
-        last: "",
-      },
-      phone: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-      image: {
-        url: "",
-        alt: "",
-      },
-      address: {
-        state: "",
-        country: "",
-        city: "",
-        street: "",
-        houseNumber: "",
-        zip: "",
-      },
-      isBusiness: false,
-    },
+    defaultValues,
     mode: "onChange",
     resolver: joiResolver(registerSchema),
   });
 
   useEffect(() => {
     trigger(); // ⬅️ Trigger validation on load
-    trigger("confirmPassword");
   }, [trigger]);
 
-  useEffect(() => {
-    setError("confirmPassword", {
-      type: "custom",
-      message: "Confirm password is required",
-    });
-  }, [setError]);
+  const { registerRequest } = useAuth();
 
-  const submitForm = async (data: RegisterFormData) => {
-    try {
-      const res = await axios.post(
-        "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users",
-        data,
-      );
-      console.log("Success", res);
-      toast.success("Registration Successful");
-      navigate("../home");
-    } catch (error) {
-      const axiosError: AxiosError = error as AxiosError;
-      console.error("Error submitting form", axiosError);
+  const backgroundColors = "!bg-teal-400 dark:bg-teal-600";
 
-      const errorMessage = axiosError.message.includes("status code 400")
-        ? "Invalid fields"
-        : axiosError.message ?? "Error Occurred";
-      toast.error(errorMessage);
+  const [confirmPasswordError, setConfirmPasswordError] = useState(
+    "Confirm password is required",
+  );
+
+  const confirmPasswordValidator = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const confirmPassword = e.target.value;
+    const password = watch("password");
+
+    if (confirmPassword !== password) {
+      setConfirmPasswordError("Passwords do not match");
+    } else {
+      setConfirmPasswordError("");
     }
   };
 
-  const backgroundColors = "!bg-teal-400 dark:bg-teal-600";
+  const passwordValidator = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const password = e.target.value;
+    const confirmPassword = document.getElementById(
+      "registration-form-confirm-password",
+    ) as HTMLInputElement | null;
+
+    if (confirmPassword && confirmPassword.value !== password) {
+      setConfirmPasswordError("Passwords do not match");
+    } else {
+      setConfirmPasswordError("");
+    }
+  };
 
   return (
     <>
       <PageWrapper>
         <form
-          onSubmit={handleSubmit(submitForm)}
+          onSubmit={handleSubmit(registerRequest)}
           className={`content-form my-[10vh] !w-3/4 ${backgroundColors}`}
         >
           <h2 className="font-Raleway form-fluid-text form-page-title">
@@ -200,9 +171,9 @@ const Registration = () => {
                   className="w-[90%] md:w-1/3"
                   labelClassName={`${backgroundColors}`}
                   errorMessage={errors.password?.message}
+                  onInput={passwordValidator}
                 />
                 <FormInput
-                  {...register("confirmPassword")}
                   id="registration-form-confirm-password"
                   label="Confirm Password"
                   type="password"
@@ -210,15 +181,11 @@ const Registration = () => {
                   labelClassName={`max-lg:!text-xs max-lg:peer-[&:not(:placeholder-shown)]:!top-0
                     max-lg:peer-placeholder-shown:!top-[42%] max-lg:peer-focus:!top-0 ${backgroundColors}`}
                   errorMessage={
-                    confirmPasswordError || errors.confirmPassword?.message
+                    confirmPasswordError && confirmPasswordError !== ""
+                      ? confirmPasswordError
+                      : undefined
                   }
-                  onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
-                    setConfirmPasswordError("");
-
-                    if (e.target.value === "") {
-                      setConfirmPasswordError("Confirm password is required");
-                    }
-                  }}
+                  onInput={confirmPasswordValidator}
                 />
               </Flex>
             </Flex>
@@ -371,7 +338,7 @@ const Registration = () => {
               text="Register"
               type="submit"
               className="!w-1/2"
-              disabled={!isValid}
+              disabled={!isValid || !confirmPasswordError}
             />
           </Flex>
         </form>

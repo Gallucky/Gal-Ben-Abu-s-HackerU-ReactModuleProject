@@ -1,11 +1,10 @@
 # 📘 Gal Ben Abu's - HackerU - React Module Project - Changelog
 
-## 📅 Updated to Commit #54 | Date: 16/05/2025
+## 📅 Updated to Commit #55 | Date: 17/05/2025
 
 ## 🛠️ In Progress
 
-- Working on the actual login and registration logic.
-- On the top 4 todos...
+- Working on the registration `confirmPassword` validation and error messages and colors.
 
 ## 🎯 Todo
 
@@ -14,38 +13,45 @@
 - [ ] Create custom hooks for auth, screen view port etc...
 - [ ] Fix the responsive mobile styling issues.
 
-- [ ] Add the signout link in the navbar.
-- [ ] Registration page
+- [x] Add the signout link in the navbar.
+- [x] Registration page
   - [x] Layout creation.
   - [x] Styling the layout.
   - [x] Fix styling bugs.
-  - [ ] Testing and checking logic.
-  - [ ] Adding toast of success and error.
+  - [x] Testing and checking logic.
+  - [x] Adding toast of success and error.
   - [x] Validation.
-- Global State
-  - Creating a global state for the user data.
-  - Saving the user data while logged in.
-  - Conditional rendering the appropriate links while logged in or not.
-- Fixing any style issues or bugs.
-- Profile Page - Create a page with some of the user's data.
+- [x] Global State
+  - [x] Creating a global state for the user data.
+  - [x] Saving the user data while logged in.
+  - [x] Conditional rendering the appropriate links while logged in or not.
+- [x] Fixing any style issues or bugs.
+- [ ] Profile Page - Create a page with some of the user's data.
 
 ## ✅ Completed
 
-> `Nothing has been completed.`
+- [`Login Page`](./src/pages/Login.page.tsx) and all of it's logic completed.
+- [`Registration Page`](./src/pages/Registration.page.tsx) and most of it's logic including auto login.
 
 ## 🔄 Changes
 
-- Fixed the styling issues with the specific screen sizes at the [`CardsContainer`](./src/components/card/CardsContainer.tsx) component.
-- Fixed the styling issues regarding the [`SearchBox`](./src/components/other/SearchBox.tsx) and the [`CustomNavbar`](./src/components/layout/CustomNavbar.tsx) components.
-- Fixed [`Registration Page`](./src/pages/Registration.page.tsx) [`FormInput`](./src/components/form/FormInput.tsx)s label's background color.
-
 ### → <u>Added</u>
 
-> `Nothing has been added.`
+- [`SearchBox`](./src/components/other/SearchBox.tsx)'s icon color for dark mode was added at [`SearchBox.css`](./src/styles/SearchBox.css).
+- [`src/hooks`](./src/hooks/) directory to contain custom hooks.
+- [`useTimer`](./src/hooks/useTimer.ts) creating a timer for components to have a `spinner` while waiting.
+- [`CustomSpinner`](./src/components/utils/CustomSpinner.tsx) component. <br><br>
+- `TailwindShadeColor` — added to [`color.t`](./src/types/color.t.ts)
+- `HexColor` — added to [`color.t`](./src/types/color.t.ts)
+- `RGBColor` — added to [`color.t`](./src/types/color.t.ts)
+- `RGBAColor` — added to [`color.t`](./src/types/color.t.ts)
+- `HSLColor` — added to [`color.t`](./src/types/color.t.ts)
+- `HSLAColor` — added to [`color.t`](./src/types/color.t.ts)
 
 ### → <u>Changed</u>
 
-> `Nothing has been changed.`
+- `LoginFormData` and `RegisterFormData` were transferred from [`Login Page`](./src/pages/Login.page.tsx) and [`Registration Page`](./src/pages/Registration.page.tsx) respectfully to [`useAuth`](./src/hooks/useAuth.ts)
+- `Color` - changed to contain all of the different color types that were added at [`color.t`](./src/types/color.t.ts).
 
 ### → <u>Removed</u>
 
@@ -57,6 +63,7 @@
 
 | `Date`       | `Commit #`                                                   |
 | ------------ | ------------------------------------------------------------ |
+| `16/05/2025` | [`54`](./commits_changes/commit_54.md)                       |
 | `14/05/2025` | [`53`](./commits_changes/commit_53.md)                       |
 | `13/05/2025` | [`52`](./commits_changes/commit_52.md)                       |
 | `12/05/2025` | [`51-51.2`](./commits_changes/commit_51-51.2.md)             |
