@@ -70,8 +70,16 @@ const Registration = () => {
     const confirmPassword = e.target.value;
     const password = watch("password");
 
-    if (confirmPassword !== password) {
+    const regex = /(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*-]).{9,20}/;
+
+    if (confirmPassword === "") {
+      setConfirmPasswordError("Confirm password is required");
+    } else if (confirmPassword !== password) {
       setConfirmPasswordError("Passwords do not match");
+    } else if (!regex.test(confirmPassword)) {
+      setConfirmPasswordError(
+        "Password must be at least 9 characters long and contain an uppercase letter, a lowercase letter, a number and one of the following characters !@#$%^&*-",
+      );
     } else {
       setConfirmPasswordError("");
     }
@@ -80,11 +88,15 @@ const Registration = () => {
   const passwordValidator = (e: React.ChangeEvent<HTMLInputElement>) => {
     const password = e.target.value;
     const confirmPassword = document.getElementById(
-      "registration-form-confirm-password",
-    ) as HTMLInputElement | null;
+      "form-input-registration-form-confirm-password",
+    ) as HTMLInputElement;
+
+    console.log("confirmPassword", confirmPassword);
 
     if (confirmPassword && confirmPassword.value !== password) {
       setConfirmPasswordError("Passwords do not match");
+    } else if (confirmPassword.value === "") {
+      setConfirmPasswordError("Confirm password is required");
     } else {
       setConfirmPasswordError("");
     }
@@ -327,6 +339,7 @@ const Registration = () => {
               </Grid>
             </Flex>
             <CheckBox
+              {...register("isBusiness")}
               id="registration-form-is-business"
               text="Is Business?"
               direction="row"
@@ -338,7 +351,7 @@ const Registration = () => {
               text="Register"
               type="submit"
               className="!w-1/2"
-              disabled={!isValid || !confirmPasswordError}
+              disabled={!isValid || confirmPasswordError !== ""}
             />
           </Flex>
         </form>

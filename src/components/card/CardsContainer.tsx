@@ -2,13 +2,14 @@ import { Pagination } from "flowbite-react";
 import Card, { CardProps } from "./Card";
 import { useEffect, useState } from "react";
 import { ViewMode } from "../../enums/ViewModes.Enum";
+import CustomSpinner from "../utils/CustomSpinner";
 
 type CardsContainerProps = {
-  cards?: CardProps[];
+  cards: CardProps[];
 };
 
 const CardsContainer = (props: CardsContainerProps) => {
-  const cards = props.cards ?? [];
+  const cards = props.cards;
 
   const getViewMode = (width: number) => {
     if (width < ViewMode.Tablet) return ViewMode.Mobile;
@@ -47,14 +48,10 @@ const CardsContainer = (props: CardsContainerProps) => {
     setCurrentPage(1);
   }, [cards, viewMode, cardsAmountToShowEachTime]);
 
-  // console.log(
-  //   "splitArray(cards, cardsAmountToShowEachTime):",
-  //   splitArray(cards, cardsAmountToShowEachTime),
-  // );
-  console.log("cardsAmountToShowEachTime:", cardsAmountToShowEachTime);
+  if (cards.length === 0)
+    return <CustomSpinner size="sm" text="Loading cards..." />;
 
   const onPageChange = (page: number) => {
-    console.log("Page number:", page);
     setCurrentPage(page);
   };
 

@@ -11,7 +11,13 @@ type CustomSpinnerProps = {
 };
 
 const CustomSpinner = (props: CustomSpinnerProps) => {
-  const { color, size, className, ariaLabel, text } = props;
+  const {
+    color,
+    size,
+    className,
+    ariaLabel = "Loading label...",
+    text,
+  } = props;
 
   // Tailwind size mapping
   const sizeMap: Record<string, string> = {

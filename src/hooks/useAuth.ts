@@ -107,9 +107,15 @@ const useAuth = () => {
       const axiosError: AxiosError = error as AxiosError;
       console.error("Error submitting form", axiosError);
 
-      const errorMessage = axiosError.message.includes("status code 400")
-        ? "Invalid registration data"
-        : axiosError.message ?? "Error Occurred";
+      const axiosErrorResponse = axiosError.response;
+
+      const errorMessage =
+        axiosErrorResponse && axiosErrorResponse.data
+          ? (axiosErrorResponse.data as string)
+          : axiosError.message.includes("status code 400")
+            ? "Invalid registration data"
+            : axiosError.message ?? "Error Occurred";
+
       toast.error(errorMessage);
     }
   };
