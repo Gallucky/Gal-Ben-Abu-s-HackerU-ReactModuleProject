@@ -40,9 +40,7 @@ const useAuth = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state: TRootState) => state.userSlice.user);
-  // const isUserLoaded = useSelector(
-  //   (state: TRootState) => state.userSlice.isUserLoaded,
-  // );
+  const userToken = localStorage.getItem("token");
 
   const loginRequest = async (
     data: LoginFormData,
@@ -122,6 +120,7 @@ const useAuth = () => {
 
   return {
     user,
+    userToken,
     loginRequest,
     registerRequest,
   };

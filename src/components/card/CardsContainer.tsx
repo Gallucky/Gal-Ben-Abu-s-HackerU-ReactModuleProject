@@ -3,12 +3,14 @@ import Card, { CardProps } from "./Card";
 import { useEffect, useState } from "react";
 import { ViewMode } from "../../enums/ViewModes.Enum";
 import CustomSpinner from "../utils/CustomSpinner";
+import useAuth from "../../hooks/useAuth";
 
 type CardsContainerProps = {
   cards: CardProps[];
 };
 
 const CardsContainer = (props: CardsContainerProps) => {
+  const { user } = useAuth();
   const cards = props.cards;
 
   const getViewMode = (width: number) => {
@@ -72,6 +74,7 @@ const CardsContainer = (props: CardsContainerProps) => {
           {cardsAfterSplit.length > 0 &&
             cardsAfterSplit[currentPage - 1]?.map((card, index) => (
               <Card
+                _id={card._id}
                 key={index}
                 address={card.address}
                 cardNumber={card.cardNumber}
@@ -81,6 +84,7 @@ const CardsContainer = (props: CardsContainerProps) => {
                 subTitle={card.subTitle}
                 imgSrc={card.imgSrc}
                 imgAlt={card.imgAlt}
+                userConnected={user ? true : false}
               />
             ))}
         </div>

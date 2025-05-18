@@ -27,6 +27,9 @@ import "./styles/pages/Error.page.css";
 // Utilities Styles
 import "./styles/utils/CheckBox.css";
 
+// Animation Styles
+import "./styles/animations/tilting.animation.css";
+
 // Other Styles
 import "./styles/SearchBox.css";
 import "./styles/DarkModeButton.css";

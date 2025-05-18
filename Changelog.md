@@ -1,10 +1,10 @@
 # 📘 Gal Ben Abu's - HackerU - React Module Project - Changelog
 
-## 📅 Updated to Commit #56 | Date: 18/05/2025
+## 📅 Updated to Commit #57 | Date: 18/05/2025
 
 ## 🛠️ In Progress
 
-- Working on the registration `confirmPassword` validation and error messages and colors.
+- Working on the cards like and dislike functionality.
 
 ## 🎯 Todo
 
@@ -12,25 +12,33 @@
 - [ ] Create custom hooks for auth, screen view port etc...
 - [x] Fix the responsive mobile styling issues.
 - [ ] Profile Page - Create a page with some of the user's data.
+- [ ] Cards like and dislike functionality.
+- [ ] Favorites Cards Page.
+- [ ] Search functionality.
+- [ ] CRM Page for admin users.
+- [ ] Create cards functionality for business users.
 
 ## ✅ Completed
 
-- Completed the `confirmPassword` validation and error messages and colors.
-- Updated the [`useAuth`](./src/hooks/useAuth.tsx) hook registration logic so that errors messages will be more specific and clear.
+> `Nothing has been completed.`
 
 ## 🔄 Changes
 
-- Fixed the validations of `confirmPassword` field at [`Registration Page`](./src/pages/Registration.page.tsx).
-
 ### → <u>Added</u>
 
-- Added the support for the whole `useForm` hook to the [`CheckBox`](./src/components/Checkbox.tsx) component.
-- Added more specific error messages when there is an axios error in the [`Registration`](./src/pages/Registration.page.tsx) page.
-- Added loading [`CustomSpinner`](./src/components/CustomSpinner.tsx) to the [`CardsContainer`](./src/components/CardsContainer.tsx) component when sending an empty array while waiting for the data to be fetched.
+- `src/hooks/useContent.ts`: New hook for like/dislike card functionality.
+- `src/utils/cardDataPropsConvertor.ts`: Utility to convert API card data to CardProps.
+- `src/styles/animations/tilting.animation.css`: CSS animation for tilting (used for like button).
 
 ### → <u>Changed</u>
 
-> `Nothing has been changed.`
+- `src/components/card/Card.tsx`: Added like/dislike heart icon, uses `useContent`, expects `_id` and `userConnected` props, handles like/dislike click with animation and color change.
+- `src/components/card/CardsContainer.tsx`: Passes `userConnected` and `_id` props to `Card`, uses `useAuth` to determine if a user is connected.
+- `src/hooks/useAuth.ts`: Exposes `userToken` in the returned object for authenticated requests.
+- `src/main.tsx`: Imports the new animation CSS file.
+- `src/pages/Home.page.tsx`: Uses the new `convertCardDataToProps` utility, adds a function to get favorite cards for the user.
+- `src/types/card.t.ts`: Updates the `TCardData` type to match the API response more closely (adds fields, makes types more specific).
+- `src/utils/color.ts`: Removes commented-out debug lines.
 
 ### → <u>Removed</u>
 
@@ -42,6 +50,7 @@
 
 | `Date`       | `Commit #`                                                   |
 | ------------ | ------------------------------------------------------------ |
+| `18/05/2025` | [`56`](./commits_changes/commit_56.md)                       |
 | `17/05/2025` | [`55`](./commits_changes/commit_55.md)                       |
 | `16/05/2025` | [`54`](./commits_changes/commit_54.md)                       |
 | `14/05/2025` | [`53`](./commits_changes/commit_53.md)                       |

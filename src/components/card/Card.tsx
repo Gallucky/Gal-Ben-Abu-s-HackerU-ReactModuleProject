@@ -1,18 +1,22 @@
-import { FaPhoneAlt } from "react-icons/fa";
+import { FaHeart, FaPhoneAlt } from "react-icons/fa";
+import useContent from "../../hooks/useContent";
 
 export type CardProps = {
+  _id: string;
   title: string;
   subTitle: string;
   description: string;
   phone: string;
   address: string;
-  cardNumber: string;
+  cardNumber: number;
   imgSrc: string;
   imgAlt: string;
+  userConnected?: boolean;
 };
 
 const Card = (props: CardProps) => {
   const {
+    _id,
     title,
     subTitle,
     description,
@@ -21,15 +25,19 @@ const Card = (props: CardProps) => {
     cardNumber,
     imgSrc,
     imgAlt,
+    userConnected = false,
   } = props;
+
+  const { likeDislikeCard } = useContent();
+
   return (
     <>
-      <div className="card relative flex h-[400px] w-[250px] max-w-sm flex-col text-wrap rounded-lg border-2 border-black dark:border-slate-700 dark:text-white">
+      <div className="card relative flex h-[425px] w-[250px] max-w-sm flex-col text-wrap rounded-lg border-2 border-black dark:border-slate-700 dark:text-white">
         <img
           src={imgSrc}
           alt={imgAlt}
           style={{ width: "250px", height: "200px" }}
-          className="rounded-t-md"
+          className="select-none rounded-t-md"
         />
         {/* The card's text content. */}
         <div className="justify-content-center flex flex-col items-start p-3">
@@ -55,9 +63,17 @@ const Card = (props: CardProps) => {
           <span className="overflow-hidden">
             <span className="font-semibold">Card Number:</span> {cardNumber}
           </span>
-          <a href={"tel:" + phone}>
-            <FaPhoneAlt className="absolute bottom-3 right-3 hover:cursor-pointer" />
-          </a>
+          <div className="mt-5 flex w-full justify-evenly">
+            <a href={"tel:" + phone}>
+              <FaPhoneAlt className="absolute left-5 hover:cursor-pointer" />
+            </a>
+            {userConnected && (
+              <FaHeart
+                className="animate-tilt-hover absolute right-5 hover:cursor-pointer hover:text-red-500"
+                onClick={(e) => likeDislikeCard(e, _id)}
+              />
+            )}
+          </div>
         </div>
       </div>
     </>

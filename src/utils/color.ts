@@ -3,9 +3,6 @@ import { Color } from "../types/color.t";
 export const colorToString = (color: Color) => color as string;
 
 export const valueOfColor = (color: Color) => {
-  // console.log("color", color);
-  // console.log("color ?? true", color ?? true);
-
   if (!color) return undefined;
   if (colorToString(color) === "") return undefined;
 

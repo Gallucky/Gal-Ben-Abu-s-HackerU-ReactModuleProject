@@ -5,8 +5,11 @@ import Header from "../components/other/Header";
 import Divider from "../components/other/Divider";
 import CardsContainer from "../components/card/CardsContainer";
 import { TCardData } from "../types/card.t";
+import useAuth from "../hooks/useAuth";
+import { convertCardDataToProps } from "../utils/cardDataPropsConvertor";
 
 const Home = () => {
+  const { user } = useAuth();
   const [memeCards, setCards] = useState<TCardData[]>();
 
   /**
@@ -34,34 +37,18 @@ const Home = () => {
   const getRelevantCardData = (responseData?: TCardData[]): CardProps[] => {
     if (!responseData) return [];
 
-    const res: CardProps[] = [];
-    responseData.map((item) => {
-      const street = item.address.street ?? "Unknown";
-      const city = item.address.city ?? "Unknown";
-      const country = item.address.country ?? "Unknown";
-      const cardNumber = item.__v ?? "Unknown";
-      const description = item.description ?? "Unknown";
-      const title = item.title ?? "Unknown";
-      const subtitle = item.subtitle ?? "Unknown";
-      const phone = item.phone ?? "Unknown";
-      const imgSrc = item.image.url ?? "";
-      const imgAlt = item.image.alt ?? "The card's image.";
+    return convertCardDataToProps(responseData);
+  };
 
-      const relevantCardData: CardProps = {
-        address: street + ", " + city + ", " + country,
-        cardNumber: cardNumber,
-        description: description,
-        title: title,
-        subTitle: subtitle,
-        phone: phone,
-        imgSrc: imgSrc,
-        imgAlt: imgAlt,
-      };
+  const getFavoriteCardsData = (responseData?: TCardData[]): CardProps[] => {
+    if (!responseData || !user) return [];
 
-      res.push(relevantCardData);
-    });
+    // Filtering only the cards that the user liked.
+    const res: TCardData[] = responseData.filter((item) =>
+      item.likes.includes(user._id),
+    );
 
-    return res;
+    return convertCardDataToProps(res);
   };
 
   // Requesting to get the cards from api on mount.
