@@ -56,6 +56,8 @@ const Home = () => {
     getCards();
   }, []);
 
+  console.log("getFavoriteCardsData", getFavoriteCardsData(memeCards));
+
   document.body.style.overflowX = "hidden";
 
   // Getting the converted cards array ready for components creation.

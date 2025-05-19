@@ -8,7 +8,7 @@ module.exports = {
     "plugin:tailwindcss/recommended",
     "prettier",
   ],
-  ignorePatterns: ["dist", ".eslintrc.cjs"],
+  ignorePatterns: ["dist", ".eslintrc.cjs", "!src/**/*"],
   parser: "@typescript-eslint/parser",
   plugins: ["react-refresh"],
   settings: {
@@ -18,6 +18,15 @@ module.exports = {
     },
   },
   rules: {
+    // Warn on console.log usage
+    "no-console": ["warn", { allow: ["warn", "error"] }],
+
+    // Warn if file exceeds 200 lines, excluding blank lines and comments
+    "max-lines": [
+      "warn",
+      { max: 200, skipBlankLines: true, skipComments: true },
+    ],
+
     "react-refresh/only-export-components": [
       "warn",
       { allowConstantExport: true },

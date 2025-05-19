@@ -6,6 +6,7 @@ import Login from "../../../pages/Login.page";
 import Error from "../../../pages/Error.page";
 import Registration from "../../../pages/Registration.page";
 import RouteGuard from "./RouteGuard";
+import Profile from "../../../pages/Profile/Profile.page";
 
 const RoutesHandler = () => {
   return (
@@ -38,6 +39,16 @@ const RoutesHandler = () => {
             </RouteGuard>
           }
         />
+
+        <Route
+          path="/profile"
+          element={
+            <RouteGuard>
+              <Profile />
+            </RouteGuard>
+          }
+        />
+
         <Route path="/*" element={<Error />} />
       </Routes>
     </>

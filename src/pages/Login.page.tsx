@@ -6,6 +6,7 @@ import { loginSchema } from "../validations/login.joi";
 import PageWrapper from "../components/layout/PageWrapper";
 import Flex from "../components/utils/Flex";
 import useAuth, { LoginFormData } from "../hooks/useAuth";
+import PageForm from "../components/utils/PageForm";
 
 const Login = () => {
   const {
@@ -22,21 +23,17 @@ const Login = () => {
   });
 
   const { loginRequest } = useAuth();
-
-  const backgroundColors = "!bg-teal-300 dark:!bg-teal-600";
+  const backgroundColors = "!bg-teal-400 dark:bg-teal-600";
 
   return (
     <>
       {/* Page Wrapper */}
       <PageWrapper>
         {/* Content - Form */}
-        <form
+        <PageForm
+          title="Login Page"
           onSubmit={handleSubmit((data) => loginRequest(data))}
-          className={`content-form ${backgroundColors} relative`}
         >
-          <h2 className="font-Raleway form-fluid-text form-page-title">
-            Login Page
-          </h2>
           <Flex direction="col" className="gap-4">
             <FormInput
               {...register("email")}
@@ -63,7 +60,7 @@ const Login = () => {
             type="submit"
             className="!w-1/2"
           />
-        </form>
+        </PageForm>
       </PageWrapper>
     </>
   );

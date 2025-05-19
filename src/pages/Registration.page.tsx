@@ -13,6 +13,7 @@ import { restrictNonPhoneRelatedKeys } from "../events/input/phone";
 import { useEffect, useState } from "react";
 import { CiImageOn } from "react-icons/ci";
 import useAuth, { RegisterFormData } from "../hooks/useAuth";
+import PageForm from "../components/utils/PageForm";
 
 const defaultValues = {
   name: {
@@ -105,14 +106,7 @@ const Registration = () => {
   return (
     <>
       <PageWrapper>
-        <form
-          onSubmit={handleSubmit(registerRequest)}
-          className={`content-form my-[10vh] !w-3/4 ${backgroundColors}`}
-        >
-          <h2 className="font-Raleway form-fluid-text form-page-title">
-            Signup Page
-          </h2>
-
+        <PageForm title="Signup Page" onSubmit={handleSubmit(registerRequest)}>
           <Flex
             direction="col"
             gap="1rem"
@@ -354,7 +348,7 @@ const Registration = () => {
               disabled={!isValid || confirmPasswordError !== ""}
             />
           </Flex>
-        </form>
+        </PageForm>
       </PageWrapper>
     </>
   );

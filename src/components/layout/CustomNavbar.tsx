@@ -6,6 +6,7 @@ import SearchBox from "../other/SearchBox";
 import { useDispatch, useSelector } from "react-redux";
 import { TRootState } from "../../store/store";
 import { userActions } from "../../store/userSlice";
+import { FiLogOut } from "react-icons/fi";
 
 const CustomNavbar = () => {
   const dispatch = useDispatch();
@@ -53,6 +54,8 @@ const CustomNavbar = () => {
               className="flex size-fit items-center justify-center border-2 md:hidden"
               inputClassName="h-8"
             />
+
+            {/* Guest only */}
             {!user && (
               <>
                 <Link
@@ -78,16 +81,28 @@ const CustomNavbar = () => {
               </>
             )}
 
+            {/* User connected */}
             {user && (
-              <Link
-                to="/home"
-                className={`custom-navbar-link dark:text-white`}
-                onClick={() => {
-                  dispatch(userActions.logout());
-                }}
-              >
-                Signout
-              </Link>
+              <div className="flex items-center gap-4">
+                <Link
+                  to="/profile"
+                  className={`custom-navbar-link dark:text-white`}
+                >
+                  Profile
+                </Link>
+
+                <Link
+                  to="/home"
+                  className={`custom-navbar-link gap-2 dark:text-white`}
+                  onClick={() => {
+                    dispatch(userActions.logout());
+                  }}
+                >
+                  <abbr title="Signout">
+                    <FiLogOut />
+                  </abbr>
+                </Link>
+              </div>
             )}
           </div>
         </NavbarCollapse>
