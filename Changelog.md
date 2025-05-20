@@ -1,6 +1,6 @@
 # 📘 Gal Ben Abu's - HackerU - React Module Project - Changelog
 
-## 📅 Updated to Commit #59 | Date: 20/05/2025
+## 📅 Updated to Commit #60 | Date: 20/05/2025
 
 ## 🛠️ In Progress
 
@@ -26,20 +26,16 @@
 
 ### → <u>Added</u>
 
-- [`src/pages/Registration/Name.section.tsx`](src/pages/Registration/Name.section.tsx): Modular section for registration name fields.
-- [`src/pages/Registration/AccountInfo.section.tsx`](src/pages/Registration/AccountInfo.section.tsx): Modular section for registration account info fields.
-- [`src/types/pages/SectionProps.t.ts`](src/types/pages/SectionProps.t.ts): Shared type for section props in registration/profile sections.
+- [`src/pages/Registration/PersonalInfo.section.tsx`](src/pages/Registration/PersonalInfo.section.tsx): Modular section for personal info and image preview in registration form.
+- [`src/pages/Registration/Address.section.tsx`](src/pages/Registration/Address.section.tsx): Modular section for address fields in registration form.
 
 ### → <u>Changed</u>
 
-- [`src/pages/Registration/Registration.page.tsx`](src/pages/Registration/Registration.page.tsx): Refactored to use modular section components for improved maintainability.
-- [`src/components/App/Routes/RoutesHandler.tsx`](src/components/App/Routes/RoutesHandler.tsx): Fixed import path for registration page.
+- [`src/pages/Registration/Registration.page.tsx`](src/pages/Registration/Registration.page.tsx): Refactored to use modular section components (`NameSection`, `AccountInfoSection`, `PersonalInfoSection`, `AddressSection`) for improved maintainability and code organization.
 
 ### → <u>Removed</u>
 
-- [`src/pages/Registration.page.tsx`](src/pages/Registration.page.tsx): Removed old monolithic registration page.
-- [`src/pages/Profile/Name.section.tsx`](src/pages/Profile/Name.section.tsx): Removed unused/incomplete profile section (now replaced by modular version in registration).
-- [`src/pages/Profile/SectionProps.t.ts`](src/pages/Profile/SectionProps.t.ts): Removed old section props type (now in `types/pages`).
+> `Nothing has been removed.`
 
 ---
 
@@ -47,6 +43,7 @@
 
 | `Date`       | `Commit #`                                                   |
 | ------------ | ------------------------------------------------------------ |
+| `20/05/2025` | [`59`](./commits_changes/commit_59.md)                       |
 | `19/05/2025` | [`58`](./commits_changes/commit_58.md)                       |
 | `18/05/2025` | [`57`](./commits_changes/commit_57.md)                       |
 | `18/05/2025` | [`56`](./commits_changes/commit_56.md)                       |

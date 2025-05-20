@@ -5,7 +5,7 @@ For linking to a source as a standalone version.
 [[See more]](./)
 
 Github Co-Pilot prompt to update the changelog file.
-modified it a bit:
+
 I have a Git project with commit history up to commit 58. Currently, in Visual Studio Code (VSCode), I’ve made additional changes that are not yet committed — these represent what will become commit 59.
 I want to generate a proper Git commit message for commit 59, based on the differences between commit 58 and the current uncommitted changes. Please:
 Analyze all changes (code, file modifications, deletions, additions, etc.) since commit 58.
