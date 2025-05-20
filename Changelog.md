@@ -2,7 +2,7 @@
 
 ## 📅 Updated to Commit #58 | Date: 19/05/2025
 
-## 🛠️ In _rogress_
+## 🛠️ In Progress
 
 - Working on the cards like and dislike functionality.
 
