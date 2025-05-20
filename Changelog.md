@@ -1,6 +1,6 @@
 # 📘 Gal Ben Abu's - HackerU - React Module Project - Changelog
 
-## 📅 Updated to Commit #58 | Date: 19/05/2025
+## 📅 Updated to Commit #59 | Date: 20/05/2025
 
 ## 🛠️ In Progress
 
@@ -26,27 +26,20 @@
 
 ### → <u>Added</u>
 
-- [`src/hooks/useContent.ts`](src/hooks/useContent.ts): New hook for like/dislike card functionality.
-- [`src/utils/cardDataPropsConvertor.ts`](src/utils/cardDataPropsConvertor.ts): Utility to convert API card data to CardProps.
-- [`src/styles/animations/tilting.animation.css`](src/styles/animations/tilting.animation.css): CSS animation for tilting (used for like button).
-- [`src/pages/Profile/Name.section.tsx`](src/pages/Profile/Name.section.tsx): (Fully commented out) Incomplete section for profile name input, included to avoid errors.
-- [`src/pages/Profile/SectionProps.t.ts`](src/pages/Profile/SectionProps.t.ts): Type definition for section props in profile sections.
+- [`src/pages/Registration/Name.section.tsx`](src/pages/Registration/Name.section.tsx): Modular section for registration name fields.
+- [`src/pages/Registration/AccountInfo.section.tsx`](src/pages/Registration/AccountInfo.section.tsx): Modular section for registration account info fields.
+- [`src/types/pages/SectionProps.t.ts`](src/types/pages/SectionProps.t.ts): Shared type for section props in registration/profile sections.
 
 ### → <u>Changed</u>
 
-- [`package.json`](package.json): Updated `lint` and `lint:fix` scripts to only lint files in the `src` folder for improved performance and accuracy.
-- [`.eslintrc.cjs`](.eslintrc.cjs): Updated `ignorePatterns` to only lint files inside the `src` folder, and increased the `max-lines` rule to 200 lines per file.
-- [`src/components/card/Card.tsx`](src/components/card/Card.tsx): Added like/dislike heart icon, uses `useContent`, expects `_id` and `userConnected` props, handles like/dislike click with animation and color change.
-- [`src/components/card/CardsContainer.tsx`](src/components/card/CardsContainer.tsx): Passes `userConnected` and `_id` props to `Card`, uses `useAuth` to determine if a user is connected.
-- [`src/hooks/useAuth.ts`](src/hooks/useAuth.ts): Exposes `userToken` in the returned object for authenticated requests.
-- [`src/main.tsx`](src/main.tsx): Imports the new animation CSS file.
-- [`src/pages/Home.page.tsx`](src/pages/Home.page.tsx): Uses the new `convertCardDataToProps` utility, adds a function to get favorite cards for the user.
-- [`src/types/card.t.ts`](src/types/card.t.ts): Updates the `TCardData` type to match the API response more closely (adds fields, makes types more specific).
-- [`src/utils/color.ts`](src/utils/color.ts): Removes commented-out debug lines.
+- [`src/pages/Registration/Registration.page.tsx`](src/pages/Registration/Registration.page.tsx): Refactored to use modular section components for improved maintainability.
+- [`src/components/App/Routes/RoutesHandler.tsx`](src/components/App/Routes/RoutesHandler.tsx): Fixed import path for registration page.
 
 ### → <u>Removed</u>
 
-> `Nothing has been removed.`
+- [`src/pages/Registration.page.tsx`](src/pages/Registration.page.tsx): Removed old monolithic registration page.
+- [`src/pages/Profile/Name.section.tsx`](src/pages/Profile/Name.section.tsx): Removed unused/incomplete profile section (now replaced by modular version in registration).
+- [`src/pages/Profile/SectionProps.t.ts`](src/pages/Profile/SectionProps.t.ts): Removed old section props type (now in `types/pages`).
 
 ---
 
@@ -54,6 +47,7 @@
 
 | `Date`       | `Commit #`                                                   |
 | ------------ | ------------------------------------------------------------ |
+| `19/05/2025` | [`58`](./commits_changes/commit_58.md)                       |
 | `18/05/2025` | [`57`](./commits_changes/commit_57.md)                       |
 | `18/05/2025` | [`56`](./commits_changes/commit_56.md)                       |
 | `17/05/2025` | [`55`](./commits_changes/commit_55.md)                       |

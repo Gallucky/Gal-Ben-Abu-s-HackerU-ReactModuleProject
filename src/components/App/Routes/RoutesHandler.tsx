@@ -4,7 +4,7 @@ import About from "../../../pages/About.page";
 import Test from "../../../pages/Test.page";
 import Login from "../../../pages/Login.page";
 import Error from "../../../pages/Error.page";
-import Registration from "../../../pages/Registration.page";
+import Registration from "../../../pages/Registration/Registration.page";
 import RouteGuard from "./RouteGuard";
 import Profile from "../../../pages/Profile/Profile.page";
 

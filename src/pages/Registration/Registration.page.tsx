@@ -1,19 +1,21 @@
-import FormButton from "../components/form/FormButton";
-import FormInput from "../components/form/FormInput";
-import PageWrapper from "../components/layout/PageWrapper";
-import CheckBox from "../components/utils/CheckBox";
-import Flex from "../components/utils/Flex";
-import FormAreaBorder from "../components/utils/FormAreaBorder";
-import FormAreaTitle from "../components/utils/FormAreaTitle";
-import Grid from "../components/utils/Grid";
+import FormButton from "../../components/form/FormButton";
+import FormInput from "../../components/form/FormInput";
+import PageWrapper from "../../components/layout/PageWrapper";
+import CheckBox from "../../components/utils/CheckBox";
+import Flex from "../../components/utils/Flex";
+import FormAreaBorder from "../../components/utils/FormAreaBorder";
+import FormAreaTitle from "../../components/utils/FormAreaTitle";
+import Grid from "../../components/utils/Grid";
 import { joiResolver } from "@hookform/resolvers/joi";
 import { useForm } from "react-hook-form";
-import { registerSchema } from "../validations/register.joi";
-import { restrictNonPhoneRelatedKeys } from "../events/input/phone";
+import { registerSchema } from "../../validations/register.joi";
+import { restrictNonPhoneRelatedKeys } from "../../events/input/phone";
 import { useEffect, useState } from "react";
 import { CiImageOn } from "react-icons/ci";
-import useAuth, { RegisterFormData } from "../hooks/useAuth";
-import PageForm from "../components/utils/PageForm";
+import useAuth, { RegisterFormData } from "../../hooks/useAuth";
+import PageForm from "../../components/utils/PageForm";
+import NameSection from "./Name.section";
+import AccountInfoSection from "./AccountInfo.section";
 
 const defaultValues = {
   name: {
@@ -61,47 +63,11 @@ const Registration = () => {
 
   const { registerRequest } = useAuth();
 
-  const backgroundColors = "!bg-teal-400 dark:bg-teal-600";
-
   const [confirmPasswordError, setConfirmPasswordError] = useState(
     "Confirm password is required",
   );
 
-  const confirmPasswordValidator = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const confirmPassword = e.target.value;
-    const password = watch("password");
-
-    const regex = /(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*-]).{9,20}/;
-
-    if (confirmPassword === "") {
-      setConfirmPasswordError("Confirm password is required");
-    } else if (confirmPassword !== password) {
-      setConfirmPasswordError("Passwords do not match");
-    } else if (!regex.test(confirmPassword)) {
-      setConfirmPasswordError(
-        "Password must be at least 9 characters long and contain an uppercase letter, a lowercase letter, a number and one of the following characters !@#$%^&*-",
-      );
-    } else {
-      setConfirmPasswordError("");
-    }
-  };
-
-  const passwordValidator = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const password = e.target.value;
-    const confirmPassword = document.getElementById(
-      "form-input-registration-form-confirm-password",
-    ) as HTMLInputElement;
-
-    console.log("confirmPassword", confirmPassword);
-
-    if (confirmPassword && confirmPassword.value !== password) {
-      setConfirmPasswordError("Passwords do not match");
-    } else if (confirmPassword.value === "") {
-      setConfirmPasswordError("Confirm password is required");
-    } else {
-      setConfirmPasswordError("");
-    }
-  };
+  const backgroundColors = "!bg-teal-400 dark:bg-teal-600";
 
   return (
     <>
@@ -114,87 +80,21 @@ const Registration = () => {
             items="center"
           >
             {/* Name Section */}
-            <Flex direction="col" className="relative w-full">
-              <FormAreaTitle text="Name" className={`${backgroundColors}`} />
-              <FormAreaBorder />
-
-              <Flex
-                className="w-full gap-3 py-2 md:gap-5 md:p-3 md:px-10"
-                directionDynamic
-              >
-                <FormInput
-                  {...register("name.first")}
-                  id="registration-form-first-name"
-                  label="First Name"
-                  className="w-[90%] md:w-1/3"
-                  labelClassName={`${backgroundColors}`}
-                  errorMessage={errors.name?.first?.message}
-                />
-                <FormInput
-                  {...register("name.middle")}
-                  id="registration-form-middle-name"
-                  label="Middle Name"
-                  labelClassName={`${backgroundColors}`}
-                  className="w-[90%] md:w-1/3"
-                  errorMessage={errors.name?.middle?.message}
-                />
-                <FormInput
-                  {...register("name.last")}
-                  id="registration-form-last-name"
-                  label="Last Name"
-                  className="w-[90%] md:w-1/3"
-                  labelClassName={`${backgroundColors}`}
-                  errorMessage={errors.name?.last?.message}
-                />
-              </Flex>
-            </Flex>
+            <NameSection
+              register={register}
+              errors={errors}
+              backgroundColors={backgroundColors}
+              watch={watch}
+            />
             {/* Account Info Section */}
-            <Flex direction="col" className="relative w-full">
-              <FormAreaTitle
-                text="Account Info"
-                className={`${backgroundColors}`}
-              />
-              <FormAreaBorder />
-
-              <Flex
-                className="w-full gap-3 py-2 md:gap-5 md:p-3 md:px-10"
-                directionDynamic
-              >
-                <FormInput
-                  {...register("email")}
-                  id="registration-form-email"
-                  label="Email"
-                  type="email"
-                  className="w-[90%] md:w-1/3"
-                  labelClassName={`${backgroundColors}`}
-                  errorMessage={errors.email ? errors.email.message : ""}
-                />
-                <FormInput
-                  {...register("password")}
-                  id="registration-form-password"
-                  label="Password"
-                  type="password"
-                  className="w-[90%] md:w-1/3"
-                  labelClassName={`${backgroundColors}`}
-                  errorMessage={errors.password?.message}
-                  onInput={passwordValidator}
-                />
-                <FormInput
-                  id="registration-form-confirm-password"
-                  label="Confirm Password"
-                  type="password"
-                  className="w-[90%] md:w-1/3"
-                  labelClassName={`max-lg:!text-xs max-lg:peer-[&:not(:placeholder-shown)]:!top-0
-                    max-lg:peer-placeholder-shown:!top-[42%] max-lg:peer-focus:!top-0 ${backgroundColors}`}
-                  errorMessage={
-                    confirmPasswordError && confirmPasswordError !== ""
-                      ? confirmPasswordError
-                      : undefined
-                  }
-                  onInput={confirmPasswordValidator}
-                />
-              </Flex>
-            </Flex>
+            <AccountInfoSection
+              register={register}
+              errors={errors}
+              backgroundColors={backgroundColors}
+              watch={watch}
+              setConfirmPasswordError={setConfirmPasswordError}
+              confirmPasswordError={confirmPasswordError}
+            />
             {/* Personal Info Section */}
             <Flex direction="col" className="relative w-full">
               <FormAreaTitle

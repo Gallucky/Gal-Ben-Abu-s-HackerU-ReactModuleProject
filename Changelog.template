@@ -5,4 +5,33 @@ For linking to a source as a standalone version.
 [[See more]](./)
 
 Github Co-Pilot prompt to update the changelog file.
-Can you update my Changelog.md file to contain the git changes in my src folder?
+modified it a bit:
+I have a Git project with commit history up to commit 58. Currently, in Visual Studio Code (VSCode), I’ve made additional changes that are not yet committed — these represent what will become commit 59.
+I want to generate a proper Git commit message for commit 59, based on the differences between commit 58 and the current uncommitted changes. Please:
+Analyze all changes (code, file modifications, deletions, additions, etc.) since commit 58.
+Summarize them clearly and concisely as a commit message for commit 59.
+Include relevant details such as:
+Which files or components were modified
+What the purpose of the changes is
+Any bug fixes, improvements, refactors, or new features
+Format it like a professional Git commit:
+Short, clear title (max ~50 characters)
+Followed by a detailed description if needed (wrapped at ~72 chars per line)
+The goal is to document commit 59 accurately, based on commit 58 as the last known state.
+Based on that can you modify the changelog.md file accordingly?
+
+or
+
+I have a Git project with an existing commit history.
+The latest committed state is the previous commit (HEAD), and I currently have new, uncommitted changes in Visual Studio Code (VSCode).
+Please:
+Analyze all uncommitted changes since the last commit.
+Summarize them clearly and concisely.
+Indicate:
+Which files or components were added, modified, or deleted.
+What the purpose of the changes is.
+Any new features, bug fixes, improvements, or refactoring.
+Format the commit message professionally:
+Start with a short, clear title (max ~50 characters).
+Follow with an optional detailed description, wrapped at ~72 chars.
+Make the message easy to read and helpful for tracking project history.
