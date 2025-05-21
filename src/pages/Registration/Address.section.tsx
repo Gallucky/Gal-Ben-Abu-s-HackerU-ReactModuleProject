@@ -7,15 +7,25 @@ import { SectionProps } from "../../types/pages/SectionProps.t";
 import Grid from "../../components/utils/Grid";
 
 const AddressSection = (props: SectionProps<RegisterFormData>) => {
-  const { register, errors, backgroundColors } = props;
+  const {
+    register,
+    errors,
+    backgroundColors,
+    className,
+    sectionBorderClassName,
+    sectionTitleClassName,
+  } = props;
 
   return (
     <Flex direction="col" className="relative w-full">
-      <FormAreaTitle text="Address" className={`${backgroundColors}`} />
-      <FormAreaBorder />
+      <FormAreaTitle
+        text="Address"
+        className={`${backgroundColors} ${sectionTitleClassName}`}
+      />
+      <FormAreaBorder className={sectionBorderClassName} />
 
       <Grid
-        className="mx-2 w-[90%] gap-3 self-center py-3 md:gap-6 md:py-6"
+        className={`mx-2 w-[90%] gap-3 self-center py-3 md:gap-6 md:py-6 ${"!" + className}`}
         gridColumns={{ sm: 1, md: 2, lg: 3 }}
         gridRows={{ sm: 3, md: 3, lg: 3 }}
       >

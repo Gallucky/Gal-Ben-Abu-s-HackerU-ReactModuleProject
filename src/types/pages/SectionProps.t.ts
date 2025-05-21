@@ -10,4 +10,8 @@ export type SectionProps<T extends FieldValues = FieldValues> = {
   register: UseFormRegister<T>;
   errors: FieldErrors<T>;
   watch: UseFormWatch<T>;
+  className?: string;
+  sectionBorderClassName?: string;
+  sectionTitleClassName?: string;
+  editable?: boolean;
 };

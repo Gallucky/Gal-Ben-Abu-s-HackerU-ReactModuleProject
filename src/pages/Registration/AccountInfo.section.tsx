@@ -45,8 +45,6 @@ const AccountInfoSection = (props: AccountInfoSectionProps) => {
       "form-input-registration-form-confirm-password",
     ) as HTMLInputElement;
 
-    console.log("confirmPassword", confirmPassword);
-
     if (confirmPassword && confirmPassword.value !== password) {
       setConfirmPasswordError("Passwords do not match");
     } else if (confirmPassword.value === "") {

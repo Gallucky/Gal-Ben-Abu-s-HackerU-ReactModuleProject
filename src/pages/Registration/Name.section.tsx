@@ -6,18 +6,30 @@ import { RegisterFormData } from "../../hooks/useAuth";
 import { SectionProps } from "../../types/pages/SectionProps.t";
 
 const NameSection = (props: SectionProps<RegisterFormData>) => {
-  const { register, errors, backgroundColors } = props;
+  const {
+    register,
+    errors,
+    backgroundColors,
+    className,
+    sectionBorderClassName,
+    sectionTitleClassName,
+    editable,
+  } = props;
 
   return (
     <Flex direction="col" className="relative w-full">
-      <FormAreaTitle text="Name" className={`${backgroundColors}`} />
-      <FormAreaBorder />
+      <FormAreaTitle
+        text="Name"
+        className={`${backgroundColors} ${sectionTitleClassName}`}
+      />
+      <FormAreaBorder className={sectionBorderClassName} />
 
       <Flex
-        className="w-full gap-3 py-2 md:gap-5 md:p-3 md:px-10"
+        className={`w-full gap-3 py-2 md:gap-5 md:p-3 md:px-10 ${"!" + className}`}
         directionDynamic
       >
         <FormInput
+          editable={editable}
           {...register("name.first")}
           id="registration-form-first-name"
           label="First Name"
@@ -26,6 +38,7 @@ const NameSection = (props: SectionProps<RegisterFormData>) => {
           errorMessage={errors.name?.first?.message}
         />
         <FormInput
+          editable={editable}
           {...register("name.middle")}
           id="registration-form-middle-name"
           label="Middle Name"
@@ -34,6 +47,7 @@ const NameSection = (props: SectionProps<RegisterFormData>) => {
           errorMessage={errors.name?.middle?.message}
         />
         <FormInput
+          editable={editable}
           {...register("name.last")}
           id="registration-form-last-name"
           label="Last Name"

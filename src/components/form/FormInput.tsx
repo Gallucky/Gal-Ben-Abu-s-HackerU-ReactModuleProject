@@ -13,6 +13,7 @@ type FormInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   className?: string;
   inputClassName?: string;
   labelClassName?: string;
+  editable?: boolean;
 };
 
 // Needed the forwardRef to support the ref that is required so
@@ -30,6 +31,7 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
       inputClassName = "",
       labelClassName = "",
       dir = "ltr",
+      editable = false,
       ...rest
     } = props;
 
@@ -58,6 +60,7 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
               placeholder=" "
               type={type}
               ref={ref}
+              disabled={editable}
               {...rest}
             ></input>
             {/* Render the floating label incase the input is not of type 'file' because,

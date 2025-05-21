@@ -15,7 +15,6 @@ const CustomNavbar = () => {
   const [pathname, setPathName] = useState<string>("/");
 
   const location = useLocation();
-  console.log(location);
 
   useEffect(() => {
     setPathName(location.pathname);

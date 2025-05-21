@@ -16,7 +16,6 @@ function DarkModeButton(props: DarkModeButtonProps) {
   useEffect(() => {
     const theme = localStorage.getItem("theme");
     setIsDarkMode(theme === "dark");
-    console.log("Inside useEffect");
   }, [isDarkMode]);
 
   const classes =

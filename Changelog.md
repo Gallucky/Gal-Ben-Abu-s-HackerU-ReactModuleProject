@@ -1,6 +1,6 @@
 # 📘 Gal Ben Abu's - HackerU - React Module Project - Changelog
 
-## 📅 Updated to Commit #60 | Date: 20/05/2025
+## 📅 Updated to Commit #61 | Date: 21/05/2025
 
 ## 🛠️ In Progress
 
@@ -20,22 +20,30 @@
 
 ## ✅ Completed
 
-> `Nothing has been completed.`
+- Refactored [`src/pages/Profile/Profile.page.tsx`](src/pages/Profile/Profile.page.tsx) to use modular, reusable section components ([`NameSection`](src/pages/Registration/Name.section.tsx), [`AddressSection`](src/pages/Registration/Address.section.tsx), etc.) and integrated form validation with react-hook-form and Joi. Improved layout and maintainability.
+- Enhanced [`src/types/pages/SectionProps.t.ts`](src/types/pages/SectionProps.t.ts) and [`src/components/form/FormInput.tsx`](src/components/form/FormInput.tsx) to support new props for flexibility and disabled state.
+- Updated [`src/pages/Registration/Name.section.tsx`](src/pages/Registration/Name.section.tsx) and [`src/pages/Registration/Address.section.tsx`](src/pages/Registration/Address.section.tsx) to accept new props for consistency and reusability.
+- Cleaned up debug code and improved dark mode styling in [`src/styles/form/FormInput.css`](src/styles/form/FormInput.css).
+- Simplified [`src/pages/Test.page.tsx`](src/pages/Test.page.tsx) for input testing.
 
 ## 🔄 Changes
 
 ### → <u>Added</u>
 
-- [`src/pages/Registration/PersonalInfo.section.tsx`](src/pages/Registration/PersonalInfo.section.tsx): Modular section for personal info and image preview in registration form.
-- [`src/pages/Registration/Address.section.tsx`](src/pages/Registration/Address.section.tsx): Modular section for address fields in registration form.
+- Modular Profile Page layout using section components and validation.
+- Support for editable/disabled state in [`FormInput`](src/components/form/FormInput.tsx) and section components.
+- Additional props in [`SectionProps`](src/types/pages/SectionProps.t.ts) for flexible section styling.
 
 ### → <u>Changed</u>
 
-- [`src/pages/Registration/Registration.page.tsx`](src/pages/Registration/Registration.page.tsx): Refactored to use modular section components (`NameSection`, `AccountInfoSection`, `PersonalInfoSection`, `AddressSection`) for improved maintainability and code organization.
+- Refactored [`Profile.page.tsx`](src/pages/Profile/Profile.page.tsx), [`NameSection`](src/pages/Registration/Name.section.tsx), [`AddressSection`](src/pages/Registration/Address.section.tsx), and related components for maintainability and reusability.
+- Improved dark mode support in [`FormInput.css`](src/styles/form/FormInput.css).
+- Removed all console.log and debug statements from components and hooks.
+- Simplified [`Test.page.tsx`](src/pages/Test.page.tsx) to focus on input testing.
 
 ### → <u>Removed</u>
 
-> `Nothing has been removed.`
+- All debug and console.log statements from production code.
 
 ---
 
@@ -43,6 +51,7 @@
 
 | `Date`       | `Commit #`                                                   |
 | ------------ | ------------------------------------------------------------ |
+| `20/05/2025` | [`60`](./commits_changes/commit_60.md)                       |
 | `20/05/2025` | [`59`](./commits_changes/commit_59.md)                       |
 | `19/05/2025` | [`58`](./commits_changes/commit_58.md)                       |
 | `18/05/2025` | [`57`](./commits_changes/commit_57.md)                       |

@@ -40,6 +40,7 @@ const Home = () => {
     return convertCardDataToProps(responseData);
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const getFavoriteCardsData = (responseData?: TCardData[]): CardProps[] => {
     if (!responseData || !user) return [];
 
@@ -55,8 +56,6 @@ const Home = () => {
   useEffect(() => {
     getCards();
   }, []);
-
-  console.log("getFavoriteCardsData", getFavoriteCardsData(memeCards));
 
   document.body.style.overflowX = "hidden";
 

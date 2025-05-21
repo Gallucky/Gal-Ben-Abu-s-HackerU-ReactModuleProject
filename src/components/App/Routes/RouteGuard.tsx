@@ -53,12 +53,6 @@ const RouteGuard = (props: RouteGuardProps) => {
 
   const user = useAuth().user;
 
-  console.log(props);
-
-  // console.log("RouteGuard - isUserLoaded:", isUserLoaded);
-  console.log("RouteGuard - user:", user);
-  console.log("RouteGuard - props:", props);
-
   // Wait for the user data to be loaded.
   const { timerCompleted } = useTimer(500);
 

@@ -52,8 +52,6 @@ const useAuth = () => {
         data,
       );
 
-      console.log("Login Successful");
-
       // Saving the token in local storage.
       localStorage.setItem("token", token.data);
 
@@ -79,7 +77,7 @@ const useAuth = () => {
 
       const errorMessage = axiosError.message.includes("status code 400")
         ? "Invalid email or password"
-        : axiosError.message ?? "Error Occurred";
+        : (axiosError.message ?? "Error Occurred");
       toast.error(errorMessage);
     }
   };
@@ -112,7 +110,7 @@ const useAuth = () => {
           ? (axiosErrorResponse.data as string)
           : axiosError.message.includes("status code 400")
             ? "Invalid registration data"
-            : axiosError.message ?? "Error Occurred";
+            : (axiosError.message ?? "Error Occurred");
 
       toast.error(errorMessage);
     }
