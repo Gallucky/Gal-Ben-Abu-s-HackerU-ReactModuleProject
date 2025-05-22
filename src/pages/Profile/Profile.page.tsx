@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import PageWrapper from "../../components/layout/PageWrapper";
 import PageForm from "../../components/utils/PageForm";
-import { RegisterFormData } from "../../hooks/useAuth";
+import useAuth, { RegisterFormData } from "../../hooks/useAuth";
 import { registerSchema } from "../../validations/register.joi";
 import NameSection from "../Registration/Name.section";
 import FormInput from "../../components/form/FormInput";
@@ -11,6 +11,7 @@ import Flex from "../../components/utils/Flex";
 import FormAreaBorder from "../../components/utils/FormAreaBorder";
 import FormAreaTitle from "../../components/utils/FormAreaTitle";
 import AddressSection from "../Registration/Address.section";
+// import { TUser } from "../../types/user.t";
 
 // Should be replaced with the data from the user profile.
 const defaultValues = {
@@ -58,6 +59,22 @@ const Profile = () => {
   }, [trigger]);
 
   const backgroundColors = "!bg-teal-400 dark:bg-teal-600";
+
+  const { user } = useAuth();
+
+  // const handleSave = (updatedUser: TUser) => {
+  //   // Todo: find a way to get the current user data with the newly changed field's value.
+
+  //   // Handle the updated user data here
+  //   // userUpdateRequest(updatedUserData);
+  // };
+
+  const handleEmailSave = (value: string) => {
+    if (user) {
+      user.email = value;
+      // handleSave(user);
+    }
+  };
 
   return (
     <>
@@ -108,6 +125,7 @@ const Profile = () => {
               >
                 <FormInput
                   editable
+                  onSave={handleEmailSave}
                   {...register("email")}
                   id="registration-form-email"
                   label="Email"
@@ -118,6 +136,7 @@ const Profile = () => {
                 />
                 <FormInput
                   editable
+                  // onSave={handlePasswordSave}
                   {...register("password")}
                   id="registration-form-password"
                   label="Password"
@@ -143,6 +162,7 @@ const Profile = () => {
                 >
                   <FormInput
                     editable
+                    // onSave={handlePhoneSave}
                     {...register("phone")}
                     id="registration-form-phone"
                     label="Phone"
@@ -153,6 +173,7 @@ const Profile = () => {
                   />
                   <FormInput
                     editable
+                    // onSave={handleImageUrlSave}
                     {...register("image.url")}
                     id="registration-form-image-url"
                     label="Image Url"
@@ -163,6 +184,7 @@ const Profile = () => {
                   />
                   <FormInput
                     editable
+                    // onSave={handleImageAltSave}
                     {...register("image.alt")}
                     id="registration-form-image-alt"
                     label="Image Alt"

@@ -35,3 +35,4 @@ Format the commit message professionally:
 Start with a short, clear title (max ~50 characters).
 Follow with an optional detailed description, wrapped at ~72 chars.
 Make the message easy to read and helpful for tracking project history.
+Please add links to each part and don't use any terminal commands...

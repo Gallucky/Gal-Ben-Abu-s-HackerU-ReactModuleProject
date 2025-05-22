@@ -5,11 +5,11 @@ import Header from "../components/other/Header";
 import Divider from "../components/other/Divider";
 import CardsContainer from "../components/card/CardsContainer";
 import { TCardData } from "../types/card.t";
-import useAuth from "../hooks/useAuth";
+// import useAuth from "../hooks/useAuth";
 import { convertCardDataToProps } from "../utils/cardDataPropsConvertor";
 
 const Home = () => {
-  const { user } = useAuth();
+  // const { user } = useAuth();
   const [memeCards, setCards] = useState<TCardData[]>();
 
   /**
@@ -40,17 +40,17 @@ const Home = () => {
     return convertCardDataToProps(responseData);
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const getFavoriteCardsData = (responseData?: TCardData[]): CardProps[] => {
-    if (!responseData || !user) return [];
+  // TODO:
+  // const getFavoriteCardsData = (responseData?: TCardData[]): CardProps[] => {
+  //   if (!responseData || !user) return [];
 
-    // Filtering only the cards that the user liked.
-    const res: TCardData[] = responseData.filter((item) =>
-      item.likes.includes(user._id),
-    );
+  //   // Filtering only the cards that the user liked.
+  //   const res: TCardData[] = responseData.filter((item) =>
+  //     item.likes.includes(user._id),
+  //   );
 
-    return convertCardDataToProps(res);
-  };
+  //   return convertCardDataToProps(res);
+  // };
 
   // Requesting to get the cards from api on mount.
   useEffect(() => {
