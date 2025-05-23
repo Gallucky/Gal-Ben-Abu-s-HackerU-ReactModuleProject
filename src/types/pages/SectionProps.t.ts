@@ -14,4 +14,5 @@ export type SectionProps<T extends FieldValues = FieldValues> = {
   sectionBorderClassName?: string;
   sectionTitleClassName?: string;
   editable?: boolean;
+  onSave?: (value: string) => void;
 };

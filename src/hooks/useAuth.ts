@@ -36,6 +36,28 @@ export type RegisterFormData = {
   isBusiness: boolean;
 };
 
+export type UpdateUserFormData = {
+  name: {
+    first: string;
+    middle?: string;
+    last: string;
+  };
+  phone: string;
+  image: {
+    url: string;
+    alt: string;
+  };
+  address: {
+    state?: string;
+    country: string;
+    city: string;
+    street: string;
+    houseNumber: number;
+    zip: number;
+  };
+  isBusiness: boolean;
+};
+
 const useAuth = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -62,11 +84,13 @@ const useAuth = () => {
       axios.defaults.headers.common["x-auth-token"] = token.data;
 
       // Getting the user data.
-      const user = await axios.get(
+      const resUser = await axios.get(
         `https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/${parsedToken._id}`,
       );
 
-      dispatch(userActions.login(user.data));
+      console.log("User data", resUser.data);
+
+      dispatch(userActions.login(resUser.data));
 
       if (showToast) toast.success("Login Successful");
 
@@ -116,9 +140,35 @@ const useAuth = () => {
     }
   };
 
-  const userUpdateRequest = async (data: RegisterFormData) => {
+  const userUpdateRequest = async (data: UpdateUserFormData) => {
+    if (!user) {
+      console.error("User not found");
+      return;
+    }
+
+    if (!userToken) {
+      console.error("User token not found");
+      return;
+    }
+
     try {
-      console.log("Updating user data", data);
+      // Setting the authentication token as an header of the request.
+      axios.defaults.headers.common["x-auth-token"] = userToken;
+
+      // Parsing the token.
+      const parsedToken = jwtDecode(userToken) as Token;
+
+      const response = await axios.put(
+        `https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/${parsedToken}`,
+        data,
+      );
+
+      if (response.status === 200) {
+        // Updating the user data in the store.
+        dispatch(userActions.setUser(response.data));
+
+        toast.success("User data updated successfully");
+      }
     } catch (error) {
       const axiosError: AxiosError = error as AxiosError;
       console.error("Error submitting form", axiosError);

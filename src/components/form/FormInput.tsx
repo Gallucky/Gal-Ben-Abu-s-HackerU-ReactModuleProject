@@ -41,7 +41,7 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
       labelClassName = "",
       dir = "ltr",
       editable = false,
-      onSave,
+      onSave = () => {},
       ...rest
     } = props;
 
@@ -157,6 +157,7 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
               </label>
             )}
 
+            {/* Edit button */}
             {editable && !editMode && (
               <button
                 type="button"
@@ -166,9 +167,18 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
                 <FaEdit scale={200} />
               </button>
             )}
+
+            {/* Save button */}
             {editable && editMode && (
-              <button type="button" className="absolute right-2 top-[30%] p-1">
-                <LuSave onClick={invertEditMode} />
+              <button
+                type="button"
+                className={`absolute right-2 top-[30%] p-1 ${errorMessage && errorMessage !== "" ? "pointer-events-none" : ""}`}
+                tabIndex={errorMessage && errorMessage !== "" ? -1 : 0}
+              >
+                <LuSave
+                  onClick={invertEditMode}
+                  color={`${errorMessage && errorMessage !== "" ? "gray" : "black"}`}
+                />
               </button>
             )}
           </div>

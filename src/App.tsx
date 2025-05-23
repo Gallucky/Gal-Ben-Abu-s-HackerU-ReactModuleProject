@@ -34,12 +34,11 @@ const App = () => {
 
       if (user) {
         dispatch(userActions.login(user.data));
-        dispatch(userActions.showWelcomeBackMessage());
       }
     };
 
     checkUserIsLoggedIn();
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

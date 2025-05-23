@@ -1,42 +1,40 @@
 # 📘 Gal Ben Abu's - HackerU - React Module Project - Changelog
 
-## 📅 Updated to Commit #62 | Date: 22/05/2025
+## 📅 Updated to Commit #63 | Date: 23/05/2025
 
 ## 🛠️ In Progress
 
 - Working on the cards like and dislike functionality.
+- Refactored profile page for inline editing and user updates ([`Profile.page.tsx`](src/pages/Profile/Profile.page.tsx)).
 
 ## 🎯 Todo
 
-- [ ] To complete the work on the [`screenSlice`](src/store/screenSlice.ts).
-- [ ] Create custom hooks for auth, screen view port etc...
-- [ ] Profile Page - Create a page with some of the user's data ([`src/pages/Profile/Profile.page.tsx`](src/pages/Profile/Profile.page.tsx)).
-- [ ] Cards like and dislike functionality.
-- [ ] Favorites Cards Page.
-- [ ] Search functionality.
-- [ ] CRM Page for admin users.
-- [ ] Create cards functionality for business users.
-- [ ] Complete and uncomment [`src/pages/Profile/Name.section.tsx`](src/pages/Profile/Name.section.tsx) and other incomplete profile sections.
+- [ ] Complete [`screenSlice`](src/store/screenSlice.ts).
+- [ ] Create custom hooks for auth, screen viewport, etc.
+- [ ] Finish and polish profile sections ([`Name.section.tsx`](src/pages/Registration/Name.section.tsx), [`PersonalProfileInfo.section.tsx`](src/pages/Profile/PersonalProfileInfo.section.tsx), [`Address.section.tsx`](src/pages/Registration/Address.section.tsx)).
+- [ ] Add card details and favorites functionality.
+- [ ] Implement search and CRM pages.
 
 ## ✅ Completed
 
-- Refactored [`Profile.page.tsx`](src/pages/Profile/Profile.page.tsx) to support inline editing of user fields using the enhanced [`FormInput`](src/components/form/FormInput.tsx) component.
-- Added `editable` and `onSave` props to [`FormInput`](src/components/form/FormInput.tsx) for toggling edit mode and handling value updates.
-- Improved user experience by allowing email and other fields to be edited directly in the profile page.
-- Updated [`useAuth`](src/hooks/useAuth.ts) to expose a `userUpdateRequest` method for future user data updates.
-- Minor code cleanups and improved maintainability in Home and Profile pages.
+- Refactored profile page for inline editing ([`Profile.page.tsx`](src/pages/Profile/Profile.page.tsx)).
+- Added modular personal info section ([`PersonalProfileInfo.section.tsx`](src/pages/Profile/PersonalProfileInfo.section.tsx)).
+- Enhanced form input and user update logic ([`FormInput.tsx`](src/components/form/FormInput.tsx), [`useAuth.ts`](src/hooks/useAuth.ts), [`convertTUser.ts`](src/utils/convertTUser.ts)).
 
 ## 🔄 Changes
 
 ### → <u>Added</u>
 
-- Inline editing support for profile fields via [`FormInput`](src/components/form/FormInput.tsx) and [`Profile.page.tsx`](src/pages/Profile/Profile.page.tsx).
-- `userUpdateRequest` method in [`useAuth`](src/hooks/useAuth.ts) for future user data updates.
+- [`PersonalProfileInfo.section.tsx`](src/pages/Profile/PersonalProfileInfo.section.tsx): Modular section for editing personal info inline.
+- [`convertTUser.ts`](src/utils/convertTUser.ts): Utility for converting user objects to form/update data.
+- `onSave` and `editable` support in [`FormInput.tsx`](src/components/form/FormInput.tsx), [`Name.section.tsx`](src/pages/Registration/Name.section.tsx), [`Address.section.tsx`](src/pages/Registration/Address.section.tsx).
 
 ### → <u>Changed</u>
 
-- Refactored [`Profile.page.tsx`](src/pages/Profile/Profile.page.tsx) and [`FormInput`](src/components/form/FormInput.tsx) for improved editability and maintainability.
-- Cleaned up and improved code in [`Home.page.tsx`](src/pages/Home.page.tsx).
+- [`Profile.page.tsx`](src/pages/Profile/Profile.page.tsx): Now supports inline editing and user data updates.
+- [`useAuth.ts`](src/hooks/useAuth.ts): Added `userUpdateRequest` for updating user data via API.
+- [`userSlice.ts`](src/store/userSlice.ts): Shows "Welcome Back!" toast and handles user updates.
+- Types updated in [`user.t.ts`](src/types/user.t.ts) and [`SectionProps.t.ts`](src/types/pages/SectionProps.t.ts) for consistency.
 
 ### → <u>Removed</u>
 
@@ -48,6 +46,7 @@
 
 | `Date`       | `Commit #`                                                   |
 | ------------ | ------------------------------------------------------------ |
+| `22/05/2025` | [`62`](./commits_changes/commit_62.md)                       |
 | `21/05/2025` | [`61`](./commits_changes/commit_61.md)                       |
 | `20/05/2025` | [`60`](./commits_changes/commit_60.md)                       |
 | `20/05/2025` | [`59`](./commits_changes/commit_59.md)                       |

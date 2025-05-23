@@ -27,6 +27,10 @@ const userSlice = createSlice({
     login: (state, data) => {
       state.user = data.payload;
       state.isUserLoaded = true;
+      if (!state.shownWelcomeBackMessage) {
+        toast.info("Welcome Back!");
+        state.shownWelcomeBackMessage = true;
+      }
     },
     logout: (state) => {
       state.user = null;
@@ -34,12 +38,10 @@ const userSlice = createSlice({
       localStorage.removeItem("token");
       toast.success("Signed out successfully!");
     },
-    showWelcomeBackMessage: (state) => {
-      if (!state.shownWelcomeBackMessage) {
-        toast.info("Welcome Back!");
-
-        state.shownWelcomeBackMessage = true;
-      }
+    setUser: (state, data) => {
+      state.user = data.payload;
+      state.isUserLoaded = true;
+      toast.success("User data updated successfully!");
     },
     unload: (state) => {
       state.isUserLoaded = false;

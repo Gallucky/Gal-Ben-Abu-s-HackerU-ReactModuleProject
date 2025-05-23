@@ -6,7 +6,14 @@ import { RegisterFormData } from "../../hooks/useAuth";
 import { SectionProps } from "../../types/pages/SectionProps.t";
 import Grid from "../../components/utils/Grid";
 
-const AddressSection = (props: SectionProps<RegisterFormData>) => {
+const AddressSection = (
+  props: SectionProps<RegisterFormData> & {
+    onAddressSave?: (
+      value: string,
+      field: "Country" | "State" | "City" | "Street" | "HouseNumber" | "Zip",
+    ) => void;
+  },
+) => {
   const {
     register,
     errors,
@@ -14,7 +21,13 @@ const AddressSection = (props: SectionProps<RegisterFormData>) => {
     className,
     sectionBorderClassName,
     sectionTitleClassName,
+    editable,
   } = props;
+
+  // What action to take when one of the following fields is saved:
+  // Country, State, City, Street, HouseNumber, Zip
+  // Do nothing if the onAddressSave is not defined.
+  const onAddressSave = props.onAddressSave ?? (() => {});
 
   return (
     <Flex direction="col" className="relative w-full">
@@ -30,6 +43,8 @@ const AddressSection = (props: SectionProps<RegisterFormData>) => {
         gridRows={{ sm: 3, md: 3, lg: 3 }}
       >
         <FormInput
+          editable={editable}
+          onSave={(val) => onAddressSave(val, "Country")}
           {...register("address.country")}
           id="registration-form-country"
           label="Country"
@@ -38,6 +53,8 @@ const AddressSection = (props: SectionProps<RegisterFormData>) => {
           errorMessage={errors.address?.country?.message}
         />
         <FormInput
+          editable={editable}
+          onSave={(val) => onAddressSave(val, "State")}
           {...register("address.state")}
           id="registration-form-state"
           label="State"
@@ -46,6 +63,8 @@ const AddressSection = (props: SectionProps<RegisterFormData>) => {
           errorMessage={errors.address?.state?.message}
         />
         <FormInput
+          editable={editable}
+          onSave={(val) => onAddressSave(val, "City")}
           {...register("address.city")}
           id="registration-form-city"
           label="City"
@@ -54,6 +73,8 @@ const AddressSection = (props: SectionProps<RegisterFormData>) => {
           errorMessage={errors.address?.city?.message}
         />
         <FormInput
+          editable={editable}
+          onSave={(val) => onAddressSave(val, "Street")}
           {...register("address.street")}
           id="registration-form-street"
           label="Street"
@@ -62,6 +83,8 @@ const AddressSection = (props: SectionProps<RegisterFormData>) => {
           errorMessage={errors.address?.street?.message}
         />
         <FormInput
+          editable={editable}
+          onSave={(val) => onAddressSave(val, "HouseNumber")}
           {...register("address.houseNumber")}
           id="registration-form-house-number"
           label="House Number"
@@ -72,6 +95,8 @@ const AddressSection = (props: SectionProps<RegisterFormData>) => {
           errorMessage={errors.address?.houseNumber?.message}
         />
         <FormInput
+          editable={editable}
+          onSave={(val) => onAddressSave(val, "Zip")}
           {...register("address.zip")}
           id="registration-form-zip"
           label="Zip"

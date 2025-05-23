@@ -19,6 +19,7 @@ export type TUser = {
     state: string;
     country: string;
     street: string;
-    zip: string;
+    zip: number;
+    houseNumber: number;
   };
 };

@@ -1,5 +1,5 @@
 import { joiResolver } from "@hookform/resolvers/joi";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import PageWrapper from "../../components/layout/PageWrapper";
 import PageForm from "../../components/utils/PageForm";
@@ -11,7 +11,12 @@ import Flex from "../../components/utils/Flex";
 import FormAreaBorder from "../../components/utils/FormAreaBorder";
 import FormAreaTitle from "../../components/utils/FormAreaTitle";
 import AddressSection from "../Registration/Address.section";
-// import { TUser } from "../../types/user.t";
+import { TUser } from "../../types/user.t";
+import {
+  convertTUserToRegisterFormData,
+  convertTUserToUpdateUserFormData,
+} from "../../utils/convertTUser";
+import PersonalProfileInfoSection from "./PersonalProfileInfo.section";
 
 // Should be replaced with the data from the user profile.
 const defaultValues = {
@@ -43,11 +48,10 @@ const Profile = () => {
 
   const {
     register,
-    // handleSubmit,
     formState: { errors },
     trigger,
     watch,
-    // setError,
+    reset,
   } = useForm<RegisterFormData>({
     defaultValues,
     mode: "onChange",
@@ -60,19 +64,86 @@ const Profile = () => {
 
   const backgroundColors = "!bg-teal-400 dark:bg-teal-600";
 
-  const { user } = useAuth();
+  const { user, userUpdateRequest } = useAuth();
+  const profileImageRef = useRef<HTMLImageElement>(null);
 
-  // const handleSave = (updatedUser: TUser) => {
-  //   // Todo: find a way to get the current user data with the newly changed field's value.
-
-  //   // Handle the updated user data here
-  //   // userUpdateRequest(updatedUserData);
-  // };
-
-  const handleEmailSave = (value: string) => {
+  useEffect(() => {
     if (user) {
-      user.email = value;
-      // handleSave(user);
+      // Convert user to form structure
+      const userFormData = convertTUserToRegisterFormData(user);
+      // Set the form data to the user data
+      reset(userFormData);
+    }
+  }, [user, reset]);
+
+  const handleSave = (updatedUser: TUser) => {
+    // Handle the updated user data here
+    userUpdateRequest(convertTUserToUpdateUserFormData(updatedUser));
+  };
+
+  const handleNameSave = (
+    changedVal: string,
+    part: "First" | "Middle" | "Last",
+  ) => {
+    // Handle name save logic here
+    if (user) {
+      // Updating the chosen part of the name.
+      if (part === "First") {
+        user.name.first = changedVal;
+      } else if (part === "Middle") {
+        user.name.middle = changedVal;
+      } else if (part === "Last") {
+        user.name.last = changedVal;
+      }
+
+      // Sync the changes with the server.
+      handleSave(user);
+    }
+  };
+
+  const handlePersonalInfoSave = (
+    changedVal: string,
+    field: "Phone" | "Image.Url" | "Image.Alt",
+  ) => {
+    if (user) {
+      // Handle personal info save logic here
+      if (field === "Phone") user.phone = changedVal;
+      else if (field === "Image.Url") user.image.url = changedVal;
+      else if (field === "Image.Alt") user.image.alt = changedVal;
+
+      if (profileImageRef.current) {
+        // Update the image source to the new URL.
+        if (field === "Image.Url") profileImageRef.current.src = changedVal;
+        // Update the image source to the new alt.
+        else if (field === "Image.Alt")
+          profileImageRef.current.alt = changedVal;
+      }
+
+      // Sync the changes with the server.
+      handleSave(user);
+    }
+  };
+
+  const handleAddressSave = (
+    changedVal: string,
+    field: "Country" | "State" | "City" | "Street" | "HouseNumber" | "Zip",
+  ) => {
+    if (user) {
+      const userDataCopy = { ...user };
+      // Handle address save logic here
+      // Update the address field in the user object
+
+      if (field === "Country") userDataCopy.address.country = changedVal;
+      else if (field === "State") userDataCopy.address.state = changedVal;
+      else if (field === "City") userDataCopy.address.city = changedVal;
+      else if (field === "Street") userDataCopy.address.street = changedVal;
+      else if (field === "HouseNumber")
+        userDataCopy.address.houseNumber = parseInt(changedVal, -1);
+      else if (field === "Zip")
+        userDataCopy.address.zip = parseInt(changedVal, -1);
+
+      // Sync the changes with the server.
+      handleSave(userDataCopy);
     }
   };
 
@@ -98,11 +169,13 @@ const Profile = () => {
                 src="/profile.jpg"
                 alt="Profile"
                 className="size-60 rounded-xl border border-black object-cover dark:border-white"
+                ref={profileImageRef}
               />
             </div>
             {/* Sections to the right of the profile picture */}
             <NameSection
               editable
+              onNameSave={handleNameSave}
               register={register}
               errors={errors}
               backgroundColors={backgroundColors}
@@ -124,8 +197,7 @@ const Profile = () => {
                 directionDynamic
               >
                 <FormInput
-                  editable
-                  onSave={handleEmailSave}
+                  disabled
                   {...register("email")}
                   id="registration-form-email"
                   label="Email"
@@ -135,68 +207,28 @@ const Profile = () => {
                   errorMessage={errors.email ? errors.email.message : ""}
                 />
                 <FormInput
-                  editable
-                  // onSave={handlePasswordSave}
-                  {...register("password")}
+                  disabled
                   id="registration-form-password"
                   label="Password"
                   type="password"
                   className="w-[90%] md:w-1/2"
                   labelClassName={`${backgroundColors}`}
-                  errorMessage={errors.password?.message}
                 />
               </Flex>
             </Flex>
             {/* Personal Info Section */}
-            <Flex direction="col" className="relative w-full">
-              <FormAreaTitle
-                text="Personal Info"
-                className={`${backgroundColors} !text-gray-800 dark:!text-gray-700`}
-              />
-              <FormAreaBorder className="!border border-gray-400 dark:border-gray-600" />
+            <PersonalProfileInfoSection
+              editable
+              onPersonalInfoSave={handlePersonalInfoSave}
+              register={register}
+              errors={errors}
+              backgroundColors={backgroundColors}
+              watch={watch}
+            />
 
-              <Flex direction="col" directionDynamic>
-                <Flex
-                  className="w-full gap-3 py-2 md:gap-5 md:p-3 md:px-10"
-                  directionDynamic
-                >
-                  <FormInput
-                    editable
-                    // onSave={handlePhoneSave}
-                    {...register("phone")}
-                    id="registration-form-phone"
-                    label="Phone"
-                    type="tel"
-                    className="w-[90%] md:w-1/3"
-                    labelClassName={`${backgroundColors}`}
-                    errorMessage={errors.phone?.message}
-                  />
-                  <FormInput
-                    editable
-                    // onSave={handleImageUrlSave}
-                    {...register("image.url")}
-                    id="registration-form-image-url"
-                    label="Image Url"
-                    type="url"
-                    className="w-[90%] md:w-1/3"
-                    labelClassName={`${backgroundColors}`}
-                    errorMessage={errors.image?.url?.message}
-                  />
-                  <FormInput
-                    editable
-                    // onSave={handleImageAltSave}
-                    {...register("image.alt")}
-                    id="registration-form-image-alt"
-                    label="Image Alt"
-                    className="w-[90%] md:w-1/3"
-                    labelClassName={`${backgroundColors}`}
-                    errorMessage={errors.image?.alt?.message}
-                  />
-                </Flex>
-              </Flex>
-            </Flex>
             <AddressSection
               editable
+              onAddressSave={handleAddressSave}
               register={register}
               errors={errors}
               backgroundColors={backgroundColors}

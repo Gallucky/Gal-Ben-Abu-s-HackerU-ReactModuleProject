@@ -5,7 +5,11 @@ import FormAreaTitle from "../../components/utils/FormAreaTitle";
 import { RegisterFormData } from "../../hooks/useAuth";
 import { SectionProps } from "../../types/pages/SectionProps.t";
 
-const NameSection = (props: SectionProps<RegisterFormData>) => {
+const NameSection = (
+  props: SectionProps<RegisterFormData> & {
+    onNameSave?: (value: string, part: "First" | "Middle" | "Last") => void;
+  },
+) => {
   const {
     register,
     errors,
@@ -13,8 +17,12 @@ const NameSection = (props: SectionProps<RegisterFormData>) => {
     className,
     sectionBorderClassName,
     sectionTitleClassName,
-    editable,
+    editable = false,
   } = props;
+
+  // What action to take when the name is saved.
+  // Do nothing if the onNameSave is not defined.
+  const onNameSave = props.onNameSave ?? (() => {});
 
   return (
     <Flex direction="col" className="relative w-full">
@@ -30,6 +38,7 @@ const NameSection = (props: SectionProps<RegisterFormData>) => {
       >
         <FormInput
           editable={editable}
+          onSave={(val) => onNameSave(val, "First")}
           {...register("name.first")}
           id="registration-form-first-name"
           label="First Name"
@@ -39,6 +48,7 @@ const NameSection = (props: SectionProps<RegisterFormData>) => {
         />
         <FormInput
           editable={editable}
+          onSave={(val) => onNameSave(val, "Middle")}
           {...register("name.middle")}
           id="registration-form-middle-name"
           label="Middle Name"
@@ -48,6 +58,7 @@ const NameSection = (props: SectionProps<RegisterFormData>) => {
         />
         <FormInput
           editable={editable}
+          onSave={(val) => onNameSave(val, "Last")}
           {...register("name.last")}
           id="registration-form-last-name"
           label="Last Name"
