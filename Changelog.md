@@ -1,34 +1,32 @@
 # 📘 Gal Ben Abu's - HackerU - React Module Project - Changelog
 
-## 📅 Updated to Commit #64 | Date: 24/05/2025
+## 📅 Updated to Commit #65 | Date: 24/05/2025
 
 ## 🛠️ In Progress
 
-- Working on the cards like and dislike functionality.
+- Working on the base search functionality, currently focusing on the home page.
 
 ## 🎯 Todo
 
-- [ ] Complete [`screenSlice`](src/store/screenSlice.ts).
-- [ ] Create custom hooks for auth, screen viewport, etc.
-- [x] Finish and polish profile sections ([`Name.section.tsx`](src/pages/Registration/Name.section.tsx), [`PersonalProfileInfo.section.tsx`](src/pages/Profile/PersonalProfileInfo.section.tsx), [`Address.section.tsx`](src/pages/Registration/Address.section.tsx)).
-- [ ] Add card details and favorites functionality.
-- [ ] Implement search and CRM pages.
+> See the [Todo List](./todo-list.md) for the full list of tasks.
 
 ## ✅ Completed
 
-- Profile page fully refactored and completed with inline editing, modular sections, and robust user update logic ([`Profile.page.tsx`](src/pages/Profile/Profile.page.tsx), [`Name.section.tsx`](src/pages/Registration/Name.section.tsx), [`PersonalProfileInfo.section.tsx`](src/pages/Profile/PersonalProfileInfo.section.tsx), [`Address.section.tsx`](src/pages/Registration/Address.section.tsx)).
-- All profile sections are now finished and polished for production use.
+> - Added custom ESLint rule to warn on incomplete TODO comments ([eslint-rules/no-incomplete-todo-comments.cjs](eslint-rules/no-incomplete-todo-comments.cjs)).
+> - Integrated the rule via plugin ([eslint-rules/eslint-plugin-custom-eslint-rules.cjs](eslint-rules/eslint-plugin-custom-eslint-rules.cjs)).
+> - Updated [`.eslintrc.cjs`](.eslintrc.cjs) to enable the rule.
 
 ## 🔄 Changes
 
 ### → <u>Added</u>
 
-- Modular and editable profile sections: [`Name.section.tsx`](src/pages/Registration/Name.section.tsx), [`PersonalProfileInfo.section.tsx`](src/pages/Profile/PersonalProfileInfo.section.tsx), [`Address.section.tsx`](src/pages/Registration/Address.section.tsx).
+- [`eslint-rules/no-incomplete-todo-comments.cjs`](eslint-rules/no-incomplete-todo-comments.cjs): Custom ESLint rule to warn on incomplete TODO comments.
+- [`eslint-rules/eslint-plugin-custom-eslint-rules.cjs`](eslint-rules/eslint-plugin-custom-eslint-rules.cjs): Plugin exposing the custom rule.
+- [`eslint-rules/custom-eslint-rules-plugin.cjs`](eslint-rules/custom-eslint-rules-plugin.cjs): (Empty, reserved for future custom rules.)
 
 ### → <u>Changed</u>
 
-- [`Profile.page.tsx`](src/pages/Profile/Profile.page.tsx): Completed and refactored for inline editing, modularity, and robust user update logic.
-- Updated all profile-related section components for consistency and usability.
+- Updated [`.eslintrc.cjs`](.eslintrc.cjs) to integrate and enable the custom ESLint rule for TODO comments.
 
 ### → <u>Removed</u>
 
@@ -40,6 +38,7 @@
 
 | `Date`       | `Commit #`                                                   |
 | ------------ | ------------------------------------------------------------ |
+| `24/05/2025` | [`64`](./commits_changes/commit_64.md)                       |
 | `23/05/2025` | [`63`](./commits_changes/commit_63.md)                       |
 | `22/05/2025` | [`62`](./commits_changes/commit_62.md)                       |
 | `21/05/2025` | [`61`](./commits_changes/commit_61.md)                       |

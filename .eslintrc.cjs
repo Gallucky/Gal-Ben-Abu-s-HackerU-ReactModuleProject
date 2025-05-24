@@ -1,3 +1,7 @@
+// Import the ESLint plugin
+"use strict";
+const eslintPlugin_IncompleteTodoComments = require("./eslint-rules/eslint-plugin-custom-eslint-rules.cjs");
+
 module.exports = {
   root: true,
   env: { browser: true, es2020: true },
@@ -10,7 +14,7 @@ module.exports = {
   ],
   ignorePatterns: ["dist", ".eslintrc.cjs", "!src/**/*"],
   parser: "@typescript-eslint/parser",
-  plugins: ["react-refresh"],
+  plugins: ["react-refresh", "custom-eslint-rules"],
   settings: {
     tailwindcss: {
       callees: ["twMerge", "createTheme"],
@@ -32,5 +36,7 @@ module.exports = {
       { allowConstantExport: true },
     ],
     "tailwindcss/no-custom-classname": "off",
+
+    "custom-eslint-rules/no-incomplete-todo-comments": "warn",
   },
 };
