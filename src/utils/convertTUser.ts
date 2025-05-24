@@ -11,10 +11,7 @@ export const convertTUserToUpdateUserFormData = (
       last: user.name.last,
     },
     phone: user.phone,
-    image: {
-      url: user.image.url ?? "",
-      alt: user.image.alt ?? "",
-    },
+    image: { url: user.image.url ?? "", alt: user.image.alt ?? "" },
     address: {
       state: user.address.state,
       country: user.address.country,
@@ -23,7 +20,6 @@ export const convertTUserToUpdateUserFormData = (
       houseNumber: user.address.houseNumber,
       zip: user.address.zip,
     },
-    isBusiness: user.isBusiness,
   };
 };
 
@@ -39,10 +35,7 @@ export const convertTUserToRegisterFormData = (
     phone: user.phone,
     email: user.email,
     password: "protected",
-    image: {
-      url: user.image.url ?? "",
-      alt: user.image.alt ?? "",
-    },
+    image: { url: user.image.url ?? "", alt: user.image.alt ?? "" },
     address: {
       state: user.address.state,
       country: user.address.country,

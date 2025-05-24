@@ -89,6 +89,7 @@ const AddressSection = (
           id="registration-form-house-number"
           label="House Number"
           type="number"
+          disableUpDownArrows
           min={0}
           className="w-[90%] md:w-full"
           labelClassName={`${backgroundColors}`}
@@ -101,6 +102,7 @@ const AddressSection = (
           id="registration-form-zip"
           label="Zip"
           type="number"
+          disableUpDownArrows
           min={0}
           className="w-[90%] md:w-full"
           labelClassName={`${backgroundColors}`}

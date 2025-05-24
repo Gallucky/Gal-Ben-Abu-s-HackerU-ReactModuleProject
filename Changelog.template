@@ -28,7 +28,7 @@ Please:
 Analyze all uncommitted changes since the last commit.
 Summarize them clearly and concisely.
 Indicate:
-Which files or components were added, modified, or deleted.
+Which files or components were added, modified, or deleted and what todo, in-progress were completed.
 What the purpose of the changes is.
 Any new features, bug fixes, improvements, or refactoring.
 Format the commit message professionally:
@@ -36,3 +36,4 @@ Start with a short, clear title (max ~50 characters).
 Follow with an optional detailed description, wrapped at ~72 chars.
 Make the message easy to read and helpful for tracking project history.
 Please add links to each part and don't use any terminal commands...
+Modify the `Changelog.md` file with those git changes.

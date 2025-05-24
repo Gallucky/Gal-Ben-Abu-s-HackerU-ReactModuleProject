@@ -5,6 +5,7 @@ import searchSlice from "./searchSlice";
 const store = configureStore({
   // All of the reduces / slices that are part of the whole bigPie.
   reducer: { userSlice, searchSlice },
+  devTools: import.meta.env.MODE !== "production",
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       // This is to avoid the error of serializable check.

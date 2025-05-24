@@ -27,6 +27,10 @@ const userSlice = createSlice({
     login: (state, data) => {
       state.user = data.payload;
       state.isUserLoaded = true;
+    },
+    autoLogin: (state, data) => {
+      state.user = data.payload;
+      state.isUserLoaded = true;
       if (!state.shownWelcomeBackMessage) {
         toast.info("Welcome Back!");
         state.shownWelcomeBackMessage = true;

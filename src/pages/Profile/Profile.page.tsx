@@ -1,5 +1,5 @@
 import { joiResolver } from "@hookform/resolvers/joi";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import PageWrapper from "../../components/layout/PageWrapper";
 import PageForm from "../../components/utils/PageForm";
@@ -17,21 +17,15 @@ import {
   convertTUserToUpdateUserFormData,
 } from "../../utils/convertTUser";
 import PersonalProfileInfoSection from "./PersonalProfileInfo.section";
+import { toast } from "react-toastify";
 
 // Should be replaced with the data from the user profile.
 const defaultValues = {
-  name: {
-    first: "",
-    middle: "",
-    last: "",
-  },
+  name: { first: "", middle: "", last: "" },
   phone: "",
   email: "",
   password: "",
-  image: {
-    url: "",
-    alt: "",
-  },
+  image: { url: "", alt: "" },
   address: {
     state: "",
     country: "",
@@ -45,6 +39,11 @@ const defaultValues = {
 
 const Profile = () => {
   // const [imageUrl, setImageUrl] = useState("");
+
+  // Prevent multiple update requests from being sent at the same time.
+  // This is used to prevent the user from clicking the save button multiple times
+  // Also it solves the problem with more than one 'User data updated successfully' toast.
+  const [lockUpdateRequests, setLockUpdateRequests] = useState(false);
 
   const {
     register,
@@ -73,12 +72,34 @@ const Profile = () => {
       const userFormData = convertTUserToRegisterFormData(user);
       // Set the form data to the user data
       reset(userFormData);
+
+      if (profileImageRef.current) {
+        if (user.image.url) {
+          // Set the profile image source to the user's image URL.
+          profileImageRef.current.src = user.image.url;
+          // Set the profile image alt text to the user's image alt text.
+          profileImageRef.current.alt = user.image.alt ?? "";
+
+          profileImageRef.current.style.objectFit = "contain";
+          profileImageRef.current.style.objectPosition = "center";
+        }
+      }
     }
   }, [user, reset]);
 
   const handleSave = (updatedUser: TUser) => {
-    // Handle the updated user data here
-    userUpdateRequest(convertTUserToUpdateUserFormData(updatedUser));
+    if (!lockUpdateRequests) {
+      // Handle the updated user data here
+      setLockUpdateRequests(true);
+
+      userUpdateRequest(
+        convertTUserToUpdateUserFormData(updatedUser),
+        setLockUpdateRequests,
+        1000,
+      );
+    } else {
+      toast.info("Please wait for the current update to complete.");
+    }
   };
 
   const handleNameSave = (
@@ -87,17 +108,23 @@ const Profile = () => {
   ) => {
     // Handle name save logic here
     if (user) {
+      // The structuredClone is used to create a deep copy of the user object.
+      // This is necessary to avoid mutating the original user object directly.
+      // So no matter how many nested objects in the main object it will create
+      // a copy that is not linked to the original object.
+      const userDataCopy = structuredClone(user);
+
       // Updating the chosen part of the name.
       if (part === "First") {
-        user.name.first = changedVal;
+        userDataCopy.name.first = changedVal;
       } else if (part === "Middle") {
-        user.name.middle = changedVal;
+        userDataCopy.name.middle = changedVal;
       } else if (part === "Last") {
-        user.name.last = changedVal;
+        userDataCopy.name.last = changedVal;
       }
 
       // Sync the changes with the server.
-      handleSave(user);
+      handleSave(userDataCopy);
     }
   };
 
@@ -106,10 +133,16 @@ const Profile = () => {
     field: "Phone" | "Image.Url" | "Image.Alt",
   ) => {
     if (user) {
+      // The structuredClone is used to create a deep copy of the user object.
+      // This is necessary to avoid mutating the original user object directly.
+      // So no matter how many nested objects in the main object it will create
+      // a copy that is not linked to the original object.
+      const userDataCopy = structuredClone(user);
+
       // Handle personal info save logic here
-      if (field === "Phone") user.phone = changedVal;
-      else if (field === "Image.Url") user.image.url = changedVal;
-      else if (field === "Image.Alt") user.image.alt = changedVal;
+      if (field === "Phone") userDataCopy.phone = changedVal;
+      else if (field === "Image.Url") userDataCopy.image.url = changedVal;
+      else if (field === "Image.Alt") userDataCopy.image.alt = changedVal;
 
       if (profileImageRef.current) {
         // Update the image source to the new URL.
@@ -120,7 +153,7 @@ const Profile = () => {
       }
 
       // Sync the changes with the server.
-      handleSave(user);
+      handleSave(userDataCopy);
     }
   };
 
@@ -129,7 +162,12 @@ const Profile = () => {
     field: "Country" | "State" | "City" | "Street" | "HouseNumber" | "Zip",
   ) => {
     if (user) {
-      const userDataCopy = { ...user };
+      // The structuredClone is used to create a deep copy of the user object.
+      // This is necessary to avoid mutating the original user object directly.
+      // So no matter how many nested objects in the main object it will create
+      // a copy that is not linked to the original object.
+      const userDataCopy = structuredClone(user);
+
       // Handle address save logic here
       // Update the address field in the user object
 
@@ -138,9 +176,9 @@ const Profile = () => {
       else if (field === "City") userDataCopy.address.city = changedVal;
       else if (field === "Street") userDataCopy.address.street = changedVal;
       else if (field === "HouseNumber")
-        userDataCopy.address.houseNumber = parseInt(changedVal, -1);
+        userDataCopy.address.houseNumber = parseInt(changedVal, 10);
       else if (field === "Zip")
-        userDataCopy.address.zip = parseInt(changedVal, -1);
+        userDataCopy.address.zip = parseInt(changedVal, 10);
 
       // Sync the changes with the server.
       handleSave(userDataCopy);
@@ -150,7 +188,10 @@ const Profile = () => {
   return (
     <>
       <PageWrapper>
-        <PageForm title="Profile Page">
+        <PageForm
+          title="Profile Page"
+          titleClassName="underline underline-offset-[15px]"
+        >
           {/* 
             Grid area with the following sections:
             "blank blank"
@@ -208,6 +249,7 @@ const Profile = () => {
                 />
                 <FormInput
                   disabled
+                  {...register("password")}
                   id="registration-form-password"
                   label="Password"
                   type="password"

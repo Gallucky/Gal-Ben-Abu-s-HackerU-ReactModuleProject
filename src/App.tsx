@@ -33,7 +33,7 @@ const App = () => {
       );
 
       if (user) {
-        dispatch(userActions.login(user.data));
+        dispatch(userActions.autoLogin(user.data));
       }
     };
 

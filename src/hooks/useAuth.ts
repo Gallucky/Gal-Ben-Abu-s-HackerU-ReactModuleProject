@@ -7,24 +7,14 @@ import { toast } from "react-toastify";
 import { userActions } from "../store/userSlice";
 import { Token } from "../types/token.t";
 
-export type LoginFormData = {
-  email: string;
-  password: string;
-};
+export type LoginFormData = { email: string; password: string };
 
 export type RegisterFormData = {
-  name: {
-    first: string;
-    middle: string;
-    last: string;
-  };
+  name: { first: string; middle: string; last: string };
   phone: string;
   email: string;
   password: string;
-  image: {
-    url: string;
-    alt: string;
-  };
+  image: { url: string; alt: string };
   address: {
     state: string;
     country: string;
@@ -37,16 +27,9 @@ export type RegisterFormData = {
 };
 
 export type UpdateUserFormData = {
-  name: {
-    first: string;
-    middle?: string;
-    last: string;
-  };
+  name: { first: string; middle?: string; last: string };
   phone: string;
-  image: {
-    url: string;
-    alt: string;
-  };
+  image: { url: string; alt: string };
   address: {
     state?: string;
     country: string;
@@ -55,7 +38,6 @@ export type UpdateUserFormData = {
     houseNumber: number;
     zip: number;
   };
-  isBusiness: boolean;
 };
 
 const useAuth = () => {
@@ -116,13 +98,7 @@ const useAuth = () => {
       toast.success("Registration Successful");
 
       // Logging in the user after registration.
-      loginRequest(
-        {
-          email: data.email,
-          password: data.password,
-        },
-        false,
-      );
+      loginRequest({ email: data.email, password: data.password }, false);
     } catch (error) {
       const axiosError: AxiosError = error as AxiosError;
       console.error("Error submitting form", axiosError);
@@ -140,14 +116,26 @@ const useAuth = () => {
     }
   };
 
-  const userUpdateRequest = async (data: UpdateUserFormData) => {
+  const userUpdateRequest = async (
+    data: UpdateUserFormData,
+    lockMethod: (locked: boolean) => void,
+    unlockDelay: number,
+  ) => {
+    const unlockAfterDelay = () => {
+      setTimeout(() => {
+        lockMethod(false);
+      }, unlockDelay);
+    };
+
     if (!user) {
       console.error("User not found");
+      unlockAfterDelay();
       return;
     }
 
     if (!userToken) {
       console.error("User token not found");
+      unlockAfterDelay();
       return;
     }
 
@@ -159,16 +147,15 @@ const useAuth = () => {
       const parsedToken = jwtDecode(userToken) as Token;
 
       const response = await axios.put(
-        `https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/${parsedToken}`,
+        `https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/${parsedToken._id}`,
         data,
       );
 
       if (response.status === 200) {
         // Updating the user data in the store.
         dispatch(userActions.setUser(response.data));
-
-        toast.success("User data updated successfully");
       }
+      unlockAfterDelay();
     } catch (error) {
       const axiosError: AxiosError = error as AxiosError;
       console.error("Error submitting form", axiosError);
@@ -183,16 +170,11 @@ const useAuth = () => {
             : (axiosError.message ?? "Error Occurred");
 
       toast.error(errorMessage);
+      unlockAfterDelay();
     }
   };
 
-  return {
-    user,
-    userToken,
-    loginRequest,
-    registerRequest,
-    userUpdateRequest,
-  };
+  return { user, userToken, loginRequest, registerRequest, userUpdateRequest };
 };
 
 export default useAuth;

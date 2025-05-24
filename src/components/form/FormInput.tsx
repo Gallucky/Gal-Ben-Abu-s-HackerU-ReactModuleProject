@@ -24,6 +24,7 @@ type FormInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   labelClassName?: string;
   editable?: boolean;
   onSave?: (value: string) => void;
+  disableUpDownArrows?: boolean;
 };
 
 // Needed the forwardRef to support the ref that is required so
@@ -41,6 +42,7 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
       labelClassName = "",
       dir = "ltr",
       editable = false,
+      disableUpDownArrows = false,
       onSave = () => {},
       ...rest
     } = props;
@@ -106,7 +108,7 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
       if (editMode) {
         // Exiting edit mode: save changes
         const newValue = inputRef.current?.value || "";
-        onSave && newValue !== "" && onSave(newValue);
+        onSave(newValue);
         setEditMode(false);
       } else {
         // Entering edit mode
@@ -127,6 +129,7 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
               className={`base-form-input font-Rubik font-base peer w-full
                   ${editable && !editMode ? "hover:cursor-default" : "hover:cursor-text"}
                   ${type === "file" ? "hidden" : ""}
+                  ${type === "number" && disableUpDownArrows ? "disable-down-up-arrows" : ""}
                   ${inputClassName} ${formInputState}
                 `}
               placeholder=" "
@@ -174,9 +177,9 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
                 type="button"
                 className={`absolute right-2 top-[30%] p-1 ${errorMessage && errorMessage !== "" ? "pointer-events-none" : ""}`}
                 tabIndex={errorMessage && errorMessage !== "" ? -1 : 0}
+                onClick={invertEditMode}
               >
                 <LuSave
-                  onClick={invertEditMode}
                   color={`${errorMessage && errorMessage !== "" ? "gray" : "black"}`}
                 />
               </button>

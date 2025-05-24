@@ -64,3 +64,13 @@
   peer-focus:!text-green-700
   peer-[&:not(:placeholder-shown)]:!text-green-700;
 }
+
+.disable-down-up-arrows {
+  -moz-appearance: textfield;
+}
+
+.disable-down-up-arrows::-webkit-outer-spin-button,
+.disable-down-up-arrows::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
