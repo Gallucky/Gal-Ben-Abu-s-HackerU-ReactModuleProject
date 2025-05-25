@@ -1,6 +1,6 @@
 # 📘 Gal Ben Abu's - HackerU - React Module Project - Changelog
 
-## 📅 Updated to Commit #65 | Date: 24/05/2025
+## 📅 Updated to Commit #66 | Date: 25/05/2025
 
 ## 🛠️ In Progress
 
@@ -12,21 +12,17 @@
 
 ## ✅ Completed
 
-> - Added custom ESLint rule to warn on incomplete TODO comments ([eslint-rules/no-incomplete-todo-comments.cjs](eslint-rules/no-incomplete-todo-comments.cjs)).
-> - Integrated the rule via plugin ([eslint-rules/eslint-plugin-custom-eslint-rules.cjs](eslint-rules/eslint-plugin-custom-eslint-rules.cjs)).
-> - Updated [`.eslintrc.cjs`](.eslintrc.cjs) to enable the rule.
+> `Nothing has been completed.`
 
 ## 🔄 Changes
 
 ### → <u>Added</u>
 
-- [`eslint-rules/no-incomplete-todo-comments.cjs`](eslint-rules/no-incomplete-todo-comments.cjs): Custom ESLint rule to warn on incomplete TODO comments.
-- [`eslint-rules/eslint-plugin-custom-eslint-rules.cjs`](eslint-rules/eslint-plugin-custom-eslint-rules.cjs): Plugin exposing the custom rule.
-- [`eslint-rules/custom-eslint-rules-plugin.cjs`](eslint-rules/custom-eslint-rules-plugin.cjs): (Empty, reserved for future custom rules.)
+> `Nothing has been added.`
 
 ### → <u>Changed</u>
 
-- Updated [`.eslintrc.cjs`](.eslintrc.cjs) to integrate and enable the custom ESLint rule for TODO comments.
+> `Nothing has been changed.`
 
 ### → <u>Removed</u>
 
@@ -38,6 +34,7 @@
 
 | `Date`       | `Commit #`                                                   |
 | ------------ | ------------------------------------------------------------ |
+| `24/05/2025` | [`65`](./commits_changes/commit_65.md)                       |
 | `24/05/2025` | [`64`](./commits_changes/commit_64.md)                       |
 | `23/05/2025` | [`63`](./commits_changes/commit_63.md)                       |
 | `22/05/2025` | [`62`](./commits_changes/commit_62.md)                       |

@@ -1,6 +1,5 @@
 // Import the ESLint plugin
 "use strict";
-const eslintPlugin_IncompleteTodoComments = require("./eslint-rules/eslint-plugin-custom-eslint-rules.cjs");
 
 module.exports = {
   root: true,
