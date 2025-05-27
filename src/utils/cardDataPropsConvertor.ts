@@ -1,7 +1,10 @@
 import { CardProps } from "../components/card/Card";
 import { TCardData } from "../types/card.t";
 
-export const convertCardDataToProps = (arr: TCardData[]): CardProps[] => {
+export const convertCardDataToProps = (
+  arr: TCardData[],
+  userID?: string,
+): CardProps[] => {
   const res: CardProps[] = [];
   arr.map((item) => {
     // Getting the relevant data from the server response.
@@ -27,6 +30,7 @@ export const convertCardDataToProps = (arr: TCardData[]): CardProps[] => {
       phone: phone,
       imgSrc: imgSrc,
       imgAlt: imgAlt,
+      alreadyLiked: item.likes && userID ? item.likes.includes(userID) : false,
     };
 
     res.push(relevantCardData);

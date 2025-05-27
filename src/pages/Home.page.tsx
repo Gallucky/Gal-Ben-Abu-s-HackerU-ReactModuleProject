@@ -7,9 +7,11 @@ import CardsContainer from "../components/card/CardsContainer";
 import { TCardData } from "../types/card.t";
 // import useAuth from "../hooks/useAuth";
 import { convertCardDataToProps } from "../utils/cardDataPropsConvertor";
+import useSearch from "../hooks/useSearch";
+import useAuth from "../hooks/useAuth";
 
 const Home = () => {
-  // const { user } = useAuth();
+  const { user } = useAuth();
   const [memeCards, setCards] = useState<TCardData[]>();
 
   /**
@@ -37,20 +39,8 @@ const Home = () => {
   const getRelevantCardData = (responseData?: TCardData[]): CardProps[] => {
     if (!responseData) return [];
 
-    return convertCardDataToProps(responseData);
+    return convertCardDataToProps(responseData, user?._id);
   };
-
-  // TODO:
-  // const getFavoriteCardsData = (responseData?: TCardData[]): CardProps[] => {
-  //   if (!responseData || !user) return [];
-
-  //   // Filtering only the cards that the user liked.
-  //   const res: TCardData[] = responseData.filter((item) =>
-  //     item.likes.includes(user._id),
-  //   );
-
-  //   return convertCardDataToProps(res);
-  // };
 
   // Requesting to get the cards from api on mount.
   useEffect(() => {
@@ -62,6 +52,9 @@ const Home = () => {
   // Getting the converted cards array ready for components creation.
   const memeCardsWithRelevantData = getRelevantCardData(memeCards);
 
+  const { generalSearch } = useSearch();
+  const filteredCards = generalSearch(memeCardsWithRelevantData);
+
   return (
     <>
       <div className="h-screen w-screen py-20">
@@ -70,7 +63,7 @@ const Home = () => {
           paragraph="Here you can find business cards from all categories."
         />
         <Divider />
-        <CardsContainer cards={memeCardsWithRelevantData} />
+        <CardsContainer cards={filteredCards} />
         <br />
         <br />
         <br />

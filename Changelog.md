@@ -1,32 +1,33 @@
 # 📘 Gal Ben Abu's - HackerU - React Module Project - Changelog
 
-## 📅 Updated to Commit #66 | Date: 25/05/2025
+## 📅 Updated to Commit #66.1 | Date: 27/05/2025
 
-## 🛠️ In Progress
+### 🔗 [Open TODO List](./todo-list.md)
 
-- Working on the base search functionality, currently focusing on the home page.
+### ✅ Completed
 
-## 🎯 Todo
+- [x] Implement search across all pages ([src/pages/Home.page.tsx](./src/pages/Home.page.tsx), [src/components/other/SearchBox.tsx](./src/components/other/SearchBox.tsx), [src/hooks/useSearch.ts](./src/hooks/useSearch.ts))
+- [x] Polish and extend card like/dislike functionality ([src/components/card/Card.tsx](./src/components/card/Card.tsx), [src/hooks/useContent.ts](./src/hooks/useContent.ts), [src/components/card/CardsContainer.tsx](./src/components/card/CardsContainer.tsx), [src/utils/cardDataPropsConvertor.ts](./src/utils/cardDataPropsConvertor.ts))
 
-> See the [Todo List](./todo-list.md) for the full list of tasks.
+### ➕ Added
 
-## ✅ Completed
+- Added `alreadyLiked` property to `CardProps` and its usage throughout the card rendering logic ([src/components/card/Card.tsx](./src/components/card/Card.tsx), [src/components/card/CardsContainer.tsx](./src/components/card/CardsContainer.tsx), [src/utils/cardDataPropsConvertor.ts](./src/utils/cardDataPropsConvertor.ts))
+- Introduced a new custom React hook: [src/hooks/useSearch.ts](./src/hooks/useSearch.ts) for card search and favorites filtering logic
 
-> `Nothing has been completed.`
+### 🔄 Changed
 
-## 🔄 Changes
+- Updated `CardsContainer` to support `alreadyLiked` and null card arrays, and improved responsive rendering ([src/components/card/CardsContainer.tsx](./src/components/card/CardsContainer.tsx))
+- Enhanced `useContent` to log like/dislike responses and improve error handling ([src/hooks/useContent.ts](./src/hooks/useContent.ts))
+- Refactored `Home.page.tsx` to use the new search logic and pass filtered cards to the container ([src/pages/Home.page.tsx](./src/pages/Home.page.tsx))
+- Improved `convertCardDataToProps` to support user-specific like status ([src/utils/cardDataPropsConvertor.ts](./src/utils/cardDataPropsConvertor.ts))
 
-### → <u>Added</u>
+### 🗑️ Deleted
 
-> `Nothing has been added.`
+- No files deleted.
 
-### → <u>Changed</u>
+### 🏷️ Renamed / Moved
 
-> `Nothing has been changed.`
-
-### → <u>Removed</u>
-
-> `Nothing has been removed.`
+- No files renamed or moved.
 
 ---
 
@@ -34,6 +35,7 @@
 
 | `Date`       | `Commit #`                                                   |
 | ------------ | ------------------------------------------------------------ |
+| `25/05/2025` | [`66`](./commits_changes/commit_66.md)                       |
 | `24/05/2025` | [`65`](./commits_changes/commit_65.md)                       |
 | `24/05/2025` | [`64`](./commits_changes/commit_64.md)                       |
 | `23/05/2025` | [`63`](./commits_changes/commit_63.md)                       |

@@ -18,9 +18,12 @@ const useContent = () => {
         // Setting the authentication token as an header of the request.
         axios.defaults.headers.common["x-auth-token"] = userToken;
 
-        await axios.patch(
+        const res = await axios.patch(
           `https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/${cardID}`,
         );
+
+        console.log("Response from like/dislike request:", res.data);
+
         likeButton.classList.toggle("text-red-500");
 
         likeButton.classList.add(
@@ -47,7 +50,7 @@ const useContent = () => {
             ? (axiosErrorResponse.data as string)
             : axiosError.message.includes("status code 400")
               ? "Invalid registration data"
-              : axiosError.message ?? "Error Occurred";
+              : (axiosError.message ?? "Error Occurred");
 
         toast.error(errorMessage);
       }

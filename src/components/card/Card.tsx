@@ -12,6 +12,7 @@ export type CardProps = {
   imgSrc: string;
   imgAlt: string;
   userConnected?: boolean;
+  alreadyLiked?: boolean;
 };
 
 const Card = (props: CardProps) => {
@@ -26,6 +27,7 @@ const Card = (props: CardProps) => {
     imgSrc,
     imgAlt,
     userConnected = false,
+    alreadyLiked = false,
   } = props;
 
   const { likeDislikeCard } = useContent();
@@ -67,9 +69,16 @@ const Card = (props: CardProps) => {
             <a href={"tel:" + phone}>
               <FaPhoneAlt className="absolute left-5 hover:cursor-pointer" />
             </a>
-            {userConnected && (
+            {userConnected && !alreadyLiked && (
               <FaHeart
-                className="animate-tilt-hover absolute right-5 hover:cursor-pointer hover:text-red-500"
+                className={`animate-tilt-hover absolute right-5 hover:cursor-pointer hover:text-red-500`}
+                onClick={(e) => likeDislikeCard(e, _id)}
+              />
+            )}
+
+            {userConnected && alreadyLiked && (
+              <FaHeart
+                className={`animate-tilt-hover absolute right-5 text-red-500 hover:cursor-pointer`}
                 onClick={(e) => likeDislikeCard(e, _id)}
               />
             )}

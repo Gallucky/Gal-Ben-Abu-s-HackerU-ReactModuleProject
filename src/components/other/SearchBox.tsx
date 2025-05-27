@@ -16,15 +16,9 @@ const SearchBox = (props: SearchBoxProps) => {
     // Extracting the current value in each change and sending it to the search slice.
     dispatch(searchActions.setSearchWord(e.currentTarget.value));
 
-    // Filter Logic Code: TODO
-    // const filterBy = state.searchWord.toLowerCase();
-    // const cardsToFilter = action.payload;
-
-    // return cardsToFilter.filter(
-    //   (card) =>
-    //     card.title.toLowerCase().includes(filterBy) ||
-    //     card.subTitle.toLowerCase().includes(filterBy),
-    // );
+    // After updating the search word, running the search functionality.
+    // This is done to ensure that the search is performed with the latest input value.
+    // Todo
   };
 
   return (

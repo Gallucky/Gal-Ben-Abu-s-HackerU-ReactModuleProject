@@ -6,7 +6,7 @@ import CustomSpinner from "../utils/CustomSpinner";
 import useAuth from "../../hooks/useAuth";
 
 type CardsContainerProps = {
-  cards: CardProps[];
+  cards: CardProps[] | null;
 };
 
 const CardsContainer = (props: CardsContainerProps) => {
@@ -45,10 +45,24 @@ const CardsContainer = (props: CardsContainerProps) => {
 
   // Checking when getting response of the cards request/s.
   useEffect(() => {
-    const splitResult = splitArray(cards, cardsAmountToShowEachTime);
-    setCardsAfterSplit(splitResult);
-    setCurrentPage(1);
+    if (cards !== null) {
+      const splitResult = splitArray(cards, cardsAmountToShowEachTime);
+      setCardsAfterSplit(splitResult);
+      setCurrentPage(1);
+    }
   }, [cards, viewMode, cardsAmountToShowEachTime]);
+
+  if (cards === null)
+    return (
+      <div className="mt-10 flex h-fit flex-col items-center justify-center gap-2">
+        <h2 className="form-fluid-text place-self-center text-center font-serif font-bold text-gray-500 dark:text-gray-300">
+          No cards found...
+        </h2>
+        <p className="font-serif text-lg text-gray-500 dark:text-gray-300">
+          Try to search for something else.
+        </p>
+      </div>
+    );
 
   if (cards.length === 0)
     return <CustomSpinner size="sm" text="Loading cards..." />;
@@ -61,9 +75,9 @@ const CardsContainer = (props: CardsContainerProps) => {
     <>
       {/* Cards Container */}
       <div
-        className="m-[5vh] flex w-[95%] flex-col items-center justify-center self-center justify-self-center
-                    rounded-lg border-8 border-gray-200 bg-gray-300
-                    p-5 dark:border-slate-700 dark:bg-gray-900 md:w-auto"
+        className="m-[5vh] flex w-[95%] flex-col items-center justify-center place-self-center rounded-lg
+                    border-8 border-gray-200 bg-gray-300 p-5
+                    dark:border-slate-700 dark:bg-gray-900 md:w-auto"
       >
         {/* Cards Wrapper */}
         <div className="mb-2 grid w-fit gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
@@ -85,6 +99,7 @@ const CardsContainer = (props: CardsContainerProps) => {
                 imgSrc={card.imgSrc}
                 imgAlt={card.imgAlt}
                 userConnected={user ? true : false}
+                alreadyLiked={card.alreadyLiked}
               />
             ))}
         </div>
