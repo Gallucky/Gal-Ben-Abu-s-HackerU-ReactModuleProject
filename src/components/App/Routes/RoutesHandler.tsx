@@ -7,6 +7,7 @@ import Error from "../../../pages/Error.page";
 import Registration from "../../../pages/Registration/Registration.page";
 import RouteGuard from "./RouteGuard";
 import Profile from "../../../pages/Profile/Profile.page";
+import Favorites from "../../../pages/Favorites.page";
 
 const RoutesHandler = () => {
   return (
@@ -45,6 +46,15 @@ const RoutesHandler = () => {
           element={
             <RouteGuard>
               <Profile />
+            </RouteGuard>
+          }
+        />
+
+        <Route
+          path="/favorites"
+          element={
+            <RouteGuard allowLoggedUser>
+              <Favorites />
             </RouteGuard>
           }
         />

@@ -84,6 +84,13 @@ const CustomNavbar = () => {
             {user && (
               <div className="flex items-center gap-4">
                 <Link
+                  to="/favorites"
+                  className={`custom-navbar-link dark:text-white`}
+                >
+                  Favorites
+                </Link>
+
+                <Link
                   to="/profile"
                   className={`custom-navbar-link dark:text-white`}
                 >

@@ -1,33 +1,34 @@
 # 📘 Gal Ben Abu's - HackerU - React Module Project - Changelog
 
-## 📅 Updated to Commit #66.1 | Date: 27/05/2025
+## 📅 Updated to Commit #67 | Date: 27/05/2025
 
 ### 🔗 [Open TODO List](./todo-list.md)
 
 ### ✅ Completed
 
-- [x] Implement search across all pages ([src/pages/Home.page.tsx](./src/pages/Home.page.tsx), [src/components/other/SearchBox.tsx](./src/components/other/SearchBox.tsx), [src/hooks/useSearch.ts](./src/hooks/useSearch.ts))
-- [x] Polish and extend card like/dislike functionality ([src/components/card/Card.tsx](./src/components/card/Card.tsx), [src/hooks/useContent.ts](./src/hooks/useContent.ts), [src/components/card/CardsContainer.tsx](./src/components/card/CardsContainer.tsx), [src/utils/cardDataPropsConvertor.ts](./src/utils/cardDataPropsConvertor.ts))
+> `Nothing has been completed.`
 
 ### ➕ Added
 
-- Added `alreadyLiked` property to `CardProps` and its usage throughout the card rendering logic ([src/components/card/Card.tsx](./src/components/card/Card.tsx), [src/components/card/CardsContainer.tsx](./src/components/card/CardsContainer.tsx), [src/utils/cardDataPropsConvertor.ts](./src/utils/cardDataPropsConvertor.ts))
-- Introduced a new custom React hook: [src/hooks/useSearch.ts](./src/hooks/useSearch.ts) for card search and favorites filtering logic
+- 🔗 [public/TiBusinessCard_ReactIcons.svg](./public/TiBusinessCard_ReactIcons.svg)
+- 🔗 [src/components/utils/CardsNotFound.tsx](./src/components/utils/CardsNotFound.tsx)
+- 🔗 [src/pages/Favorites.page.tsx](./src/pages/Favorites.page.tsx)
 
 ### 🔄 Changed
 
-- Updated `CardsContainer` to support `alreadyLiked` and null card arrays, and improved responsive rendering ([src/components/card/CardsContainer.tsx](./src/components/card/CardsContainer.tsx))
-- Enhanced `useContent` to log like/dislike responses and improve error handling ([src/hooks/useContent.ts](./src/hooks/useContent.ts))
-- Refactored `Home.page.tsx` to use the new search logic and pass filtered cards to the container ([src/pages/Home.page.tsx](./src/pages/Home.page.tsx))
-- Improved `convertCardDataToProps` to support user-specific like status ([src/utils/cardDataPropsConvertor.ts](./src/utils/cardDataPropsConvertor.ts))
+- 🔗 [index.html](./index.html): Updated favicon to use new SVG and changed page title.
+- 🔗 [src/components/App/Routes/RoutesHandler.tsx](./src/components/App/Routes/RoutesHandler.tsx): Added route for Favorites page.
+- 🔗 [src/components/card/CardsContainer.tsx](./src/components/card/CardsContainer.tsx): Uses new CardsNotFound component for empty state.
+- 🔗 [src/components/layout/CustomNavbar.tsx](./src/components/layout/CustomNavbar.tsx): Added Favorites link to navbar.
+- 🔗 [src/hooks/useSearch.ts](./src/hooks/useSearch.ts): Removed unused code and favorites logic.
 
 ### 🗑️ Deleted
 
-- No files deleted.
+> `No files deleted.`
 
 ### 🏷️ Renamed / Moved
 
-- No files renamed or moved.
+> `No files renamed or moved.`
 
 ---
 
@@ -35,6 +36,7 @@
 
 | `Date`       | `Commit #`                                                   |
 | ------------ | ------------------------------------------------------------ |
+| `27/05/2025` | [`66.1`](./commits_changes/commit_66.1.md)                   |
 | `25/05/2025` | [`66`](./commits_changes/commit_66.md)                       |
 | `24/05/2025` | [`65`](./commits_changes/commit_65.md)                       |
 | `24/05/2025` | [`64`](./commits_changes/commit_64.md)                       |

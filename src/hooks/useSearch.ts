@@ -1,15 +1,11 @@
 import { useSelector } from "react-redux";
 import { CardProps } from "../components/card/Card";
 import { TRootState } from "../store/store";
-import useAuth from "./useAuth";
-import { TCardData } from "../types/card.t";
-import { convertCardDataToProps } from "../utils/cardDataPropsConvertor";
 
 const useSearch = () => {
   const filterBy = useSelector(
     (state: TRootState) => state.searchSlice.searchWord,
   ).toLowerCase();
-  const { user } = useAuth();
 
   const generalSearch = (cards: CardProps[]): CardProps[] | null => {
     if (!filterBy) return cards;
@@ -30,18 +26,7 @@ const useSearch = () => {
     return filteredCards;
   };
 
-  const getFavoriteCardsData = (responseData?: TCardData[]): CardProps[] => {
-    if (!responseData || !user) return [];
-
-    // Filtering only the cards that the user liked.
-    const res: TCardData[] = responseData.filter((item) =>
-      item.likes.includes(user._id),
-    );
-
-    return convertCardDataToProps(res);
-  };
-
-  return { generalSearch, getFavoriteCardsData };
+  return { generalSearch };
 };
 
 export default useSearch;

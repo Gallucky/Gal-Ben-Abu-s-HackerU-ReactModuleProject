@@ -4,63 +4,80 @@ For empty sections.
 For linking to a source as a standalone version.
 [[See more]](./)
 
-Github Co-Pilot prompt to update the changelog file.
+Github Co-Pilot prompt to update the changelog file:
 
-Context:
-- You are working in a Git project.
-- The current working directory has uncommitted changes.
-- The latest committed state is at HEAD (use as base reference).
-- This project maintains a `Changelog.md` and a `todo.md`.
+You are managing documentation updates in a Git repository with a focus on accurate change tracking.  
+Use the output of running at the background:
+- `git status` to detect file-level changes (added, modified, deleted, renamed).
+- `git diff` to understand line-level edits and completed TODOs.
 
-Your Task:
-1. Use the output of:
-   - `git status` → to detect file-level changes: added, modified, deleted, renamed.
-   - `git diff` → to understand line-level changes, moved code, or completed TODOs.
+### TASK:
 
-2. Update `Changelog.md` by replacing the previous top entry with a new section in the following format:
+Generate Markdown content updates for two files: `Changelog.md` and `todo-list.md`, based only on the uncommitted changes in the current working directory.
 
-## 📅 Updated to Commit #<Commit Number> | Date: *<Current Date>*
+---
 
-### 🔗 [Open TODO List](./todo.md)
+1. Update `Changelog.md`
 
-Group the changes as:
+Replace the current top entry with the following format:
+
+## 📅 Updated to Commit #<Next Commit Number> | Date: *<Current Date>*
+
+### 🔗 [Open TODO List](./todo-list.md)
 
 ### ✅ Completed
-- Show completed TODO items (matched by content or status).
-- Include file/line links for each, with markdown paths.
+- List completed TODO items, mark each with:
+  - ✅ Summary of the task.
+  - 🔗 [file at line](./path/to/file)
 
 ### ➕ Added
-- List newly created files or key components.
-- Add links to each file.
+- List newly created files or major components.
+- Format: 🔗 [filename](./path/to/file)
 
 ### 🔄 Changed
 - List modified files.
-- Include a short summary if possible.
-- Link to relevant file sections.
+- Brief summary from diff.
+- Link to relevant file section.
 
 ### 🗑️ Deleted
-- List removed files.
+- List deleted files.
 
 ### 🏷️ Renamed / Moved
-- Show changes like: `src/oldName.ts → src/newName.ts`
-- Add markdown links to both versions (if available).
+- Show: `old/path.ts → new/path.ts`
+- With links: [old](./old/path.ts) → [new](./new/path.ts)
 
-3. Update `todo.md` as follows:
-- Keep the format:
-  # 📘 <Your Project Name> - Todo List
+---
 
-  [`← Back Changelog`](./Changelog.md)
+2. Update `todo-list.md`
 
-- Append or update:
-  - [ ] Uncompleted tasks
-  - [x] Mark completed tasks with checkboxes
-  - For completed ones, include a link to the related section in `Changelog.md`
+Format should be:
 
-4. Ensure both files are:
-   - Consistent
-   - Markdown formatted
-   - Easy to read and navigate with links
-   - Only reflect the latest uncommitted changes
+# 📘 <Project Name> - Todo List
 
-5. Do **not** use or output raw Git commands.
-6. Ensure your results are persistent, meaning they can be reapplied as the uncommitted state evolves.
+[`← Back Changelog`](./Changelog.md)
+
+- [x] Completed task summary [`#<Next Commit Number>`](./commits_changes/commit_<same_number>.md)
+- [ ] New or remaining task
+
+For completed tasks:
+- Mark with [x]
+- Add markdown link with next commit number
+
+Do NOT reflect already committed history. Only include current uncommitted changes.
+
+---
+
+3. Formatting Rules
+
+- Use clean, valid Markdown.
+- Ensure `Changelog.md` and `todo-list.md` are consistent and synchronized.
+- All links must follow markdown syntax and must be in the form:
+  [`#<commit number>`](./commits_changes/commit_<commit number>.md)
+
+---
+
+4. Constraints
+
+- ❌ Never use or show raw Git commands.
+- ✅ Result must be persistent and reflect the current uncommitted state every time it's applied.
+- 📌 Even if linked files (e.g., `./commits_changes/commit_60.md`) don't exist yet, include them as markdown links with commit number.

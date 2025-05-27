@@ -4,9 +4,11 @@ import { useEffect, useState } from "react";
 import { ViewMode } from "../../enums/ViewModes.Enum";
 import CustomSpinner from "../utils/CustomSpinner";
 import useAuth from "../../hooks/useAuth";
+import CardsNotFound from "../utils/CardsNotFound";
 
 type CardsContainerProps = {
   cards: CardProps[] | null;
+  isCardsFiltered?: boolean;
 };
 
 const CardsContainer = (props: CardsContainerProps) => {
@@ -54,14 +56,10 @@ const CardsContainer = (props: CardsContainerProps) => {
 
   if (cards === null)
     return (
-      <div className="mt-10 flex h-fit flex-col items-center justify-center gap-2">
-        <h2 className="form-fluid-text place-self-center text-center font-serif font-bold text-gray-500 dark:text-gray-300">
-          No cards found...
-        </h2>
-        <p className="font-serif text-lg text-gray-500 dark:text-gray-300">
-          Try to search for something else.
-        </p>
-      </div>
+      <CardsNotFound
+        message="No cards found..."
+        hint="Try to search for something else."
+      />
     );
 
   if (cards.length === 0)
