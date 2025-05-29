@@ -1,6 +1,6 @@
 # 📘 Gal Ben Abu's - HackerU - React Module Project - Changelog
 
-## 📅 Updated to Commit #67 | Date: 27/05/2025
+## 📅 Updated to Commit #68 | Date: 28/05/2025
 
 ### 🔗 [Open TODO List](./todo-list.md)
 
@@ -10,17 +10,14 @@
 
 ### ➕ Added
 
-- 🔗 [public/TiBusinessCard_ReactIcons.svg](./public/TiBusinessCard_ReactIcons.svg)
-- 🔗 [src/components/utils/CardsNotFound.tsx](./src/components/utils/CardsNotFound.tsx)
-- 🔗 [src/pages/Favorites.page.tsx](./src/pages/Favorites.page.tsx)
+- 🔗 [CardDetails Page](./src/pages/CardDetails.page.tsx)
 
 ### 🔄 Changed
 
-- 🔗 [index.html](./index.html): Updated favicon to use new SVG and changed page title.
-- 🔗 [src/components/App/Routes/RoutesHandler.tsx](./src/components/App/Routes/RoutesHandler.tsx): Added route for Favorites page.
-- 🔗 [src/components/card/CardsContainer.tsx](./src/components/card/CardsContainer.tsx): Uses new CardsNotFound component for empty state.
-- 🔗 [src/components/layout/CustomNavbar.tsx](./src/components/layout/CustomNavbar.tsx): Added Favorites link to navbar.
-- 🔗 [src/hooks/useSearch.ts](./src/hooks/useSearch.ts): Removed unused code and favorites logic.
+- 🔗 [index.html](./index.html): Fixed favicon path to root for SVG.
+- 🔗 [RoutesHandler](./src/components/App/Routes/RoutesHandler.tsx): Added route for CardDetails page.
+- 🔗 [CustomFooter](./src/components/layout/CustomFooter.tsx): Removed unused class and improved layout.
+- 🔗 [Profile Page](./src/pages/Profile/Profile.page.tsx): Improved responsive layout and styling for profile sections.
 
 ### 🗑️ Deleted
 
@@ -36,6 +33,7 @@
 
 | `Date`       | `Commit #`                                                   |
 | ------------ | ------------------------------------------------------------ |
+| `28/05/2025` | [`67`](./commits_changes/commit_67.md)                       |
 | `27/05/2025` | [`66.1`](./commits_changes/commit_66.1.md)                   |
 | `25/05/2025` | [`66`](./commits_changes/commit_66.md)                       |
 | `24/05/2025` | [`65`](./commits_changes/commit_65.md)                       |

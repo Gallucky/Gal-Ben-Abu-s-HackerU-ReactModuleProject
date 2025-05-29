@@ -5,7 +5,7 @@ const CustomFooter = () => {
   return (
     <>
       <Footer>
-        <div className="xs-styling fixed bottom-0 z-20 !h-fit w-full bg-blue-300 px-4 py-2 dark:bg-slate-700 sm:flex sm:items-center sm:justify-between">
+        <div className="fixed bottom-0 z-20 !h-fit w-full bg-blue-300 px-4 py-2 dark:bg-slate-700 sm:flex sm:items-center sm:justify-between">
           <FooterCopyright
             className="footer-credit"
             href="#"

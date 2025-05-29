@@ -201,11 +201,11 @@ const Profile = () => {
             "Profile Picture AddressSection"
             "blank"
           */}
-          <div className="grid grid-cols-[1fr_3fr] gap-4 gap-x-10 p-6">
+          <div className="flex w-3/4 flex-col gap-4 md:grid md:grid-cols-[1fr_3fr] md:gap-x-10 md:p-6">
             {/* Top blank row */}
-            <div className="col-span-2" />
+            <div className="col-span-2 w-full" />
             {/* Profile Picture spanning 4 rows */}
-            <div className="row-span-4 flex items-start justify-center place-self-center">
+            <div className="row-span-4 flex w-full items-start justify-center place-self-center">
               <img
                 src="/profile.jpg"
                 alt="Profile"
@@ -274,7 +274,7 @@ const Profile = () => {
               register={register}
               errors={errors}
               backgroundColors={backgroundColors}
-              className="md:p-2 md:px-0"
+              className="w-full md:p-2 md:px-0"
               sectionBorderClassName="!border border-gray-400 dark:border-gray-600"
               sectionTitleClassName="!text-gray-800 dark:!text-gray-700"
               watch={watch}
