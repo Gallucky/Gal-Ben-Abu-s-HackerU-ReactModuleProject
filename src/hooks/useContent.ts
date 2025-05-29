@@ -1,6 +1,7 @@
 import axios, { AxiosError } from "axios";
 import { toast } from "react-toastify";
 import useAuth from "./useAuth";
+import { errorHandler } from "../utils/errorHandler";
 
 const useContent = () => {
   const { userToken } = useAuth();
@@ -40,25 +41,30 @@ const useContent = () => {
           (liking ? "Liked" : "Disliked") + " the card successfully",
         );
       } catch (error) {
-        const axiosError: AxiosError = error as AxiosError;
-        console.error("Error submitting form", axiosError);
-
-        const axiosErrorResponse = axiosError.response;
-
-        const errorMessage =
-          axiosErrorResponse && axiosErrorResponse.data
-            ? (axiosErrorResponse.data as string)
-            : axiosError.message.includes("status code 400")
-              ? "Invalid registration data"
-              : (axiosError.message ?? "Error Occurred");
-
-        toast.error(errorMessage);
+        errorHandler(error as AxiosError, "Error liking/unlinking a card.");
       }
+    }
+  };
+
+  const getCardInfoByID = async (cardID: string) => {
+    try {
+      const response = await axios.get(
+        `https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/${cardID}`,
+      );
+
+      return response.data;
+    } catch (error) {
+      const axiosError = error as AxiosError;
+      const toastErrorMessage =
+        axiosError.status === 404 ? "Card not found" : undefined;
+
+      errorHandler(axiosError, "Error getting card info.", toastErrorMessage);
     }
   };
 
   return {
     likeDislikeCard,
+    getCardInfoByID,
   };
 };
 

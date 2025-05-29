@@ -24,6 +24,7 @@ const Home = () => {
         "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards",
       );
       setCards(response.data);
+      console.log("response.data", response.data);
     } catch (error) {
       console.error(error);
     }

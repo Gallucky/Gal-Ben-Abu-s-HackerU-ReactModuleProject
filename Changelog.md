@@ -1,23 +1,27 @@
 # 📘 Gal Ben Abu's - HackerU - React Module Project - Changelog
 
-## 📅 Updated to Commit #68 | Date: 28/05/2025
+## 📅 Updated to Commit #69 | Date: 29/05/2025
 
 ### 🔗 [Open TODO List](./todo-list.md)
 
 ### ✅ Completed
 
-> `Nothing has been completed.`
+- ✅ Card details page now fetches and displays full card info, including image, address, and likes.  
+  🔗 [CardDetails.page.tsx at line 1](./src/pages/CardDetails.page.tsx)
+- ✅ Improved error handling and added errorHandler utility to content hooks.  
+  🔗 [useContent.ts at line 1](./src/hooks/useContent.ts)
 
 ### ➕ Added
 
-- 🔗 [CardDetails Page](./src/pages/CardDetails.page.tsx)
+- 🔗 [errorHandler.ts](./src/utils/errorHandler.ts)
+- 🔗 [misc.ts](./src/utils/misc.ts)
 
 ### 🔄 Changed
 
-- 🔗 [index.html](./index.html): Fixed favicon path to root for SVG.
-- 🔗 [RoutesHandler](./src/components/App/Routes/RoutesHandler.tsx): Added route for CardDetails page.
-- 🔗 [CustomFooter](./src/components/layout/CustomFooter.tsx): Removed unused class and improved layout.
-- 🔗 [Profile Page](./src/pages/Profile/Profile.page.tsx): Improved responsive layout and styling for profile sections.
+- 🔗 [RoutesHandler.tsx](./src/components/App/Routes/RoutesHandler.tsx): Changed route for CardDetails to `/card-details/:cardID`.
+- 🔗 [useContent.ts](./src/hooks/useContent.ts): Integrated errorHandler and added getCardInfoByID.
+- 🔗 [CardDetails.page.tsx](./src/pages/CardDetails.page.tsx): Now fetches and displays card details from API.
+- 🔗 [Home.page.tsx](./src/pages/Home.page.tsx): Added debug log for card data fetch.
 
 ### 🗑️ Deleted
 
@@ -33,6 +37,7 @@
 
 | `Date`       | `Commit #`                                                   |
 | ------------ | ------------------------------------------------------------ |
+| `28/05/2025` | [`68`](./commits_changes/commit_68.md)                       |
 | `28/05/2025` | [`67`](./commits_changes/commit_67.md)                       |
 | `27/05/2025` | [`66.1`](./commits_changes/commit_66.1.md)                   |
 | `25/05/2025` | [`66`](./commits_changes/commit_66.md)                       |
