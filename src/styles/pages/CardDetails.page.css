@@ -1,0 +1,58 @@
+@tailwind utilities;
+
+.card-details {
+  @apply w-fit max-w-2xl md:!w-fit;
+}
+
+/* Using
+  slate-700 color with 50% opacity when in light mode,
+  slate-300 with 50% opacity when in dark mode.
+*/
+@layer utilities {
+  .card-details-shadow {
+    @apply dark:card-details-shadow-dark;
+    --tw-shadow-color: #33415550;
+
+    box-shadow:
+      0 4px 8px 0 var(--tw-shadow-color),
+      0 6px 20px 0 var(--tw-shadow-color),
+      0 -4px 20px 0 var(--tw-shadow-color);
+  }
+
+  .card-details-shadow-dark {
+    --tw-shadow-color: #cbd5e1;
+  }
+}
+
+.card-details-image-wrapper {
+  /* Base Styling */
+  @apply rounded-lg;
+
+  @media (min-width: 1025px) {
+    box-shadow:
+      0 4px 30px 0 #64748b inset,
+      0 6px 30px 0 #64748b inset,
+      0 -4px 30px 0 #64748b inset;
+  }
+
+  @media (max-width: 1024px) and (min-width: 768px) {
+    background-color: white;
+    width:;
+  }
+}
+
+.details-section {
+  @apply flex w-full flex-col items-center justify-evenly gap-4 md:flex-row-reverse md:gap-8;
+}
+
+.image-section {
+  @apply flex flex-col gap-3;
+}
+
+.card-details-image {
+  @apply size-11/12 max-w-[200px] place-self-center rounded-lg object-cover;
+}
+
+.info-section {
+  @apply flex w-full flex-col items-start gap-2 md:mt-4 md:max-w-[50%];
+}

@@ -1,31 +1,50 @@
 # 📘 Gal Ben Abu's - HackerU - React Module Project - Changelog
 
-## 📅 Updated to Commit #69 | Date: 29/05/2025
+## 📅 Updated to Commit #70 | Date: 30/05/2025
 
 ### 🔗 [Open TODO List](./todo-list.md)
 
 ### ✅ Completed
 
-- ✅ Card details page now fetches and displays full card info, including image, address, and likes.  
-  🔗 [CardDetails.page.tsx at line 1](./src/pages/CardDetails.page.tsx)
-- ✅ Improved error handling and added errorHandler utility to content hooks.  
-  🔗 [useContent.ts at line 1](./src/hooks/useContent.ts)
+- ✅ Card component now navigates to card details page on click  
+  🔗 [Card.tsx / Card Component](./src/components/card/Card.tsx)
+
+- ✅ Route updated to reflect folder restructuring of CardDetails page  
+  🔗 [RoutesHandler.tsx / Routes Handler](./src/components/App/Routes/RoutesHandler.tsx)
+
+- ✅ Grid spacing improved in CardsContainer  
+  🔗 [CardsContainer.tsx / Cards Container](./src/components/card/CardsContainer.tsx)
+
+- ✅ Added specific CSS file for CardDetails page  
+  🔗 [main.tsx / Entry Point](./src/main.tsx)  
+  🔗 [CardDetails.page.css / Card Details Page](./src/styles/pages/CardDetails.page.css)
 
 ### ➕ Added
 
-- 🔗 [errorHandler.ts](./src/utils/errorHandler.ts)
-- 🔗 [misc.ts](./src/utils/misc.ts)
+- 📄 Created directory for CardDetails.page refactor  
+  🔗 [`CardDetails Page Directory`](./src/pages/CardDetails/)
+
+- 🎨 New stylesheet for CardDetails page layout  
+  🔗 [`CardDetails.page.css`](./src/styles/pages/CardDetails.page.css)
 
 ### 🔄 Changed
 
-- 🔗 [RoutesHandler.tsx](./src/components/App/Routes/RoutesHandler.tsx): Changed route for CardDetails to `/card-details/:cardID`.
-- 🔗 [useContent.ts](./src/hooks/useContent.ts): Integrated errorHandler and added getCardInfoByID.
-- 🔗 [CardDetails.page.tsx](./src/pages/CardDetails.page.tsx): Now fetches and displays card details from API.
-- 🔗 [Home.page.tsx](./src/pages/Home.page.tsx): Added debug log for card data fetch.
+- ✏️ Updated Card component to handle navigation on click  
+  🔗 [Card.tsx](./src/components/card/Card.tsx)
+
+- 🔁 Adjusted Cards grid layout spacing  
+  🔗 [CardsContainer.tsx](./src/components/card/CardsContainer.tsx)
+
+- 🔀 Changed import path for CardDetails route  
+  🔗 [RoutesHandler.tsx](./src/components/App/Routes/RoutesHandler.tsx)
+
+- 📦 Imported CSS for new CardDetails page  
+  🔗 [main.tsx](./src/main.tsx)
 
 ### 🗑️ Deleted
 
-> `No files deleted.`
+- ❌ Removed old `CardDetails.page.tsx` file  
+  🔗 [CardDetails.page.tsx (deleted)](./src/pages/CardDetails.page.tsx)
 
 ### 🏷️ Renamed / Moved
 
@@ -37,6 +56,7 @@
 
 | `Date`       | `Commit #`                                                   |
 | ------------ | ------------------------------------------------------------ |
+| `29/05/2025` | [`69`](./commits_changes/commit_69.md)                       |
 | `28/05/2025` | [`68`](./commits_changes/commit_68.md)                       |
 | `28/05/2025` | [`67`](./commits_changes/commit_67.md)                       |
 | `27/05/2025` | [`66.1`](./commits_changes/commit_66.1.md)                   |

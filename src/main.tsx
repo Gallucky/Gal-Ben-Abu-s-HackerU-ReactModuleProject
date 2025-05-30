@@ -23,6 +23,7 @@ import "./styles/layout/PageWrapper.css";
 
 // Page Styles
 import "./styles/pages/Error.page.css";
+import "./styles/pages/CardDetails.page.css";
 
 // Utilities Styles
 import "./styles/utils/CheckBox.css";

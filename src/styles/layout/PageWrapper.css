@@ -11,7 +11,7 @@
 }
 
 .form-fluid-text {
-  font-size: clamp(1.5rem, 7.5vw, 3rem);
+  font-size: clamp(2rem, 7.5vw, 3rem);
 }
 
 .fluid-form-input {

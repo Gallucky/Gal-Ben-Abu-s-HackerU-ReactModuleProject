@@ -17,3 +17,13 @@ export const tailwindTextSizeValidator = (
   // If the checks failed.
   return undefined;
 };
+
+export const clamp = (
+  min: `${number}${SizeUnit}`,
+  preferred: `${number}${SizeUnit}`,
+  max: `${number}${SizeUnit}`,
+): React.CSSProperties => {
+  return {
+    fontSize: `clamp(${min}, ${preferred}, ${max})`,
+  };
+};

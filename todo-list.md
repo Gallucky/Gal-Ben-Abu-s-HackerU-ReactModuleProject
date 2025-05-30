@@ -2,21 +2,22 @@
 
 [`← Back Changelog`](./Changelog.md)
 
-## 📅 Updated to Commit #69 | Date: 29/05/2025
+## 📅 Updated to Commit #70 | Date: 30/05/2025
 
 ## 📋 Todo
 
 - [ ] Complete [`screenSlice`](src/store/screenSlice.ts)
 - [ ] Create custom hooks for auth, screen viewport, etc.
-- [ ] Add card details and favorites functionality
-- [ ] Add more utility hooks and improve error handling ([`useTimer.ts`](src/hooks/useTimer.ts), [`ErrorText.tsx`](src/components/utils/ErrorText.tsx))
-- [ ] Add business user card creation
 - [ ] Create admin CRM features page
 
 ## ✅ Completed
 
 | `Task`                                                                                         | `Link/s`                                                                                                                                                                                                                   | `Commit #`                                      |
 | ---------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| Add card details and favorites functionality                                                   | [`Card Details Page`](./src/pages/CardDetails/CardDetails.page.tsx), [`Favorites Page`](./src/pages/Favorites.page.tsx)                                                                                                    | [`#70`](./commits_changes/commit_70.md)         |
+| Clicking a card now navigates to a dedicated details page                                      | [`Card.tsx / Card Component`](./src/components/card/Card.tsx)                                                                                                                                                              | [`#70`](./commits_changes/commit_70.md)         |
+| Old CardDetails.page.tsx removed after refactor                                                | [<span style="text-decoration: line-through">_`CardDetails.page.tsx`_</span>](./src/pages/CardDetails.page.tsx)                                                                                                            | [`#70`](./commits_changes/commit_70.md)         |
+| Added hover styles and improved layout spacing for cards                                       | [`CardsContainer.tsx`](./src/components/card/CardsContainer.tsx)                                                                                                                                                           | [`#70`](./commits_changes/commit_70.md)         |
 | Card details page now fetches and displays full card info, including image, address, and likes |                                                                                                                                                                                                                            | [`#69`](./commits_changes/commit_69.md)         |
 | Improved error handling and added errorHandler utility to content hooks                        |                                                                                                                                                                                                                            | [`#69`](./commits_changes/commit_69.md)         |
 | Implement search across all pages                                                              | [`Home.page.tsx`](src/pages/Home.page.tsx), [`SearchBox.tsx`](src/components/other/SearchBox.tsx), [`useSearch.ts`](src/hooks/useSearch.ts)                                                                                | [`#66.1`](./commits_changes/commit_66.1.md)     |

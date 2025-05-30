@@ -1,5 +1,6 @@
 import { FaHeart, FaPhoneAlt } from "react-icons/fa";
 import useContent from "../../hooks/useContent";
+import { useNavigate } from "react-router-dom";
 
 export type CardProps = {
   _id: string;
@@ -31,10 +32,18 @@ const Card = (props: CardProps) => {
   } = props;
 
   const { likeDislikeCard } = useContent();
+  const navigate = useNavigate();
+
+  const cardClickedHandler = () => {
+    navigate(`/card-details/${_id}`);
+  };
 
   return (
     <>
-      <div className="card relative flex h-[425px] w-[250px] max-w-sm flex-col text-wrap rounded-lg border-2 border-black dark:border-slate-700 dark:text-white">
+      <div
+        onClick={cardClickedHandler}
+        className="card relative flex h-[425px] w-[250px] max-w-sm flex-col text-wrap rounded-lg border-2 border-black hover:scale-[0.99] hover:cursor-pointer hover:shadow-lg hover:shadow-slate-400 hover:transition-all dark:border-slate-700 dark:text-white"
+      >
         <img
           src={imgSrc}
           alt={imgAlt}

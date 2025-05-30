@@ -78,7 +78,7 @@ const CardsContainer = (props: CardsContainerProps) => {
                     dark:border-slate-700 dark:bg-gray-900 md:w-auto"
       >
         {/* Cards Wrapper */}
-        <div className="mb-2 grid w-fit gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mb-2 grid w-fit gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {/*
                 The ?. is if the value before it is undefined or null then
                 it returns it undefined and in this case nothing happens.
