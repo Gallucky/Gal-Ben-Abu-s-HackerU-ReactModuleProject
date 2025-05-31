@@ -10,6 +10,9 @@ const useContent = () => {
     e: React.MouseEvent<SVGElement>,
     cardID: string,
   ) => {
+    // This will stop the card's onClick event from firing...
+    e.stopPropagation();
+
     const likeButton = e.currentTarget;
     const card = likeButton.closest(".card");
     const liking = !likeButton.classList.contains("text-red-500");

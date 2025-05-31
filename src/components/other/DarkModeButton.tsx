@@ -1,6 +1,5 @@
 import { DarkThemeToggle } from "flowbite-react";
-import { FaSun, FaMoon } from "react-icons/fa"; // Import icons from react-icons
-import { useState, useEffect } from "react";
+import { FaSun, FaMoon } from "react-icons/fa";
 
 type DarkModeButtonProps = {
   // Optional className prop for additional styling
@@ -8,15 +7,8 @@ type DarkModeButtonProps = {
 };
 
 function DarkModeButton(props: DarkModeButtonProps) {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
   // Default to an empty string if no className is provided
   const customClasses = props.className ?? "";
-
-  useEffect(() => {
-    const theme = localStorage.getItem("theme");
-    setIsDarkMode(theme === "dark");
-  }, [isDarkMode]);
 
   const classes =
     `bg-dark-500 linear apply-fade-in-out-animation

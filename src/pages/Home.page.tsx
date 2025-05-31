@@ -9,6 +9,7 @@ import { TCardData } from "../types/card.t";
 import { convertCardDataToProps } from "../utils/cardDataPropsConvertor";
 import useSearch from "../hooks/useSearch";
 import useAuth from "../hooks/useAuth";
+import CreateCard from "./CreateCard/CreateCard.page";
 
 const Home = () => {
   const { user } = useAuth();
@@ -65,6 +66,7 @@ const Home = () => {
         />
         <Divider />
         <CardsContainer cards={filteredCards} />
+        <CreateCard />
         <br />
         <br />
         <br />

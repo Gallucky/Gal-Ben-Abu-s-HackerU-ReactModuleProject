@@ -13,7 +13,12 @@ const PersonalProfileInfoSection = (
     ) => void;
   },
 ) => {
-  const { register, errors, backgroundColors, editable = false } = props;
+  const {
+    register,
+    errors,
+    backgroundColors,
+    editable = false,
+  } = props;
 
   // What action to take when Phone or Image.Url or Image.Alt field is saved.
   // Do nothing if the onPersonalInfoSave is not defined.

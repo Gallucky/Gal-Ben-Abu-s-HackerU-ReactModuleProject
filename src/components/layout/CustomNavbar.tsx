@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { TRootState } from "../../store/store";
 import { userActions } from "../../store/userSlice";
 import { FiLogOut } from "react-icons/fi";
+import LogoIcon from "../icons/LogoIcon";
 
 const CustomNavbar = () => {
   const dispatch = useDispatch();
@@ -24,11 +25,7 @@ const CustomNavbar = () => {
     <>
       <Navbar fluid className={`navbar`}>
         <div className="flex">
-          <img
-            src="https://picsum.photos/200"
-            className="mr-3 h-6 sm:h-9"
-            alt="Flowbite React Logo"
-          />
+          <LogoIcon size={32} className="mr-3 hover:fill-teal-600" />
           <span className="self-center whitespace-nowrap text-xl font-semibold hover:cursor-default hover:text-teal-600 dark:text-white dark:hover:cursor-default dark:hover:text-teal-600">
             <Link to="/" className="hover:cursor-default">
               BCards

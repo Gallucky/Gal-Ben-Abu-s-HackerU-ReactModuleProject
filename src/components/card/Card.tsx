@@ -75,8 +75,8 @@ const Card = (props: CardProps) => {
             <span className="font-semibold">Card Number:</span> {cardNumber}
           </span>
           <div className="mt-5 flex w-full justify-evenly">
-            <a href={"tel:" + phone}>
-              <FaPhoneAlt className="absolute left-5 hover:cursor-pointer" />
+            <a href={"tel:" + phone} onClick={(e) => e.stopPropagation()}>
+              <FaPhoneAlt className="animate-tilt-hover absolute left-5 hover:cursor-pointer" />
             </a>
             {userConnected && !alreadyLiked && (
               <FaHeart

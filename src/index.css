@@ -22,3 +22,24 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* Scrollbar styling */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  @apply bg-[#f1f1f1] dark:bg-[#2a2a2a];
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  @apply rounded-lg bg-[#888] dark:bg-[#555];
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-[#555] dark:bg-[#999];
+}

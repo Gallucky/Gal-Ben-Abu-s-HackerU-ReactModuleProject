@@ -81,3 +81,60 @@ Do NOT reflect already committed history. Only include current uncommitted chang
 - ❌ Never use or show raw Git commands.
 - ✅ Result must be persistent and reflect the current uncommitted state every time it's applied.
 - 📌 Even if linked files (e.g., `./commits_changes/commit_60.md`) don't exist yet, include them as markdown links with commit number.
+
+---
+
+Manual with chatGPT prompt template:
+Based on the following templates `Changelog.md` and `todo-list.md` can you show me what could i write to update those files?
+`Changelog.md`:
+## 📅 Updated to Commit #commit_number eg. 71 | Date: cufrrent_date eg. 31/05/2025
+
+### 🔗 [Open TODO List](./todo-list.md)
+
+### ✅ Completed
+
+> `Nothing has been completed.`
+
+### ➕ Added
+
+> `Nothing has been added.`
+
+### 🔄 Changed
+
+> `Nothing has been changed.`
+
+### 🗑️ Deleted
+
+> `Nothing has been deleted.`
+
+### 🏷️ Renamed / Moved
+
+> `No files renamed or moved.`
+`todo-list.md`:
+## 📋 Todo
+
+- [ ] example task 1
+- [ ] example task 2
+- [ ] example task 3
+- [ ] etc...
+
+## ✅ Completed
+
+| `Task`                                                                                         | `Link/s`                                                                                                                                                                                                                   | `Commit #`                                      |
+| ---------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| task description | link/links | commit_number_link |
+
+Can you base the response from the output of:
+git status:
+
+
+git diff:
+
+
+And can you please link to the each part, if is a page then do [`Page name Page`](relative path) the name of the link with backticks.
+incase of a component same as page - name of the component following 'Component' keywords.
+otherwise only the name of the file in backticks as the relative link's text content.
+
+in the `todo-list.md`:
+Show me what to add along with related link/links like previously mentioned and from what commit it was completed if it is the uncommitted changes commit then still do the following commit link [`#commit number`](relative-path-to-commit_commit-number.md...
+The completed todo parts/lines should be in the `markdown` table format of | message | link/links | link to commit_commit-number.md file |

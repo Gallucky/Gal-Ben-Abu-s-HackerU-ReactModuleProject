@@ -21,7 +21,7 @@ type TailwindColor =
   | "pink"
   | "rose";
 
-type TailwindConstantColor = "black" | "white";
+export type TailwindConstantColor = "black" | "white";
 
 export type TailwindShadeColor = `${TailwindColor}-${Shade}`;
 export type HexColor = `#${string}`;

@@ -1,50 +1,60 @@
 # 📘 Gal Ben Abu's - HackerU - React Module Project - Changelog
 
-## 📅 Updated to Commit #70 | Date: 30/05/2025
+## 📅 Updated to Commit #71 | Date: 31/05/2025
 
 ### 🔗 [Open TODO List](./todo-list.md)
 
+### General Notes
+
+```
+Fixed styling issues and some minor bugs.
+
+Created and added the logo of the project + created a LogoIcon component for dynamic use.
+
+Started to work on the create card logic.
+```
+
 ### ✅ Completed
 
-- ✅ Card component now navigates to card details page on click  
-  🔗 [Card.tsx / Card Component](./src/components/card/Card.tsx)
-
-- ✅ Route updated to reflect folder restructuring of CardDetails page  
-  🔗 [RoutesHandler.tsx / Routes Handler](./src/components/App/Routes/RoutesHandler.tsx)
-
-- ✅ Grid spacing improved in CardsContainer  
-  🔗 [CardsContainer.tsx / Cards Container](./src/components/card/CardsContainer.tsx)
-
-- ✅ Added specific CSS file for CardDetails page  
-  🔗 [main.tsx / Entry Point](./src/main.tsx)  
-  🔗 [CardDetails.page.css / Card Details Page](./src/styles/pages/CardDetails.page.css)
+> `Nothing has been completed.`
 
 ### ➕ Added
 
-- 📄 Created directory for CardDetails.page refactor  
-  🔗 [`CardDetails Page Directory`](./src/pages/CardDetails/)
+- 🆕 Created new directory for icons  
+  🔗 [`src/components/icons/`](./src/components/icons/)
 
-- 🎨 New stylesheet for CardDetails page layout  
-  🔗 [`CardDetails.page.css`](./src/styles/pages/CardDetails.page.css)
+- 🆕 Added new SVG assets  
+  🔗 [`logo.svg`](./public/logo.svg), [`PiCardsDuotone_ReactIcons.svg`](./public/PiCardsDuotone_ReactIcons.svg)
+
+- 🆕 Created new `CreateCard` page folder  
+  🔗 [`src/pages/CreateCard/`](./src/pages/CreateCard/)
 
 ### 🔄 Changed
 
-- ✏️ Updated Card component to handle navigation on click  
-  🔗 [Card.tsx](./src/components/card/Card.tsx)
+- 🎨 Improved visual feedback for phone icon with hover animation  
+  🔗 [`Card.tsx`](./src/components/card/Card.tsx)
 
-- 🔁 Adjusted Cards grid layout spacing  
-  🔗 [CardsContainer.tsx](./src/components/card/CardsContainer.tsx)
+- 🧼 Simplified `DarkModeButton` by removing unused `useState` and `useEffect`  
+  🔗 [`DarkModeButton.tsx`](./src/components/other/DarkModeButton.tsx)
 
-- 🔀 Changed import path for CardDetails route  
-  🔗 [RoutesHandler.tsx](./src/components/App/Routes/RoutesHandler.tsx)
+- 🧩 Replaced static logo in navbar with dynamic `LogoIcon` component  
+  🔗 [`CustomNavbar.tsx`](./src/components/layout/CustomNavbar.tsx)
 
-- 📦 Imported CSS for new CardDetails page  
-  🔗 [main.tsx](./src/main.tsx)
+- 🛠️ Minor adjustments in
+
+  - [`useContent.ts`](./src/hooks/useContent.ts)
+  - [`index.css`](./src/index.css)
+  - [`Home.page.tsx`](./src/pages/Home.page.tsx)
+  - [`PersonalProfileInfo.section.tsx`](./src/pages/Profile/PersonalProfileInfo.section.tsx)
+  - [`color.t.ts`](./src/types/color.t.ts)
+
+- ⚙️ Updated `package.json` with new scripts:
+  - `status`: copies git status to clipboard
+  - `diff`: copies git diff to clipboard
 
 ### 🗑️ Deleted
 
-- ❌ Removed old `CardDetails.page.tsx` file  
-  🔗 [CardDetails.page.tsx (deleted)](./src/pages/CardDetails.page.tsx)
+> `Nothing has been deleted.`
 
 ### 🏷️ Renamed / Moved
 
@@ -56,6 +66,7 @@
 
 | `Date`       | `Commit #`                                                   |
 | ------------ | ------------------------------------------------------------ |
+| `30/05/2025` | [`70`](./commits_changes/commit_70.md)                       |
 | `29/05/2025` | [`69`](./commits_changes/commit_69.md)                       |
 | `28/05/2025` | [`68`](./commits_changes/commit_68.md)                       |
 | `28/05/2025` | [`67`](./commits_changes/commit_67.md)                       |
