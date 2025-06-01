@@ -5,14 +5,14 @@
     focus:ring-0 focus:ring-transparent;
 
   /* Default Colors */
-  @apply border-black focus:border-teal-800
-    peer-focus:text-teal-400 dark:border-white
-    dark:focus:border-white dark:peer-focus:text-teal-950;
+  @apply border-black caret-black
+    focus:border-teal-800 peer-focus:text-teal-400
+    dark:border-white dark:caret-white dark:focus:border-white dark:peer-focus:text-teal-950;
 }
 
 .base-form-input-label {
   /* Positioning */
-  @apply absolute left-2.5 top-3 z-10;
+  @apply absolute left-2.5 top-3 z-10 !w-fit;
 
   /* Styling */
   @apply cursor-text rounded-lg px-1
@@ -50,6 +50,10 @@
   focus:border-green-500 focus:ring-0;
 }
 
+.form-input-grayscale {
+  @apply text-black dark:text-white;
+}
+
 .form-input-label-error {
   @apply !text-red-700
   focus:text-red-700
@@ -63,6 +67,12 @@
   focus:text-green-700
   peer-focus:!text-green-700
   peer-[&:not(:placeholder-shown)]:!text-green-700;
+}
+
+.form-input-label-grayscale {
+  @apply !text-black peer-focus:!text-black
+    peer-[&:not(:placeholder-shown)]:!text-black dark:!text-white
+    dark:peer-focus:!text-white dark:peer-[&:not(:placeholder-shown)]:!text-white;
 }
 
 .disable-down-up-arrows {

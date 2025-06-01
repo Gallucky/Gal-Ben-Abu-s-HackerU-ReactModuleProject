@@ -1,17 +1,17 @@
 # 📘 Gal Ben Abu's - HackerU - React Module Project - Changelog
 
-## 📅 Updated to Commit #71 | Date: 31/05/2025
+## 📅 Updated to Commit #72 | Date: 01/06/2025
 
 ### 🔗 [Open TODO List](./todo-list.md)
 
 ### General Notes
 
 ```
-Fixed styling issues and some minor bugs.
-
-Created and added the logo of the project + created a LogoIcon component for dynamic use.
-
-Started to work on the create card logic.
+Mainly working on the create card page and its logic.
+- Validation and the form itself is completed.
+- Created the logic to send the request for creating a new card.
+- Still need to work on the requesting and form logic.
+  It is not working properly and most of the time the request is not sent.
 ```
 
 ### ✅ Completed
@@ -20,37 +20,38 @@ Started to work on the create card logic.
 
 ### ➕ Added
 
-- 🆕 Created new directory for icons  
-  🔗 [`src/components/icons/`](./src/components/icons/)
+- ➕ Added new sections to the CreateCard page:  
+  [`Contact.section.tsx`](./src/pages/CreateCard/Contact.section.tsx)  
+  [`Description.section.tsx`](./src/pages/CreateCard/Description.section.tsx)  
+  [`Image.section.tsx`](./src/pages/CreateCard/Image.section.tsx)  
+  [`Location.section.tsx`](./src/pages/CreateCard/Location.section.tsx)  
+  [`TitleSubtitle.section.tsx`](./src/pages/CreateCard/TitleSubtitle.section.tsx)
 
-- 🆕 Added new SVG assets  
-  🔗 [`logo.svg`](./public/logo.svg), [`PiCardsDuotone_ReactIcons.svg`](./public/PiCardsDuotone_ReactIcons.svg)
+- ➕ Added Joi validation file for card creation  
+  [`createCard.joi.ts`](./src/validations/createCard.joi.ts)
 
-- 🆕 Created new `CreateCard` page folder  
-  🔗 [`src/pages/CreateCard/`](./src/pages/CreateCard/)
+- ➕ Created commit-specific log file [Latest Commit]
+  [`commit_71.md`](./commits_changes/commit_71.md)
 
 ### 🔄 Changed
 
-- 🎨 Improved visual feedback for phone icon with hover animation  
-  🔗 [`Card.tsx`](./src/components/card/Card.tsx)
+- 🔄 Extended `FormInput` component with `grayscale` state option  
+  [`FormInput.tsx`](./src/components/form/FormInput.tsx)
 
-- 🧼 Simplified `DarkModeButton` by removing unused `useState` and `useEffect`  
-  🔗 [`DarkModeButton.tsx`](./src/components/other/DarkModeButton.tsx)
+- 🔄 Improved `Divider` component with customizable margin prop  
+  [`Divider.tsx`](./src/components/other/Divider.tsx)
 
-- 🧩 Replaced static logo in navbar with dynamic `LogoIcon` component  
-  🔗 [`CustomNavbar.tsx`](./src/components/layout/CustomNavbar.tsx)
+- 🔄 Updated `FormAreaTitle` text color to adapt to light/dark modes  
+  [`FormAreaTitle.tsx`](./src/components/utils/FormAreaTitle.tsx)
 
-- 🛠️ Minor adjustments in
+- 🔄 Minor cleanup in `useAuth` hook file  
+  [`useAuth.ts`](./src/hooks/useAuth.ts)
 
-  - [`useContent.ts`](./src/hooks/useContent.ts)
-  - [`index.css`](./src/index.css)
-  - [`Home.page.tsx`](./src/pages/Home.page.tsx)
-  - [`PersonalProfileInfo.section.tsx`](./src/pages/Profile/PersonalProfileInfo.section.tsx)
-  - [`color.t.ts`](./src/types/color.t.ts)
+- 🔄 Progressed logic in CreateCard page  
+  [`CreateCard.page.tsx`](./src/pages/CreateCard/CreateCard.page.tsx)
 
-- ⚙️ Updated `package.json` with new scripts:
-  - `status`: copies git status to clipboard
-  - `diff`: copies git diff to clipboard
+- 🔄 Corresponding style improvements  
+  [`FormInput.css`](./src/styles/form/FormInput.css)
 
 ### 🗑️ Deleted
 
@@ -66,6 +67,7 @@ Started to work on the create card logic.
 
 | `Date`       | `Commit #`                                                   |
 | ------------ | ------------------------------------------------------------ |
+| `31/05/2025` | [`71`](./commits_changes/commit_71.md)                       |
 | `30/05/2025` | [`70`](./commits_changes/commit_70.md)                       |
 | `29/05/2025` | [`69`](./commits_changes/commit_69.md)                       |
 | `28/05/2025` | [`68`](./commits_changes/commit_68.md)                       |

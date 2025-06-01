@@ -16,7 +16,7 @@ type FormInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   type?: HTMLInputTypeAttribute | undefined;
   // If the type is specified as file then the fileText will be used.
   fileText?: string | undefined;
-  state?: "default" | "error" | "success";
+  state?: "default" | "error" | "success" | "grayscale";
   errorMessage?: string;
   dir?: "ltr" | "rtl";
   className?: string;

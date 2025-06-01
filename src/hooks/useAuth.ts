@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { userActions } from "../store/userSlice";
 import { Token } from "../types/token.t";
-
 export type LoginFormData = { email: string; password: string };
 
 export type RegisterFormData = {
@@ -34,6 +33,27 @@ export type UpdateUserFormData = {
     state?: string;
     country: string;
     city: string;
+    street: string;
+    houseNumber: number;
+    zip: number;
+  };
+};
+
+export type CreateCardFormData = {
+  title: string;
+  subtitle: string;
+  description: string;
+  phone: string;
+  email: string;
+  web?: string;
+  image: {
+    url?: string;
+    alt?: string;
+  };
+  address: {
+    city: string;
+    country: string;
+    state?: string;
     street: string;
     houseNumber: number;
     zip: number;
@@ -174,7 +194,57 @@ const useAuth = () => {
     }
   };
 
-  return { user, userToken, loginRequest, registerRequest, userUpdateRequest };
+  const cardCreationRequest = async (data: CreateCardFormData) => {
+    console.log("Inside");
+
+    if (!user) {
+      console.error("User not found");
+      toast.error("User not found.");
+      return;
+    }
+
+    if (!userToken) {
+      console.error("User token not found");
+      toast.error("User token not found.");
+      return;
+    }
+
+    if (!user.isBusiness) {
+      console.error("User is not a business");
+      toast.error("User is not a business.");
+      return;
+    }
+
+    try {
+      // Setting the authentication token as an header of the request.
+      axios.defaults.headers.common["x-auth-token"] = userToken;
+
+      const response = await axios.post(
+        `https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards`,
+        data,
+      );
+
+      if (response.status === 200) {
+        // TODO: To add later.
+        // Updating the user data in the store.
+        // dispatch(userActions.addCard(response.data));
+        toast.success("Card created successfully!");
+      }
+    } catch (error) {
+      const axiosError: AxiosError = error as AxiosError;
+      console.error("Error submitting form", axiosError);
+      toast.error("Error submitting form");
+    }
+  };
+
+  return {
+    user,
+    userToken,
+    loginRequest,
+    registerRequest,
+    userUpdateRequest,
+    cardCreationRequest,
+  };
 };
 
 export default useAuth;
