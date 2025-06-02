@@ -8,6 +8,7 @@ import { TRootState } from "../../store/store";
 import { userActions } from "../../store/userSlice";
 import { FiLogOut } from "react-icons/fi";
 import LogoIcon from "../icons/LogoIcon";
+import { PiCardsFill } from "react-icons/pi";
 
 const CustomNavbar = () => {
   const dispatch = useDispatch();
@@ -86,6 +87,16 @@ const CustomNavbar = () => {
                 >
                   Favorites
                 </Link>
+
+                {user.isBusiness && (
+                  <Link
+                    to="/my-cards"
+                    className={`custom-navbar-link gap-1 dark:text-white`}
+                  >
+                    <PiCardsFill className="rotate-90" />
+                    <span>My Cards</span>
+                  </Link>
+                )}
 
                 <Link
                   to="/profile"

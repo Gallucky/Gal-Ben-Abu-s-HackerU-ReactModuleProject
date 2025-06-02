@@ -1,4 +1,4 @@
-import { Navigate, useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import PageWrapper from "../../components/layout/PageWrapper";
 import PageForm from "../../components/utils/PageForm";
 import useContent from "../../hooks/useContent";
@@ -9,12 +9,18 @@ import { FaHeart } from "react-icons/fa";
 import { clamp } from "../../utils/textSize";
 
 const CardDetails = () => {
+  const navigate = useNavigate();
   const { cardID } = useParams();
   const { getCardInfoByID } = useContent();
   const [cardData, setCardData] = useState<TCardData | null>(null);
 
   useEffect(() => {
     const loadCardDetails = async () => {
+      // Card was not found.
+      if (cardID && cardData === undefined) {
+        navigate("/");
+      }
+
       if (cardID && cardData === null) {
         const cardInfo = await getCardInfoByID(cardID);
         console.log("cardInfo", cardInfo);
@@ -23,7 +29,7 @@ const CardDetails = () => {
     };
 
     loadCardDetails();
-  }, [cardData, cardID, getCardInfoByID]);
+  }, [cardID, cardData]);
 
   if (!cardID) return <Navigate to="/*" />;
 

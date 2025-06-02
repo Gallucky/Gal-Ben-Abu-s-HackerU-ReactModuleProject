@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { userActions } from "../store/userSlice";
 import { Token } from "../types/token.t";
+import { errorHandler } from "../utils/errorHandler";
 export type LoginFormData = { email: string; password: string };
 
 export type RegisterFormData = {
@@ -90,8 +91,6 @@ const useAuth = () => {
         `https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/${parsedToken._id}`,
       );
 
-      console.log("User data", resUser.data);
-
       dispatch(userActions.login(resUser.data));
 
       if (showToast) toast.success("Login Successful");
@@ -101,10 +100,7 @@ const useAuth = () => {
       const axiosError: AxiosError = error as AxiosError;
       console.error("Error submitting form", axiosError);
 
-      const errorMessage = axiosError.message.includes("status code 400")
-        ? "Invalid email or password"
-        : (axiosError.message ?? "Error Occurred");
-      toast.error(errorMessage);
+      errorHandler(axiosError, "Error submitting form at loginRequest.");
     }
   };
 
@@ -121,18 +117,7 @@ const useAuth = () => {
       loginRequest({ email: data.email, password: data.password }, false);
     } catch (error) {
       const axiosError: AxiosError = error as AxiosError;
-      console.error("Error submitting form", axiosError);
-
-      const axiosErrorResponse = axiosError.response;
-
-      const errorMessage =
-        axiosErrorResponse && axiosErrorResponse.data
-          ? (axiosErrorResponse.data as string)
-          : axiosError.message.includes("status code 400")
-            ? "Invalid registration data"
-            : (axiosError.message ?? "Error Occurred");
-
-      toast.error(errorMessage);
+      errorHandler(axiosError, "Error submitting form at registerRequest.");
     }
   };
 
@@ -175,28 +160,15 @@ const useAuth = () => {
         // Updating the user data in the store.
         dispatch(userActions.setUser(response.data));
       }
-      unlockAfterDelay();
     } catch (error) {
       const axiosError: AxiosError = error as AxiosError;
-      console.error("Error submitting form", axiosError);
-
-      const axiosErrorResponse = axiosError.response;
-
-      const errorMessage =
-        axiosErrorResponse && axiosErrorResponse.data
-          ? (axiosErrorResponse.data as string)
-          : axiosError.message.includes("status code 400")
-            ? "Invalid registration data"
-            : (axiosError.message ?? "Error Occurred");
-
-      toast.error(errorMessage);
+      errorHandler(axiosError, "Error submitting form at userUpdateRequest.");
+    } finally {
       unlockAfterDelay();
     }
   };
 
   const cardCreationRequest = async (data: CreateCardFormData) => {
-    console.log("Inside");
-
     if (!user) {
       console.error("User not found");
       toast.error("User not found.");
@@ -228,12 +200,24 @@ const useAuth = () => {
         // TODO: To add later.
         // Updating the user data in the store.
         // dispatch(userActions.addCard(response.data));
-        toast.success("Card created successfully!");
       }
+
+      toast.success("Card created successfully!");
     } catch (error) {
       const axiosError: AxiosError = error as AxiosError;
-      console.error("Error submitting form", axiosError);
-      toast.error("Error submitting form");
+      const toastErrorMessage =
+        axiosError.response &&
+        typeof axiosError.response.data === "string" &&
+        axiosError.response.data.includes(
+          "Mongoose Error: E11000 duplicate key error collection: business_card_app.cards index: email_1 dup key:",
+        )
+          ? "Card with the same email already exists."
+          : undefined;
+      errorHandler(
+        axiosError,
+        "Error submitting form at cardCreationRequest.",
+        toastErrorMessage,
+      );
     }
   };
 

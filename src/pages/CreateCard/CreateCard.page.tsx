@@ -48,6 +48,7 @@ const CreateCard = () => {
     formState: { errors, isValid },
     trigger,
     watch,
+    reset,
   } = useForm<CreateCardFormData>({
     defaultValues,
     mode: "onChange",
@@ -56,7 +57,7 @@ const CreateCard = () => {
 
   useEffect(() => {
     trigger(); // ⬅️ Trigger validation on load
-  }, [trigger]);
+  }, [trigger, reset]);
 
   // If there is no user / guest user or there is a user
   // without business permissions return an empty fragment.
@@ -70,11 +71,24 @@ const CreateCard = () => {
         size="100px"
         color="gray"
         className="absolute bottom-20 right-28 transition-all hover:scale-90 hover:cursor-pointer"
-        onClick={() => setOpenModal(true)}
+        onClick={() => {
+          setOpenModal(true);
+          trigger();
+        }}
       />
 
-      <Modal show={openModal} onClose={() => setOpenModal(false)}>
-        <form onSubmit={handleSubmit(cardCreationRequest)}>
+      <Modal
+        show={openModal}
+        onClose={() => setOpenModal(false)}
+        onSubmit={() => {
+          reset();
+          setOpenModal(false);
+        }}
+      >
+        <form
+          id="create-card-form"
+          onSubmit={handleSubmit(cardCreationRequest)}
+        >
           <ModalHeader className="overflow-hidden">
             Create a New Card
           </ModalHeader>
@@ -119,12 +133,8 @@ const CreateCard = () => {
               watch={watch}
             />
           </ModalBody>
-          <ModalFooter className="overflow-hidden">
-            <Button
-              type="submit"
-              disabled={!isValid}
-              onSubmit={() => setOpenModal(false)}
-            >
+          <ModalFooter className="z-10 overflow-hidden">
+            <Button type="submit" disabled={!isValid}>
               Create
             </Button>
             <Button

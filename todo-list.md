@@ -2,10 +2,14 @@
 
 [`← Back Changelog`](./Changelog.md)
 
-## 📅 Updated to Commit #71 | Date: 31/05/2025
+## 📅 Updated to Commit #73 | Date: 02/06/2025
 
 ## 📋 Todo
 
+- [ ] Implement logic in `useCards` hook for card management
+- [ ] Trigger re-render in `Favorites Page` when card is unliked
+- [ ] Continue building functionality of `UserCreatedCards Page`
+- [ ] Refactor and cleanup repeated logic between `CreateCard` and `UserCreatedCards`
 - [ ] Complete [`screenSlice`](src/store/screenSlice.ts)
 - [ ] Create custom hooks for auth, screen viewport, etc.
 - [ ] Create admin CRM features page
@@ -14,6 +18,8 @@
 
 | `Task`                                                                                                                   | `Link/s`                                                                                                                                                                                                                   | `Commit #`                                      |
 | ------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| Created and routed the `UserCreatedCards Page`                                                                           | [`UserCreatedCards Page`](./src/pages/UserCreatedCards/UserCreatedCards.page.tsx), [`RoutesHandler Component`](./src/components/App/Routes/RoutesHandler.tsx)                                                              | [`#73`](./commits_changes/commit_73.md)         |
+| Added `My Cards` link to navbar for business accounts                                                                    | [`Navbar Component`](./src/components/layout/CustomNavbar.tsx)                                                                                                                                                             | [`#73`](./commits_changes/commit_73.md)         |
 | Add `grayscale` state to `FormInput`                                                                                     | [`FormInput.tsx`](./src/components/form/FormInput.tsx)                                                                                                                                                                     | [`#72`](./commits_changes/commit_72.md)         |
 | Allow margins in `Divider`                                                                                               | [`Divider.tsx`](./src/components/other/Divider.tsx)                                                                                                                                                                        | [`#72`](./commits_changes/commit_72.md)         |
 | Improve dark/light theme for form titles                                                                                 | [`FormAreaTitle.tsx`](./src/components/utils/FormAreaTitle.tsx)                                                                                                                                                            | [`#72`](./commits_changes/commit_72.md)         |

@@ -1,18 +1,21 @@
 # 📘 Gal Ben Abu's - HackerU - React Module Project - Changelog
 
-## 📅 Updated to Commit #72 | Date: 01/06/2025
+## 📅 Updated to Commit #73 | Date: 02/06/2025
 
 ### 🔗 [Open TODO List](./todo-list.md)
 
 ### General Notes
 
 ```
-Mainly working on the create card page and its logic.
-- Validation and the form itself is completed.
-- Created the logic to send the request for creating a new card.
-- Still need to work on the requesting and form logic.
-  It is not working properly and most of the time the request is not sent.
+Create Card works!
+Good point to keep in mind is that only one card can be created per email - no email duplicates allowed.
+Need to figure out on how to use/modify the useCards hook.
+Make that when unliking a card it makes the ¹'Favorites Page' to re-render.
+The current focus after that is to work on the created cards page.
+Link to the page is already set up in the ²'Navbar Component'.
 ```
+
+> [Favorites Page](./src/pages/Favorites.page.tsx)<br/>[Navbar Component](./src/components/layout/CustomNavbar.tsx)
 
 ### ✅ Completed
 
@@ -20,38 +23,16 @@ Mainly working on the create card page and its logic.
 
 ### ➕ Added
 
-- ➕ Added new sections to the CreateCard page:  
-  [`Contact.section.tsx`](./src/pages/CreateCard/Contact.section.tsx)  
-  [`Description.section.tsx`](./src/pages/CreateCard/Description.section.tsx)  
-  [`Image.section.tsx`](./src/pages/CreateCard/Image.section.tsx)  
-  [`Location.section.tsx`](./src/pages/CreateCard/Location.section.tsx)  
-  [`TitleSubtitle.section.tsx`](./src/pages/CreateCard/TitleSubtitle.section.tsx)
-
-- ➕ Added Joi validation file for card creation  
-  [`createCard.joi.ts`](./src/validations/createCard.joi.ts)
-
-- ➕ Created commit-specific log file [Latest Commit]
-  [`commit_71.md`](./commits_changes/commit_71.md)
+- ➕ Introduced [`useCards` Hook](./src/hooks/useCards.ts) _(Untracked – in progress)_
+- ➕ Created [`UserCreatedCards Page`](./src/pages/UserCreatedCards/UserCreatedCards.page.tsx)
+- ➕ Added `Route` for `my-cards` page in [`RoutesHandler Component`](./src/components/App/Routes/RoutesHandler.tsx)
+- ➕ Added new icon import (`PiCardsFill`) for cards page to [`Navbar Component`](./src/components/layout/CustomNavbar.tsx)
 
 ### 🔄 Changed
 
-- 🔄 Extended `FormInput` component with `grayscale` state option  
-  [`FormInput.tsx`](./src/components/form/FormInput.tsx)
-
-- 🔄 Improved `Divider` component with customizable margin prop  
-  [`Divider.tsx`](./src/components/other/Divider.tsx)
-
-- 🔄 Updated `FormAreaTitle` text color to adapt to light/dark modes  
-  [`FormAreaTitle.tsx`](./src/components/utils/FormAreaTitle.tsx)
-
-- 🔄 Minor cleanup in `useAuth` hook file  
-  [`useAuth.ts`](./src/hooks/useAuth.ts)
-
-- 🔄 Progressed logic in CreateCard page  
-  [`CreateCard.page.tsx`](./src/pages/CreateCard/CreateCard.page.tsx)
-
-- 🔄 Corresponding style improvements  
-  [`FormInput.css`](./src/styles/form/FormInput.css)
+- 🔄 Updated [`RoutesHandler Component`](./src/components/App/Routes/RoutesHandler.tsx) to include `my-cards` route
+- 🔄 Updated [`Navbar Component`](./src/components/layout/CustomNavbar.tsx) to conditionally show `My Cards` link for business users
+- 🔄 Expanded changelog template with detailed manual prompt instructions
 
 ### 🗑️ Deleted
 
@@ -67,6 +48,7 @@ Mainly working on the create card page and its logic.
 
 | `Date`       | `Commit #`                                                   |
 | ------------ | ------------------------------------------------------------ |
+| `01/06/2025` | [`72`](./commits_changes/commit_72.md)                       |
 | `31/05/2025` | [`71`](./commits_changes/commit_71.md)                       |
 | `30/05/2025` | [`70`](./commits_changes/commit_70.md)                       |
 | `29/05/2025` | [`69`](./commits_changes/commit_69.md)                       |

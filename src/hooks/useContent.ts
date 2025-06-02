@@ -6,6 +6,21 @@ import { errorHandler } from "../utils/errorHandler";
 const useContent = () => {
   const { userToken } = useAuth();
 
+  /**
+   * This method will try to request the cards from the api.
+   * If the request succeeds the server response will be saved in the state.
+   */
+  const getCards = async () => {
+    try {
+      const response = await axios.get(
+        "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards",
+      );
+      return response.data;
+    } catch (error) {
+      errorHandler(error as AxiosError, "Error getting cards.");
+    }
+  };
+
   const likeDislikeCard = async (
     e: React.MouseEvent<SVGElement>,
     cardID: string,
@@ -22,11 +37,9 @@ const useContent = () => {
         // Setting the authentication token as an header of the request.
         axios.defaults.headers.common["x-auth-token"] = userToken;
 
-        const res = await axios.patch(
+        await axios.patch(
           `https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/${cardID}`,
         );
-
-        console.log("Response from like/dislike request:", res.data);
 
         likeButton.classList.toggle("text-red-500");
 
@@ -66,6 +79,7 @@ const useContent = () => {
   };
 
   return {
+    getCards,
     likeDislikeCard,
     getCardInfoByID,
   };
