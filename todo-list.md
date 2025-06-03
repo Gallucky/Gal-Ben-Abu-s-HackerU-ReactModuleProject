@@ -2,7 +2,7 @@
 
 [`← Back Changelog`](./Changelog.md)
 
-## 📅 Updated to Commit #73 | Date: 02/06/2025
+## 📅 Updated to Commit #74 | Date: 03/06/2025
 
 ## 📋 Todo
 
@@ -12,12 +12,17 @@
 - [ ] Refactor and cleanup repeated logic between `CreateCard` and `UserCreatedCards`
 - [ ] Complete [`screenSlice`](src/store/screenSlice.ts)
 - [ ] Create custom hooks for auth, screen viewport, etc.
+- [ ] Implement edit functionality for cards (popup or dedicated page)
+- [ ] Implement delete confirmation modal for card deletion
+- [ ] Clean up and refactor repeated card props logic
 - [ ] Create admin CRM features page
 
 ## ✅ Completed
 
 | `Task`                                                                                                                   | `Link/s`                                                                                                                                                                                                                   | `Commit #`                                      |
 | ------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| Changed a bit of image-section styling on card details page                                                              | [`CardDetails.page.tsx`](./src/pages/CardDetails/CardDetails.page.tsx)                                                                                                                                                     | [`#74`](./commits_changes/commit_73.md)         |
+| Add edit/delete icons and logic props to user-created cards                                                              | [`Card.tsx`](./src/components/card/Card.tsx), [`CardsContainer.tsx`](./src/components/card/CardsContainer.tsx)                                                                                                             | [`#74`](./commits_changes/commit_74.md)         |
 | Created and routed the `UserCreatedCards Page`                                                                           | [`UserCreatedCards Page`](./src/pages/UserCreatedCards/UserCreatedCards.page.tsx), [`RoutesHandler Component`](./src/components/App/Routes/RoutesHandler.tsx)                                                              | [`#73`](./commits_changes/commit_73.md)         |
 | Added `My Cards` link to navbar for business accounts                                                                    | [`Navbar Component`](./src/components/layout/CustomNavbar.tsx)                                                                                                                                                             | [`#73`](./commits_changes/commit_73.md)         |
 | Add `grayscale` state to `FormInput`                                                                                     | [`FormInput.tsx`](./src/components/form/FormInput.tsx)                                                                                                                                                                     | [`#72`](./commits_changes/commit_72.md)         |

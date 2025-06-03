@@ -98,6 +98,7 @@ const CardsContainer = (props: CardsContainerProps) => {
                 imgAlt={card.imgAlt}
                 userConnected={user ? true : false}
                 alreadyLiked={card.alreadyLiked}
+                userCardCreator={card.userCardCreator}
               />
             ))}
         </div>

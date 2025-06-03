@@ -1,6 +1,7 @@
 import { FaHeart, FaPhoneAlt } from "react-icons/fa";
 import useContent from "../../hooks/useContent";
 import { useNavigate } from "react-router-dom";
+import { MdDelete, MdOutlineModeEditOutline } from "react-icons/md";
 
 export type CardProps = {
   _id: string;
@@ -14,6 +15,7 @@ export type CardProps = {
   imgAlt: string;
   userConnected?: boolean;
   alreadyLiked?: boolean;
+  userCardCreator?: boolean;
 };
 
 const Card = (props: CardProps) => {
@@ -29,6 +31,7 @@ const Card = (props: CardProps) => {
     imgAlt,
     userConnected = false,
     alreadyLiked = false,
+    userCardCreator = false,
   } = props;
 
   const { likeDislikeCard } = useContent();
@@ -78,6 +81,13 @@ const Card = (props: CardProps) => {
             <a href={"tel:" + phone} onClick={(e) => e.stopPropagation()}>
               <FaPhoneAlt className="animate-tilt-hover absolute left-5 hover:cursor-pointer" />
             </a>
+
+            {/* Edit Card */}
+            {userConnected && userCardCreator && <MdOutlineModeEditOutline />}
+
+            {/* Delete Card */}
+            {userConnected && userCardCreator && <MdDelete />}
+
             {userConnected && !alreadyLiked && (
               <FaHeart
                 className={`animate-tilt-hover absolute right-5 hover:cursor-pointer hover:text-red-500`}

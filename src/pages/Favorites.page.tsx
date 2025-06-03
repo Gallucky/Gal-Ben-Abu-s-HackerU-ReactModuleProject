@@ -56,31 +56,29 @@ const Favorites = () => {
 
   return (
     <>
-      <div className="h-screen w-screen py-20">
-        <Header
-          title="Favorites Page"
-          paragraph="Here you can find all your liked and bookmarked cards."
+      <Header
+        title="Favorites Page"
+        paragraph="Here you can find all your liked and bookmarked cards."
+      />
+      <Divider />
+      {filteredCards && filteredCards.length !== 0 && (
+        <CardsContainer cards={filteredCards} />
+      )}
+      {filteredCards && filteredCards.length === 0 && (
+        <CardsNotFound
+          message="No favorite cards found..."
+          hint="Like some cards to see them here."
         />
-        <Divider />
-        {filteredCards && filteredCards.length !== 0 && (
-          <CardsContainer cards={filteredCards} />
-        )}
-        {filteredCards && filteredCards.length === 0 && (
-          <CardsNotFound
-            message="No favorite cards found..."
-            hint="Like some cards to see them here."
-          />
-        )}
-        {!filteredCards && (
-          <CardsNotFound
-            message="No favorite cards with the search term found..."
-            hint="Try to search for something else."
-          />
-        )}
-        <br />
-        <br />
-        <br />
-      </div>
+      )}
+      {!filteredCards && (
+        <CardsNotFound
+          message="No favorite cards with the search term found..."
+          hint="Try to search for something else."
+        />
+      )}
+      <br />
+      <br />
+      <br />
     </>
   );
 };

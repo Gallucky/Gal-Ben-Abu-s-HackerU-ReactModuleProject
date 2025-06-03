@@ -23,8 +23,8 @@ const Header = (props: HeaderProps) => {
       <h1
         className={
           `
-          ms-3 h-fit overflow-hidden pb-1 
-          font-[Raleway] text-5xl
+          ms-3 mt-20 h-fit overflow-hidden 
+          pb-1 font-[Raleway] text-5xl
           ` + titleClassName
         }
       >

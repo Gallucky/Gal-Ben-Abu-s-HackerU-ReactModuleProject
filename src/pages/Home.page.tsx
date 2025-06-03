@@ -59,18 +59,16 @@ const Home = () => {
 
   return (
     <>
-      <div className="h-screen w-screen py-20">
-        <Header
-          title="Cards Page"
-          paragraph="Here you can find business cards from all categories."
-        />
-        <Divider />
-        <CardsContainer cards={filteredCards} />
-        <CreateCard />
-        <br />
-        <br />
-        <br />
-      </div>
+      <Header
+        title="Cards Page"
+        paragraph="Here you can find business cards from all categories."
+      />
+      <Divider />
+      <CardsContainer cards={filteredCards} />
+      <CreateCard />
+      <br />
+      <br />
+      <br />
     </>
   );
 };

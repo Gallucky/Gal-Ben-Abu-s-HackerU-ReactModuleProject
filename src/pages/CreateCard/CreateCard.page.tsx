@@ -39,7 +39,12 @@ const defaultValues = {
   },
 };
 
-const CreateCard = () => {
+type CreateCardProps = {
+  onCreatedCard?: (cratedNewCard: boolean) => void;
+};
+
+const CreateCard = (props: CreateCardProps) => {
+  const { onCreatedCard = () => false } = props;
   const { user, cardCreationRequest } = useAuth();
   const [openModal, setOpenModal] = useState(false);
   const {
@@ -70,7 +75,7 @@ const CreateCard = () => {
       <BsPlusCircleFill
         size="100px"
         color="gray"
-        className="absolute bottom-20 right-28 transition-all hover:scale-90 hover:cursor-pointer"
+        className="fixed bottom-20 right-28 transition-all hover:scale-90 hover:cursor-pointer"
         onClick={() => {
           setOpenModal(true);
           trigger();
@@ -83,6 +88,7 @@ const CreateCard = () => {
         onSubmit={() => {
           reset();
           setOpenModal(false);
+          onCreatedCard(true);
         }}
       >
         <form

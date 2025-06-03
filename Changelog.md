@@ -1,21 +1,15 @@
 # 📘 Gal Ben Abu's - HackerU - React Module Project - Changelog
 
-## 📅 Updated to Commit #73 | Date: 02/06/2025
+## 📅 Updated to Commit #74 | Date: 03/06/2025
 
 ### 🔗 [Open TODO List](./todo-list.md)
 
-### General Notes
+### 📝 General Notes
 
 ```
-Create Card works!
-Good point to keep in mind is that only one card can be created per email - no email duplicates allowed.
-Need to figure out on how to use/modify the useCards hook.
-Make that when unliking a card it makes the ¹'Favorites Page' to re-render.
-The current focus after that is to work on the created cards page.
-Link to the page is already set up in the ²'Navbar Component'.
+My Cards page is now working and updating even if creating a card while viewing it.
+Started to work on the card edit and delete functionality currently only the icons are shown for each card that the user created.
 ```
-
-> [Favorites Page](./src/pages/Favorites.page.tsx)<br/>[Navbar Component](./src/components/layout/CustomNavbar.tsx)
 
 ### ✅ Completed
 
@@ -23,16 +17,20 @@ Link to the page is already set up in the ²'Navbar Component'.
 
 ### ➕ Added
 
-- ➕ Introduced [`useCards` Hook](./src/hooks/useCards.ts) _(Untracked – in progress)_
-- ➕ Created [`UserCreatedCards Page`](./src/pages/UserCreatedCards/UserCreatedCards.page.tsx)
-- ➕ Added `Route` for `my-cards` page in [`RoutesHandler Component`](./src/components/App/Routes/RoutesHandler.tsx)
-- ➕ Added new icon import (`PiCardsFill`) for cards page to [`Navbar Component`](./src/components/layout/CustomNavbar.tsx)
+- ➕ Added edit (`MdOutlineModeEditOutline`) and delete (`MdDelete`) icons to cards created by the user in [`Card.tsx`](./src/components/card/Card.tsx)
+- ➕ Added `userCardCreator` prop in [`Card Component`](./src/components/card/Card.tsx) and passed from [`CardsContainer Component`](./src/components/card/CardsContainer.tsx)
 
 ### 🔄 Changed
 
-- 🔄 Updated [`RoutesHandler Component`](./src/components/App/Routes/RoutesHandler.tsx) to include `my-cards` route
-- 🔄 Updated [`Navbar Component`](./src/components/layout/CustomNavbar.tsx) to conditionally show `My Cards` link for business users
-- 🔄 Expanded changelog template with detailed manual prompt instructions
+- 🔄 Updated `CardDetails` page styling for the card's image.
+  [`CardDetails Page`](./src/pages/CardDetails/CardDetails.page.tsx)
+- 🔄 Adjusted top spacing in [`Header Component`](./src/components/other/Header.tsx) by adding `mt-20` to improve layout
+- 🔄 Minor improvements and cleanup across multiple pages ([`CardDetails Page`](./src/pages/CardDetails/CardDetails.page.tsx),
+  [`CreateCard Page`](./src/pages/CreateCard/CreateCard.page.tsx),
+  [`Favorites Page`](./src/pages/Favorites/Favorites.page.tsx),
+  [`Home Page`](./src/pages/Home/Home.page.tsx),
+  [`UserCreatedCards Page`](./src/pages/UserCreatedCards/UserCreatedCards.page.tsx))
+- 🔄 General notes updated to reflect My Cards auto-updating and initiation of edit/delete functionality
 
 ### 🗑️ Deleted
 
@@ -48,6 +46,7 @@ Link to the page is already set up in the ²'Navbar Component'.
 
 | `Date`       | `Commit #`                                                   |
 | ------------ | ------------------------------------------------------------ |
+| `02/06/2025` | [`73`](./commits_changes/commit_73.md)                       |
 | `01/06/2025` | [`72`](./commits_changes/commit_72.md)                       |
 | `31/05/2025` | [`71`](./commits_changes/commit_71.md)                       |
 | `30/05/2025` | [`70`](./commits_changes/commit_70.md)                       |

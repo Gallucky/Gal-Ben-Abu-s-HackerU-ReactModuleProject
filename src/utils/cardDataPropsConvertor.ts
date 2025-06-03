@@ -31,6 +31,7 @@ export const convertCardDataToProps = (
       imgSrc: imgSrc,
       imgAlt: imgAlt,
       alreadyLiked: item.likes && userID ? item.likes.includes(userID) : false,
+      userCardCreator: item.user_id === userID,
     };
 
     res.push(relevantCardData);

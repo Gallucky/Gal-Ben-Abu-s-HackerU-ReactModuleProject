@@ -48,13 +48,11 @@ const CardDetails = () => {
         </h2>
         <div className="details-section">
           <div className="image-section">
-            {/* <div className="card-details-image-wrapper"> */}
             <img
               src={cardData?.image.url}
               alt={cardData?.image.alt}
               className="card-details-image"
             />
-            {/* </div> */}
 
             {/* Created at and likes count part */}
             <div className="relative flex w-full flex-col items-center">

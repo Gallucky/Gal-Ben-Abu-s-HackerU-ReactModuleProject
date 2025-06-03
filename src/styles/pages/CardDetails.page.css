@@ -37,7 +37,6 @@
 
   @media (max-width: 1024px) and (min-width: 768px) {
     background-color: white;
-    width:;
   }
 }
 
@@ -50,7 +49,7 @@
 }
 
 .card-details-image {
-  @apply size-11/12 max-w-[200px] place-self-center rounded-lg object-cover;
+  @apply h-56 w-11/12 max-w-[200px] place-self-center rounded-lg border-2 border-black object-cover dark:border-white md:h-[300px] md:max-w-[300px];
 }
 
 .info-section {
