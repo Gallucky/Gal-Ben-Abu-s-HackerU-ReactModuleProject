@@ -2,16 +2,14 @@
 
 [`← Back Changelog`](./Changelog.md)
 
-## 📅 Updated to Commit #74 | Date: 03/06/2025
+## 📅 Updated to Commit #75 | Date: 06/06/2025
 
 ## 📋 Todo
 
 - [ ] Implement logic in `useCards` hook for card management
 - [ ] Trigger re-render in `Favorites Page` when card is unliked
-- [ ] Continue building functionality of `UserCreatedCards Page`
 - [ ] Refactor and cleanup repeated logic between `CreateCard` and `UserCreatedCards`
 - [ ] Complete [`screenSlice`](src/store/screenSlice.ts)
-- [ ] Create custom hooks for auth, screen viewport, etc.
 - [ ] Implement edit functionality for cards (popup or dedicated page)
 - [ ] Implement delete confirmation modal for card deletion
 - [ ] Clean up and refactor repeated card props logic
@@ -21,6 +19,7 @@
 
 | `Task`                                                                                                                   | `Link/s`                                                                                                                                                                                                                   | `Commit #`                                      |
 | ------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| UserCreatedCards Page is now completed                                                                                   | [`UserCreatedCards Page`](./src/pages/UserCreatedCards/UserCreatedCards.page.tsx)                                                                                                                                          | [`#75`](./commits_changes/commit_75.md)         |
 | Changed a bit of image-section styling on card details page                                                              | [`CardDetails.page.tsx`](./src/pages/CardDetails/CardDetails.page.tsx)                                                                                                                                                     | [`#74`](./commits_changes/commit_73.md)         |
 | Add edit/delete icons and logic props to user-created cards                                                              | [`Card.tsx`](./src/components/card/Card.tsx), [`CardsContainer.tsx`](./src/components/card/CardsContainer.tsx)                                                                                                             | [`#74`](./commits_changes/commit_74.md)         |
 | Created and routed the `UserCreatedCards Page`                                                                           | [`UserCreatedCards Page`](./src/pages/UserCreatedCards/UserCreatedCards.page.tsx), [`RoutesHandler Component`](./src/components/App/Routes/RoutesHandler.tsx)                                                              | [`#73`](./commits_changes/commit_73.md)         |

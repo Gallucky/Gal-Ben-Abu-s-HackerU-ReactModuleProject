@@ -77,27 +77,35 @@ const Card = (props: CardProps) => {
           <span className="overflow-hidden">
             <span className="font-semibold">Card Number:</span> {cardNumber}
           </span>
-          <div className="mt-5 flex w-full justify-evenly">
+          <div className="absolute bottom-5 mt-5 flex w-full justify-evenly overflow-hidden">
             <a href={"tel:" + phone} onClick={(e) => e.stopPropagation()}>
-              <FaPhoneAlt className="animate-tilt-hover absolute left-5 hover:cursor-pointer" />
+              <FaPhoneAlt className="animate-tilt-hover absolute left-5 hover:cursor-pointer hover:text-blue-700" />
             </a>
 
             {/* Edit Card */}
-            {userConnected && userCardCreator && <MdOutlineModeEditOutline />}
+            {userConnected && userCardCreator && (
+              <MdOutlineModeEditOutline
+                className={`animate-tilt-hover hover:cursor-pointer hover:text-yellow-300`}
+              />
+            )}
 
             {/* Delete Card */}
-            {userConnected && userCardCreator && <MdDelete />}
+            {userConnected && userCardCreator && (
+              <MdDelete
+                className={`animate-tilt-hover hover:cursor-pointer hover:text-slate-700`}
+              />
+            )}
 
             {userConnected && !alreadyLiked && (
               <FaHeart
-                className={`animate-tilt-hover absolute right-5 hover:cursor-pointer hover:text-red-500`}
+                className={`animate-tilt-hover hover:cursor-pointer hover:text-red-500`}
                 onClick={(e) => likeDislikeCard(e, _id)}
               />
             )}
 
             {userConnected && alreadyLiked && (
               <FaHeart
-                className={`animate-tilt-hover absolute right-5 text-red-500 hover:cursor-pointer`}
+                className={`animate-tilt-hover text-red-500 hover:cursor-pointer`}
                 onClick={(e) => likeDislikeCard(e, _id)}
               />
             )}

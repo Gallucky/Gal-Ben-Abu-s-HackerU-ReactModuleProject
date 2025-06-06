@@ -2,10 +2,10 @@ import FormInput from "../../components/form/FormInput";
 import Flex from "../../components/utils/Flex";
 import FormAreaBorder from "../../components/utils/FormAreaBorder";
 import FormAreaTitle from "../../components/utils/FormAreaTitle";
+import { CreateCardFormData } from "../../hooks/useAuth";
 import { SectionProps } from "../../types/pages/SectionProps.t";
-import { CardData } from "./CreateCard.page";
 
-const ContactSection = (props: SectionProps<CardData>) => {
+const ContactSection = (props: SectionProps<CreateCardFormData>) => {
   const {
     register,
     errors,
@@ -24,7 +24,11 @@ const ContactSection = (props: SectionProps<CardData>) => {
       />
       <FormAreaBorder className={sectionBorderClassName} />
 
-      <Flex className={`-mt-4 gap-2 p-4 ${className}`} justify="center">
+      <Flex
+        directionDynamic
+        className={`-mt-4 gap-2 p-4 ${className}`}
+        justify="center"
+      >
         <FormInput
           editable={editable}
           {...register("phone")}

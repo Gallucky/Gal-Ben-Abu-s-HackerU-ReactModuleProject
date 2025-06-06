@@ -75,7 +75,7 @@ const CreateCard = (props: CreateCardProps) => {
       <BsPlusCircleFill
         size="100px"
         color="gray"
-        className="fixed bottom-20 right-28 transition-all hover:scale-90 hover:cursor-pointer"
+        className="fixed bottom-12 transition-all hover:scale-90 hover:cursor-pointer max-md:inset-x-1/2 max-md:size-[64px] max-md:-translate-x-1/2 md:bottom-16 md:right-28"
         onClick={() => {
           setOpenModal(true);
           trigger();

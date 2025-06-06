@@ -54,7 +54,8 @@ const CardsContainer = (props: CardsContainerProps) => {
     }
   }, [cards, viewMode, cardsAmountToShowEachTime]);
 
-  if (cards === null)
+  // If there is no response value(s) / no cards found.
+  if (cards === null || cards.length === 0)
     return (
       <CardsNotFound
         message="No cards found..."

@@ -1,14 +1,14 @@
 # 📘 Gal Ben Abu's - HackerU - React Module Project - Changelog
 
-## 📅 Updated to Commit #74 | Date: 03/06/2025
+## 📅 Updated to Commit #75 | Date: 06/06/2025
 
 ### 🔗 [Open TODO List](./todo-list.md)
 
 ### 📝 General Notes
 
 ```
-My Cards page is now working and updating even if creating a card while viewing it.
-Started to work on the card edit and delete functionality currently only the icons are shown for each card that the user created.
+Some bug fixes and tweaks at various places for example CreateCard Page, Contact Section etc...
+Tweaked the styling and position of the edit and delete icons in a card.
 ```
 
 ### ✅ Completed
@@ -17,20 +17,15 @@ Started to work on the card edit and delete functionality currently only the ico
 
 ### ➕ Added
 
-- ➕ Added edit (`MdOutlineModeEditOutline`) and delete (`MdDelete`) icons to cards created by the user in [`Card.tsx`](./src/components/card/Card.tsx)
-- ➕ Added `userCardCreator` prop in [`Card Component`](./src/components/card/Card.tsx) and passed from [`CardsContainer Component`](./src/components/card/CardsContainer.tsx)
+- 🆕 Edit (`MdOutlineModeEditOutline`) and delete (`MdDelete`) icons added for user-created cards in [`Card.tsx`](./src/components/card/Card.tsx)
+- 🆕 Props `userCardCreator` added and passed from [`CardsContainer.tsx`](./src/components/card/CardsContainer.tsx) to [`Card.tsx`](./src/components/card/Card.tsx)
 
 ### 🔄 Changed
 
-- 🔄 Updated `CardDetails` page styling for the card's image.
-  [`CardDetails Page`](./src/pages/CardDetails/CardDetails.page.tsx)
-- 🔄 Adjusted top spacing in [`Header Component`](./src/components/other/Header.tsx) by adding `mt-20` to improve layout
-- 🔄 Minor improvements and cleanup across multiple pages ([`CardDetails Page`](./src/pages/CardDetails/CardDetails.page.tsx),
-  [`CreateCard Page`](./src/pages/CreateCard/CreateCard.page.tsx),
-  [`Favorites Page`](./src/pages/Favorites/Favorites.page.tsx),
-  [`Home Page`](./src/pages/Home/Home.page.tsx),
-  [`UserCreatedCards Page`](./src/pages/UserCreatedCards/UserCreatedCards.page.tsx))
-- 🔄 General notes updated to reflect My Cards auto-updating and initiation of edit/delete functionality
+- 🎨 Enhanced button hover effects and layout structure in [`Card.tsx`](./src/components/card/Card.tsx)
+- ✅ Updated logic in [`CardsContainer Component`](./src/components/card/CardsContainer.tsx) to show fallback when no cards are found
+- 🧩 Expanded props and made styling of [`CardsNotFound Component`](./src/components/utils/CardsNotFound.tsx) more flexible with optional class names
+- 🛠️ Minor adjustments in [`CreateCard Page`](./src/pages/CreateCard/CreateCard.page.tsx), [`Contact.section.tsx`](./src/pages/CreateCard/Contact.section.tsx), and [`UserCreatedCards Page`](./src/pages/UserCreatedCards/UserCreatedCards.page.tsx)
 
 ### 🗑️ Deleted
 
@@ -46,6 +41,7 @@ Started to work on the card edit and delete functionality currently only the ico
 
 | `Date`       | `Commit #`                                                   |
 | ------------ | ------------------------------------------------------------ |
+| `03/06/2025` | [`74`](./commits_changes/commit_74.md)                       |
 | `02/06/2025` | [`73`](./commits_changes/commit_73.md)                       |
 | `01/06/2025` | [`72`](./commits_changes/commit_72.md)                       |
 | `31/05/2025` | [`71`](./commits_changes/commit_71.md)                       |
