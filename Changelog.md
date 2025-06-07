@@ -1,31 +1,34 @@
 # 📘 Gal Ben Abu's - HackerU - React Module Project - Changelog
 
-## 📅 Updated to Commit #75 | Date: 06/06/2025
+## 📅 Updated to Commit #76 | Date: 07/06/2025
 
 ### 🔗 [Open TODO List](./todo-list.md)
 
 ### 📝 General Notes
 
 ```
-Some bug fixes and tweaks at various places for example CreateCard Page, Contact Section etc...
-Tweaked the styling and position of the edit and delete icons in a card.
+Re-used the CreateCard component for editing an existing card.
+Editing card logic is completed.
+Needs to fix the bug of the black background on submit edit card form modal.
+Needs to update/re-render upon submitting edit card request from the modal.
 ```
 
 ### ✅ Completed
 
-> `Nothing has been completed.`
+- Implemented card editing functionality with modal integration.
+- Added modal to edit cards reusing the [`CreateCard Page`](./src/pages/CreateCard/CreateCard.page.tsx).
+- Loaded card data on edit modal open using API call in [`CardsContainer Component`](./src/components/card/CardsContainer.tsx).
+- Added edit icon handler in [`Card Component`](./src/components/card/Card.tsx).
+- Connected edit modal form to update card API in [`useAuth.ts`](./src/hooks/useAuth.ts) and [`CreateCard Page`](./src/pages/CreateCard/CreateCard.page.tsx).
+- Added pagination and split card display logic in [`CardsContainer Component`](./src/components/card/CardsContainer.tsx).
 
 ### ➕ Added
 
-- 🆕 Edit (`MdOutlineModeEditOutline`) and delete (`MdDelete`) icons added for user-created cards in [`Card.tsx`](./src/components/card/Card.tsx)
-- 🆕 Props `userCardCreator` added and passed from [`CardsContainer.tsx`](./src/components/card/CardsContainer.tsx) to [`Card.tsx`](./src/components/card/Card.tsx)
+> `Nothing has been added.`
 
 ### 🔄 Changed
 
-- 🎨 Enhanced button hover effects and layout structure in [`Card.tsx`](./src/components/card/Card.tsx)
-- ✅ Updated logic in [`CardsContainer Component`](./src/components/card/CardsContainer.tsx) to show fallback when no cards are found
-- 🧩 Expanded props and made styling of [`CardsNotFound Component`](./src/components/utils/CardsNotFound.tsx) more flexible with optional class names
-- 🛠️ Minor adjustments in [`CreateCard Page`](./src/pages/CreateCard/CreateCard.page.tsx), [`Contact.section.tsx`](./src/pages/CreateCard/Contact.section.tsx), and [`UserCreatedCards Page`](./src/pages/UserCreatedCards/UserCreatedCards.page.tsx)
+> `Nothing has been changed.`
 
 ### 🗑️ Deleted
 
@@ -41,6 +44,7 @@ Tweaked the styling and position of the edit and delete icons in a card.
 
 | `Date`       | `Commit #`                                                   |
 | ------------ | ------------------------------------------------------------ |
+| `06/06/2025` | [`75`](./commits_changes/commit_75.md)                       |
 | `03/06/2025` | [`74`](./commits_changes/commit_74.md)                       |
 | `02/06/2025` | [`73`](./commits_changes/commit_73.md)                       |
 | `01/06/2025` | [`72`](./commits_changes/commit_72.md)                       |

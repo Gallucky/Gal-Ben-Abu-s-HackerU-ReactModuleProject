@@ -16,6 +16,7 @@ export type CardProps = {
   userConnected?: boolean;
   alreadyLiked?: boolean;
   userCardCreator?: boolean;
+  onEdit?: (cardID: string) => void;
 };
 
 const Card = (props: CardProps) => {
@@ -32,6 +33,7 @@ const Card = (props: CardProps) => {
     userConnected = false,
     alreadyLiked = false,
     userCardCreator = false,
+    onEdit = () => {},
   } = props;
 
   const { likeDislikeCard } = useContent();
@@ -39,6 +41,11 @@ const Card = (props: CardProps) => {
 
   const cardClickedHandler = () => {
     navigate(`/card-details/${_id}`);
+  };
+
+  const editCardHandler = (e: React.MouseEvent<SVGElement>) => {
+    e.stopPropagation();
+    onEdit(_id);
   };
 
   return (
@@ -86,6 +93,7 @@ const Card = (props: CardProps) => {
             {userConnected && userCardCreator && (
               <MdOutlineModeEditOutline
                 className={`animate-tilt-hover hover:cursor-pointer hover:text-yellow-300`}
+                onClick={editCardHandler}
               />
             )}
 

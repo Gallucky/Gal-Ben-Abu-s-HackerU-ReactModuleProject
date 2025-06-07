@@ -41,11 +41,15 @@ const defaultValues = {
 
 type CreateCardProps = {
   onCreatedCard?: (cratedNewCard: boolean) => void;
+  initialValues?: CreateCardFormData;
+  onClose?: () => void;
+  cardID?: string;
 };
 
 const CreateCard = (props: CreateCardProps) => {
-  const { onCreatedCard = () => false } = props;
-  const { user, cardCreationRequest } = useAuth();
+  const { onCreatedCard = () => false, initialValues, cardID } = props;
+  const editCardMode = Boolean(initialValues);
+  const { user, cardCreationRequest, cardEditRequest } = useAuth();
   const [openModal, setOpenModal] = useState(false);
   const {
     register,
@@ -54,6 +58,7 @@ const CreateCard = (props: CreateCardProps) => {
     trigger,
     watch,
     reset,
+    setValue,
   } = useForm<CreateCardFormData>({
     defaultValues,
     mode: "onChange",
@@ -61,14 +66,50 @@ const CreateCard = (props: CreateCardProps) => {
   });
 
   useEffect(() => {
-    trigger(); // ⬅️ Trigger validation on load
-  }, [trigger, reset]);
+    if (initialValues) {
+      reset(initialValues, { keepValues: true });
+      setValue("title", initialValues.title, { shouldValidate: true });
+      setValue("subtitle", initialValues.subtitle, { shouldValidate: true });
+      setValue("description", initialValues.description, {
+        shouldValidate: true,
+      });
+      setValue("phone", initialValues.phone, { shouldValidate: true });
+      setValue("email", initialValues.email, { shouldValidate: true });
+      setValue("web", initialValues.web, { shouldValidate: true });
+      setValue("image.url", initialValues.image.url, { shouldValidate: true });
+      setValue("image.alt", initialValues.image.alt, { shouldValidate: true });
+      setValue("address.city", initialValues.address.city, {
+        shouldValidate: true,
+      });
+      setValue("address.country", initialValues.address.country, {
+        shouldValidate: true,
+      });
+      setValue("address.state", initialValues.address.state, {
+        shouldValidate: true,
+      });
+      setValue("address.street", initialValues.address.street, {
+        shouldValidate: true,
+      });
+      setValue("address.houseNumber", initialValues.address.houseNumber, {
+        shouldValidate: true,
+      });
+      setValue("address.zip", initialValues.address.zip, {
+        shouldValidate: true,
+      });
+      setOpenModal(true);
+      trigger();
+    } else {
+      reset(defaultValues);
+    }
+  }, [initialValues, trigger, reset, setValue]);
 
   // If there is no user / guest user or there is a user
   // without business permissions return an empty fragment.
   if (!user || !user.isBusiness) return <></>;
 
   const backgroundColors = "bg-white dark:bg-gray-700";
+
+  const onClose = props.onClose || (() => {});
 
   return (
     <>
@@ -84,7 +125,10 @@ const CreateCard = (props: CreateCardProps) => {
 
       <Modal
         show={openModal}
-        onClose={() => setOpenModal(false)}
+        onClose={() => {
+          setOpenModal(false);
+          onClose();
+        }}
         onSubmit={() => {
           reset();
           setOpenModal(false);
@@ -93,10 +137,14 @@ const CreateCard = (props: CreateCardProps) => {
       >
         <form
           id="create-card-form"
-          onSubmit={handleSubmit(cardCreationRequest)}
+          onSubmit={
+            editCardMode && cardID
+              ? handleSubmit((formData) => cardEditRequest(cardID, formData))
+              : handleSubmit(cardCreationRequest)
+          }
         >
           <ModalHeader className="overflow-hidden">
-            Create a New Card
+            {editCardMode ? "Edit Card" : "Create a New Card"}
           </ModalHeader>
           <ModalBody>
             {/* Title and Subtitle */}
@@ -141,12 +189,15 @@ const CreateCard = (props: CreateCardProps) => {
           </ModalBody>
           <ModalFooter className="z-10 overflow-hidden">
             <Button type="submit" disabled={!isValid}>
-              Create
+              {editCardMode ? "Save Changes" : "Create"}
             </Button>
             <Button
               className="dark:hover:!bg-gray-600"
               color="gray"
-              onClick={() => setOpenModal(false)}
+              onClick={() => {
+                setOpenModal(false);
+                onClose();
+              }}
             >
               Cancel
             </Button>

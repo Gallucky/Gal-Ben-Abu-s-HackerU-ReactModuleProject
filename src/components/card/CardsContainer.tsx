@@ -3,8 +3,11 @@ import Card, { CardProps } from "./Card";
 import { useEffect, useState } from "react";
 import { ViewMode } from "../../enums/ViewModes.Enum";
 import CustomSpinner from "../utils/CustomSpinner";
-import useAuth from "../../hooks/useAuth";
+import useAuth, { CreateCardFormData } from "../../hooks/useAuth";
 import CardsNotFound from "../utils/CardsNotFound";
+import axios, { AxiosError } from "axios";
+import { errorHandler } from "../../utils/errorHandler";
+import CreateCard from "../../pages/CreateCard/CreateCard.page";
 
 type CardsContainerProps = {
   cards: CardProps[] | null;
@@ -22,18 +25,22 @@ const CardsContainer = (props: CardsContainerProps) => {
   };
 
   const [viewMode, setViewMode] = useState(getViewMode(window.innerWidth));
+  const [currentPage, setCurrentPage] = useState(1);
+  const [cardsAfterSplit, setCardsAfterSplit] = useState<CardProps[][]>([]);
+  const cardsAmountToShowEachTime =
+    viewMode === ViewMode.Mobile ? 3 : viewMode === ViewMode.Tablet ? 6 : 9;
+
+  // Modal State.
+  const [editCardID, setEditCardID] = useState<string | null>(null);
+  const [editCardData, setEditCardData] = useState<CreateCardFormData | null>(
+    null,
+  );
 
   useEffect(() => {
     const handleResize = () => setViewMode(getViewMode(window.innerWidth));
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-  const cardsAmountToShowEachTime =
-    viewMode === ViewMode.Mobile ? 3 : viewMode === ViewMode.Tablet ? 6 : 9;
-
-  const [currentPage, setCurrentPage] = useState(1);
-  const [cardsAfterSplit, setCardsAfterSplit] = useState<CardProps[][]>([]);
 
   const splitArray = (array: CardProps[], chunkLength: number) => {
     const resultArray = [];
@@ -54,6 +61,19 @@ const CardsContainer = (props: CardsContainerProps) => {
     }
   }, [cards, viewMode, cardsAmountToShowEachTime]);
 
+  useEffect(() => {
+    if (editCardID) {
+      axios
+        .get(
+          `https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/${editCardID}`,
+        )
+        .then((res) => setEditCardData(res.data))
+        .catch((error) =>
+          errorHandler(error as AxiosError, "Error getting card info."),
+        );
+    }
+  }, [editCardID]);
+
   // If there is no response value(s) / no cards found.
   if (cards === null || cards.length === 0)
     return (
@@ -68,6 +88,15 @@ const CardsContainer = (props: CardsContainerProps) => {
 
   const onPageChange = (page: number) => {
     setCurrentPage(page);
+  };
+
+  const handleEditCard = (cardID: string) => {
+    setEditCardID(cardID);
+  };
+
+  const closeModal = () => {
+    setEditCardID(null);
+    setEditCardData(null);
   };
 
   return (
@@ -87,22 +116,15 @@ const CardsContainer = (props: CardsContainerProps) => {
           {cardsAfterSplit.length > 0 &&
             cardsAfterSplit[currentPage - 1]?.map((card, index) => (
               <Card
-                _id={card._id}
                 key={index}
-                address={card.address}
-                cardNumber={card.cardNumber}
-                description={card.description}
-                phone={card.phone}
-                title={card.title}
-                subTitle={card.subTitle}
-                imgSrc={card.imgSrc}
-                imgAlt={card.imgAlt}
+                {...card}
                 userConnected={user ? true : false}
-                alreadyLiked={card.alreadyLiked}
-                userCardCreator={card.userCardCreator}
+                onEdit={handleEditCard}
               />
             ))}
         </div>
+
+        {/* Pagination */}
         <div className="flex items-center justify-center">
           <Pagination
             currentPage={currentPage}
@@ -113,6 +135,22 @@ const CardsContainer = (props: CardsContainerProps) => {
           />
         </div>
       </div>
+
+      {/* Edit Card Modal */}
+      {editCardData && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+          onClick={closeModal}
+        >
+          <div onClick={(e) => e.stopPropagation()}>
+            <CreateCard
+              initialValues={editCardData}
+              onClose={closeModal}
+              cardID={editCardID || ""}
+            />
+          </div>
+        </div>
+      )}
     </>
   );
 };

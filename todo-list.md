@@ -2,9 +2,12 @@
 
 [`← Back Changelog`](./Changelog.md)
 
-## 📅 Updated to Commit #75 | Date: 06/06/2025
+## 📅 Updated to Commit #76 | Date: 07/06/2025
 
 ## 📋 Todo
+
+- [ ] Fix black background bug on submit edit card modal.
+- [ ] Update/re-render card list upon submitting edit card request.
 
 - [ ] Implement logic in `useCards` hook for card management
 - [ ] Trigger re-render in `Favorites Page` when card is unliked
@@ -19,6 +22,8 @@
 
 | `Task`                                                                                                                   | `Link/s`                                                                                                                                                                                                                   | `Commit #`                                      |
 | ------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| Implement card editing modal with API integration                                                                        | [`CreateCard Page`](./src/pages/CreateCard/CreateCard.page.tsx), [`CardsContainer Component`](./src/components/card/CardsContainer.tsx), [`Card Component`](./src/components/card/Card.tsx)                                | [`#76`](./commits_changes/commit_76.md)         |
+| Add card edit request API call in auth hook                                                                              | [`useAuth Hook`](./src/hooks/useAuth.ts)                                                                                                                                                                                   | [`#76`](./commits_changes/commit_76.md)         |
 | UserCreatedCards Page is now completed                                                                                   | [`UserCreatedCards Page`](./src/pages/UserCreatedCards/UserCreatedCards.page.tsx)                                                                                                                                          | [`#75`](./commits_changes/commit_75.md)         |
 | Changed a bit of image-section styling on card details page                                                              | [`CardDetails.page.tsx`](./src/pages/CardDetails/CardDetails.page.tsx)                                                                                                                                                     | [`#74`](./commits_changes/commit_73.md)         |
 | Add edit/delete icons and logic props to user-created cards                                                              | [`Card.tsx`](./src/components/card/Card.tsx), [`CardsContainer.tsx`](./src/components/card/CardsContainer.tsx)                                                                                                             | [`#74`](./commits_changes/commit_74.md)         |

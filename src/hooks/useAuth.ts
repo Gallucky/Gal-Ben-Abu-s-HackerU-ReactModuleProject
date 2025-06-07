@@ -221,6 +221,21 @@ const useAuth = () => {
     }
   };
 
+  const cardEditRequest = async (cardID: string, data: CreateCardFormData) => {
+    try {
+      axios.defaults.headers.common["x-auth-token"] = userToken;
+
+      const response = await axios.put(
+        `https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/${cardID}`,
+        data,
+      );
+
+      console.log("edit response:", response.data);
+    } catch (error) {
+      errorHandler(error as AxiosError, "Error trying to edit a card.");
+    }
+  };
+
   return {
     user,
     userToken,
@@ -228,6 +243,7 @@ const useAuth = () => {
     registerRequest,
     userUpdateRequest,
     cardCreationRequest,
+    cardEditRequest,
   };
 };
 
