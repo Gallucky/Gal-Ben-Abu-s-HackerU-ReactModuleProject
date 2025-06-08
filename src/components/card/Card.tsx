@@ -16,6 +16,7 @@ export type CardProps = {
   userConnected?: boolean;
   alreadyLiked?: boolean;
   userCardCreator?: boolean;
+  isUserAdmin?: boolean;
   onEdit?: (cardID: string, toEdit: boolean) => void;
   onDelete?: (cardID: string, toDelete: boolean) => void;
   onUnliked?: (cardID: string, toUnliked: boolean) => void;
@@ -35,6 +36,7 @@ const Card = (props: CardProps) => {
     userConnected = false,
     alreadyLiked = false,
     userCardCreator = false,
+    isUserAdmin = false,
     onEdit = () => {},
     onDelete = () => {},
     onUnliked = () => {},
@@ -113,7 +115,7 @@ const Card = (props: CardProps) => {
             )}
 
             {/* Delete Card */}
-            {userConnected && userCardCreator && (
+            {userConnected && (userCardCreator || isUserAdmin) && (
               <MdDelete
                 className={`animate-tilt-hover hover:cursor-pointer hover:text-slate-700`}
                 onClick={deleteCardHandler}

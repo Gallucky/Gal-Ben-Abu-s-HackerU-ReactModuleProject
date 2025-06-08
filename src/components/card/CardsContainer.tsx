@@ -152,6 +152,7 @@ const CardsContainer = (props: CardsContainerProps) => {
                 key={index}
                 {...card}
                 userConnected={user ? true : false}
+                isUserAdmin={user?.isAdmin ? true : false}
                 onEdit={handleEditCard}
                 onDelete={handleDeleteCard}
                 onUnliked={handleUnlikedCard}
