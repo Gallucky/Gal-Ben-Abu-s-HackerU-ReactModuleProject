@@ -2,26 +2,20 @@
 
 [`← Back Changelog`](./Changelog.md)
 
-## 📅 Updated to Commit #76 | Date: 07/06/2025
+## 📅 Updated to Commit #77 | Date: 08/06/2025
 
 ## 📋 Todo
 
-- [ ] Fix black background bug on submit edit card modal.
-- [ ] Update/re-render card list upon submitting edit card request.
-
-- [ ] Implement logic in `useCards` hook for card management
-- [ ] Trigger re-render in `Favorites Page` when card is unliked
-- [ ] Refactor and cleanup repeated logic between `CreateCard` and `UserCreatedCards`
-- [ ] Complete [`screenSlice`](src/store/screenSlice.ts)
-- [ ] Implement edit functionality for cards (popup or dedicated page)
-- [ ] Implement delete confirmation modal for card deletion
-- [ ] Clean up and refactor repeated card props logic
-- [ ] Create admin CRM features page
+- [ ] Code cleanup according to the requirements of the project.
+- [ ] Implementing the CRM Page for admin users.
 
 ## ✅ Completed
 
 | `Task`                                                                                                                   | `Link/s`                                                                                                                                                                                                                   | `Commit #`                                      |
 | ------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| Trigger re-render in `Favorites Page` when card is unliked                                                               | [`Favorites Page`](./src/pages/Favorites.page.tsx)                                                                                                                                                                         | [`#77`](./commits_changes/commit_77.md)         |
+| Update/re-render card list upon submitting edit card request.                                                            | [`CardsContainer`](./src/components/card/CardsContainer.tsx), [`Favorites Page`](./src/pages/Favorites.page.tsx), [`My Cards / UserCreatedCards Page`](./src/pages/UserCreatedCards/UserCreatedCards.page.tsx)             | [`#77`](./commits_changes/commit_77.md)         |
+| Fix black background bug on submit edit card modal.                                                                      | [`My Cards / UserCreatedCards Page`](./src/pages/UserCreatedCards/UserCreatedCards.page.tsx), [`Home Page`](./src/pages/Home/Home.page.tsx)                                                                                | [`#77`](./commits_changes/commit_77.md)         |
 | Implement card editing modal with API integration                                                                        | [`CreateCard Page`](./src/pages/CreateCard/CreateCard.page.tsx), [`CardsContainer Component`](./src/components/card/CardsContainer.tsx), [`Card Component`](./src/components/card/Card.tsx)                                | [`#76`](./commits_changes/commit_76.md)         |
 | Add card edit request API call in auth hook                                                                              | [`useAuth Hook`](./src/hooks/useAuth.ts)                                                                                                                                                                                   | [`#76`](./commits_changes/commit_76.md)         |
 | UserCreatedCards Page is now completed                                                                                   | [`UserCreatedCards Page`](./src/pages/UserCreatedCards/UserCreatedCards.page.tsx)                                                                                                                                          | [`#75`](./commits_changes/commit_75.md)         |

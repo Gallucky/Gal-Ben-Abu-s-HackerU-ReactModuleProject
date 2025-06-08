@@ -16,7 +16,9 @@ export type CardProps = {
   userConnected?: boolean;
   alreadyLiked?: boolean;
   userCardCreator?: boolean;
-  onEdit?: (cardID: string) => void;
+  onEdit?: (cardID: string, toEdit: boolean) => void;
+  onDelete?: (cardID: string, toDelete: boolean) => void;
+  onUnliked?: (cardID: string, toUnliked: boolean) => void;
 };
 
 const Card = (props: CardProps) => {
@@ -34,6 +36,8 @@ const Card = (props: CardProps) => {
     alreadyLiked = false,
     userCardCreator = false,
     onEdit = () => {},
+    onDelete = () => {},
+    onUnliked = () => {},
   } = props;
 
   const { likeDislikeCard } = useContent();
@@ -45,7 +49,18 @@ const Card = (props: CardProps) => {
 
   const editCardHandler = (e: React.MouseEvent<SVGElement>) => {
     e.stopPropagation();
-    onEdit(_id);
+    onEdit(_id, true);
+  };
+
+  const deleteCardHandler = (e: React.MouseEvent<SVGElement>) => {
+    e.stopPropagation();
+    onDelete(_id, true);
+  };
+
+  const unlikedCardHandler = (e: React.MouseEvent<SVGElement>) => {
+    e.stopPropagation();
+    likeDislikeCard(e, _id);
+    onUnliked(_id, true);
   };
 
   return (
@@ -101,6 +116,7 @@ const Card = (props: CardProps) => {
             {userConnected && userCardCreator && (
               <MdDelete
                 className={`animate-tilt-hover hover:cursor-pointer hover:text-slate-700`}
+                onClick={deleteCardHandler}
               />
             )}
 
@@ -114,7 +130,7 @@ const Card = (props: CardProps) => {
             {userConnected && alreadyLiked && (
               <FaHeart
                 className={`animate-tilt-hover text-red-500 hover:cursor-pointer`}
-                onClick={(e) => likeDislikeCard(e, _id)}
+                onClick={unlikedCardHandler}
               />
             )}
           </div>

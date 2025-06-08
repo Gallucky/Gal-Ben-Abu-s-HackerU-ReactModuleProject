@@ -12,11 +12,19 @@ import CreateCard from "../../pages/CreateCard/CreateCard.page";
 type CardsContainerProps = {
   cards: CardProps[] | null;
   isCardsFiltered?: boolean;
+  onCardsEdited?: (cardsEdited: boolean) => void;
+  onCardsDeleted?: (cardsDeleted: boolean) => void;
+  onCardsUnliked?: (cardsUnliked: boolean) => void;
 };
 
 const CardsContainer = (props: CardsContainerProps) => {
-  const { user } = useAuth();
+  const { user, cardEditRequest, cardDeleteRequest } = useAuth();
   const cards = props.cards;
+  const {
+    onCardsEdited = () => false,
+    onCardsDeleted = () => false,
+    onCardsUnliked = () => false,
+  } = props;
 
   const getViewMode = (width: number) => {
     if (width < ViewMode.Tablet) return ViewMode.Mobile;
@@ -31,6 +39,7 @@ const CardsContainer = (props: CardsContainerProps) => {
     viewMode === ViewMode.Mobile ? 3 : viewMode === ViewMode.Tablet ? 6 : 9;
 
   // Modal State.
+  const [editCardTriggered, setEditCardTriggered] = useState(false);
   const [editCardID, setEditCardID] = useState<string | null>(null);
   const [editCardData, setEditCardData] = useState<CreateCardFormData | null>(
     null,
@@ -71,8 +80,11 @@ const CardsContainer = (props: CardsContainerProps) => {
         .catch((error) =>
           errorHandler(error as AxiosError, "Error getting card info."),
         );
+
+      // Resetting the flag state so that the card can be edited again immediately if the user wants to.
+      setEditCardTriggered(false);
     }
-  }, [editCardID]);
+  }, [editCardID, editCardTriggered]);
 
   // If there is no response value(s) / no cards found.
   if (cards === null || cards.length === 0)
@@ -90,13 +102,34 @@ const CardsContainer = (props: CardsContainerProps) => {
     setCurrentPage(page);
   };
 
-  const handleEditCard = (cardID: string) => {
+  const handleEditCard = (cardID: string, toEdit: boolean) => {
     setEditCardID(cardID);
+    setEditCardTriggered(toEdit);
+  };
+
+  const handleEditedCard = (data: CreateCardFormData) => {
+    if (editCardID) {
+      cardEditRequest(editCardID, data);
+      onCardsEdited(true);
+    }
   };
 
   const closeModal = () => {
     setEditCardID(null);
     setEditCardData(null);
+  };
+
+  const handleDeleteCard = (cardID: string) => {
+    if (cardID) {
+      cardDeleteRequest(cardID);
+      onCardsDeleted(Boolean(cardID));
+    }
+  };
+
+  const handleUnlikedCard = (cardID: string) => {
+    if (cardID) {
+      onCardsUnliked(Boolean(cardID));
+    }
   };
 
   return (
@@ -120,6 +153,8 @@ const CardsContainer = (props: CardsContainerProps) => {
                 {...card}
                 userConnected={user ? true : false}
                 onEdit={handleEditCard}
+                onDelete={handleDeleteCard}
+                onUnliked={handleUnlikedCard}
               />
             ))}
         </div>
@@ -138,18 +173,11 @@ const CardsContainer = (props: CardsContainerProps) => {
 
       {/* Edit Card Modal */}
       {editCardData && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
-          onClick={closeModal}
-        >
-          <div onClick={(e) => e.stopPropagation()}>
-            <CreateCard
-              initialValues={editCardData}
-              onClose={closeModal}
-              cardID={editCardID || ""}
-            />
-          </div>
-        </div>
+        <CreateCard
+          initialValues={editCardData}
+          onClose={closeModal}
+          onEditedCard={handleEditedCard}
+        />
       )}
     </>
   );

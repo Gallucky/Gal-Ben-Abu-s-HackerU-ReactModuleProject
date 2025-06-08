@@ -13,21 +13,7 @@ import CardsNotFound from "../components/utils/CardsNotFound";
 const Favorites = () => {
   const { user } = useAuth();
   const [memeCards, setCards] = useState<TCardData[]>();
-
-  /**
-   * This method will try to request the cards from the api.
-   * If the request succeeds the server response will be saved in the state.
-   */
-  const getCards = async () => {
-    try {
-      const response = await axios.get(
-        "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards",
-      );
-      setCards(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const [cardsChangeFlag, setCardsChangeFlag] = useState(false);
 
   const getFavoriteCardsData = (responseData?: TCardData[]): CardProps[] => {
     if (!responseData || !user) return [];
@@ -42,8 +28,29 @@ const Favorites = () => {
 
   // Requesting to get the cards from api on mount.
   useEffect(() => {
+    /**
+     * This method will try to request the cards from the api.
+     * If the request succeeds the server response will be saved in the state.
+     */
+    const getCards = async () => {
+      try {
+        const response = await axios.get(
+          "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards",
+        );
+        setCards(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
     getCards();
-  }, []);
+
+    if (cardsChangeFlag) {
+      // Resetting the flag after the card
+      // is created and handling the creation of a new card.
+      setCardsChangeFlag(false);
+    }
+  }, [cardsChangeFlag]);
 
   document.body.style.overflowX = "hidden";
 
@@ -51,8 +58,19 @@ const Favorites = () => {
 
   // Getting the converted cards array ready for components creation.
   const favoritesCardsData = getFavoriteCardsData(memeCards);
-
   const filteredCards = generalSearch(favoritesCardsData);
+
+  const handleEditedCard = (editedCard: boolean) => {
+    setCardsChangeFlag(editedCard);
+  };
+
+  const handleDeletedCard = (deletedCard: boolean) => {
+    setCardsChangeFlag(deletedCard);
+  };
+
+  const handleUnlikedCard = (unlikedCard: boolean) => {
+    setCardsChangeFlag(unlikedCard);
+  };
 
   return (
     <>
@@ -62,7 +80,12 @@ const Favorites = () => {
       />
       <Divider />
       {filteredCards && filteredCards.length !== 0 && (
-        <CardsContainer cards={filteredCards} />
+        <CardsContainer
+          cards={filteredCards}
+          onCardsEdited={handleEditedCard}
+          onCardsDeleted={handleDeletedCard}
+          onCardsUnliked={handleUnlikedCard}
+        />
       )}
       {filteredCards && filteredCards.length === 0 && (
         <CardsNotFound

@@ -14,22 +14,7 @@ import CreateCard from "./CreateCard/CreateCard.page";
 const Home = () => {
   const { user } = useAuth();
   const [memeCards, setCards] = useState<TCardData[]>();
-
-  /**
-   * This method will try to request the cards from the api.
-   * If the request succeeds the server response will be saved in the state.
-   */
-  const getCards = async () => {
-    try {
-      const response = await axios.get(
-        "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards",
-      );
-      setCards(response.data);
-      console.log("response.data", response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const [cardsChangeFlag, setCardsChangeFlag] = useState(false);
 
   /**
    * This method is used to convert the cards received from the server / api to an array
@@ -46,8 +31,29 @@ const Home = () => {
 
   // Requesting to get the cards from api on mount.
   useEffect(() => {
+    /**
+     * This method will try to request the cards from the api.
+     * If the request succeeds the server response will be saved in the state.
+     */
+    const getCards = async () => {
+      try {
+        const response = await axios.get(
+          "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards",
+        );
+        setCards(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
     getCards();
-  }, []);
+
+    if (cardsChangeFlag) {
+      // Resetting the flag after the card
+      // is created and handling the creation of a new card.
+      setCardsChangeFlag(false);
+    }
+  }, [cardsChangeFlag]);
 
   document.body.style.overflowX = "hidden";
 
@@ -57,6 +63,18 @@ const Home = () => {
   const { generalSearch } = useSearch();
   const filteredCards = generalSearch(memeCardsWithRelevantData);
 
+  const handleCreatedCard = (createdNewCard: boolean) => {
+    setCardsChangeFlag(createdNewCard);
+  };
+
+  const handleEditedCard = (editedCard: boolean) => {
+    setCardsChangeFlag(editedCard);
+  };
+
+  const handleDeletedCard = (deletedCard: boolean) => {
+    setCardsChangeFlag(deletedCard);
+  };
+
   return (
     <>
       <Header
@@ -64,8 +82,12 @@ const Home = () => {
         paragraph="Here you can find business cards from all categories."
       />
       <Divider />
-      <CardsContainer cards={filteredCards} />
-      <CreateCard />
+      <CardsContainer
+        cards={filteredCards}
+        onCardsEdited={handleEditedCard}
+        onCardsDeleted={handleDeletedCard}
+      />
+      <CreateCard onCreatedCard={handleCreatedCard} />
       <br />
       <br />
       <br />

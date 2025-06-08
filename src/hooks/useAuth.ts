@@ -225,14 +225,28 @@ const useAuth = () => {
     try {
       axios.defaults.headers.common["x-auth-token"] = userToken;
 
-      const response = await axios.put(
+      await axios.put(
         `https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/${cardID}`,
         data,
       );
 
-      console.log("edit response:", response.data);
+      toast.success("Card edited successfully!");
     } catch (error) {
       errorHandler(error as AxiosError, "Error trying to edit a card.");
+    }
+  };
+
+  const cardDeleteRequest = async (cardID: string) => {
+    try {
+      axios.defaults.headers.common["x-auth-token"] = userToken;
+
+      await axios.delete(
+        `https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/${cardID}`,
+      );
+
+      toast.success("Card deleted successfully!");
+    } catch (error) {
+      errorHandler(error as AxiosError, "Error trying to delete a card.");
     }
   };
 
@@ -244,6 +258,7 @@ const useAuth = () => {
     userUpdateRequest,
     cardCreationRequest,
     cardEditRequest,
+    cardDeleteRequest,
   };
 };
 

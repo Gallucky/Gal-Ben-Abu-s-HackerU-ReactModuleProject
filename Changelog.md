@@ -1,34 +1,48 @@
 # 📘 Gal Ben Abu's - HackerU - React Module Project - Changelog
 
-## 📅 Updated to Commit #76 | Date: 07/06/2025
+## 📅 Updated to Commit #77 | Date: 08/06/2025
 
 ### 🔗 [Open TODO List](./todo-list.md)
 
 ### 📝 General Notes
 
 ```
-Re-used the CreateCard component for editing an existing card.
-Editing card logic is completed.
-Needs to fix the bug of the black background on submit edit card form modal.
-Needs to update/re-render upon submitting edit card request from the modal.
+The project is now completed.
+Now need to clean up code according to the requirements of the project.
+I can now work on some bonuses.
 ```
 
 ### ✅ Completed
 
-- Implemented card editing functionality with modal integration.
-- Added modal to edit cards reusing the [`CreateCard Page`](./src/pages/CreateCard/CreateCard.page.tsx).
-- Loaded card data on edit modal open using API call in [`CardsContainer Component`](./src/components/card/CardsContainer.tsx).
-- Added edit icon handler in [`Card Component`](./src/components/card/Card.tsx).
-- Connected edit modal form to update card API in [`useAuth.ts`](./src/hooks/useAuth.ts) and [`CreateCard Page`](./src/pages/CreateCard/CreateCard.page.tsx).
-- Added pagination and split card display logic in [`CardsContainer Component`](./src/components/card/CardsContainer.tsx).
+- Editing card logic completed.
+- Deleting card logic completed.
+- Now when unliking a card within the [`Favorites Page`](./src/pages/Favorites.page.tsx) the card will disappear - because it is no longer a favorite card.
+
+> Basically the whole project is now completed except code cleanup, final touches tweaks and bonuses.
 
 ### ➕ Added
 
-> `Nothing has been added.`
+- Implemented card deletion functionality:  
+  ↳ [`Card Component`](./src/components/card/Card.tsx)  
+  ↳ [`CardsContainer Component`](./src/components/card/CardsContainer.tsx)  
+  ↳ [`useAuth Hook`](./src/hooks/useAuth.ts)
+
+- Implemented card unliking handling & UI update trigger:  
+  ↳ [`Card Component`](./src/components/card/Card.tsx)  
+  ↳ [`CardsContainer Component`](./src/components/card/CardsContainer.tsx)  
+  ↳ [`Favorites Page`](./src/pages/Favorites.page.tsx)
+
+- Added edit handler callback from `CreateCard` to `CardsContainer`:  
+  ↳ [`CreateCard Page`](./src/pages/CreateCard/CreateCard.page.tsx)  
+  ↳ [`CardsContainer Component`](./src/components/card/CardsContainer.tsx)
 
 ### 🔄 Changed
 
-> `Nothing has been changed.`
+- Refactored modal rendering logic in [`CardsContainer`](./src/components/card/CardsContainer.tsx) to directly render `CreateCard` instead of wrapping it in a div.
+- Cleaned up and relocated `getCards()` function in [`Favorites.page.tsx`](./src/pages/Favorites.page.tsx) to support state updates on card changes.
+- Improved prop handling and type safety across multiple components:
+  - [`CardProps`](./src/components/card/Card.tsx)
+  - `CardsContainer` props (added `onCardsEdited`, `onCardsDeleted`, `onCardsUnliked`)
 
 ### 🗑️ Deleted
 
@@ -44,6 +58,7 @@ Needs to update/re-render upon submitting edit card request from the modal.
 
 | `Date`       | `Commit #`                                                   |
 | ------------ | ------------------------------------------------------------ |
+| `07/06/2025` | [`76`](./commits_changes/commit_76.md)                       |
 | `06/06/2025` | [`75`](./commits_changes/commit_75.md)                       |
 | `03/06/2025` | [`74`](./commits_changes/commit_74.md)                       |
 | `02/06/2025` | [`73`](./commits_changes/commit_73.md)                       |

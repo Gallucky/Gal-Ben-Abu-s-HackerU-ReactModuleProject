@@ -15,7 +15,7 @@ import CardsNotFound from "../../components/utils/CardsNotFound";
 const UserCreatedCards = () => {
   const { user, userToken } = useAuth();
   const [cards, setCards] = useState<TCardData[]>([]);
-  const [createdNewCardFlag, setCreatedNewCardFlag] = useState(false);
+  const [cardsChangeFlag, setCardsChangeFlag] = useState(false);
 
   /**
    * This method is used to convert the cards received from the server / api to an array
@@ -48,12 +48,12 @@ const UserCreatedCards = () => {
 
     getUserCreatedCards();
 
-    if (createdNewCardFlag) {
+    if (cardsChangeFlag) {
       // Resetting the flag after the card
       // is created and handling the creation of a new card.
-      setCreatedNewCardFlag(false);
+      setCardsChangeFlag(false);
     }
-  }, [createdNewCardFlag, userToken]);
+  }, [cardsChangeFlag, userToken]);
 
   const myCardsProps = getRelevantCardData(cards);
 
@@ -61,7 +61,15 @@ const UserCreatedCards = () => {
   const filteredMyCardsProps = generalSearch(myCardsProps);
 
   const handleCreateCard = (createdNewCard: boolean) => {
-    setCreatedNewCardFlag(createdNewCard);
+    setCardsChangeFlag(createdNewCard);
+  };
+
+  const handleEditedCard = (editedCard: boolean) => {
+    setCardsChangeFlag(editedCard);
+  };
+
+  const handleDeletedCard = (deletedCard: boolean) => {
+    setCardsChangeFlag(deletedCard);
   };
 
   return (
@@ -72,7 +80,11 @@ const UserCreatedCards = () => {
       />
       <Divider />
       {filteredMyCardsProps && filteredMyCardsProps.length !== 0 && (
-        <CardsContainer cards={filteredMyCardsProps} />
+        <CardsContainer
+          cards={filteredMyCardsProps}
+          onCardsEdited={handleEditedCard}
+          onCardsDeleted={handleDeletedCard}
+        />
       )}
       {filteredMyCardsProps && filteredMyCardsProps.length === 0 && (
         <CardsNotFound

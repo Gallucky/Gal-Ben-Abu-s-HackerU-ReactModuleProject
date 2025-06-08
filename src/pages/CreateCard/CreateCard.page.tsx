@@ -40,16 +40,21 @@ const defaultValues = {
 };
 
 type CreateCardProps = {
-  onCreatedCard?: (cratedNewCard: boolean) => void;
   initialValues?: CreateCardFormData;
+
+  onCreatedCard?: (cratedNewCard: boolean) => void;
   onClose?: () => void;
-  cardID?: string;
+  onEditedCard?: (data: CreateCardFormData) => void;
 };
 
 const CreateCard = (props: CreateCardProps) => {
-  const { onCreatedCard = () => false, initialValues, cardID } = props;
+  const {
+    onCreatedCard = () => false,
+    initialValues,
+    onEditedCard = () => {},
+  } = props;
   const editCardMode = Boolean(initialValues);
-  const { user, cardCreationRequest, cardEditRequest } = useAuth();
+  const { user, cardCreationRequest } = useAuth();
   const [openModal, setOpenModal] = useState(false);
   const {
     register,
@@ -138,8 +143,8 @@ const CreateCard = (props: CreateCardProps) => {
         <form
           id="create-card-form"
           onSubmit={
-            editCardMode && cardID
-              ? handleSubmit((formData) => cardEditRequest(cardID, formData))
+            editCardMode
+              ? handleSubmit(onEditedCard)
               : handleSubmit(cardCreationRequest)
           }
         >
