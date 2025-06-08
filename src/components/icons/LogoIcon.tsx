@@ -40,7 +40,6 @@ const LogoIcon = (props: LogoIconProps) => {
     size = 32,
     color = "#000000",
     darkColor = "#ffffff",
-    hoverColor = "blue",
     className,
   } = props;
 
