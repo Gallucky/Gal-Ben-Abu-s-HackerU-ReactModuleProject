@@ -2,10 +2,10 @@ import FormInput from "../../components/form/FormInput";
 import Flex from "../../components/utils/Flex";
 import FormAreaBorder from "../../components/utils/FormAreaBorder";
 import FormAreaTitle from "../../components/utils/FormAreaTitle";
+import { CreateCardFormData } from "../../hooks/useAuth";
 import { SectionProps } from "../../types/pages/SectionProps.t";
-import { CardData } from "./CreateCard.page";
 
-const DescriptionSection = (props: SectionProps<CardData>) => {
+const DescriptionSection = (props: SectionProps<CreateCardFormData>) => {
   const {
     register,
     errors,
