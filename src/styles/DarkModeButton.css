@@ -28,5 +28,5 @@
 }
 
 .apply-fade-in-out-animation {
-  animation: fade-in-out 1s linear infinite;
+  animation: fade-in-out 300ms linear;
 }

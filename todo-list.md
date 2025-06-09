@@ -2,16 +2,20 @@
 
 [`← Back Changelog`](./Changelog.md)
 
-## 📅 Updated to Commit #79 | Date: 09/06/2025
+## 📅 Updated to Commit #80 | Date: 09/06/2025
 
 ## 📋 Todo
 
+- [ ] Add a styling badge feature to the About page.
+- [ ] Complete the refactor of the "User Roles & Permissions" section using the `UserRoleCard` component.
 - [ ] Implementing the CRM Page for admin users.
 
 ## ✅ Completed
 
 | `Task`                                                                                                                   | `Link/s`                                                                                                                                                                                                                   | `Commit #`                                      |
 | ------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| Refactor `About` page structure by moving sections into a dedicated directory.                                           | [`About Page`](./src/pages/About/About.page.tsx) <br> [`Sections Directory`](./src/pages/About/Sections/)                                                                                                                  | [`#80`](./commits_changes/commit_80.md)         |
+| Fix `DarkModeButton` animation to trigger on-click instead of looping infinitely.                                        | [`DarkModeButton Component`](./src/components/other/DarkModeButton.tsx) <br> [`DarkModeButton.css`](./src/styles/DarkModeButton.css)                                                                                       | [`#80`](./commits_changes/commit_80.md)         |
 | Clean up TODO comments from codebase                                                                                     | [`SearchBox Component`](./src/components/other/SearchBox.tsx), [`CardDetails Page`](./src/pages/CardDetails/CardDetails.page.tsx)                                                                                          | [`#79`](./commits_changes/commit_79.md)         |
 | Remove console.log statements                                                                                            | [`CardDetails Page`](./src/pages/CardDetails/CardDetails.page.tsx), [`useAuth.ts`](./src/hooks/useAuth.ts)                                                                                                                 | [`#79`](./commits_changes/commit_79.md)         |
 | Refactor form data types to separate files                                                                               | [`useAuth.ts`](./src/hooks/useAuth.ts), [`src/types/forms/`](./src/types/forms/)                                                                                                                                           | [`#79`](./commits_changes/commit_79.md)         |

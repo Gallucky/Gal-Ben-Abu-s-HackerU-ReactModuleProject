@@ -1,9 +1,9 @@
 import Divider from "../../components/other/Divider";
 import Header from "../../components/other/Header";
-import KeyFeaturesSection from "./KeyFeatures.section";
-import ProtectedRoutesSection from "./ProtectedRoutes.section";
-import TechnicalArchitectureSection from "./TechnicalArchitecture.section";
-import UserRolesSection from "./UserRoles.section";
+import KeyFeaturesSection from "./Sections/KeyFeatures/KeyFeatures.section";
+import ProtectedRoutesSection from "./Sections/ProtectedRoutes/ProtectedRoutes.section";
+import TechnicalArchitectureSection from "./Sections/TechnicalArchitecture/TechnicalArchitecture.section";
+import UserRolesSection from "./Sections/UserRoles/UserRoles.section";
 
 const About = () => {
   return (
