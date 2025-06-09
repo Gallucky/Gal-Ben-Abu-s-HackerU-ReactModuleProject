@@ -102,8 +102,12 @@ const Card = (props: CardProps) => {
             <span className="font-semibold">Card Number:</span> {cardNumber}
           </span>
           <div className="absolute bottom-5 mt-5 flex w-full justify-evenly overflow-hidden">
-            <a href={"tel:" + phone} onClick={(e) => e.stopPropagation()}>
-              <FaPhoneAlt className="animate-tilt-hover absolute left-5 hover:cursor-pointer hover:text-blue-700" />
+            <a
+              href={"tel:" + phone}
+              onClick={(e) => e.stopPropagation()}
+              className="overflow-hidden"
+            >
+              <FaPhoneAlt className="animate-tilt-hover !overflow-hidden hover:cursor-pointer hover:text-blue-700" />
             </a>
 
             {/* Edit Card */}

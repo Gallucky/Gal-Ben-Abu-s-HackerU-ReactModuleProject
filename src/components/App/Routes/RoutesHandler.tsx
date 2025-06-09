@@ -64,7 +64,7 @@ const RoutesHandler = () => {
         <Route
           path="/card-details/:cardID"
           element={
-            <RouteGuard allowLoggedUser>
+            <RouteGuard>
               <CardDetails />
             </RouteGuard>
           }

@@ -9,11 +9,13 @@ import { TCardData } from "../types/card.t";
 import { convertCardDataToProps } from "../utils/cardDataPropsConvertor";
 import { CardProps } from "../components/card/Card";
 import CardsNotFound from "../components/utils/CardsNotFound";
+import CustomSpinner from "../components/utils/CustomSpinner";
 
 const Favorites = () => {
   const { user } = useAuth();
   const [memeCards, setCards] = useState<TCardData[]>();
   const [cardsChangeFlag, setCardsChangeFlag] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const getFavoriteCardsData = (responseData?: TCardData[]): CardProps[] => {
     if (!responseData || !user) return [];
@@ -38,6 +40,7 @@ const Favorites = () => {
           "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards",
         );
         setCards(response.data);
+        setLoading(false);
       } catch (error) {
         console.error(error);
       }
@@ -79,7 +82,7 @@ const Favorites = () => {
         paragraph="Here you can find all your liked and bookmarked cards."
       />
       <Divider />
-      {filteredCards && filteredCards.length !== 0 && (
+      {!loading && filteredCards && filteredCards.length !== 0 && (
         <CardsContainer
           cards={filteredCards}
           onCardsEdited={handleEditedCard}
@@ -87,16 +90,25 @@ const Favorites = () => {
           onCardsUnliked={handleUnlikedCard}
         />
       )}
-      {filteredCards && filteredCards.length === 0 && (
+      {!loading && filteredCards && filteredCards.length === 0 && (
         <CardsNotFound
           message="No favorite cards found..."
           hint="Like some cards to see them here."
         />
       )}
-      {!filteredCards && (
+
+      {!loading && !filteredCards && (
         <CardsNotFound
           message="No favorite cards with the search term found..."
           hint="Try to search for something else."
+        />
+      )}
+
+      {loading && (
+        <CustomSpinner
+          size="sm"
+          ariaLabel="Loading favorite cards..."
+          text="Loading favorite cards..."
         />
       )}
       <br />

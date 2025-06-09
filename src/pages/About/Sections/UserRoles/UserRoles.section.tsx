@@ -6,7 +6,7 @@ const UserRolesSection = () => {
       <h2 className="mb-8 overflow-hidden text-3xl font-bold text-gray-900 dark:text-white">
         User Roles & Permissions
       </h2>
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid gap-3 md:grid-cols-2">
         {/* Guest Users */}
         <UserRoleCard
           type="Guest"
@@ -16,6 +16,7 @@ const UserRolesSection = () => {
             "Browse the website without restrictions",
             "Access login and signup pages",
             "Cannot save favorites or create cards",
+            "Enjoy unrestricted viewing with basic access - no account needed",
           ]}
         />
 
@@ -53,8 +54,7 @@ const UserRolesSection = () => {
             "All registered user features",
             "Delete any business cards",
             "Access CRM page (Work in Progress)",
-            "Manage users across platform",
-            "Convert regular to business accounts",
+            "Manage users across platform - eg. convert regular to business accounts",
             "Platform-wide administration",
           ]}
         />

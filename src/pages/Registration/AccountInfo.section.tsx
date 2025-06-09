@@ -9,6 +9,7 @@ type AccountInfoSectionProps = SectionProps<RegisterFormData> & {
   confirmPasswordError?: string;
   setConfirmPasswordError?: (error: string) => void;
   withoutConfirmPassword?: boolean;
+  disabled?: boolean;
 };
 
 const AccountInfoSection = (props: AccountInfoSectionProps) => {
@@ -20,6 +21,7 @@ const AccountInfoSection = (props: AccountInfoSectionProps) => {
     confirmPasswordError,
     setConfirmPasswordError = () => {},
     withoutConfirmPassword = false,
+    disabled = false,
   } = props;
 
   const confirmPasswordValidator = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -70,19 +72,21 @@ const AccountInfoSection = (props: AccountInfoSectionProps) => {
           id="registration-form-email"
           label="Email"
           type="email"
-          className="w-[90%] md:w-1/3"
+          className={`w-[90%] ${!withoutConfirmPassword ? "md:w-1/3" : "md:w-1/2"}`}
           labelClassName={`${backgroundColors}`}
           errorMessage={errors.email ? errors.email.message : ""}
+          disabled={disabled}
         />
         <FormInput
           {...register("password")}
           id="registration-form-password"
           label="Password"
           type="password"
-          className="w-[90%] md:w-1/3"
+          className={`w-[90%] ${!withoutConfirmPassword ? "md:w-1/3" : "md:w-1/2"}`}
           labelClassName={`${backgroundColors}`}
           errorMessage={errors.password?.message}
           onInput={passwordValidator}
+          disabled={disabled}
         />
         {!withoutConfirmPassword && (
           <FormInput
@@ -98,6 +102,7 @@ const AccountInfoSection = (props: AccountInfoSectionProps) => {
                 : undefined
             }
             onInput={confirmPasswordValidator}
+            disabled={disabled}
           />
         )}
       </Flex>

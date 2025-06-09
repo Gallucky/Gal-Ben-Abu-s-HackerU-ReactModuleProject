@@ -88,7 +88,7 @@ Manual with chatGPT prompt template:
 Act as a changelog and todo-list expert writer.
 Based on the following templates `Changelog.md` and `todo-list.md` can you show me what could i write to update those files?
 `Changelog.md`:
-## 📅 Updated to Commit #commit_number eg. 71 | Date: cufrrent_date eg. 31/05/2025
+## 📅 Updated to Commit #commit_number eg. 71 | Date: current_date eg. 31/05/2025
 
 ### 🔗 [Open TODO List](./todo-list.md)
 

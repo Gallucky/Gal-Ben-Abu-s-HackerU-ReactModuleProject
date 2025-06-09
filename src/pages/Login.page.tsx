@@ -48,6 +48,7 @@ const Login = () => {
               {...register("password")}
               id={"password"}
               label={"Password"}
+              type="password"
               state={errors.password ? "error" : "default"}
               className="-mt-3"
               labelClassName={`text-xl select-none w-1/2 ${backgroundColors}`}

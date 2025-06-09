@@ -2,18 +2,23 @@
 
 [`← Back Changelog`](./Changelog.md)
 
-## 📅 Updated to Commit #80 | Date: 09/06/2025
+## 📅 Updated to Commit #81 | Date: 09/06/2025
 
 ## 📋 Todo
 
-- [ ] Add a styling badge feature to the About page.
-- [ ] Complete the refactor of the "User Roles & Permissions" section using the `UserRoleCard` component.
 - [ ] Implementing the CRM Page for admin users.
 
 ## ✅ Completed
 
 | `Task`                                                                                                                   | `Link/s`                                                                                                                                                                                                                   | `Commit #`                                      |
 | ------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| Complete the refactor of the `"User Roles & Permissions"` section using the `UserRoleCard` component.                    | [`UserRoles Component`](./src/pages/About/Sections/UserRoles/UserRoles.section.tsx)                                                                                                                                        | [`#81`](./commits_changes/commit_81.md)         |
+| Add a styling badge feature to the About page.                                                                           | [`About Page`](./src/pages/About/About.page.tsx)                                                                                                                                                                           | [`#81`](./commits_changes/commit_81.md)         |
+| Add loading spinners to pages that fetch data to indicate activity.                                                      | [`Home Page`](./src/pages/Home.page.tsx), [`Favorites Page`](./src/pages/Favorites.page.tsx), [`UserCreatedCards Page`](./src/pages/UserCreatedCards/UserCreatedCards.page.tsx)                                            | [`#81`](./commits_changes/commit_81.md)         |
+| Fix password input on the login page to ensure text is masked.                                                           | [`Login Page`](./src/pages/Login.page.tsx)                                                                                                                                                                                 | [`#81`](./commits_changes/commit_81.md)         |
+| Improve the user roles section by highlighting the current user's role.                                                  | [`UserRoleCard Component`](./src/pages/About/Sections/UserRoles/UserRoleCard.tsx)                                                                                                                                          | [`#81`](./commits_changes/commit_81.md)         |
+| Refine and clarify user role permission descriptions.                                                                    | [`UserRoles Component`](./src/pages/About/Sections/UserRoles/UserRoles.section.tsx)                                                                                                                                        | [`#81`](./commits_changes/commit_81.md)         |
+| Adjust route guarding logic for card details.                                                                            | [`RoutesHandler Component`](./src/components/App/Routes/RoutesHandler.tsx)                                                                                                                                                 | [`#81`](./commits_changes/commit_81.md)         |
 | Refactor `About` page structure by moving sections into a dedicated directory.                                           | [`About Page`](./src/pages/About/About.page.tsx) <br> [`Sections Directory`](./src/pages/About/Sections/)                                                                                                                  | [`#80`](./commits_changes/commit_80.md)         |
 | Fix `DarkModeButton` animation to trigger on-click instead of looping infinitely.                                        | [`DarkModeButton Component`](./src/components/other/DarkModeButton.tsx) <br> [`DarkModeButton.css`](./src/styles/DarkModeButton.css)                                                                                       | [`#80`](./commits_changes/commit_80.md)         |
 | Clean up TODO comments from codebase                                                                                     | [`SearchBox Component`](./src/components/other/SearchBox.tsx), [`CardDetails Page`](./src/pages/CardDetails/CardDetails.page.tsx)                                                                                          | [`#79`](./commits_changes/commit_79.md)         |

@@ -215,6 +215,7 @@ const Profile = () => {
               backgroundColors={backgroundColors}
               watch={watch}
               withoutConfirmPassword
+              disabled
             />
             {/* Personal Info Section */}
             <PersonalProfileInfoSection

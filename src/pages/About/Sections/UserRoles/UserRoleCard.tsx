@@ -56,8 +56,6 @@ const UserRoleCard = (props: UserRoleCardProps) => {
   else if (type === "Business") colorsList = businessColors;
   else if (type === "Admin") colorsList = adminColors;
 
-  console.log("userRole:", userRole, " | type:", type);
-
   return (
     <div className="relative p-4">
       <div
@@ -67,10 +65,17 @@ const UserRoleCard = (props: UserRoleCardProps) => {
           <div
             className={`mr-3 flex size-10 items-center justify-center rounded-full ${colorsList[1]}`}
           >
-            <span className="text-sm font-bold text-white">{badgeLetter}</span>
+            <span className="select-none text-sm font-bold text-white">
+              {badgeLetter}
+            </span>
           </div>
           <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-            {type} Users
+            {type} Users{" "}
+            {userRole === type && (
+              <span className="text-sm text-gray-500 dark:text-gray-400">
+                (Current)
+              </span>
+            )}
           </h3>
         </div>
         <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-300">

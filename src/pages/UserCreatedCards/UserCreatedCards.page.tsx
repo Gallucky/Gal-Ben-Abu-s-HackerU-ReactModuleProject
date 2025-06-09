@@ -11,11 +11,13 @@ import Divider from "../../components/other/Divider";
 import CreateCard from "../CreateCard/CreateCard.page";
 import useSearch from "../../hooks/useSearch";
 import CardsNotFound from "../../components/utils/CardsNotFound";
+import CustomSpinner from "../../components/utils/CustomSpinner";
 
 const UserCreatedCards = () => {
   const { user, userToken } = useAuth();
   const [cards, setCards] = useState<TCardData[]>([]);
   const [cardsChangeFlag, setCardsChangeFlag] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   /**
    * This method is used to convert the cards received from the server / api to an array
@@ -41,6 +43,7 @@ const UserCreatedCards = () => {
         );
 
         setCards(response.data);
+        setLoading(false);
       } catch (error) {
         errorHandler(error as AxiosError, "Error getting user created cards.");
       }
@@ -79,24 +82,35 @@ const UserCreatedCards = () => {
         paragraph="Here are all the cards created by you."
       />
       <Divider />
-      {filteredMyCardsProps && filteredMyCardsProps.length !== 0 && (
-        <CardsContainer
-          cards={filteredMyCardsProps}
-          onCardsEdited={handleEditedCard}
-          onCardsDeleted={handleDeletedCard}
-        />
-      )}
-      {filteredMyCardsProps && filteredMyCardsProps.length === 0 && (
-        <CardsNotFound
-          message="There are no cards that were created by you..."
-          hint="Create new business cards and they will be listed here."
-        />
-      )}
-      {!filteredMyCardsProps && (
+      {!loading &&
+        filteredMyCardsProps &&
+        filteredMyCardsProps.length !== 0 && (
+          <CardsContainer
+            cards={filteredMyCardsProps}
+            onCardsEdited={handleEditedCard}
+            onCardsDeleted={handleDeletedCard}
+          />
+        )}
+      {!loading &&
+        filteredMyCardsProps &&
+        filteredMyCardsProps.length === 0 && (
+          <CardsNotFound
+            message="There are no cards that were created by you..."
+            hint="Create new business cards and they will be listed here."
+          />
+        )}
+      {!loading && !filteredMyCardsProps && (
         <CardsNotFound
           message="There are no cards that were created by you and with the search term..."
           hint="Try to search for something else."
           messageClassName="max-w-[50rem] mx-5"
+        />
+      )}
+      {loading && (
+        <CustomSpinner
+          size="sm"
+          ariaLabel="Loading cards created by you..."
+          text="Loading cards created by you..."
         />
       )}
       <CreateCard onCreatedCard={handleCreateCard} />

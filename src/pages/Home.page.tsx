@@ -10,11 +10,13 @@ import { convertCardDataToProps } from "../utils/cardDataPropsConvertor";
 import useSearch from "../hooks/useSearch";
 import useAuth from "../hooks/useAuth";
 import CreateCard from "./CreateCard/CreateCard.page";
+import CustomSpinner from "../components/utils/CustomSpinner";
 
 const Home = () => {
   const { user } = useAuth();
   const [memeCards, setCards] = useState<TCardData[]>();
   const [cardsChangeFlag, setCardsChangeFlag] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   /**
    * This method is used to convert the cards received from the server / api to an array
@@ -41,6 +43,7 @@ const Home = () => {
           "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards",
         );
         setCards(response.data);
+        setLoading(false);
       } catch (error) {
         console.error(error);
       }
@@ -82,11 +85,20 @@ const Home = () => {
         paragraph="Here you can find business cards from all categories."
       />
       <Divider />
-      <CardsContainer
-        cards={filteredCards}
-        onCardsEdited={handleEditedCard}
-        onCardsDeleted={handleDeletedCard}
-      />
+      {!loading && (
+        <CardsContainer
+          cards={filteredCards}
+          onCardsEdited={handleEditedCard}
+          onCardsDeleted={handleDeletedCard}
+        />
+      )}
+      {loading && (
+        <CustomSpinner
+          size="sm"
+          ariaLabel="Loading cards..."
+          text="Loading cards..."
+        />
+      )}
       <CreateCard onCreatedCard={handleCreatedCard} />
       <br />
       <br />

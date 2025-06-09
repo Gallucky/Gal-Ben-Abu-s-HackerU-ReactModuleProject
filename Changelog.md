@@ -1,44 +1,48 @@
 # 📘 Gal Ben Abu's - HackerU - React Module Project - Changelog
 
-## 📅 Updated to Commit #80 | Date: 09/06/2025
+## 📅 Updated to Commit #81 | Date: 09/06/2025
 
 ### 🔗 [Open TODO List](./todo-list.md)
 
 ### 📝 General Notes
 
 ```
-- Working on adding a badge (styling feature) in the about page.
-- Broken down the the user roles and permissions section into smaller chunks with the help of UserRoleCard component.
-It is still work in progress.
-
+Fixing bugs and styling issues.
+Making sure that the spinners while loading / fetching data will be shown and based on the result the data / a message will be shown.
 ```
 
 ### ✅ Completed
 
-- Improved the animation on the [`DarkModeButton Component`](./src/components/other/DarkModeButton.tsx) to trigger on click.
-- Refactored the [`About Page`](./src/pages/About/About.page.tsx) by organizing its sections into a new directory.
+- Implemented loading spinners across pages that fetch card data to improve user experience while data is being retrieved.
+- Fixed a bug in the [`Login Page`](./src/pages/Login.page.tsx) where the password field was not correctly masked.
+- Enhanced the user roles display on the [`About Page`](./src/pages/About/About.page.tsx) to indicate the user's current role.
 
 ### ➕ Added
 
-- Created a new `Sections` directory at [`src/pages/About/Sections/`](./src/pages/About/Sections/) to better structure the components of the About page.
+- Added loading state management with `CustomSpinner` to the [`Home Page`](./src/pages/Home.page.tsx), [`Favorites Page`](./src/pages/Favorites.page.tsx), and [`UserCreatedCards Page`](./src/pages/UserCreatedCards/UserCreatedCards.page.tsx) to provide feedback during data fetching.
+- Created [`commit_80.md`](./commits_changes/commit_80.md) to document previous changes.
 
 ### 🔄 Changed
 
-- In [`DarkModeButton.tsx Component`](./src/components/other/DarkModeButton.tsx), updated the animation to be handled via a JavaScript `onClick` event for more precise control.
-- Modified [`DarkModeButton.css`](./src/styles/DarkModeButton.css) to change the animation duration to `300ms` and remove the infinite loop, ensuring it runs only once per click.
-- Updated the import paths in the [`About Page`](./src/pages/About/About.page.tsx) to point to the new locations of the section components.
+> **Styling & UX:**
+
+- In [`UserRoleCard Component`](./src/pages/About/Sections/UserRoles/UserRoleCard.tsx), added a "(Current)" label to highlight the active user's role and prevented text selection on the role badge.
+- Refined the descriptions for "Guest" and "Admin" roles in the [`UserRoles Component`](./src/pages/About/Sections/UserRoles/UserRoles.section.tsx) for better clarity and adjusted grid spacing.
+- Fixed a minor visual overflow issue with the phone icon in the [`Card Component`](./src/components/card/Card.tsx).
+
+> **Functionality & Logic:**
+
+- Modified the `RouteGuard` for the [`CardDetails Page`](./src/pages/CardDetails.page.tsx) in [`RoutesHandler Component`](./src/components/App/Routes/RoutesHandler.tsx) to adjust access permissions.
+- Disabled the account information fields in the [`Profile Page`](./src/pages/Profile/Profile.page.tsx) by passing a `disabled` prop to the [`AccountInfo Component`](./src/pages/Registration/AccountInfo.section.tsx).
+- Made the layout of fields in [`AccountInfo Component`](./src/pages/Registration/AccountInfo.section.tsx) more flexible.
 
 ### 🗑️ Deleted
 
-- Removed section components from their previous location in `src/pages/About/` as they have been moved.
-  - `src/pages/About/KeyFeatures.section.tsx`
-  - `src/pages/About/ProtectedRoutes.section.tsx`
-  - `src/pages/About/TechnicalArchitecture.section.tsx`
-  - `src/pages/About/UserRoles.section.tsx`
+- Removed a redundant `console.log` from the [`UserRoleCard Component`](./src/pages/About/Sections/UserRoles/UserRoleCard.tsx) to clean up the codebase.
 
 ### 🏷️ Renamed / Moved
 
-- Moved the section components of the About page into the new [`src/pages/About/Sections/`](./src/pages/About/Sections/) directory to improve project organization.
+> `No files renamed or moved.`
 
 ---
 
@@ -46,6 +50,7 @@ It is still work in progress.
 
 | `Date`       | `Commit #`                                                   |
 | ------------ | ------------------------------------------------------------ |
+| `09/06/2025` | [`80`](./commits_changes/commit_80.md)                       |
 | `09/06/2025` | [`79`](./commits_changes/commit_79.md)                       |
 | `08/06/2025` | [`78`](./commits_changes/commit_78.md)                       |
 | `08/06/2025` | [`77`](./commits_changes/commit_77.md)                       |
