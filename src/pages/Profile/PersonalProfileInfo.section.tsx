@@ -2,7 +2,7 @@ import FormInput from "../../components/form/FormInput";
 import Flex from "../../components/utils/Flex";
 import FormAreaBorder from "../../components/utils/FormAreaBorder";
 import FormAreaTitle from "../../components/utils/FormAreaTitle";
-import { RegisterFormData } from "../../hooks/useAuth";
+import { RegisterFormData } from "../../types/forms/RegisterFormData";
 import { SectionProps } from "../../types/pages/SectionProps.t";
 
 const PersonalProfileInfoSection = (
@@ -13,12 +13,7 @@ const PersonalProfileInfoSection = (
     ) => void;
   },
 ) => {
-  const {
-    register,
-    errors,
-    backgroundColors,
-    editable = false,
-  } = props;
+  const { register, errors, backgroundColors, editable = false } = props;
 
   // What action to take when Phone or Image.Url or Image.Alt field is saved.
   // Do nothing if the onPersonalInfoSave is not defined.

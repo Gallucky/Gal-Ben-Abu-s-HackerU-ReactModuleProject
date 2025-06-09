@@ -2,7 +2,7 @@ import FormInput from "../../components/form/FormInput";
 import Flex from "../../components/utils/Flex";
 import FormAreaBorder from "../../components/utils/FormAreaBorder";
 import FormAreaTitle from "../../components/utils/FormAreaTitle";
-import { RegisterFormData } from "../../hooks/useAuth";
+import { RegisterFormData } from "../../types/forms/RegisterFormData";
 import { SectionProps } from "../../types/pages/SectionProps.t";
 
 const NameSection = (

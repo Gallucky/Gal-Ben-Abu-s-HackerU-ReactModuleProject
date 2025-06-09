@@ -4,8 +4,8 @@ import Flex from "../../components/utils/Flex";
 import FormAreaBorder from "../../components/utils/FormAreaBorder";
 import FormAreaTitle from "../../components/utils/FormAreaTitle";
 import { restrictNonPhoneRelatedKeys } from "../../events/input/phone";
-import { RegisterFormData } from "../../hooks/useAuth";
 import { SectionProps } from "../../types/pages/SectionProps.t";
+import { RegisterFormData } from "../../types/forms/RegisterFormData";
 
 type PersonalInfoSectionProps = SectionProps<RegisterFormData> & {
   setImageUrl: (url: string) => void;

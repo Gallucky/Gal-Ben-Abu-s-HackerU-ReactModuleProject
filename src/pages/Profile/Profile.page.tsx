@@ -3,13 +3,9 @@ import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import PageWrapper from "../../components/layout/PageWrapper";
 import PageForm from "../../components/utils/PageForm";
-import useAuth, { RegisterFormData } from "../../hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
 import { registerSchema } from "../../validations/register.joi";
 import NameSection from "../Registration/Name.section";
-import FormInput from "../../components/form/FormInput";
-import Flex from "../../components/utils/Flex";
-import FormAreaBorder from "../../components/utils/FormAreaBorder";
-import FormAreaTitle from "../../components/utils/FormAreaTitle";
 import AddressSection from "../Registration/Address.section";
 import { TUser } from "../../types/user.t";
 import {
@@ -18,24 +14,11 @@ import {
 } from "../../utils/convertTUser";
 import PersonalProfileInfoSection from "./PersonalProfileInfo.section";
 import { toast } from "react-toastify";
-
-// Should be replaced with the data from the user profile.
-const defaultValues = {
-  name: { first: "", middle: "", last: "" },
-  phone: "",
-  email: "",
-  password: "",
-  image: { url: "", alt: "" },
-  address: {
-    state: "",
-    country: "",
-    city: "",
-    street: "",
-    houseNumber: "",
-    zip: "",
-  },
-  isBusiness: false,
-};
+import {
+  defaultValuesRegisterFormData,
+  RegisterFormData,
+} from "../../types/forms/RegisterFormData";
+import AccountInfoSection from "../Registration/AccountInfo.section";
 
 const Profile = () => {
   // const [imageUrl, setImageUrl] = useState("");
@@ -52,7 +35,7 @@ const Profile = () => {
     watch,
     reset,
   } = useForm<RegisterFormData>({
-    defaultValues,
+    defaultValues: defaultValuesRegisterFormData,
     mode: "onChange",
     resolver: joiResolver(registerSchema),
   });
@@ -226,38 +209,13 @@ const Profile = () => {
               sectionTitleClassName="!text-gray-800 dark:!text-gray-700"
             />
             {/* Account Info Section */}
-            <Flex direction="col" className="relative w-full">
-              <FormAreaTitle
-                text="Account Info"
-                className={`${backgroundColors} !text-gray-800 dark:!text-gray-700`}
-              />
-              <FormAreaBorder className="!border border-gray-400 dark:border-gray-600" />
-
-              <Flex
-                className="w-full gap-3 py-2 md:gap-5 md:p-3 md:px-10"
-                directionDynamic
-              >
-                <FormInput
-                  disabled
-                  {...register("email")}
-                  id="registration-form-email"
-                  label="Email"
-                  type="email"
-                  className="w-[90%] md:w-1/2"
-                  labelClassName={`${backgroundColors}`}
-                  errorMessage={errors.email ? errors.email.message : ""}
-                />
-                <FormInput
-                  disabled
-                  {...register("password")}
-                  id="registration-form-password"
-                  label="Password"
-                  type="password"
-                  className="w-[90%] md:w-1/2"
-                  labelClassName={`${backgroundColors}`}
-                />
-              </Flex>
-            </Flex>
+            <AccountInfoSection
+              register={register}
+              errors={errors}
+              backgroundColors={backgroundColors}
+              watch={watch}
+              withoutConfirmPassword
+            />
             {/* Personal Info Section */}
             <PersonalProfileInfoSection
               editable

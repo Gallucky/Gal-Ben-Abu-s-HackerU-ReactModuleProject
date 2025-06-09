@@ -77,6 +77,8 @@
 
 .disable-down-up-arrows {
   -moz-appearance: textfield;
+  /* Fallback */
+  appearance: textfield;
 }
 
 .disable-down-up-arrows::-webkit-outer-spin-button,

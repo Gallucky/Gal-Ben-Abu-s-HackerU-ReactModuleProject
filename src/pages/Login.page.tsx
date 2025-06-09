@@ -5,8 +5,9 @@ import FormInput from "../components/form/FormInput";
 import { loginSchema } from "../validations/login.joi";
 import PageWrapper from "../components/layout/PageWrapper";
 import Flex from "../components/utils/Flex";
-import useAuth, { LoginFormData } from "../hooks/useAuth";
+import useAuth from "../hooks/useAuth";
 import PageForm from "../components/utils/PageForm";
+import { LoginFormData } from "../types/forms/LoginFormData";
 
 const Login = () => {
   const {

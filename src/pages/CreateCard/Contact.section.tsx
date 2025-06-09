@@ -2,7 +2,7 @@ import FormInput from "../../components/form/FormInput";
 import Flex from "../../components/utils/Flex";
 import FormAreaBorder from "../../components/utils/FormAreaBorder";
 import FormAreaTitle from "../../components/utils/FormAreaTitle";
-import { CreateCardFormData } from "../../hooks/useAuth";
+import { CreateCardFormData } from "../../types/forms/CreateCardFormData";
 import { SectionProps } from "../../types/pages/SectionProps.t";
 
 const ContactSection = (props: SectionProps<CreateCardFormData>) => {

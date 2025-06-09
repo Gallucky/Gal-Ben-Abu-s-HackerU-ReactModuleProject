@@ -1,4 +1,5 @@
-import { RegisterFormData, UpdateUserFormData } from "../hooks/useAuth";
+import { RegisterFormData } from "../types/forms/RegisterFormData";
+import { UpdateUserFormData } from "../types/forms/UpdateUserFormData";
 import { TUser } from "../types/user.t";
 
 export const convertTUserToUpdateUserFormData = (

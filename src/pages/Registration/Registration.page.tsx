@@ -6,12 +6,13 @@ import { joiResolver } from "@hookform/resolvers/joi";
 import { useForm } from "react-hook-form";
 import { registerSchema } from "../../validations/register.joi";
 import { useEffect, useState } from "react";
-import useAuth, { RegisterFormData } from "../../hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
 import PageForm from "../../components/utils/PageForm";
 import NameSection from "./Name.section";
 import AccountInfoSection from "./AccountInfo.section";
 import PersonalInfoSection from "./PersonalInfo.section";
 import AddressSection from "./Address.section";
+import { RegisterFormData } from "../../types/forms/RegisterFormData";
 
 const defaultValues = {
   name: {

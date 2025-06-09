@@ -10,7 +10,7 @@
   @apply bg-gray-200 text-gray-800;
 }
 
-@animation fade-in-out {
+@keyframes fade-in-out {
   from {
     opacity: 1;
     transform: scale(1);
@@ -28,5 +28,5 @@
 }
 
 .apply-fade-in-out-animation {
-  animate: fade-in-out 1s linear infinite;
+  animation: fade-in-out 1s linear infinite;
 }

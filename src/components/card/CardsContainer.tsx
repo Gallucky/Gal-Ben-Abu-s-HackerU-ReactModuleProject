@@ -3,11 +3,12 @@ import Card, { CardProps } from "./Card";
 import { useEffect, useState } from "react";
 import { ViewMode } from "../../enums/ViewModes.Enum";
 import CustomSpinner from "../utils/CustomSpinner";
-import useAuth, { CreateCardFormData } from "../../hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
 import CardsNotFound from "../utils/CardsNotFound";
 import axios, { AxiosError } from "axios";
 import { errorHandler } from "../../utils/errorHandler";
 import CreateCard from "../../pages/CreateCard/CreateCard.page";
+import { CreateCardFormData } from "../../types/forms/CreateCardFormData";
 
 type CardsContainerProps = {
   cards: CardProps[] | null;

@@ -2,12 +2,13 @@ import FormInput from "../../components/form/FormInput";
 import Flex from "../../components/utils/Flex";
 import FormAreaBorder from "../../components/utils/FormAreaBorder";
 import FormAreaTitle from "../../components/utils/FormAreaTitle";
-import { RegisterFormData } from "../../hooks/useAuth";
+import { RegisterFormData } from "../../types/forms/RegisterFormData";
 import { SectionProps } from "../../types/pages/SectionProps.t";
 
 type AccountInfoSectionProps = SectionProps<RegisterFormData> & {
-  confirmPasswordError: string;
-  setConfirmPasswordError: (error: string) => void;
+  confirmPasswordError?: string;
+  setConfirmPasswordError?: (error: string) => void;
+  withoutConfirmPassword?: boolean;
 };
 
 const AccountInfoSection = (props: AccountInfoSectionProps) => {
@@ -17,7 +18,8 @@ const AccountInfoSection = (props: AccountInfoSectionProps) => {
     backgroundColors,
     watch,
     confirmPasswordError,
-    setConfirmPasswordError,
+    setConfirmPasswordError = () => {},
+    withoutConfirmPassword = false,
   } = props;
 
   const confirmPasswordValidator = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -82,20 +84,22 @@ const AccountInfoSection = (props: AccountInfoSectionProps) => {
           errorMessage={errors.password?.message}
           onInput={passwordValidator}
         />
-        <FormInput
-          id="registration-form-confirm-password"
-          label="Confirm Password"
-          type="password"
-          className="w-[90%] md:w-1/3"
-          labelClassName={`max-lg:!text-xs max-lg:peer-[&:not(:placeholder-shown)]:!top-0
+        {!withoutConfirmPassword && (
+          <FormInput
+            id="registration-form-confirm-password"
+            label="Confirm Password"
+            type="password"
+            className="w-[90%] md:w-1/3"
+            labelClassName={`max-lg:!text-xs max-lg:peer-[&:not(:placeholder-shown)]:!top-0
                     max-lg:peer-placeholder-shown:!top-[42%] max-lg:peer-focus:!top-0 ${backgroundColors}`}
-          errorMessage={
-            confirmPasswordError && confirmPasswordError !== ""
-              ? confirmPasswordError
-              : undefined
-          }
-          onInput={confirmPasswordValidator}
-        />
+            errorMessage={
+              confirmPasswordError && confirmPasswordError !== ""
+                ? confirmPasswordError
+                : undefined
+            }
+            onInput={confirmPasswordValidator}
+          />
+        )}
       </Flex>
     </Flex>
   );

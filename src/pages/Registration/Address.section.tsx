@@ -2,9 +2,9 @@ import FormInput from "../../components/form/FormInput";
 import Flex from "../../components/utils/Flex";
 import FormAreaBorder from "../../components/utils/FormAreaBorder";
 import FormAreaTitle from "../../components/utils/FormAreaTitle";
-import { RegisterFormData } from "../../hooks/useAuth";
 import { SectionProps } from "../../types/pages/SectionProps.t";
 import Grid from "../../components/utils/Grid";
+import { RegisterFormData } from "../../types/forms/RegisterFormData";
 
 const AddressSection = (
   props: SectionProps<RegisterFormData> & {

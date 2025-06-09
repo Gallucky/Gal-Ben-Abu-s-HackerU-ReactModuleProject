@@ -1,5 +1,5 @@
 import { BsPlusCircleFill } from "react-icons/bs";
-import useAuth, { CreateCardFormData } from "../../hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
 import { useEffect, useState } from "react";
 import {
   Modal,
@@ -17,27 +17,10 @@ import ContactSection from "./Contact.section";
 import ImageSection from "./Image.section";
 import { joiResolver } from "@hookform/resolvers/joi";
 import { createCardSchema } from "../../validations/createCard.joi";
-
-const defaultValues = {
-  title: "",
-  subtitle: "",
-  description: "",
-  phone: "",
-  email: "",
-  web: "",
-  image: {
-    url: "",
-    alt: "",
-  },
-  address: {
-    city: "",
-    country: "",
-    state: "",
-    street: "",
-    houseNumber: 0,
-    zip: 0,
-  },
-};
+import {
+  CreateCardFormData,
+  defaultValuesCreateCard,
+} from "../../types/forms/CreateCardFormData";
 
 type CreateCardProps = {
   initialValues?: CreateCardFormData;
@@ -65,7 +48,7 @@ const CreateCard = (props: CreateCardProps) => {
     reset,
     setValue,
   } = useForm<CreateCardFormData>({
-    defaultValues,
+    defaultValues: defaultValuesCreateCard,
     mode: "onChange",
     resolver: joiResolver(createCardSchema),
   });
@@ -104,7 +87,7 @@ const CreateCard = (props: CreateCardProps) => {
       setOpenModal(true);
       trigger();
     } else {
-      reset(defaultValues);
+      reset(defaultValuesCreateCard);
     }
   }, [initialValues, trigger, reset, setValue]);
 

@@ -23,13 +23,12 @@ const CardDetails = () => {
 
       if (cardID && cardData === null) {
         const cardInfo = await getCardInfoByID(cardID);
-        console.log("cardInfo", cardInfo);
         setCardData(cardInfo);
       }
     };
 
     loadCardDetails();
-  }, [cardID, cardData]);
+  }, [cardID, cardData, navigate, getCardInfoByID]);
 
   if (!cardID) return <Navigate to="/*" />;
 
@@ -87,7 +86,6 @@ const CardDetails = () => {
               <br />
               {capitalizeString(cardData?.phone ?? "")}
             </p>
-            {/* TODO: link opens in new tab but with the prefix of the current url location */}
             <p>
               <span className="font-bold underline">Website:</span>
               <br />

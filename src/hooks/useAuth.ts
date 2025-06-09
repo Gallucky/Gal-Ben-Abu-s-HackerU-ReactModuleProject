@@ -7,59 +7,10 @@ import { toast } from "react-toastify";
 import { userActions } from "../store/userSlice";
 import { Token } from "../types/token.t";
 import { errorHandler } from "../utils/errorHandler";
-export type LoginFormData = { email: string; password: string };
-
-export type RegisterFormData = {
-  name: { first: string; middle: string; last: string };
-  phone: string;
-  email: string;
-  password: string;
-  image: { url: string; alt: string };
-  address: {
-    state: string;
-    country: string;
-    city: string;
-    street: string;
-    houseNumber: string;
-    zip: string;
-  };
-  isBusiness: boolean;
-};
-
-export type UpdateUserFormData = {
-  name: { first: string; middle?: string; last: string };
-  phone: string;
-  image: { url: string; alt: string };
-  address: {
-    state?: string;
-    country: string;
-    city: string;
-    street: string;
-    houseNumber: number;
-    zip: number;
-  };
-};
-
-export type CreateCardFormData = {
-  title: string;
-  subtitle: string;
-  description: string;
-  phone: string;
-  email: string;
-  web?: string;
-  image: {
-    url?: string;
-    alt?: string;
-  };
-  address: {
-    city: string;
-    country: string;
-    state?: string;
-    street: string;
-    houseNumber: number;
-    zip: number;
-  };
-};
+import { CreateCardFormData } from "../types/forms/CreateCardFormData";
+import { LoginFormData } from "../types/forms/LoginFormData";
+import { RegisterFormData } from "../types/forms/RegisterFormData";
+import { UpdateUserFormData } from "../types/forms/UpdateUserFormData";
 
 const useAuth = () => {
   const dispatch = useDispatch();
@@ -191,16 +142,10 @@ const useAuth = () => {
       // Setting the authentication token as an header of the request.
       axios.defaults.headers.common["x-auth-token"] = userToken;
 
-      const response = await axios.post(
+      await axios.post(
         `https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards`,
         data,
       );
-
-      if (response.status === 200) {
-        // TODO: To add later.
-        // Updating the user data in the store.
-        // dispatch(userActions.addCard(response.data));
-      }
 
       toast.success("Card created successfully!");
     } catch (error) {

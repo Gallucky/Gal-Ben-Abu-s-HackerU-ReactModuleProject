@@ -12,6 +12,7 @@
 .multiline-ellipsis {
   display: -webkit-box;
   -webkit-line-clamp: 2; /* or 3, 4, etc. */
+  line-clamp: 2; /* standard property for compatibility - fallback */
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -19,6 +20,7 @@
 .singleline-ellipsis {
   display: -webkit-box;
   -webkit-line-clamp: 1;
+  line-clamp: 1; /* standard property for compatibility - fallback */
   -webkit-box-orient: vertical;
   overflow: hidden;
 }

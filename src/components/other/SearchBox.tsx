@@ -18,7 +18,7 @@ const SearchBox = (props: SearchBoxProps) => {
 
     // After updating the search word, running the search functionality.
     // This is done to ensure that the search is performed with the latest input value.
-    // Todo
+    // This will be implemented at the location where the search functionality is needed.
   };
 
   return (

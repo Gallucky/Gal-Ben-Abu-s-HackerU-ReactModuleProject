@@ -4,7 +4,7 @@ import FormAreaBorder from "../../components/utils/FormAreaBorder";
 import FormAreaTitle from "../../components/utils/FormAreaTitle";
 import { SectionProps } from "../../types/pages/SectionProps.t";
 import Grid from "../../components/utils/Grid";
-import { CreateCardFormData } from "../../hooks/useAuth";
+import { CreateCardFormData } from "../../types/forms/CreateCardFormData";
 
 const LocationSection = (props: SectionProps<CreateCardFormData>) => {
   const {
