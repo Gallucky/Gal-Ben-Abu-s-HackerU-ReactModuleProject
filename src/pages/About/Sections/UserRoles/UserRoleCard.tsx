@@ -26,20 +26,21 @@ type UserRoleCardProps = {
   type: UserRole;
   permissions: string[];
   color: FlowbiteReactBadgeSupportedColors;
+  userHasThisPermissions?: boolean;
 };
 
 const UserRoleCard = (props: UserRoleCardProps) => {
   const { user } = useAuth();
-  const { type, color, permissions } = props;
+  const { type, color, permissions, userHasThisPermissions = false } = props;
 
   let userRole: UserRole = "Guest";
   // If the user is a guest user.
   if (!user) userRole = "Guest";
   // else if (user.isAdmin && user.isBusiness) userRole = ["Admin", "Business"];
-  // If the user has only business permissions.
-  else if (user.isBusiness) userRole = "Business";
   // If the user has only admin permissions.
   else if (user.isAdmin) userRole = "Admin";
+  // If the user has only business permissions.
+  else if (user.isBusiness) userRole = "Business";
   // If the user is a registered user.
   else if (user) userRole = "Registered";
 
@@ -54,7 +55,7 @@ const UserRoleCard = (props: UserRoleCardProps) => {
 
   if (type === "Registered") colorsList = registeredUserColors;
   else if (type === "Business") colorsList = businessColors;
-  else if (type === "Admin") colorsList = adminColors;
+  if (type === "Admin") colorsList = adminColors;
 
   return (
     <div className="relative p-4">
@@ -85,7 +86,7 @@ const UserRoleCard = (props: UserRoleCardProps) => {
         </ul>
       </div>
 
-      {userRole === type && (
+      {userHasThisPermissions && (
         <Badge color={color} className="absolute right-2 top-2">
           You have this permissions
         </Badge>

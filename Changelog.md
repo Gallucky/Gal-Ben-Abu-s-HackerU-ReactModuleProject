@@ -1,44 +1,43 @@
 # 📘 Gal Ben Abu's - HackerU - React Module Project - Changelog
 
-## 📅 Updated to Commit #81 | Date: 09/06/2025
+## 📅 Updated to Commit #82 | Date: 12/06/2025
 
 ### 🔗 [Open TODO List](./todo-list.md)
 
 ### 📝 General Notes
 
 ```
-Fixing bugs and styling issues.
-Making sure that the spinners while loading / fetching data will be shown and based on the result the data / a message will be shown.
+Created the basic structure of the page.
+- Tabs component is used to have to sections / pages inside the page.
+- `Cards` `TabItem` contains a table with columns with cards information.
+
+I need to figure out a way to:
+1. To add pagination to the table itself.
+2. Load all the data and make each `TableRow` clickable to show the card details.
+3. Add an option / column / button for delete card.
+4. Do the same but for users data.
 ```
 
 ### ✅ Completed
 
-- Implemented loading spinners across pages that fetch card data to improve user experience while data is being retrieved.
-- Fixed a bug in the [`Login Page`](./src/pages/Login.page.tsx) where the password field was not correctly masked.
-- Enhanced the user roles display on the [`About Page`](./src/pages/About/About.page.tsx) to indicate the user's current role.
+- Refactored the user role display logic on the [`About Page`](./src/pages/About/About.page.tsx) to accurately indicate the current user's permissions.
+- Implemented the initial structure and routing for the new admin-only CRM page.
 
 ### ➕ Added
 
-- Added loading state management with `CustomSpinner` to the [`Home Page`](./src/pages/Home.page.tsx), [`Favorites Page`](./src/pages/Favorites.page.tsx), and [`UserCreatedCards Page`](./src/pages/UserCreatedCards/UserCreatedCards.page.tsx) to provide feedback during data fetching.
-- Created [`commit_80.md`](./commits_changes/commit_80.md) to document previous changes.
+- Created the new [`CRM Page`](./src/pages/CRM/CRM.page.tsx) and its containing directory [`CRM/`](./src/pages/CRM/).
+- Added a route for the [`CRM Page`](./src/pages/CRM/CRM.page.tsx) in the [`RoutesHandler Component`](./src/components/App/Routes/RoutesHandler.tsx), accessible only to admin users.
+- Added a navigation link to the CRM page in the [`CustomNavbar Component`](./src/components/layout/CustomNavbar.tsx) that is only visible to admin users.
+- Created [`commit_81.md`](./commits_changes/commit_81.md) to document previous changes.
 
 ### 🔄 Changed
 
-> **Styling & UX:**
-
-- In [`UserRoleCard Component`](./src/pages/About/Sections/UserRoles/UserRoleCard.tsx), added a "(Current)" label to highlight the active user's role and prevented text selection on the role badge.
-- Refined the descriptions for "Guest" and "Admin" roles in the [`UserRoles Component`](./src/pages/About/Sections/UserRoles/UserRoles.section.tsx) for better clarity and adjusted grid spacing.
-- Fixed a minor visual overflow issue with the phone icon in the [`Card Component`](./src/components/card/Card.tsx).
-
-> **Functionality & Logic:**
-
-- Modified the `RouteGuard` for the [`CardDetails Page`](./src/pages/CardDetails.page.tsx) in [`RoutesHandler Component`](./src/components/App/Routes/RoutesHandler.tsx) to adjust access permissions.
-- Disabled the account information fields in the [`Profile Page`](./src/pages/Profile/Profile.page.tsx) by passing a `disabled` prop to the [`AccountInfo Component`](./src/pages/Registration/AccountInfo.section.tsx).
-- Made the layout of fields in [`AccountInfo Component`](./src/pages/Registration/AccountInfo.section.tsx) more flexible.
+- In the [`UserRoleCard Component`](./src/pages/About/Sections/UserRoles/UserRoleCard.tsx), replaced direct role comparison with a more explicit `userHasThisPermissions` prop to determine if the "You have this permissions" badge should be displayed.
+- Updated the [`UserRoles.section Component`](./src/pages/About/Sections/UserRoles/UserRoles.section.tsx) to pass the `userHasThisPermissions` prop to each [`UserRoleCard Component`](./src/pages/About/Sections/UserRoles/UserRoleCard.tsx), ensuring the current user's role is correctly highlighted.
 
 ### 🗑️ Deleted
 
-- Removed a redundant `console.log` from the [`UserRoleCard Component`](./src/pages/About/Sections/UserRoles/UserRoleCard.tsx) to clean up the codebase.
+> `Nothing has been deleted.`
 
 ### 🏷️ Renamed / Moved
 
@@ -50,6 +49,7 @@ Making sure that the spinners while loading / fetching data will be shown and ba
 
 | `Date`       | `Commit #`                                                   |
 | ------------ | ------------------------------------------------------------ |
+| `12/06/2025` | [`81`](./commits_changes/commit_81.md)                       |
 | `09/06/2025` | [`80`](./commits_changes/commit_80.md)                       |
 | `09/06/2025` | [`79`](./commits_changes/commit_79.md)                       |
 | `08/06/2025` | [`78`](./commits_changes/commit_78.md)                       |

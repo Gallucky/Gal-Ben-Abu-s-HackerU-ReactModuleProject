@@ -10,6 +10,7 @@ import Profile from "../../../pages/Profile/Profile.page";
 import Favorites from "../../../pages/Favorites.page";
 import CardDetails from "../../../pages/CardDetails/CardDetails.page";
 import UserCreatedCards from "../../../pages/UserCreatedCards/UserCreatedCards.page";
+import CRM from "../../../pages/CRM/CRM.page";
 
 const RoutesHandler = () => {
   return (
@@ -78,6 +79,16 @@ const RoutesHandler = () => {
             </RouteGuard>
           }
         />
+
+        <Route
+          path="/crm"
+          element={
+            <RouteGuard allowAdmin>
+              <CRM />
+            </RouteGuard>
+          }
+        ></Route>
+
         <Route path="/*" element={<Error />} />
       </Routes>
     </>

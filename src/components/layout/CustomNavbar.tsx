@@ -88,6 +88,7 @@ const CustomNavbar = () => {
                   Favorites
                 </Link>
 
+                {/* If the connected user has business permissions */}
                 {user.isBusiness && (
                   <Link
                     to="/my-cards"
@@ -95,6 +96,16 @@ const CustomNavbar = () => {
                   >
                     <PiCardsFill className="rotate-90" />
                     <span>My Cards</span>
+                  </Link>
+                )}
+
+                {/* If the connected user has admin permissions */}
+                {user.isAdmin && (
+                  <Link
+                    to="/crm"
+                    className={`custom-navbar-link gap-1 dark:text-white`}
+                  >
+                    CRM
                   </Link>
                 )}
 

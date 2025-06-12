@@ -1,6 +1,9 @@
+import useAuth from "../../../../hooks/useAuth";
 import UserRoleCard from "./UserRoleCard";
 
 const UserRolesSection = () => {
+  const { user } = useAuth();
+
   return (
     <div>
       <h2 className="mb-8 overflow-hidden text-3xl font-bold text-gray-900 dark:text-white">
@@ -18,6 +21,7 @@ const UserRolesSection = () => {
             "Cannot save favorites or create cards",
             "Enjoy unrestricted viewing with basic access - no account needed",
           ]}
+          userHasThisPermissions={!user}
         />
 
         {/* Registered Users */}
@@ -31,6 +35,10 @@ const UserRolesSection = () => {
             "Manage personal profile",
             "Secure logout functionality",
           ]}
+          // If there is a user and they don't have admin or business permissions.
+          userHasThisPermissions={
+            user ? !user.isAdmin && !user.isBusiness : false
+          }
         />
 
         {/* Business Users */}
@@ -44,6 +52,7 @@ const UserRolesSection = () => {
             "Edit their own created cards",
             "Delete their own cards",
           ]}
+          userHasThisPermissions={user ? user.isBusiness : false}
         />
 
         {/* Admin Users */}
@@ -57,6 +66,7 @@ const UserRolesSection = () => {
             "Manage users across platform - eg. convert regular to business accounts",
             "Platform-wide administration",
           ]}
+          userHasThisPermissions={user ? user.isAdmin : false}
         />
       </div>
     </div>
