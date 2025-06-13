@@ -2,7 +2,7 @@
 
 [`← Back Changelog`](./Changelog.md)
 
-## 📅 Updated to Commit #82 | Date: 12/06/2025
+## 📅 Updated to Commit #83 | Date: 13/06/2025
 
 ## 📋 Todo
 
@@ -11,11 +11,25 @@
   - [ ] Implement functionality to allow admins to change user roles.
   - [ ] Add analytics or reporting features to the CRM dashboard.
   - [ ] Write tests for the new CRM functionality and user role display logic.
+  - [ ] Add search and filter functionality to CRM table
+  - [ ] Implement user management tab in CRM page
+  - [ ] Add export functionality for CRM data (CSV/Excel)
+  - [ ] Add sorting capabilities to CRM table columns
+  - [ ] Implement bulk actions for CRM records
+  - [ ] Add loading states for lazy-loaded components
+  - [ ] Create mobile-optimized navigation menu
+  - [ ] Add data validation for CRM table records
 
 ## ✅ Completed
 
 | `Task`                                                                                                                   | `Link/s`                                                                                                                                                                                                                                                                                                                                                                   | `Commit #`                                      |
 | ------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| Implement responsive CRM table with mobile card view for screens ≤1024px                                                 | [`CRM Page`](src/pages/CRM/CRM.page.tsx), [`convertCardToTableRecord Utility`](src/utils/convertCardToTableRecord.tsx)                                                                                                                                                                                                                                                     | [`#83`](./commits_changes/commit_83.md)         |
+| Add lazy loading to all route components for better performance                                                          | [`RoutesHandler Component`](src/components/App/Routes/RoutesHandler.tsx), [`lazyImport Utility`](src/utils/lazyImport.ts)                                                                                                                                                                                                                                                  | [`#83`](./commits_changes/commit_83.md)         |
+| Create reusable view mode detection hook                                                                                 | [`useViewMode Hook`](src/hooks/useViewMode.ts)                                                                                                                                                                                                                                                                                                                             | [`#83`](./commits_changes/commit_83.md)         |
+| Add pagination to CRM table                                                                                              | [`CRM Page`](src/pages/CRM/CRM.page.tsx)                                                                                                                                                                                                                                                                                                                                   | [`#83`](./commits_changes/commit_83.md)         |
+| Improve card component button alignment                                                                                  | [`Card Component`](src/components/card/Card.tsx)                                                                                                                                                                                                                                                                                                                           | [`#83`](./commits_changes/commit_83.md)         |
+| Refactor CardsContainer to use centralized view mode logic                                                               | [`CardsContainer Component`](src/components/card/CardsContainer.tsx), [`useViewMode Hook`](src/hooks/useViewMode.ts)                                                                                                                                                                                                                                                       | [`#83`](./commits_changes/commit_83.md)         |
 | Implemented initial CRM page for admins and refactored user role identification logic on the About page.                 | [`RoutesHandler Component`](./src/components/App/Routes/RoutesHandler.tsx), [`CustomNavbar Component`](./src/components/layout/CustomNavbar.tsx), [`UserRoleCard Component`](./src/pages/About/Sections/UserRoles/UserRoleCard.tsx), <br> [`UserRoles Section Component`](./src/pages/About/Sections/UserRoles/UserRoles.section.tsx), [`CRM Directory`](./src/pages/CRM/) | [`#82`](./commits_changes/commit_82.md)         |
 | Complete the refactor of the `"User Roles & Permissions"` section using the `UserRoleCard` component.                    | [`UserRoles Component`](./src/pages/About/Sections/UserRoles/UserRoles.section.tsx)                                                                                                                                                                                                                                                                                        | [`#81`](./commits_changes/commit_81.md)         |
 | Add a styling badge feature to the About page.                                                                           | [`About Page`](./src/pages/About/About.page.tsx)                                                                                                                                                                                                                                                                                                                           | [`#81`](./commits_changes/commit_81.md)         |

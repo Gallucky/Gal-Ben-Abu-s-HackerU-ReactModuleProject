@@ -1,6 +1,6 @@
 # 📘 Gal Ben Abu's - HackerU - React Module Project - Changelog
 
-## 📅 Updated to Commit #82 | Date: 12/06/2025
+## 📅 Updated to Commit #83 | Date: 13/06/2025
 
 ### 🔗 [Open TODO List](./todo-list.md)
 
@@ -20,24 +20,30 @@ I need to figure out a way to:
 
 ### ✅ Completed
 
-- Refactored the user role display logic on the [`About Page`](./src/pages/About/About.page.tsx) to accurately indicate the current user's permissions.
-- Implemented the initial structure and routing for the new admin-only CRM page.
+- Implemented responsive CRM table with mobile card view
+- Added lazy loading for all route components with proper loading states
+- Created reusable view mode detection hook
+- Enhanced card component styling with better alignment
 
 ### ➕ Added
 
-- Created the new [`CRM Page`](./src/pages/CRM/CRM.page.tsx) and its containing directory [`CRM/`](./src/pages/CRM/).
-- Added a route for the [`CRM Page`](./src/pages/CRM/CRM.page.tsx) in the [`RoutesHandler Component`](./src/components/App/Routes/RoutesHandler.tsx), accessible only to admin users.
-- Added a navigation link to the CRM page in the [`CustomNavbar Component`](./src/components/layout/CustomNavbar.tsx) that is only visible to admin users.
-- Created [`commit_81.md`](./commits_changes/commit_81.md) to document previous changes.
+- [`useViewMode` Hook](src/hooks/useViewMode.ts) - Centralized responsive breakpoint detection
+- [`convertCardToTableRecord` Utility](src/utils/convertCardToTableRecord.tsx) - Convert card data to table rows
+- [`lazyImport` Utility](src/utils/lazyImport.ts) - Dynamic page imports for code splitting
+- Mobile-responsive card layout for CRM table on screens ≤1024px
+- Pagination support to CRM table with 5 records per page
+- Suspense loading states for all route components
 
 ### 🔄 Changed
 
-- In the [`UserRoleCard Component`](./src/pages/About/Sections/UserRoles/UserRoleCard.tsx), replaced direct role comparison with a more explicit `userHasThisPermissions` prop to determine if the "You have this permissions" badge should be displayed.
-- Updated the [`UserRoles.section Component`](./src/pages/About/Sections/UserRoles/UserRoles.section.tsx) to pass the `userHasThisPermissions` prop to each [`UserRoleCard Component`](./src/pages/About/Sections/UserRoles/UserRoleCard.tsx), ensuring the current user's role is correctly highlighted.
+- [`RoutesHandler` Component](src/components/App/Routes/RoutesHandler.tsx) - Converted all page imports to lazy loading with Suspense wrapper
+- [`CRM` Page](src/pages/CRM/CRM.page.tsx) - Added full table functionality with pagination and responsive design
+- [`Card` Component](src/components/card/Card.tsx) - Improved button alignment with `place-self-center`
+- [`CardsContainer` Component](src/components/card/CardsContainer.tsx) - Refactored to use centralized `useViewMode` hook instead of local view mode logic
 
 ### 🗑️ Deleted
 
-> `Nothing has been deleted.`
+- Local view mode detection logic from CardsContainer (moved to reusable hook)
 
 ### 🏷️ Renamed / Moved
 
@@ -49,6 +55,7 @@ I need to figure out a way to:
 
 | `Date`       | `Commit #`                                                   |
 | ------------ | ------------------------------------------------------------ |
+| `12/06/2025` | [`82`](./commits_changes/commit_82.md)                       |
 | `12/06/2025` | [`81`](./commits_changes/commit_81.md)                       |
 | `09/06/2025` | [`80`](./commits_changes/commit_80.md)                       |
 | `09/06/2025` | [`79`](./commits_changes/commit_79.md)                       |

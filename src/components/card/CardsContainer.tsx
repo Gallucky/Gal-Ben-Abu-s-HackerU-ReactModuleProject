@@ -9,6 +9,7 @@ import axios, { AxiosError } from "axios";
 import { errorHandler } from "../../utils/errorHandler";
 import CreateCard from "../../pages/CreateCard/CreateCard.page";
 import { CreateCardFormData } from "../../types/forms/CreateCardFormData";
+import useViewMode from "../../hooks/useViewMode";
 
 type CardsContainerProps = {
   cards: CardProps[] | null;
@@ -27,17 +28,11 @@ const CardsContainer = (props: CardsContainerProps) => {
     onCardsUnliked = () => false,
   } = props;
 
-  const getViewMode = (width: number) => {
-    if (width < ViewMode.Tablet) return ViewMode.Mobile;
-    if (width < ViewMode.PCAndLarger) return ViewMode.Tablet;
-    return ViewMode.PCAndLarger;
-  };
-
-  const [viewMode, setViewMode] = useState(getViewMode(window.innerWidth));
   const [currentPage, setCurrentPage] = useState(1);
   const [cardsAfterSplit, setCardsAfterSplit] = useState<CardProps[][]>([]);
-  const cardsAmountToShowEachTime =
-    viewMode === ViewMode.Mobile ? 3 : viewMode === ViewMode.Tablet ? 6 : 9;
+  const { viewMode, setViewMode, isMobile, isTablet, getViewMode } =
+    useViewMode();
+  const cardsAmountToShowEachTime = isMobile ? 3 : isTablet ? 6 : 9;
 
   // Modal State.
   const [editCardTriggered, setEditCardTriggered] = useState(false);
@@ -50,7 +45,7 @@ const CardsContainer = (props: CardsContainerProps) => {
     const handleResize = () => setViewMode(getViewMode(window.innerWidth));
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [getViewMode, setViewMode]);
 
   const splitArray = (array: CardProps[], chunkLength: number) => {
     const resultArray = [];

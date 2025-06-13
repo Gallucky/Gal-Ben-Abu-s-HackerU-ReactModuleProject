@@ -101,7 +101,7 @@ const Card = (props: CardProps) => {
           <span className="overflow-hidden">
             <span className="font-semibold">Card Number:</span> {cardNumber}
           </span>
-          <div className="absolute bottom-5 mt-5 flex w-full justify-evenly overflow-hidden">
+          <div className="absolute bottom-5 mt-5 flex w-full justify-evenly place-self-center overflow-hidden">
             <a
               href={"tel:" + phone}
               onClick={(e) => e.stopPropagation()}
