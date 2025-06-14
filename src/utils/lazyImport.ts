@@ -3,9 +3,8 @@ import { ComponentType, lazy } from "react";
 // Telling TypeScript what shape the imported module should have
 type LazyImportResult = { default: ComponentType<unknown> };
 
-// Scanning all Pages components files with `.page.tsx` extension suffix
-// inside pages directory recursively.
-const pages = import.meta.glob("../pages/**/*.page.tsx") as Record<
+// Scanning all the scripts-files in the project (at the ./src directory).
+const scripts = import.meta.glob("../**/*.{ts,tsx,js,jsx}") as Record<
   string,
   () => Promise<LazyImportResult>
 >;
@@ -28,17 +27,42 @@ const pages = import.meta.glob("../pages/**/*.page.tsx") as Record<
  * @returns {React.LazyExoticComponent<any>} The lazy loaded component.
  */
 export const lazyImport = (relativePath: string, namedExport?: string) => {
-  return lazy(() => {
-    const promise = import(relativePath);
+  const loader = scripts[relativePath];
 
-    if (!namedExport) {
-      return promise;
-    } else {
-      return promise.then((module) => ({ default: module[namedExport] }));
-    }
+  if (!loader) {
+    throw new Error(`Module not found in glob: ${relativePath}`);
+  }
+
+  return lazy(async () => {
+    const promise = await loader();
+    // If no named export is specified, return the default export.
+    if (!namedExport) return promise;
+
+    const selected = (promise as Record<string, unknown>)[namedExport];
+
+    // If the named export is not found, throw an error.
+    if (!selected)
+      throw new Error(
+        `Named export "${namedExport}" not found in ${relativePath}`,
+      );
+
+    // Return the selected export as the default export.
+    return { default: selected as ComponentType<unknown> };
   });
 };
 
+/**
+ * This method is used to lazily import pages.
+ * It takes a string `pageName` as an argument and returns a lazy loaded component.
+ * The component is the default export of the module.
+ * The path to the module is relative to this file.
+ * The module is only loaded when it's actually required.
+ *
+ * @param {string} pageName - The name of the page that should be imported.
+ * @param {boolean} [insideDedicatedFolder] - If the page is inside a dedicated
+ *  folder named the same as the page name, set this to true.
+ * @returns {React.LazyExoticComponent<any>} The lazy loaded component.
+ */
 export const lazyImportPage = (
   pageName: string,
   insideDedicatedFolder?: boolean,
@@ -48,7 +72,7 @@ export const lazyImportPage = (
     ? `../pages/${pageName}/${pageName}.page.tsx`
     : `../pages/${pageName}.page.tsx`;
 
-  const loader = pages[relativePath];
+  const loader = scripts[relativePath];
 
   if (!loader) {
     throw new Error(`Page not found: ${pageName}`);

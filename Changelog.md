@@ -1,18 +1,13 @@
 # 📘 Gal Ben Abu's - HackerU - React Module Project - Changelog
 
-## 📅 Updated to Commit #83 | Date: 13/06/2025
+## 📅 Updated to Commit #84 | Date: 14/06/2025
 
 ### 🔗 [Open TODO List](./todo-list.md)
 
 ### 📝 General Notes
 
 ```
-Created the basic structure of the page.
-- Tabs component is used to have to sections / pages inside the page.
-- `Cards` `TabItem` contains a table with columns with cards information.
-
 I need to figure out a way to:
-1. To add pagination to the table itself.
 2. Load all the data and make each `TableRow` clickable to show the card details.
 3. Add an option / column / button for delete card.
 4. Do the same but for users data.
@@ -20,34 +15,36 @@ I need to figure out a way to:
 
 ### ✅ Completed
 
-- Implemented responsive CRM table with mobile card view
-- Added lazy loading for all route components with proper loading states
-- Created reusable view mode detection hook
-- Enhanced card component styling with better alignment
+- Implemented pagination to the CRM table (now shows 5 records per page)
+- Added actions column to CRM table for edit/delete functionality
+- Enhanced table cell tooltips with proper truncation handling
 
 ### ➕ Added
 
-- [`useViewMode` Hook](src/hooks/useViewMode.ts) - Centralized responsive breakpoint detection
-- [`convertCardToTableRecord` Utility](src/utils/convertCardToTableRecord.tsx) - Convert card data to table rows
-- [`lazyImport` Utility](src/utils/lazyImport.ts) - Dynamic page imports for code splitting
-- Mobile-responsive card layout for CRM table on screens ≤1024px
-- Pagination support to CRM table with 5 records per page
-- Suspense loading states for all route components
+- [`CardsTableActionsCell Component`](src/components/utils/CardsTableActionsCell.tsx) - Actions cell component for table edit/delete operations
+- Actions column header to CRM table
+- Tooltip functionality to all table cells for better UX
+- User authentication context to [`CRM Page`](src/pages/CRM/CRM.page.tsx)
+- Enhanced `convertCardToTableRecord` utility with user permissions and action callbacks
+- Global animation support for parent-child tilt effects
 
 ### 🔄 Changed
 
-- [`RoutesHandler` Component](src/components/App/Routes/RoutesHandler.tsx) - Converted all page imports to lazy loading with Suspense wrapper
-- [`CRM` Page](src/pages/CRM/CRM.page.tsx) - Added full table functionality with pagination and responsive design
-- [`Card` Component](src/components/card/Card.tsx) - Improved button alignment with `place-self-center`
-- [`CardsContainer` Component](src/components/card/CardsContainer.tsx) - Refactored to use centralized `useViewMode` hook instead of local view mode logic
+- [`Card Component`](src/components/card/Card.tsx) - Updated animation classes from `animate-tilt-hover` to `animate-tilt`
+- [`CRM Page`](src/pages/CRM/CRM.page.tsx) - Added user authentication integration and actions column
+- [`convertCardToTableRecord Utility`](src/utils/convertCardToTableRecord.tsx) - Enhanced with user permissions, tooltips, and action callbacks
+- [`lazyImport Utility`](src/utils/lazyImport.ts) - Refactored to support all file types and improved error handling
+- [`tilting.animation.css`](src/styles/animations/tilting.animation.css) - Updated animation trigger to support parent-child hover effects
+- Removed table border styling from CRM table
 
 ### 🗑️ Deleted
 
-- Local view mode detection logic from CardsContainer (moved to reusable hook)
+- Hover-specific animation classes (`animate-tilt-hover`) in favor of unified `animate-tilt`
+- Redundant border styling from CRM table
 
 ### 🏷️ Renamed / Moved
 
-> `No files renamed or moved.`
+- Hover-specific animation classes renamed (`animate-tilt-hover`) to `animate-tilt`
 
 ---
 
@@ -55,6 +52,7 @@ I need to figure out a way to:
 
 | `Date`       | `Commit #`                                                   |
 | ------------ | ------------------------------------------------------------ |
+| `13/06/2025` | [`83`](./commits_changes/commit_83.md)                       |
 | `12/06/2025` | [`82`](./commits_changes/commit_82.md)                       |
 | `12/06/2025` | [`81`](./commits_changes/commit_81.md)                       |
 | `09/06/2025` | [`80`](./commits_changes/commit_80.md)                       |

@@ -107,13 +107,13 @@ const Card = (props: CardProps) => {
               onClick={(e) => e.stopPropagation()}
               className="overflow-hidden"
             >
-              <FaPhoneAlt className="animate-tilt-hover !overflow-hidden hover:cursor-pointer hover:text-blue-700" />
+              <FaPhoneAlt className="animate-tilt !overflow-hidden hover:cursor-pointer hover:text-blue-700" />
             </a>
 
             {/* Edit Card */}
             {userConnected && userCardCreator && (
               <MdOutlineModeEditOutline
-                className={`animate-tilt-hover hover:cursor-pointer hover:text-yellow-300`}
+                className={`animate-tilt hover:cursor-pointer hover:text-yellow-300`}
                 onClick={editCardHandler}
               />
             )}
@@ -121,21 +121,21 @@ const Card = (props: CardProps) => {
             {/* Delete Card */}
             {userConnected && (userCardCreator || isUserAdmin) && (
               <MdDelete
-                className={`animate-tilt-hover hover:cursor-pointer hover:text-slate-700`}
+                className={`animate-tilt hover:cursor-pointer hover:text-slate-700`}
                 onClick={deleteCardHandler}
               />
             )}
 
             {userConnected && !alreadyLiked && (
               <FaHeart
-                className={`animate-tilt-hover hover:cursor-pointer hover:text-red-500`}
+                className={`animate-tilt hover:cursor-pointer hover:text-red-500`}
                 onClick={(e) => likeDislikeCard(e, _id)}
               />
             )}
 
             {userConnected && alreadyLiked && (
               <FaHeart
-                className={`animate-tilt-hover text-red-500 hover:cursor-pointer`}
+                className={`animate-tilt text-red-500 hover:cursor-pointer`}
                 onClick={unlikedCardHandler}
               />
             )}

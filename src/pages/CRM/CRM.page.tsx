@@ -16,6 +16,7 @@ import { ReactNode, Suspense, useEffect, useState, useTransition } from "react";
 import useViewMode from "../../hooks/useViewMode";
 import convertCardToTableRecord from "../../utils/convertCardToTableRecord";
 import CustomSpinner from "../../components/utils/CustomSpinner";
+import useAuth from "../../hooks/useAuth";
 
 const CRM = () => {
   const tableRecordsCountPerPage = 5;
@@ -25,6 +26,7 @@ const CRM = () => {
   const [shownCards, setShownCards] = useState(cards);
   const [tableRecords, setTableRecords] = useState<ReactNode[]>([]);
   const [, startTransition] = useTransition();
+  const { user } = useAuth();
 
   useEffect(() => {
     // If there are cards and they are loaded.
@@ -45,12 +47,12 @@ const CRM = () => {
     if (shownCards && shownCards.length !== 0) {
       const records: ReactNode[] = [];
       shownCards.forEach((shownCard) => {
-        records.push(convertCardToTableRecord(shownCard));
+        records.push(convertCardToTableRecord(shownCard, user?._id));
       });
 
       setTableRecords(records);
     }
-  }, [shownCards]);
+  }, [shownCards, user?._id]);
 
   const onPageChange = (page: number) => {
     setCurrentPage(page);
@@ -77,7 +79,7 @@ const CRM = () => {
           }}
         >
           <TabItem active title="Cards" icon={RxCardStack}>
-            <Table striped hoverable border={1}>
+            <Table striped hoverable>
               <TableHead>
                 <TableHeadCell className="text-base">Title</TableHeadCell>
                 <TableHeadCell className="text-base">Subtitle</TableHeadCell>
@@ -87,6 +89,7 @@ const CRM = () => {
                   Phone Number
                 </TableHeadCell>
                 <TableHeadCell className="text-base">Created At</TableHeadCell>
+                <TableHeadCell className="text-base">Actions</TableHeadCell>
               </TableHead>
               <Suspense
                 fallback={
