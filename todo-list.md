@@ -2,28 +2,21 @@
 
 [`← Back Changelog`](./Changelog.md)
 
-## 📅 Updated to Commit #84 | Date: 14/06/2025
+## 📅 Updated to Commit #85 | Date: 15/06/2025
 
 ## 📋 Todo
 
-- [ ] Implementing the CRM Page for admin users.
-  - [ ] Build out the user management interface in the [`CRM Page`](./src/pages/CRM/CRM.page.tsx).
-  - [ ] Implement functionality to allow admins to change user roles.
-  - [ ] Add analytics or reporting features to the CRM dashboard.
-  - [ ] Write tests for the new CRM functionality and user role display logic.
-  - [ ] Add search and filter functionality to CRM table
-  - [ ] Implement user management tab in CRM page
-  - [ ] Add export functionality for CRM data (CSV/Excel)
-  - [ ] Add sorting capabilities to CRM table columns
-  - [ ] Implement bulk actions for CRM records
-  - [ ] Add loading states for lazy-loaded components
-  - [ ] Create mobile-optimized navigation menu
-  - [ ] Add data validation for CRM table records
+> `Finished the project + bonuses.`
 
 ## ✅ Completed
 
 | `Task`                                                                                                                   | `Link/s`                                                                                                                                                                                                                                                                                                                                                                   | `Commit #`                                      |
 | ------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| Load all the data and make each `TableRow` clickable to show the card details                                            | [`convertCardToTableRecord Utility`](src/utils/convertCardToTableRecord.tsx), [`CRM Page`](src/pages/CRM/CRM.page.tsx)                                                                                                                                                                                                                                                     | [`#85`](./commits_changes/commit_85.md)         |
+| Add an option / column / button for delete card                                                                          | [`CardsTableActionsCell Component`](src/components/utils/CardsTableActionsCell.tsx), [`Cards Tab Component`](src/pages/CRM/Cards.tab.tsx)                                                                                                                                                                                                                                  | [`#85`](./commits_changes/commit_85.md)         |
+| Do the same but for users data                                                                                           | [`Users Tab Component`](src/pages/CRM/Users.tab.tsx), [`UsersTableActionsCell Component`](src/components/utils/UsersTableActionsCell.tsx), [`useUsers Hook`](src/hooks/useUsers.ts)                                                                                                                                                                                        | [`#85`](./commits_changes/commit_85.md)         |
+| Implement comprehensive search functionality for CRM                                                                     | [`useSearch Hook`](src/hooks/useSearch.ts)                                                                                                                                                                                                                                                                                                                                 | [`#85`](./commits_changes/commit_85.md)         |
+| Create proper CRM tab structure for better organization                                                                  | [`Cards Tab Component`](src/pages/CRM/Cards.tab.tsx), [`Users Tab Component`](src/pages/CRM/Users.tab.tsx), [`CRM Page`](src/pages/CRM/CRM.page.tsx)                                                                                                                                                                                                                       | [`#85`](./commits_changes/commit_85.md)         |
 | Add pagination to the table itself                                                                                       | [`CRM Page`](src/pages/CRM/CRM.page.tsx), [`convertCardToTableRecord Utility`](src/utils/convertCardToTableRecord.tsx)                                                                                                                                                                                                                                                     | [`#84`](./commits_changes/commit_84.md)         |
 | Add an option / column / button for delete card                                                                          | [`CRM Page`](src/pages/CRM/CRM.page.tsx), [`CardsTableActionsCell Component`](src/components/utils/CardsTableActionsCell.tsx)                                                                                                                                                                                                                                              | [`#84`](./commits_changes/commit_84.md)         |
 | Implement responsive CRM table with mobile card view for screens ≤1024px                                                 | [`CRM Page`](src/pages/CRM/CRM.page.tsx), [`convertCardToTableRecord Utility`](src/utils/convertCardToTableRecord.tsx)                                                                                                                                                                                                                                                     | [`#83`](./commits_changes/commit_83.md)         |

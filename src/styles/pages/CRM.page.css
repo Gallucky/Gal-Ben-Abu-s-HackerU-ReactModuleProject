@@ -1,0 +1,4 @@
+.overflow-all-x-scroll,
+.overflow-all-x-scroll * {
+  overflow-x: scroll !important;
+}

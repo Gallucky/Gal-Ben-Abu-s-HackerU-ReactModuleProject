@@ -6,7 +6,7 @@ import { MdDelete } from "react-icons/md";
 type CardsTableActionsCellProps = {
   className?: string;
   editable?: boolean;
-  userID?: string;
+  cardID: string;
   onEdit?: (cardID: string, isEditing: boolean) => void;
   onDelete?: (cardID: string, isDeleting: boolean) => void;
 };
@@ -15,23 +15,19 @@ const CardsTableActionsCell = (props: CardsTableActionsCellProps) => {
   const {
     className,
     editable,
-    userID,
+    cardID,
     onEdit = () => {},
     onDelete = () => {},
   } = props;
 
   const editCardHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    if (userID) {
-      onEdit(userID, true);
-    }
+    onEdit(cardID, true);
   };
 
   const deleteCardHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    if (userID) {
-      onDelete(userID, true);
-    }
+    onDelete(cardID, true);
   };
 
   return (

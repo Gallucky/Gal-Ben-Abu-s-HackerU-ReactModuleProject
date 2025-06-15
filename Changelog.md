@@ -1,50 +1,45 @@
 # 📘 Gal Ben Abu's - HackerU - React Module Project - Changelog
 
-## 📅 Updated to Commit #84 | Date: 14/06/2025
+## 📅 Updated to Commit #85 | Date: 15/06/2025
 
 ### 🔗 [Open TODO List](./todo-list.md)
 
 ### 📝 General Notes
 
 ```
-I need to figure out a way to:
-2. Load all the data and make each `TableRow` clickable to show the card details.
-3. Add an option / column / button for delete card.
-4. Do the same but for users data.
+Finished the project + bonuses.
 ```
 
 ### ✅ Completed
 
-- Implemented pagination to the CRM table (now shows 5 records per page)
-- Added actions column to CRM table for edit/delete functionality
-- Enhanced table cell tooltips with proper truncation handling
+- Implemented comprehensive CRM system with Cards and Users management tabs
+- Added full user management functionality with search and filtering capabilities
+- Enhanced table navigation with clickable rows for card details
+- Implemented proper component architecture separation for CRM tabs
 
 ### ➕ Added
 
-- [`CardsTableActionsCell Component`](src/components/utils/CardsTableActionsCell.tsx) - Actions cell component for table edit/delete operations
-- Actions column header to CRM table
-- Tooltip functionality to all table cells for better UX
-- User authentication context to [`CRM Page`](src/pages/CRM/CRM.page.tsx)
-- Enhanced `convertCardToTableRecord` utility with user permissions and action callbacks
-- Global animation support for parent-child tilt effects
+- [`Cards Tab Component`](src/pages/CRM/Cards.tab.tsx) - Dedicated tab component for cards management in CRM
+- [`Users Tab Component`](src/pages/CRM/Users.tab.tsx) - Dedicated tab component for users management in CRM
+- [`UsersTableActionsCell Component`](src/components/utils/UsersTableActionsCell.tsx) - Actions cell component for user table operations
+- [`useUsers Hook`](src/hooks/useUsers.ts) - Custom hook for user data management
+- [`convertUserToTableRecord Utility`](src/utils/convertUserToTableRecord.tsx) - Utility to convert user data to table records
+- [`CustomToggleSwitch Utility`](src/utils/CustomToggleSwitch.tsx) - Custom toggle switch component for UI interactions
+- [`CRM Page CSS`](src/styles/pages/CRM.page.css) - Dedicated styles for CRM page layout and components
+- Enhanced search functionality with `dataSearch` and `userSearch` methods in [`useSearch Hook`](src/hooks/useSearch.ts)
+- Navigation support to [`convertCardToTableRecord Utility`](src/utils/convertCardToTableRecord.tsx)
 
 ### 🔄 Changed
 
-- [`Card Component`](src/components/card/Card.tsx) - Updated animation classes from `animate-tilt-hover` to `animate-tilt`
-- [`CRM Page`](src/pages/CRM/CRM.page.tsx) - Added user authentication integration and actions column
-- [`convertCardToTableRecord Utility`](src/utils/convertCardToTableRecord.tsx) - Enhanced with user permissions, tooltips, and action callbacks
-- [`lazyImport Utility`](src/utils/lazyImport.ts) - Refactored to support all file types and improved error handling
-- [`tilting.animation.css`](src/styles/animations/tilting.animation.css) - Updated animation trigger to support parent-child hover effects
-- Removed table border styling from CRM table
+> `Nothing has been changed.`
 
 ### 🗑️ Deleted
 
-- Hover-specific animation classes (`animate-tilt-hover`) in favor of unified `animate-tilt`
-- Redundant border styling from CRM table
+> `Nothing has been deleted.`
 
 ### 🏷️ Renamed / Moved
 
-- Hover-specific animation classes renamed (`animate-tilt-hover`) to `animate-tilt`
+> `No files renamed or moved.`
 
 ---
 
@@ -52,6 +47,7 @@ I need to figure out a way to:
 
 | `Date`       | `Commit #`                                                   |
 | ------------ | ------------------------------------------------------------ |
+| `14/06/2025` | [`84`](./commits_changes/commit_84.md)                       |
 | `13/06/2025` | [`83`](./commits_changes/commit_83.md)                       |
 | `12/06/2025` | [`82`](./commits_changes/commit_82.md)                       |
 | `12/06/2025` | [`81`](./commits_changes/commit_81.md)                       |

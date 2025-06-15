@@ -1,10 +1,12 @@
 import { TableCell, TableRow } from "flowbite-react";
 import { TCardData } from "../types/card.t";
 import CardsTableActionsCell from "../components/utils/CardsTableActionsCell";
+import { NavigateFunction } from "react-router-dom";
 
 const convertCardToTableRecord = (
   card: TCardData,
   userID: string | undefined,
+  navigate: NavigateFunction,
   onEditAction?: (cardID: string, isEditing: boolean) => void,
   onDeleteAction?: (cardID: string, isDeleting: boolean) => void,
 ) => {
@@ -32,7 +34,14 @@ const convertCardToTableRecord = (
     .join(" | ");
 
   return (
-    <TableRow key={_id} className="overflow-scroll">
+    <TableRow
+      key={_id}
+      className="overflow-scroll hover:cursor-pointer"
+      onClick={(e) => {
+        e.stopPropagation();
+        navigate(`/card-details/${card._id}`);
+      }}
+    >
       <TableCell
         className={`${tableCellsClassName}`}
         title={tableCellTitle(title)}
@@ -71,6 +80,7 @@ const convertCardToTableRecord = (
       </TableCell>
       <CardsTableActionsCell
         editable={user_id === userID}
+        cardID={_id}
         onEdit={onEditAction}
         onDelete={onDeleteAction}
       />
