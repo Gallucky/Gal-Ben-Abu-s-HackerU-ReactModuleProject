@@ -48,7 +48,7 @@ const ProtectedRoutesSection = () => {
             </h3>
             <ul className="space-y-2 text-gray-700 dark:text-gray-300">
               <li>
-                • <strong>/crm</strong> - User & card management (WIP)
+                • <strong>/crm</strong> - User & card management
               </li>
             </ul>
           </div>

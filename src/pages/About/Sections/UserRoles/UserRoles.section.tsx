@@ -62,7 +62,7 @@ const UserRolesSection = () => {
           permissions={[
             "All registered user features",
             "Delete any business cards",
-            "Access CRM page (Work in Progress)",
+            "Access CRM page",
             "Manage users across platform - eg. convert regular to business accounts",
             "Platform-wide administration",
           ]}
