@@ -218,7 +218,29 @@ npm run preview      # Preview production build
 npm run lint         # Run ESLint
 npm run lint:fix     # Fix ESLint issues
 npm run type-check   # TypeScript type checking
+npm run status       # Generating git files differences - showing + copying to clipboard [Running the `git status` && `git status | clip` commands].
+npm run diff         # Generating git file and folders content differences - copying to clipboard [Running the `git diff | clip` command].
 ```
+---
+
+## Custom ESLint Warnings
+As Guidelines, I've used pre-delivered, configurable ESLint rules, such as no-console log warnings and a maximum code line count of 200.
+And also, I even created a custom one at the [`./eslint-rules`](./eslint-rules) directory.
+It includes a custom warning when there is a comment starting with `todo`, case-insensitive.
+
+### Installation & Usage
+To be able to use my custom ESLint rule, you will need to create a symbolic link using the powershell terminal.
+
+```powershell
+New-Item -ItemType SymbolicLink -Path .\node_modules\eslint-plugin-custom-eslint-rules.cjs -Target .\eslint-rules\eslint-plugin-custom-eslint-rules.cjs
+```
+
+To manually use and see the linting errors, warnings, and messages,  run the following command in the terminal.
+```powershell
+npm run lint
+```
+[@ See available scripts](#-available-scripts)
+
 
 ---
 
