@@ -2,7 +2,7 @@
 
 [`← Back Changelog`](./Changelog.md)
 
-## 📅 Updated to Commit #83 | Date: 13/06/2025
+## 📅 Updated to Commit #84 | Date: 14/06/2025
 
 ## 📋 Todo
 
